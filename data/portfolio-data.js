@@ -3,12 +3,11 @@ window.PORTFOLIO_DATA = {
         name: "Kartik Patkar",
         shortName: "KP",
         role: "Salesforce Consultant & Senior Developer",
-        description:
-            "Kartik Patkar — Salesforce Consultant & Senior Developer. Portfolio showcasing Salesforce work, projects, and experience.",
+        description: "Kartik Patkar — Salesforce Consultant & Senior Developer. Portfolio showcasing Salesforce work, projects, and experience.",
         email: "kartikkp.assets@gmail.com",
         linkedin: "https://www.linkedin.com/in/kartik-patkar/",
-        github: "https://github.com/kartikpatkar",
-        githubLabel: "github.com/kartikpatkar",
+        github: "https://github.com/Kartikpatkar",
+        githubLabel: "github.com/Kartikpatkar",
         linkedinLabel: "linkedin.com/in/kartik-patkar",
         resumePath: "assets/Kartik-Patkar-Resume.pdf",
         profileImage: "assets/images/profile-placeholder.svg",
@@ -29,7 +28,7 @@ window.PORTFOLIO_DATA = {
             },
             {
                 label: "GitHub",
-                url: "https://github.com/kartikpatkar",
+                url: "https://github.com/Kartikpatkar",
                 icon: "GH"
             },
             {
@@ -125,53 +124,83 @@ window.PORTFOLIO_DATA = {
         ]
     },
     projects: {
-        subtitle: "A selection of work focused on developer tooling and integrations.",
+        subtitle: "Public Chrome Extensions and Salesforce developer tools pulled from my GitHub profile.",
         items: [
             {
-                title: "SF Vault+",
-                description:
-                    "Secure Chrome extension for storing Salesforce credentials with grouping, autofill, and clipboard utilities.",
-                technologies: ["JavaScript", "Chrome Extension API", "Local Storage"],
+                title: "Apex Genie",
+                description: "Browser extension for Salesforce developers to convert JSON into strongly typed Apex classes, generate test classes, and package outputs directly in the browser.",
+                technologies: ["JavaScript", "Chrome Extension", "Apex", "Salesforce"],
                 links: [
                     {
+                        label: "Chrome Store",
+                        url: "https://chrome.google.com/webstore/detail/json-to-apex-genie/ifliljlnfdnmagdgmomglfoimjcnpinb"
+                    },
+                    {
                         label: "GitHub",
-                        url: "https://github.com/kartikpatkar"
+                        url: "https://github.com/Kartikpatkar/json-2-apex-genie"
+                    }
+                ]
+            },
+            {
+                title: "SLDS Icons Kit",
+                description:
+                    "Full-tab Chrome Extension for Salesforce Developers, Admins, and Architects to browse the complete SLDS icon library, preview styles, and copy LWC, Aura, and SLDS snippets instantly.",
+                technologies: ["JavaScript", "Chrome Extension", "SLDS", "Monaco Editor"],
+                links: [
+                    {
+                        label: "Chrome Store",
+                        url: "https://chromewebstore.google.com/detail/pgjeeljfclipedfnlojjchmmilddiaje"
+                    },
+                    {
+                        label: "GitHub",
+                        url: "https://github.com/Kartikpatkar/SLDS-icons-kit-salesforce"
                     }
                 ]
             },
             {
                 title: "Offline PDF Tools",
                 description:
-                    "Privacy-first Chrome extension for editing PDF files entirely offline (merge, split, rotate, delete, reorder pages).",
-                technologies: ["JavaScript", "PDF.js", "pdf-lib"],
+                    "Privacy-first Chrome Extension for modifying PDF files entirely offline with merge, split, extract, reorder, delete, and rotate workflows built directly into the browser.",
+                technologies: ["JavaScript", "Chrome Extension", "PDF.js", "pdf-lib"],
                 links: [
                     {
+                        label: "Chrome Store",
+                        url: "https://chromewebstore.google.com/detail/lkokanmnglecjkgabbhincgaiceedolc?utm_source=item-share-cb"
+                    },
+                    {
                         label: "GitHub",
-                        url: "https://github.com/kartikpatkar"
+                        url: "https://github.com/Kartikpatkar/offline-pdf-tools"
                     }
                 ]
             },
             {
-                title: "DevSnap",
+                title: "Salesforce Package XML Generator",
                 description:
-                    "Developer productivity Chrome extension for capturing and organizing reusable code snippets.",
-                technologies: ["JavaScript", "Chrome Extension API"],
+                    "Developer-focused Chrome Extension that explores logged-in org metadata and generates accurate package.xml files visually for Salesforce deployments and release workflows.",
+                technologies: ["JavaScript", "Chrome Extension", "Metadata API", "Tooling API", "Salesforce"],
                 links: [
                     {
+                        label: "Chrome Store",
+                        url: "https://chromewebstore.google.com/detail/dckmmjdjldnoipccflojfodimnmemfgn?utm_source=item-share-cb"
+                    },
+                    {
                         label: "GitHub",
-                        url: "https://github.com/kartikpatkar"
+                        url: "https://github.com/Kartikpatkar/salesforce-package-xml-generator"
                     }
                 ]
             },
             {
-                title: "WhatsApp Integration",
-                description:
-                    "Salesforce integration with WhatsApp API for sending automated notifications.",
-                technologies: ["Apex", "REST API"],
+                title: "FieldForge",
+                description: "Developer-focused Chrome Extension for bulk-creating Salesforce custom fields from CSV or XLSX with validation, metadata preview, deploy ZIP generation, and safe Metadata API deployment.",
+                technologies: ["JavaScript", "Chrome Extension", "Metadata API", "Salesforce"],
                 links: [
                     {
-                        label: "Contact for details",
-                        url: "#contact"
+                        label: "Chrome Store",
+                        url: "https://chromewebstore.google.com/detail/nfjjccdcnpdmfglblfnkmmfecmblbhfo?utm_source=item-share-cb"
+                    },
+                    {
+                        label: "GitHub",
+                        url: "https://github.com/Kartikpatkar/fieldforge"
                     }
                 ]
             }
