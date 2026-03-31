@@ -357,11 +357,11 @@ section {
   display: grid;
   place-items: center;
   padding: 34px 28px;
-  border-radius: 36px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.28));
-  border: 1px solid rgba(26, 115, 232, 0.10);
-  box-shadow: 0 28px 70px rgba(26, 60, 120, 0.12);
-  overflow: hidden;
+  /* border-radius: 36px; */
+  /* background: linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.28)); */
+  /* border: 1px solid rgba(26, 115, 232, 0.10); */
+  /* box-shadow: 0 28px 70px rgba(26, 60, 120, 0.12); */
+  /* overflow: hidden; */
 }
 
 .hero__media::before,
@@ -391,41 +391,9 @@ section {
 .hero__portraitFrame {
   position: relative;
   width: min(100%, 440px);
-  padding: 18px;
-  border-radius: 34px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(239, 246, 255, 0.88));
-  border: 1px solid rgba(26, 115, 232, 0.14);
-  box-shadow:
-    0 24px 48px rgba(26, 60, 120, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  display: grid;
+  place-items: center;
   z-index: 1;
-}
-
-.hero__portraitFrame::before {
-  content: "";
-  position: absolute;
-  inset: 12px;
-  border-radius: 26px;
-  border: 1px solid rgba(26, 115, 232, 0.08);
-  pointer-events: none;
-}
-
-.hero__portraitFrame::after {
-  content: "Salesforce Consultant";
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.84);
-  border: 1px solid rgba(26, 115, 232, 0.14);
-  color: var(--accent);
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  box-shadow: var(--shadow-soft);
 }
 
 .hero__floatingCards {
@@ -437,24 +405,59 @@ section {
 
 .hero__floatingCard {
   position: absolute;
-  min-width: 170px;
-  max-width: 220px;
-  padding: 16px 18px;
+  --float-base-x: 0px;
+  --float-base-y: 0px;
+  min-width: 160px;
+  max-width: 190px;
+  padding: 12px 14px;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.96);
   border: 1px solid rgba(26, 115, 232, 0.12);
   box-shadow: 0 18px 34px rgba(26, 60, 120, 0.12);
   backdrop-filter: blur(10px);
+  animation: heroFloat 3.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.hero__floatingCardTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero__floatingCardCopy {
+  display: grid;
+  gap: 2px;
 }
 
 .hero__floatingCard:first-child {
-  top: 26px;
-  left: -8px;
+  top: -10px;
+  right: -6px;
+  animation-delay: 0s;
+}
+
+.hero__floatingCard:nth-child(2) {
+  bottom: 12px;
+  left: -18px;
+  animation-delay: 1.2s;
 }
 
 .hero__floatingCard:last-child {
-  right: -6px;
-  bottom: 62px;
+  top: 50%;
+  right: -28px;
+  --float-base-y: -50%;
+  animation-delay: 2s;
+}
+
+@keyframes heroFloat {
+  0%,
+  100% {
+    transform: translate(var(--float-base-x), var(--float-base-y));
+  }
+
+  50% {
+    transform: translate(var(--float-base-x), calc(var(--float-base-y) - 8px));
+  }
 }
 
 .hero__floatingCard--chrome {
@@ -465,48 +468,57 @@ section {
   border-color: rgba(26, 115, 232, 0.16);
 }
 
-.hero__floatingCardTitle {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+.hero__floatingCard--insight {
+  border-color: rgba(123, 97, 255, 0.16);
 }
 
-.hero__floatingCardTitle::before {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 8px;
-  border-radius: 50%;
-  background: currentColor;
-  opacity: 0.35;
+.hero__floatingCardIcon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.hero__floatingCardTitle {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 .hero__floatingCardValue {
-  margin: 6px 0 0;
-  color: var(--text);
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 0.68rem;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   line-height: 1.35;
 }
 
 .hero__avatar {
-  width: 100%;
-  border-radius: 26px;
-  border: 1px solid rgba(26, 115, 232, 0.12);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(237, 244, 255, 0.92));
-  box-shadow: var(--shadow);
+  width: min(320px, 72vw);
+  aspect-ratio: 1 / 1;
+  border-radius: 32px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2), #032d60);
+  box-shadow: 0 28px 54px rgba(26, 60, 120, 0.22);
+  display: grid;
+  place-items: center;
   position: relative;
   z-index: 1;
+  overflow: hidden;
+}
+
+.hero__avatarIllustration {
+  width: 62%;
+  height: 62%;
+  opacity: 0.94;
 }
 
 .hero__badge {
   position: absolute;
-  bottom: 30px;
-  left: 30px;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 3;
   display: inline-flex;
   align-items: center;
@@ -539,16 +551,17 @@ section {
 .social__link {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
   text-decoration: none;
-  padding: 10px 12px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
   border-radius: 14px;
   border: 1px solid rgba(26, 115, 232, 0.10);
   background: rgba(255, 255, 255, 0.78);
   color: var(--muted);
   box-shadow: var(--shadow-soft);
-  transition: transform 160ms ease, background 160ms ease, color 160ms ease;
-  max-width: 100%;
+  transition: transform 160ms ease, background 160ms ease, color 160ms ease, border-color 160ms ease;
 }
 
 .social__link:hover {
@@ -557,21 +570,46 @@ section {
   color: var(--accent);
 }
 
-.social__icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
-  color: white;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  font-weight: 800;
-  font-size: 0.85rem;
+.social__link--linkedin {
+  background: rgba(10, 102, 194, 0.08);
+  border-color: rgba(10, 102, 194, 0.14);
+  color: #0a66c2;
 }
 
-.social__text {
-  font-size: 0.95rem;
-  overflow-wrap: anywhere;
+.social__link--github {
+  background: rgba(22, 27, 34, 0.06);
+  border-color: rgba(22, 27, 34, 0.10);
+  color: #24292f;
+}
+
+.social__link--trailhead {
+  background: rgba(26, 115, 232, 0.08);
+  border-color: rgba(26, 115, 232, 0.14);
+  color: var(--accent);
+}
+
+.social__link--email {
+  background: rgba(234, 67, 53, 0.08);
+  border-color: rgba(234, 67, 53, 0.14);
+  color: var(--accent-5);
+}
+
+.social__icon {
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  color: currentColor;
+}
+
+.social__icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* Buttons */
@@ -704,9 +742,80 @@ section {
 
 /* Skills */
 .skills__grid {
+  display: grid;
+  gap: 16px;
+}
+
+.skill-group {
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 249, 255, 0.96));
+  box-shadow: var(--shadow-soft);
+  padding: 22px;
+}
+
+.skill-group__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.skill-group__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.skill-group__title {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.skill-group__items {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(26, 115, 232, 0.10);
+  background: rgba(232, 244, 253, 0.72);
+  color: var(--text);
+  font-size: 0.83rem;
+  font-weight: 700;
+}
+
+.skill-group--salesforce .skill-group__icon {
+  background: rgba(26, 115, 232, 0.10);
+  color: var(--accent);
+}
+
+.skill-group--salesforce .skill-pill {
+  background: rgba(232, 244, 253, 0.9);
+  border-color: rgba(26, 115, 232, 0.12);
+  color: #12456f;
+}
+
+.skill-group--tools .skill-group__icon {
+  background: rgba(123, 97, 255, 0.10);
+  color: #6b4eff;
+}
+
+.skill-group--tools .skill-pill {
+  background: rgba(244, 240, 255, 0.92);
+  border-color: rgba(123, 97, 255, 0.12);
+  color: #5f46da;
 }
 
 /* Certifications */
@@ -1047,6 +1156,102 @@ section {
   align-items: start;
 }
 
+.contact__panel {
+  border-radius: 24px;
+}
+
+.contact__panel--form {
+  background: linear-gradient(180deg, rgba(244, 249, 255, 0.98), rgba(255, 255, 255, 0.98));
+}
+
+.contact__panel--links {
+  background: linear-gradient(180deg, rgba(244, 249, 255, 0.96), rgba(255, 255, 255, 0.98));
+}
+
+.contact__directText {
+  margin-bottom: var(--space-4);
+}
+
+.contact__links {
+  display: grid;
+  gap: 12px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 18px;
+  text-decoration: none;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.contact-link:hover {
+  background: rgba(255, 255, 255, 0.96);
+  transform: translateY(-1px);
+}
+
+.contact-link__iconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+
+.contact-link__icon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-link__copy {
+  min-width: 0;
+}
+
+.contact-link__label,
+.contact-link__value {
+  margin: 0;
+}
+
+.contact-link__label {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.contact-link__value {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  overflow-wrap: anywhere;
+}
+
+.contact-link--email .contact-link__iconWrap {
+  background: rgba(234, 67, 53, 0.10);
+  color: var(--accent-5);
+}
+
+.contact-link--linkedin .contact-link__iconWrap {
+  background: rgba(10, 102, 194, 0.10);
+  color: #0a66c2;
+}
+
+.contact-link--github .contact-link__iconWrap {
+  background: rgba(22, 27, 34, 0.08);
+  color: #24292f;
+}
+
+.contact-link--trailhead .contact-link__iconWrap {
+  background: rgba(26, 115, 232, 0.10);
+  color: var(--accent);
+}
+
 .form {
   margin-top: var(--space-4);
   display: grid;
@@ -1065,8 +1270,8 @@ section {
 
 .form__input {
   width: 100%;
-  padding: 12px 12px;
-  border-radius: 14px;
+  padding: 13px 14px;
+  border-radius: 16px;
   border: 1px solid rgba(26, 115, 232, 0.12);
   background: rgba(255, 255, 255, 0.96);
   color: var(--text);
@@ -1080,6 +1285,7 @@ section {
 
 .form__textarea {
   resize: vertical;
+  min-height: 120px;
 }
 
 .form__error {
@@ -1087,6 +1293,10 @@ section {
   min-height: 18px;
   color: rgba(255, 120, 120, 0.95);
   font-size: 0.92rem;
+}
+
+.form__submit {
+  width: 100%;
 }
 
 /* Footer */
@@ -1333,12 +1543,13 @@ section {
   }
 
   .social {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .social__link {
-    justify-content: center;
+    width: 42px;
+    height: 42px;
   }
 
   .hero__badge {
@@ -1352,20 +1563,7 @@ section {
   }
 
   .hero__portraitFrame {
-    padding: 14px;
-    border-radius: 28px;
-  }
-
-  .hero__portraitFrame::before {
-    inset: 10px;
-    border-radius: 22px;
-  }
-
-  .hero__portraitFrame::after {
-    top: 14px;
-    right: 14px;
-    padding: 7px 10px;
-    font-size: 0.68rem;
+    width: min(100%, 380px);
   }
 
   .timeline__top {
@@ -1387,6 +1585,7 @@ section {
 
   .hero__floatingCard,
   .hero__floatingCard:first-child,
+  .hero__floatingCard:nth-child(2),
   .hero__floatingCard:last-child {
     position: relative;
     top: auto;
@@ -1394,10 +1593,8 @@ section {
     right: auto;
     bottom: auto;
     max-width: none;
-  }
-
-  .skills__grid {
-    gap: 10px;
+    --float-base-x: 0px;
+    --float-base-y: 0px;
   }
 
   .certifications__grid {
@@ -1427,15 +1624,7 @@ section {
   }
 
   .hero__portraitFrame {
-    padding: 12px;
-    border-radius: 24px;
-  }
-
-  .hero__portraitFrame::after {
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    top: 12px;
+    width: min(100%, 320px);
   }
 
   .hero__badge {
@@ -1456,7 +1645,7 @@ section {
   }
 
   .social {
-    grid-template-columns: 1fr;
+    gap: 10px;
   }
 
   .certifications__grid {

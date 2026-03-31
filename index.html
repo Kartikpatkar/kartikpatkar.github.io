@@ -67,11 +67,15 @@
                     <div class="social" id="hero-social" aria-label="Social links"></div>
                 </div>
 
-                <div class="hero__media reveal" aria-label="Profile photo">
+                <div class="hero__media reveal" aria-label="Profile illustration">
                     <div class="hero__floatingCards" id="hero-floating-cards"></div>
                     <div class="hero__portraitFrame">
-                        <img class="hero__avatar" id="hero-avatar" src="assets/images/profile-placeholder.svg"
-                            alt="Profile placeholder for Kartik Patkar" loading="eager" width="420" height="420" />
+                        <div class="hero__avatar" id="hero-avatar" aria-hidden="true">
+                            <svg viewBox="0 0 200 200" class="hero__avatarIllustration" focusable="false">
+                                <circle cx="100" cy="78" r="36" fill="rgba(255,255,255,.88)" />
+                                <ellipse cx="100" cy="170" rx="55" ry="42" fill="rgba(255,255,255,.88)" />
+                            </svg>
+                        </div>
                         <div class="hero__badge" id="hero-availability-badge" aria-hidden="true">
                             <span class="hero__badgeDot"></span>
                             <span id="hero-badge-text"></span>
@@ -151,7 +155,7 @@
                 </div>
 
                 <div class="contact__grid">
-                    <div class="card reveal">
+                    <div class="card contact__panel contact__panel--form reveal">
                         <h3 class="card__title">Send a message</h3>
                         <p class="card__text" id="contact-intro"></p>
 
@@ -177,13 +181,14 @@
                                 <p class="form__error" id="error-message" aria-live="polite"></p>
                             </div>
 
-                            <button class="btn btn--primary" type="submit">Send</button>
+                            <button class="btn btn--primary form__submit" type="submit">Send Message</button>
                         </form>
                     </div>
 
-                    <aside class="card reveal" aria-label="Direct contact">
+                    <aside class="card contact__panel contact__panel--links reveal" aria-label="Direct contact">
                         <h3 class="card__title">Direct links</h3>
-                        <ul class="list" id="direct-links"></ul>
+                        <p class="card__text contact__directText" id="contact-direct-intro"></p>
+                        <div class="contact__links" id="direct-links"></div>
 
                         <div class="divider" role="presentation"></div>
                         <p class="card__text">Open to collaboration, consulting, and Salesforce-focused product work.</p>

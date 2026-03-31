@@ -1,7 +1,7 @@
 window.PORTFOLIO_CONFIG = {
     ui: {
         hero: {
-            showAvailabilityBadge: true,
+            showAvailabilityBadge: false,
             showSocialLinks: true,
             showHighlights: true,
             showFloatingCards: true

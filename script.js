@@ -22,6 +22,40 @@
     return element;
   };
 
+  const createIcon = (name, className = "") => {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    if (className) svg.setAttribute("class", className);
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("focusable", "false");
+
+    const pathSets = {
+      linkedin: [
+        ["path", { d: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" }],
+        ["rect", { x: "2", y: "9", width: "4", height: "12" }],
+        ["circle", { cx: "4", cy: "4", r: "2" }],
+      ],
+      github: [
+        ["path", { d: "M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77 5.44 5.44 0 0 0 3.5 8.5c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" }],
+      ],
+      trailhead: [
+        ["path", { d: "M6 18a4 4 0 0 1 .2-8A6 6 0 0 1 18 9a3.5 3.5 0 1 1 .5 7H6z" }],
+      ],
+      email: [
+        ["rect", { x: "3", y: "5", width: "18", height: "14", rx: "2" }],
+        ["path", { d: "m3 7 9 6 9-6" }],
+      ],
+    };
+
+    (pathSets[name] || pathSets.trailhead).forEach(([tagName, attrs]) => {
+      const child = document.createElementNS("http://www.w3.org/2000/svg", tagName);
+      Object.entries(attrs).forEach(([key, value]) => child.setAttribute(key, value));
+      svg.append(child);
+    });
+
+    return svg;
+  };
+
   const setText = (selector, value) => {
     const element = document.querySelector(selector);
     if (element && typeof value === "string") element.textContent = value;
@@ -46,17 +80,20 @@
 
     container.innerHTML = "";
     socials.forEach((social) => {
-      const link = createEl("a", "social__link");
+      const tone = social.icon || social.type || social.label.toLowerCase();
+      const link = createEl("a", `social__link social__link--${tone}`);
       link.href = social.url;
+      link.setAttribute("aria-label", social.label);
       if (/^https?:/i.test(social.url)) {
         link.target = "_blank";
         link.rel = "noreferrer";
       }
 
-      const icon = createEl("span", "social__icon", social.icon || social.label.slice(0, 2));
+      const icon = createEl("span", "social__icon");
       icon.setAttribute("aria-hidden", "true");
+      icon.append(createIcon(tone, "social__iconSvg"));
 
-      const text = createEl("span", "social__text", social.label);
+      const text = createEl("span", "sr-only", social.label);
 
       link.append(icon, text);
       container.append(link);
@@ -94,10 +131,17 @@
     container.innerHTML = "";
     hero.floatingCards.forEach((item) => {
       const card = createEl("div", `hero__floatingCard hero__floatingCard--${item.tone || "default"}`);
-      card.append(
+      const top = createEl("div", "hero__floatingCardTop");
+      if (item.icon) {
+        top.append(createEl("span", "hero__floatingCardIcon", item.icon));
+      }
+      const copy = createEl("div", "hero__floatingCardCopy");
+      copy.append(
         createEl("p", "hero__floatingCardTitle", item.title),
         createEl("p", "hero__floatingCardValue", item.value),
       );
+      top.append(copy);
+      card.append(top);
       container.append(card);
     });
   };
@@ -143,6 +187,26 @@
     if (!grid || !skills) return;
 
     grid.innerHTML = "";
+    if (Array.isArray(skills.groups) && skills.groups.length) {
+      skills.groups.forEach((group) => {
+        const card = createEl("article", `skill-group skill-group--${group.tone || "salesforce"} reveal`);
+        const head = createEl("div", "skill-group__head");
+        head.append(
+          createEl("span", "skill-group__icon", group.icon || "SK"),
+          createEl("h3", "skill-group__title", group.title),
+        );
+
+        const items = createEl("div", "skill-group__items");
+        (group.items || []).forEach((item) => {
+          items.append(createEl("span", "skill-pill", item));
+        });
+
+        card.append(head, items);
+        grid.append(card);
+      });
+      return;
+    }
+
     (skills.items || []).forEach((item) => {
       const chip = createEl("span", "chip reveal", item.title);
       chip.title = item.text || item.title;
@@ -340,24 +404,33 @@
     footerLinks.innerHTML = "";
 
     const directItems = [
-      { label: "Email", text: site.email, href: `mailto:${site.email}` },
-      { label: "GitHub", text: site.githubLabel, href: site.github },
-      { label: "LinkedIn", text: site.linkedinLabel, href: site.linkedin },
-      ...(site.trailhead ? [{ label: "Trailhead", text: site.trailheadLabel || site.trailhead, href: site.trailhead }] : []),
+      { label: "Email", text: site.email, href: `mailto:${site.email}`, icon: "email", tone: "email" },
+      { label: "LinkedIn", text: site.linkedinLabel, href: site.linkedin, icon: "linkedin", tone: "linkedin" },
+      { label: "GitHub", text: site.githubLabel, href: site.github, icon: "github", tone: "github" },
+      ...(site.trailhead
+        ? [{ label: "Trailhead", text: site.trailheadLabel || site.trailhead, href: site.trailhead, icon: "trailhead", tone: "trailhead" }]
+        : []),
     ];
 
     directItems.forEach((item) => {
-      const listItem = document.createElement("li");
-      const strong = document.createElement("strong");
-      strong.textContent = `${item.label}: `;
-      const link = createEl("a", "link", item.text);
+      const link = createEl("a", `contact-link contact-link--${item.tone}`);
       link.href = item.href;
       if (/^https?:/i.test(item.href)) {
         link.target = "_blank";
         link.rel = "noreferrer";
       }
-      listItem.append(strong, link);
-      list.append(listItem);
+
+      const iconWrap = createEl("span", "contact-link__iconWrap");
+      iconWrap.append(createIcon(item.icon, "contact-link__icon"));
+
+      const copy = createEl("span", "contact-link__copy");
+      copy.append(
+        createEl("p", "contact-link__label", item.label),
+        createEl("p", "contact-link__value", item.text),
+      );
+
+      link.append(iconWrap, copy);
+      list.append(link);
     });
 
     directItems.forEach((item) => {
@@ -398,6 +471,7 @@
     setText("#experience-subtitle", experience.subtitle);
     setText("#contact-subtitle", contact.subtitle);
     setText("#contact-intro", contact.intro);
+    setText("#contact-direct-intro", contact.directLinksIntro || "Prefer a direct route? Reach out on the platforms below.");
     setText("#footer-name", site.name);
 
     setLink("#resume-link", site.resumePath, hero.primaryCtaLabel);
@@ -409,7 +483,7 @@
     );
 
     const avatar = document.getElementById("hero-avatar");
-    if (avatar) {
+    if (avatar instanceof HTMLImageElement) {
       avatar.src = site.profileImage;
       avatar.alt = site.profileImageAlt;
     }

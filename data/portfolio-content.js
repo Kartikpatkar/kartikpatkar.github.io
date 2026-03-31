@@ -26,36 +26,44 @@ window.PORTFOLIO_CONTENT = {
         highlights: ["Offline-first tools", "Chrome Web Store apps", "Salesforce automation", "10x Salesforce Certified"],
         floatingCards: [
             {
-                title: "Chrome Web Store",
-                value: "Published tools",
-                tone: "chrome"
+                title: "10x Certified",
+                value: "Salesforce",
+                tone: "salesforce",
+                icon: "☁️"
             },
             {
-                title: "Salesforce",
-                value: "Apex + LWC + Metadata API",
-                tone: "salesforce"
+                title: "5.5+ Years",
+                value: "Experience",
+                tone: "chrome",
+                icon: "🚀"
+            },
+            {
+                title: "9+ Projects",
+                value: "Open Source",
+                tone: "insight",
+                icon: "🧩"
             }
         ],
         socials: [
             {
                 label: "LinkedIn",
                 url: "https://www.linkedin.com/in/kartik-patkar/",
-                icon: "in"
+                icon: "linkedin"
             },
             {
                 label: "GitHub",
                 url: "https://github.com/Kartikpatkar",
-                icon: "GH"
+                icon: "github"
             },
             {
                 label: "Trailhead",
                 url: "https://www.salesforce.com/trailblazer/kpatkar1",
-                icon: "TH"
+                icon: "trailhead"
             },
             {
                 label: "Email",
                 url: "mailto:kartikkp.assets@gmail.com",
-                icon: "@"
+                icon: "email"
             }
         ]
     },
@@ -95,56 +103,18 @@ window.PORTFOLIO_CONTENT = {
     },
     skills: {
         subtitle: "A practical toolkit for building on Salesforce and beyond.",
-        items: [
+        groups: [
             {
                 icon: "SF",
-                title: "Salesforce",
-                text: "Platform configuration, security, data model, and best practices."
+                title: "Salesforce Platform",
+                tone: "salesforce",
+                items: ["Apex", "Lightning Web Components", "Aura", "Flow", "SOQL", "REST APIs", "SFDX"]
             },
             {
-                icon: "A",
-                title: "Apex",
-                text: "Triggers, async patterns, test strategy, and governor limits."
-            },
-            {
-                icon: "LWC",
-                title: "Lightning Web Components",
-                text: "Reusable components, clean UI patterns, and performance."
-            },
-            {
-                icon: "Flow",
-                title: "Flow",
-                text: "Automation, validations, and maintainable orchestration."
-            },
-            {
-                icon: "API",
-                title: "REST APIs",
-                text: "Integrations, authentication, webhooks, and error handling."
-            },
-            {
-                icon: "JS",
-                title: "JavaScript",
-                text: "Vanilla JS (ES6+), tooling, and Chrome Extensions."
-            },
-            {
-                icon: "H",
-                title: "HTML",
-                text: "Semantic structure and accessible UI foundations."
-            },
-            {
-                icon: "C",
-                title: "CSS",
-                text: "Responsive layouts with Grid/Flexbox and modern CSS."
-            },
-            {
-                icon: "Git",
-                title: "Git",
-                text: "Branching workflows, PR reviews, and clean history."
-            },
-            {
-                icon: "CE",
-                title: "Chrome Extensions",
-                text: "MV3 patterns, storage, messaging, and UI overlays."
+                icon: "WEB",
+                title: "Web & Tools",
+                tone: "tools",
+                items: ["JavaScript", "HTML", "CSS", "Git", "Chrome Extensions", "VS Code"]
             }
         ]
     },
@@ -510,6 +480,7 @@ window.PORTFOLIO_CONTENT = {
     },
     contact: {
         subtitle: "Have a role, project, or collaboration in mind? Let's talk.",
-        intro: "This form opens your email client with a pre-filled message (no backend required)."
+        intro: "This form opens your email client with a pre-filled message, so the portfolio stays static and GitHub Pages-friendly.",
+        directLinksIntro: "Prefer email or profile links? Reach out directly here."
     }
 };
