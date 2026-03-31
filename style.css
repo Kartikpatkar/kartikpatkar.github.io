@@ -1576,12 +1576,14 @@ section {
   }
 
   .hero__media {
-    padding: 20px 0 24px;
+    width: min(100%, 420px);
+    margin-inline: auto;
+    padding: 28px 18px 40px;
     border-radius: 28px;
   }
 
   .hero__portraitFrame {
-    width: min(100%, 380px);
+    width: min(100%, 300px);
   }
 
   .timeline__top {
@@ -1594,26 +1596,50 @@ section {
   }
 
   .hero__floatingCards {
-    position: static;
-    display: grid;
-    gap: 12px;
-    margin-bottom: 14px;
-    pointer-events: auto;
-    width: min(100%, 420px);
+    position: absolute;
+    inset: 0;
+    display: block;
+    margin: 0;
+    pointer-events: none;
+    width: auto;
   }
 
   .hero__floatingCard,
   .hero__floatingCard:first-child,
   .hero__floatingCard:nth-child(2),
   .hero__floatingCard:last-child {
-    position: relative;
-    top: auto;
+    position: absolute;
+    min-width: 128px;
+    max-width: 148px;
+    padding: 10px 12px;
+    animation: heroFloat 3.5s ease-in-out infinite;
+  }
+
+  .hero__floatingCard:first-child {
+    top: 10px;
+    right: 8px;
     left: auto;
-    right: auto;
     bottom: auto;
-    max-width: none;
     --float-base-x: 0px;
     --float-base-y: 0px;
+  }
+
+  .hero__floatingCard:nth-child(2) {
+    left: 6px;
+    bottom: 18px;
+    right: auto;
+    top: auto;
+    --float-base-x: 0px;
+    --float-base-y: 0px;
+  }
+
+  .hero__floatingCard:last-child {
+    top: 50%;
+    right: -2px;
+    left: auto;
+    bottom: auto;
+    --float-base-x: 0px;
+    --float-base-y: -50%;
   }
 
   .certifications__grid {
@@ -1646,16 +1672,36 @@ section {
   }
 
   .hero__media {
-    padding: 16px 0 18px;
+    width: min(100%, 360px);
+    padding: 22px 8px 34px;
     border-radius: 24px;
   }
 
   .hero__portraitFrame {
-    width: min(100%, 320px);
+    width: min(100%, 260px);
   }
 
-  .hero__floatingCards {
-    width: min(100%, 320px);
+  .hero__floatingCard,
+  .hero__floatingCard:first-child,
+  .hero__floatingCard:nth-child(2),
+  .hero__floatingCard:last-child {
+    min-width: 118px;
+    max-width: 132px;
+    padding: 9px 10px;
+  }
+
+  .hero__floatingCard:first-child {
+    top: 12px;
+    right: 0;
+  }
+
+  .hero__floatingCard:nth-child(2) {
+    left: 0;
+    bottom: 16px;
+  }
+
+  .hero__floatingCard:last-child {
+    right: -8px;
   }
 
   .hero__badge {
@@ -1703,9 +1749,20 @@ section {
     padding: 10px 12px;
   }
 
-  .hero__floatingCard {
-    min-width: 0;
-    width: 100%;
+  .hero__floatingCard,
+  .hero__floatingCard:first-child,
+  .hero__floatingCard:nth-child(2),
+  .hero__floatingCard:last-child {
+    min-width: 108px;
+    max-width: 120px;
+  }
+
+  .hero__floatingCardTitle {
+    font-size: 0.74rem;
+  }
+
+  .hero__floatingCardValue {
+    font-size: 0.62rem;
   }
 
   .contact-link {
