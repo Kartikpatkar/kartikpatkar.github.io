@@ -68,6 +68,7 @@ body {
     var(--bg);
   background-size: auto, auto, auto, auto, 36px 36px, 36px 36px, auto;
   line-height: 1.55;
+  overflow-x: hidden;
 }
 
 img {
@@ -490,6 +491,7 @@ section {
   color: var(--muted);
   box-shadow: var(--shadow-soft);
   transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+  max-width: 100%;
 }
 
 .social__link:hover {
@@ -512,6 +514,7 @@ section {
 
 .social__text {
   font-size: 0.95rem;
+  overflow-wrap: anywhere;
 }
 
 /* Buttons */
@@ -645,16 +648,16 @@ section {
 /* Skills */
 .skills__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, max-content));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   max-width: 100%;
-  justify-content: start;
 }
 
 .skill-pill {
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
+  width: 100%;
   padding: 11px 14px;
   border-radius: 999px;
   border: 1px solid rgba(26, 115, 232, 0.12);
@@ -674,7 +677,7 @@ section {
   font-size: 0.93rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 /* Certifications */
@@ -798,6 +801,12 @@ section {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+@media (max-width: 1180px) {
+  .certifications__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 /* Projects */
@@ -1161,8 +1170,13 @@ section {
 
 /* Responsive */
 @media (max-width: 980px) {
+  .container {
+    width: min(var(--container), calc(100% - 2 * var(--space-4)));
+  }
+
   .hero__grid {
     grid-template-columns: 1fr;
+    gap: var(--space-6);
   }
 
   .split-section {
@@ -1193,11 +1207,11 @@ section {
   }
 
   .skills__grid {
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .certifications__grid {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .projects__grid {
@@ -1216,6 +1230,14 @@ section {
 @media (max-width: 760px) {
   :root {
     --nav-height: 68px;
+    --space-6: 24px;
+    --space-7: 32px;
+    --space-8: 44px;
+    --space-9: 56px;
+  }
+
+  .container {
+    width: min(var(--container), calc(100% - 2 * var(--space-3)));
   }
 
   .nav__toggle {
@@ -1251,6 +1273,45 @@ section {
     padding: 12px;
     border-radius: 14px;
     background: rgba(26, 115, 232, 0.04);
+  }
+
+  .nav__brandText {
+    font-size: 0.95rem;
+  }
+
+  .hero {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+
+  .hero__title {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+
+  .hero__role {
+    font-size: 1.03rem;
+  }
+
+  .hero__subtitle {
+    max-width: none;
+  }
+
+  .hero__cta {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero__cta .btn {
+    width: 100%;
+  }
+
+  .social {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .social__link {
+    justify-content: center;
   }
 
   .hero__badge {
@@ -1291,20 +1352,53 @@ section {
   }
 
   .skills__grid {
-    grid-template-columns: repeat(2, max-content);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .certifications__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .skill-pill__title {
-    white-space: normal;
+  .footer__inner {
+    align-items: flex-start;
   }
 }
 
 @media (max-width: 560px) {
+  .nav__brandText {
+    display: none;
+  }
+
+  .section {
+    padding: var(--space-8) 0;
+  }
+
+  .card,
+  .project-card {
+    padding: var(--space-5);
+  }
+
+  .skills__grid,
+  .social {
+    grid-template-columns: 1fr;
+  }
+
   .certifications__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 400px) {
+  .certifications__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__highlight,
+  .btn {
+    width: 100%;
+  }
+
+  .hero__highlight {
+    justify-content: center;
   }
 }
