@@ -162,32 +162,38 @@
 
                 <div class="contact__grid">
                     <div class="card contact__panel contact__panel--form reveal">
-                        <h3 class="card__title">Send a message</h3>
+                        <h3 class="card__title">Send a Message</h3>
                         <p class="card__text" id="contact-intro"></p>
 
                         <form class="form" id="contact-form" novalidate>
                             <div class="form__row">
                                 <label class="form__label" for="name">Name</label>
                                 <input class="form__input" id="name" name="name" type="text" autocomplete="name"
-                                    required />
+                                    placeholder="Your name" required />
                                 <p class="form__error" id="error-name" aria-live="polite"></p>
                             </div>
 
                             <div class="form__row">
                                 <label class="form__label" for="email">Email</label>
                                 <input class="form__input" id="email" name="email" type="email" autocomplete="email"
-                                    required />
+                                    placeholder="you@email.com" required />
                                 <p class="form__error" id="error-email" aria-live="polite"></p>
                             </div>
 
                             <div class="form__row">
                                 <label class="form__label" for="message">Message</label>
                                 <textarea class="form__input form__textarea" id="message" name="message" rows="6"
-                                    required></textarea>
+                                    placeholder="Your message..." required></textarea>
                                 <p class="form__error" id="error-message" aria-live="polite"></p>
                             </div>
 
-                            <button class="btn btn--primary form__submit" type="submit">Send Message</button>
+                            <button class="btn btn--primary form__submit" type="submit">
+                                <svg class="form__submitIcon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+                                    <path d="M22 2L11 13" />
+                                    <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+                                </svg>
+                                <span>Send Message</span>
+                            </button>
                         </form>
                     </div>
 
@@ -213,12 +219,12 @@
     <!-- Footer -->
     <footer class="footer" aria-label="Footer">
         <div class="container footer__inner">
-            <p class="footer__text">
-                <span id="footer-name">Kartik Patkar</span>
-                <span class="footer__sep" aria-hidden="true">•</span>
-                <span>© <span id="year"></span></span>
-            </p>
+            <div class="footer__brand">
+                <span class="footer__mark" aria-hidden="true">KP</span>
+                <span class="footer__brandName" id="footer-name">Kartik Patkar</span>
+            </div>
             <div class="footer__links" id="footer-links"></div>
+            <p class="footer__copyright">© <span id="year"></span> Kartik Patkar. All rights reserved.</p>
         </div>
     </footer>
 
