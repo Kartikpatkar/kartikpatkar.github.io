@@ -8,7 +8,12 @@
 
 (() => {
   const NAV_HEIGHT_CSS_VAR = "--nav-height";
-  const portfolioData = window.PORTFOLIO_DATA;
+  const portfolioConfig = window.PORTFOLIO_CONFIG || {};
+  const portfolioContent = window.PORTFOLIO_CONTENT || {};
+  const portfolioData = {
+    ...portfolioContent,
+    ui: portfolioConfig.ui || {},
+  };
 
   const createEl = (tagName, className, text) => {
     const element = document.createElement(tagName);
@@ -27,6 +32,12 @@
     if (!element) return;
     if (href) element.setAttribute("href", href);
     if (typeof text === "string") element.textContent = text;
+  };
+
+  const setVisibility = (selector, isVisible) => {
+    const element = document.querySelector(selector);
+    if (!element) return;
+    element.hidden = !isVisible;
   };
 
   const renderSocialLinks = (selector, socials) => {
@@ -49,6 +60,45 @@
 
       link.append(icon, text);
       container.append(link);
+    });
+  };
+
+  const renderHeroHighlights = (hero, uiHero) => {
+    const container = document.getElementById("hero-highlights");
+    if (!container) return;
+
+    const isVisible = Boolean(uiHero?.showHighlights && Array.isArray(hero?.highlights) && hero.highlights.length);
+    container.hidden = !isVisible;
+    if (!isVisible) {
+      container.innerHTML = "";
+      return;
+    }
+
+    container.innerHTML = "";
+    hero.highlights.forEach((highlight) => {
+      container.append(createEl("span", "hero__highlight", highlight));
+    });
+  };
+
+  const renderHeroFloatingCards = (hero, uiHero) => {
+    const container = document.getElementById("hero-floating-cards");
+    if (!container) return;
+
+    const isVisible = Boolean(uiHero?.showFloatingCards && Array.isArray(hero?.floatingCards) && hero.floatingCards.length);
+    container.hidden = !isVisible;
+    if (!isVisible) {
+      container.innerHTML = "";
+      return;
+    }
+
+    container.innerHTML = "";
+    hero.floatingCards.forEach((item) => {
+      const card = createEl("div", `hero__floatingCard hero__floatingCard--${item.tone || "default"}`);
+      card.append(
+        createEl("p", "hero__floatingCardTitle", item.title),
+        createEl("p", "hero__floatingCardValue", item.value),
+      );
+      container.append(card);
     });
   };
 
@@ -94,19 +144,59 @@
 
     grid.innerHTML = "";
     (skills.items || []).forEach((item) => {
-      const card = createEl("article", "skill-card reveal");
-      const icon = createEl("div", "skill-card__icon", item.icon);
-      icon.setAttribute("aria-hidden", "true");
-      card.append(
-        icon,
-        createEl("h3", "skill-card__title", item.title),
-        createEl("p", "skill-card__text", item.text),
-      );
+      const card = createEl("article", "skill-pill reveal");
+      card.title = item.text || item.title;
+      card.append(createEl("h3", "skill-pill__title", item.title));
       grid.append(card);
     });
   };
 
-  const renderProjects = (projects) => {
+  const renderCertifications = (certifications) => {
+    const grid = document.getElementById("certifications-grid");
+    const title = document.getElementById("certifications-title");
+    if (!grid || !certifications) return;
+
+    grid.innerHTML = "";
+    const items = certifications.items || [];
+    if (title) title.textContent = certifications.title || "Certifications";
+    items.forEach((item) => {
+      const card = createEl("article", `cert-card cert-card--${item.theme || "salesforce"} reveal`);
+      const metaParts = [item.title, item.issuer];
+      if (item.issued) metaParts.push(`Issued ${item.issued}`);
+      if (item.credentialId) metaParts.push(`Credential ID ${item.credentialId}`);
+      const metaLabel = metaParts.join(" • ");
+      card.setAttribute("aria-label", metaLabel);
+      card.title = metaLabel;
+
+      const badge = createEl("div", "cert-card__badge");
+      badge.setAttribute("aria-hidden", "true");
+      if (item.badgeImage) {
+        const badgeImage = document.createElement("img");
+        badgeImage.className = "cert-card__badgeImage";
+        badgeImage.src = item.badgeImage;
+        badgeImage.alt = item.badgeImageAlt || `${item.title} badge`;
+        badgeImage.loading = "lazy";
+        badge.append(badgeImage);
+      } else {
+        const placeholder = createEl("div", "cert-card__badgePlaceholder");
+        placeholder.append(
+          createEl("span", "cert-card__badgeLabel", item.shortLabel || "BADGE"),
+          createEl(
+            "span",
+            "cert-card__badgeHint",
+            item.badgePlaceholder || certifications.badgePlaceholder || "Add official badge URL or file",
+          ),
+        );
+        badge.append(placeholder);
+      }
+
+      const srText = createEl("span", "sr-only", metaLabel);
+      card.append(badge, srText);
+      grid.append(card);
+    });
+  };
+
+  const renderProjects = (projects, uiProjects) => {
     const grid = document.getElementById("projects-grid");
     if (!grid || !projects) return;
 
@@ -114,7 +204,19 @@
     (projects.items || []).forEach((project) => {
       const card = createEl("article", "project-card reveal");
       const head = createEl("header", "project-card__head");
+
+      const top = createEl("div", "project-card__top");
+      if (uiProjects?.showIcons) {
+        const icon = createEl("span", "project-card__icon", project.icon || project.title.slice(0, 2).toUpperCase());
+        icon.setAttribute("aria-hidden", "true");
+        top.append(icon);
+      }
+      if (uiProjects?.showCategoryBadge && project.badge) {
+        top.append(createEl("span", "project-card__badge", project.badge));
+      }
+
       head.append(
+        top,
         createEl("h3", "project-card__title", project.title),
         createEl("p", "project-card__desc", project.description),
       );
@@ -129,7 +231,22 @@
 
       const footer = createEl("footer", "project-card__footer");
       (project.links || []).forEach((linkItem) => {
-        const link = createEl("a", "btn btn--sm btn--ghost", linkItem.label);
+        const kind = linkItem.kind || "";
+        const isChromeStore = kind === "chromeStore" || /chrome/i.test(linkItem.label);
+        const isGitHub = kind === "github" || /github/i.test(linkItem.label);
+        if (isChromeStore && uiProjects?.showChromeStoreButton === false) return;
+        if (isGitHub && uiProjects?.showGithubButton === false) return;
+        const buttonClass = isChromeStore
+          ? "btn btn--sm btn--store"
+          : isGitHub
+            ? "btn btn--sm btn--repo"
+            : "btn btn--sm btn--ghost";
+        const label = isChromeStore
+          ? (uiProjects?.chromeStoreLabel || linkItem.label)
+          : isGitHub
+            ? (uiProjects?.githubLabel || linkItem.label)
+            : linkItem.label;
+        const link = createEl("a", buttonClass, label);
         link.href = linkItem.url;
         if (/^https?:/i.test(linkItem.url)) {
           link.target = "_blank";
@@ -145,6 +262,7 @@
 
   const renderExperience = (experience) => {
     const timeline = document.getElementById("experience-timeline");
+    const extras = document.getElementById("experience-extras");
     if (!timeline || !experience) return;
 
     timeline.innerHTML = "";
@@ -155,10 +273,17 @@
 
       const content = createEl("div", "timeline__content card");
       const top = createEl("div", "timeline__top");
-      top.append(
+      const titleWrap = createEl("div", "timeline__titleWrap");
+      titleWrap.append(
         createEl("h3", "card__title", item.role),
         createEl("p", "timeline__org", item.company),
       );
+
+      const metaWrap = createEl("div", "timeline__metaWrap");
+      if (item.duration) metaWrap.append(createEl("p", "timeline__meta", item.duration));
+      if (item.location) metaWrap.append(createEl("p", "timeline__meta", item.location));
+
+      top.append(titleWrap, metaWrap);
 
       const list = createEl("ul", "list");
       (item.responsibilities || []).forEach((responsibility) => {
@@ -169,6 +294,42 @@
       article.append(content);
       timeline.append(article);
     });
+
+    if (!extras) return;
+    extras.innerHTML = "";
+
+    const hasEducation = Array.isArray(experience.educationItems) && experience.educationItems.length;
+    const hasAwards = Array.isArray(experience.awardsItems) && experience.awardsItems.length;
+    extras.hidden = !(hasEducation || hasAwards);
+    if (!(hasEducation || hasAwards)) return;
+
+    if (hasEducation) {
+      const educationCard = createEl("article", "card reveal experience__extraCard");
+      educationCard.append(createEl("h3", "card__title", experience.educationTitle || "Education"));
+      const educationList = createEl("div", "experience__educationList");
+      experience.educationItems.forEach((item) => {
+        const row = createEl("div", "experience__educationItem");
+        row.append(
+          createEl("h4", "experience__educationInstitution", item.institution),
+          createEl("p", "experience__educationQualification", item.qualification),
+          createEl("p", "experience__educationPeriod", item.period),
+        );
+        educationList.append(row);
+      });
+      educationCard.append(educationList);
+      extras.append(educationCard);
+    }
+
+    if (hasAwards) {
+      const awardsCard = createEl("article", "card reveal experience__extraCard");
+      awardsCard.append(createEl("h3", "card__title", experience.awardsTitle || "Awards & Recognition"));
+      const awardsList = createEl("ul", "list");
+      experience.awardsItems.forEach((item) => {
+        awardsList.append(createEl("li", "", item));
+      });
+      awardsCard.append(awardsList);
+      extras.append(awardsCard);
+    }
   };
 
   const renderDirectLinks = (site) => {
@@ -183,6 +344,7 @@
       { label: "Email", text: site.email, href: `mailto:${site.email}` },
       { label: "GitHub", text: site.githubLabel, href: site.github },
       { label: "LinkedIn", text: site.linkedinLabel, href: site.linkedin },
+      ...(site.trailhead ? [{ label: "Trailhead", text: site.trailheadLabel || site.trailhead, href: site.trailhead }] : []),
     ];
 
     directItems.forEach((item) => {
@@ -213,7 +375,9 @@
   const renderPortfolioData = () => {
     if (!portfolioData) return;
 
-    const { site, hero, about, skills, projects, experience, contact } = portfolioData;
+    const { ui = {}, site, hero, about, skills, certifications, projects, experience, contact } = portfolioData;
+    const heroUi = ui.hero || {};
+    const projectUi = ui.projects || {};
 
     document.title = `${site.name} | ${site.role}`;
 
@@ -226,9 +390,11 @@
     setText("#hero-title", site.name);
     setText("#hero-role", site.role);
     setText("#hero-subtitle", hero.subtitle);
-    setText("#hero-badge-text", site.availability);
+    const availabilityBadgeText = hero.availabilityBadgeText || site.availability || "";
+    setText("#hero-badge-text", availabilityBadgeText);
     setText("#about-subtitle", about.subtitle);
     setText("#skills-subtitle", skills.subtitle);
+    setText("#certifications-subtitle", certifications?.subtitle || "");
     setText("#projects-subtitle", projects.subtitle);
     setText("#experience-subtitle", experience.subtitle);
     setText("#contact-subtitle", contact.subtitle);
@@ -237,6 +403,11 @@
 
     setLink("#resume-link", site.resumePath, hero.primaryCtaLabel);
     setLink("#secondary-cta", hero.secondaryCtaHref, hero.secondaryCtaLabel);
+    setVisibility("#hero-social", heroUi.showSocialLinks !== false);
+    setVisibility(
+      "#hero-availability-badge",
+      heroUi.showAvailabilityBadge !== false && Boolean(availabilityBadgeText),
+    );
 
     const avatar = document.getElementById("hero-avatar");
     if (avatar) {
@@ -245,9 +416,12 @@
     }
 
     renderSocialLinks("#hero-social", hero.socials);
+    renderHeroHighlights(hero, heroUi);
+    renderHeroFloatingCards(hero, heroUi);
     renderAbout(about);
     renderSkills(skills);
-    renderProjects(projects);
+    renderCertifications(certifications);
+    renderProjects(projects, projectUi);
     renderExperience(experience);
     renderDirectLinks(site);
   };

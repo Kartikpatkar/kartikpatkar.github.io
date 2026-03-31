@@ -1,0 +1,22 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tealEdge" x1="400" y1="540" x2="400" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#17C0B8"/>
+      <stop offset="1" stop-color="#15B1AA"/>
+    </linearGradient>
+  </defs>
+  <path d="M82 94C96 72 122 58 150 58H650C678 58 704 72 718 94L784 178C796 194 801 214 798 234L745 515C740 547 719 575 689 588L440 700C414 712 386 712 360 700L111 588C81 575 60 547 55 515L2 234C-1 214 4 194 16 178L82 94Z" fill="#341AA5"/>
+  <path d="M62 551L400 700L738 551L714 606C705 628 689 646 667 656L451 758C419 773 381 773 349 758L133 656C111 646 95 628 86 606L62 551Z" fill="url(#tealEdge)"/>
+  <g fill="#1CA0DA">
+    <circle cx="336" cy="130" r="52"/>
+    <circle cx="401" cy="116" r="63"/>
+    <circle cx="464" cy="129" r="48"/>
+    <circle cx="505" cy="173" r="46"/>
+    <circle cx="447" cy="186" r="62"/>
+    <circle cx="370" cy="188" r="54"/>
+    <circle cx="306" cy="176" r="47"/>
+  </g>
+  <text x="400" y="340" text-anchor="middle" fill="white" font-family="Manrope, Arial, sans-serif" font-size="112" font-weight="800" letter-spacing="3">CERTIFIED</text>
+  <text x="400" y="470" text-anchor="middle" fill="white" font-family="Manrope, Arial, sans-serif" font-size="78" font-weight="800">Application</text>
+  <text x="400" y="560" text-anchor="middle" fill="white" font-family="Manrope, Arial, sans-serif" font-size="78" font-weight="800">Architect</text>
+</svg>

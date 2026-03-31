@@ -6,6 +6,9 @@
     <meta name="description" content="Kartik Patkar — Salesforce Consultant & Senior Developer. Portfolio showcasing Salesforce work, projects, and experience." />
     <title>Kartik Patkar | Salesforce Consultant & Senior Developer</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="preload" href="style.css" as="style" />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
@@ -50,10 +53,11 @@
       <section class="section hero" id="home" aria-label="Hero">
         <div class="container hero__grid">
           <div class="hero__copy reveal">
-            <p class="hero__eyebrow" id="hero-eyebrow">Hello, I'm</p>
-            <h1 class="hero__title" id="hero-title">Kartik Patkar</h1>
-            <p class="hero__role" id="hero-role">Salesforce Consultant &amp; Senior Developer</p>
+            <p class="hero__eyebrow" id="hero-eyebrow"></p>
+            <h1 class="hero__title" id="hero-title"></h1>
+            <p class="hero__role" id="hero-role"></p>
             <p class="hero__subtitle" id="hero-subtitle"></p>
+            <div class="hero__highlights" id="hero-highlights"></div>
 
             <div class="hero__cta">
               <a class="btn btn--primary" id="resume-link" href="assets/Kartik-Patkar-Resume.pdf" download>
@@ -66,6 +70,7 @@
           </div>
 
           <div class="hero__media reveal" aria-label="Profile photo">
+            <div class="hero__floatingCards" id="hero-floating-cards"></div>
             <img
               class="hero__avatar"
               id="hero-avatar"
@@ -75,9 +80,9 @@
               width="420"
               height="420"
             />
-            <div class="hero__badge" aria-hidden="true">
+            <div class="hero__badge" id="hero-availability-badge" aria-hidden="true">
               <span class="hero__badgeDot"></span>
-              <span id="hero-badge-text">Open to opportunities</span>
+              <span id="hero-badge-text"></span>
             </div>
           </div>
         </div>
@@ -99,15 +104,26 @@
         </div>
       </section>
 
-      <!-- Skills Section -->
-      <section class="section" id="skills" aria-label="Skills">
-        <div class="container">
-          <div class="section__head reveal">
-            <h2 class="section__title">Skills</h2>
-            <p class="section__subtitle" id="skills-subtitle"></p>
+      <!-- Skills + Certifications Section -->
+      <section class="section section--compact" aria-label="Skills and Certifications">
+        <div class="container split-section">
+          <div class="split-section__panel" id="skills">
+            <div class="section__head reveal section__head--stacked">
+              <h2 class="section__title">Skills</h2>
+              <p class="section__subtitle" id="skills-subtitle"></p>
+            </div>
+
+            <div class="skills__grid" id="skills-grid"></div>
           </div>
 
-          <div class="skills__grid" id="skills-grid"></div>
+          <div class="split-section__panel" id="certifications">
+            <div class="section__head reveal section__head--stacked">
+              <h2 class="section__title" id="certifications-title">Certifications</h2>
+              <p class="section__subtitle" id="certifications-subtitle"></p>
+            </div>
+
+            <div class="certifications__grid" id="certifications-grid"></div>
+          </div>
         </div>
       </section>
 
@@ -132,6 +148,7 @@
           </div>
 
           <div class="timeline" id="experience-timeline"></div>
+          <div class="experience__extras" id="experience-extras"></div>
         </div>
       </section>
 
@@ -195,7 +212,8 @@
       </div>
     </footer>
 
-    <script src="data/portfolio-data.js"></script>
+    <script src="data/portfolio-config.js"></script>
+    <script src="data/portfolio-content.js"></script>
     <script src="script.js" defer></script>
   </body>
 </html>

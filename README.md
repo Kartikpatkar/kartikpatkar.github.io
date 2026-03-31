@@ -43,9 +43,9 @@ After pushing to GitHub:
 ### Update portfolio content
 Edit:
 
-- `data/portfolio-data.js`
+- `data/portfolio-content.js`
 
-This file now contains the editable content for:
+This file contains the editable portfolio content for:
 
 - Name, role, email, LinkedIn, GitHub, resume path
 - Hero text and social links
@@ -54,6 +54,17 @@ This file now contains the editable content for:
 - Projects
 - Experience
 - Contact text
+
+### Update UI/configuration
+Edit:
+
+- `data/portfolio-config.js`
+
+This file contains UI switches and labels for things like:
+
+- Showing or hiding hero UI elements
+- Showing or hiding project badges/icons/buttons
+- Button label text
 
 You should not need to edit `index.html` for normal content updates.
 
@@ -64,7 +75,7 @@ Replace:
 
 with your image (keep the same filename), or update the `<img src="...">` in `index.html`.
 
-You can also change the image path in `data/portfolio-data.js`.
+You can also change the image path in `data/portfolio-content.js`.
 
 ### Replace the resume
 Replace:
@@ -73,7 +84,7 @@ Replace:
 
 with your real PDF resume (keeping the same filename keeps the download button working).
 
-You can also change the resume path in `data/portfolio-data.js`.
+You can also change the resume path in `data/portfolio-content.js`.
 
 ## Notes
 
