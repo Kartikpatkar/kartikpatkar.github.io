@@ -1434,11 +1434,20 @@ section {
   .hero__floatingCard:first-child {
     top: 14px;
     left: 16px;
+    right: auto;
+  }
+
+  .hero__floatingCard:nth-child(2) {
+    left: 12px;
+    bottom: 18px;
   }
 
   .hero__floatingCard:last-child {
+    top: auto;
     right: 16px;
     bottom: 28px;
+    left: auto;
+    --float-base-y: 0px;
   }
 
   .section__head {
@@ -1562,6 +1571,8 @@ section {
   .hero__badge {
     left: 12px;
     bottom: 12px;
+    transform: none;
+    max-width: calc(100% - 24px);
   }
 
   .hero__media {
@@ -1588,6 +1599,7 @@ section {
     gap: 12px;
     margin-bottom: 14px;
     pointer-events: auto;
+    width: min(100%, 420px);
   }
 
   .hero__floatingCard,
@@ -1606,6 +1618,14 @@ section {
 
   .certifications__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .contact__links {
+    gap: 10px;
+  }
+
+  .contact-link {
+    padding: 12px;
   }
 
   .footer__inner {
@@ -1634,6 +1654,10 @@ section {
     width: min(100%, 320px);
   }
 
+  .hero__floatingCards {
+    width: min(100%, 320px);
+  }
+
   .hero__badge {
     left: 50%;
     bottom: 20px;
@@ -1653,6 +1677,7 @@ section {
 
   .social {
     gap: 10px;
+    justify-content: flex-start;
   }
 
   .certifications__grid {
@@ -1676,6 +1701,20 @@ section {
   .hero__badge {
     font-size: 0.84rem;
     padding: 10px 12px;
+  }
+
+  .hero__floatingCard {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .contact-link {
+    align-items: flex-start;
+  }
+
+  .contact-link__iconWrap {
+    width: 40px;
+    height: 40px;
   }
 
   .certifications__grid {
