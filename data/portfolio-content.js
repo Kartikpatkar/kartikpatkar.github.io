@@ -275,14 +275,14 @@ window.PORTFOLIO_CONTENT = {
         ]
     },
     projects: {
-        subtitle: "Public Chrome Extensions and Salesforce developer tools pulled from my GitHub profile.",
+        subtitle: "Chrome extensions and Salesforce developer tools spanning productivity, metadata, security, and offline workflows.",
         items: [
             {
                 title: "Apex Genie",
                 icon: "AG",
-                badge: "Chrome Extension",
-                description: "Browser extension for Salesforce developers to convert JSON into strongly typed Apex classes, generate test classes, and package outputs directly in the browser.",
-                technologies: ["JavaScript", "Chrome Extension", "Apex", "Salesforce"],
+                badge: "Featured Project",
+                description: "Offline-first extension for converting JSON into typed Apex classes, generating test classes, and packaging outputs directly in the browser.",
+                technologies: ["JavaScript", "Chrome Extension", "Apex", "Salesforce", "Offline-first"],
                 links: [
                     {
                         kind: "chromeStore",
@@ -301,8 +301,8 @@ window.PORTFOLIO_CONTENT = {
                 icon: "SI",
                 badge: "Salesforce UI",
                 description:
-                    "Full-tab Chrome Extension for Salesforce Developers, Admins, and Architects to browse the complete SLDS icon library, preview styles, and copy LWC, Aura, and SLDS snippets instantly.",
-                technologies: ["JavaScript", "Chrome Extension", "SLDS", "Monaco Editor"],
+                    "Full-tab extension for browsing the SLDS icon library, previewing styles live, and copying LWC, Aura, and SLDS snippets instantly.",
+                technologies: ["JavaScript", "Chrome Extension", "SLDS", "Monaco Editor", "Offline-first"],
                 links: [
                     {
                         kind: "chromeStore",
@@ -317,22 +317,42 @@ window.PORTFOLIO_CONTENT = {
                 ]
             },
             {
-                title: "Offline PDF Tools",
-                icon: "PDF",
-                badge: "Privacy-first",
+                title: "Base64 Buddy",
+                icon: "B64",
+                badge: "Featured Project",
                 description:
-                    "Privacy-first Chrome Extension for modifying PDF files entirely offline with merge, split, extract, reorder, delete, and rotate workflows built directly into the browser.",
-                technologies: ["JavaScript", "Chrome Extension", "PDF.js", "pdf-lib"],
+                    "Lightweight extension for encoding and decoding files in Base64 with previews, copy helpers, and privacy-first local processing.",
+                technologies: ["JavaScript", "Chrome Extension", "Base64", "Data URI", "Offline-first"],
                 links: [
                     {
                         kind: "chromeStore",
                         label: "Chrome Store",
-                        url: "https://chromewebstore.google.com/detail/lkokanmnglecjkgabbhincgaiceedolc?utm_source=item-share-cb"
+                        url: "https://chromewebstore.google.com/detail/base64-buddy/pbaojpkalnecabmgnkgdpfonmafpfphh"
                     },
                     {
                         kind: "github",
                         label: "GitHub",
-                        url: "https://github.com/Kartikpatkar/offline-pdf-tools"
+                        url: "https://github.com/Kartikpatkar/base64-buddy"
+                    }
+                ]
+            },
+            {
+                title: "DiffBoard",
+                icon: "DB",
+                badge: "Featured Project",
+                description:
+                    "Developer-focused extension for side-by-side code, text, and JSON comparison with clear diff highlighting and one-click copy utilities.",
+                technologies: ["JavaScript", "Chrome Extension", "Diff", "JSON", "Offline-first"],
+                links: [
+                    {
+                        kind: "chromeStore",
+                        label: "Chrome Store",
+                        url: "https://chromewebstore.google.com/detail/diffboard/fcjefapchiecdkfdggohfdpchepbncpg"
+                    },
+                    {
+                        kind: "github",
+                        label: "GitHub",
+                        url: "https://github.com/Kartikpatkar/diff-board"
                     }
                 ]
             },
@@ -341,7 +361,7 @@ window.PORTFOLIO_CONTENT = {
                 icon: "PX",
                 badge: "Metadata API",
                 description:
-                    "Developer-focused Chrome Extension that explores logged-in org metadata and generates accurate package.xml files visually for Salesforce deployments and release workflows.",
+                    "Extension for exploring live org metadata and generating accurate package.xml files visually for deployments and release workflows.",
                 technologies: ["JavaScript", "Chrome Extension", "Metadata API", "Tooling API", "Salesforce"],
                 links: [
                     {
@@ -357,11 +377,51 @@ window.PORTFOLIO_CONTENT = {
                 ]
             },
             {
+                title: "Salesforce Metadata Exporter",
+                icon: "ME",
+                badge: "Metadata API",
+                description:
+                    "Lightweight extension for exporting Salesforce metadata from a logged-in org into a downloadable ZIP with quick presets and generated package.xml.",
+                technologies: ["JavaScript", "Chrome Extension", "Metadata API", "Salesforce", "ZIP Export"],
+                links: [
+                    {
+                        kind: "chromeStore",
+                        label: "Chrome Store",
+                        url: "https://chromewebstore.google.com/detail/mnkhginjgjbcmnfkcfnjbhpgnjfmeibd?utm_source=item-share-cb"
+                    },
+                    {
+                        kind: "github",
+                        label: "GitHub",
+                        url: "https://github.com/Kartikpatkar/salesforce-metadata-exporter"
+                    }
+                ]
+            },
+            {
+                title: "Offline PDF Tools",
+                icon: "PDF",
+                badge: "Privacy-first",
+                description:
+                    "Privacy-first extension for merging, splitting, extracting, reordering, deleting, and rotating PDF files completely offline.",
+                technologies: ["JavaScript", "Chrome Extension", "PDF.js", "pdf-lib", "Offline-first"],
+                links: [
+                    {
+                        kind: "chromeStore",
+                        label: "Chrome Store",
+                        url: "https://chromewebstore.google.com/detail/lkokanmnglecjkgabbhincgaiceedolc?utm_source=item-share-cb"
+                    },
+                    {
+                        kind: "github",
+                        label: "GitHub",
+                        url: "https://github.com/Kartikpatkar/offline-pdf-tools"
+                    }
+                ]
+            },
+            {
                 title: "FieldForge",
                 icon: "FF",
-                badge: "Salesforce Dev Tool",
-                description: "Developer-focused Chrome Extension for bulk-creating Salesforce custom fields from CSV or XLSX with validation, metadata preview, deploy ZIP generation, and safe Metadata API deployment.",
-                technologies: ["JavaScript", "Chrome Extension", "Metadata API", "Salesforce"],
+                badge: "Featured Project",
+                description: "Developer-focused extension for bulk-creating Salesforce custom fields from CSV or XLSX with validation, metadata previews, and safe Metadata API deployment.",
+                technologies: ["JavaScript", "Chrome Extension", "Metadata API", "Salesforce", "CSV/XLSX"],
                 links: [
                     {
                         kind: "chromeStore",
@@ -372,6 +432,25 @@ window.PORTFOLIO_CONTENT = {
                         kind: "github",
                         label: "GitHub",
                         url: "https://github.com/Kartikpatkar/fieldforge"
+                    }
+                ]
+            },
+            {
+                title: "ProfileShift",
+                icon: "PS",
+                badge: "Security Refactor",
+                description:
+                    "Developer-focused extension for converting legacy Salesforce Profiles into minimal Permission Sets with review, export, and Metadata API deployment support.",
+                technologies: ["JavaScript", "Chrome Extension", "Permission Sets", "Metadata API", "Salesforce Security"],
+                links: [
+                    {
+                        kind: "github",
+                        label: "GitHub",
+                        url: "https://github.com/Kartikpatkar/profile-shift"
+                    },{
+                        kind: "chromeStore",
+                        label: "Chrome Store",
+                        url: "https://chromewebstore.google.com/detail/emmbjaeefbnhegnkkcgpndccpopiocio?utm_source=item-share-cb"
                     }
                 ]
             }
