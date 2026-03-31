@@ -144,10 +144,9 @@
 
     grid.innerHTML = "";
     (skills.items || []).forEach((item) => {
-      const card = createEl("article", "skill-pill reveal");
-      card.title = item.text || item.title;
-      card.append(createEl("h3", "skill-pill__title", item.title));
-      grid.append(card);
+      const chip = createEl("span", "chip reveal", item.title);
+      chip.title = item.text || item.title;
+      grid.append(chip);
     });
   };
 

@@ -1,219 +1,216 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Kartik Patkar — Salesforce Consultant & Senior Developer. Portfolio showcasing Salesforce work, projects, and experience." />
+    <meta name="description"
+        content="Kartik Patkar — Salesforce Consultant & Senior Developer. Portfolio showcasing Salesforce work, projects, and experience." />
     <title>Kartik Patkar | Salesforce Consultant & Senior Developer</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
     <link rel="preload" href="style.css" as="style" />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
-  </head>
+</head>
 
-  <body>
+<body>
     <a class="skip-link" href="#home">Skip to content</a>
 
     <!-- Navbar -->
     <header class="nav" id="top">
-      <div class="container nav__inner">
-        <a class="nav__brand" href="#home" aria-label="Go to home">
-          <span class="nav__brandMark" id="brand-mark" aria-hidden="true">KP</span>
-          <span class="nav__brandText" id="brand-text">Kartik Patkar</span>
-        </a>
+        <div class="container nav__inner">
+            <a class="nav__brand" href="#home" aria-label="Go to home">
+                <span class="nav__brandMark" id="brand-mark" aria-hidden="true">KP</span>
+                <span class="nav__brandText" id="brand-text">Kartik Patkar</span>
+            </a>
 
-        <button
-          class="nav__toggle"
-          type="button"
-          aria-label="Open menu"
-          aria-controls="primary-navigation"
-          aria-expanded="false"
-        >
-          <span class="nav__toggleBar" aria-hidden="true"></span>
-          <span class="nav__toggleBar" aria-hidden="true"></span>
-          <span class="nav__toggleBar" aria-hidden="true"></span>
-        </button>
+            <button class="nav__toggle" type="button" aria-label="Open menu" aria-controls="primary-navigation"
+                aria-expanded="false">
+                <span class="nav__toggleBar" aria-hidden="true"></span>
+                <span class="nav__toggleBar" aria-hidden="true"></span>
+                <span class="nav__toggleBar" aria-hidden="true"></span>
+            </button>
 
-        <nav class="nav__menu" id="primary-navigation" aria-label="Primary">
-          <a class="nav__link" href="#home">Home</a>
-          <a class="nav__link" href="#about">About</a>
-          <a class="nav__link" href="#skills">Skills</a>
-          <a class="nav__link" href="#projects">Projects</a>
-          <a class="nav__link" href="#experience">Experience</a>
-          <a class="nav__link" href="#contact">Contact</a>
-        </nav>
-      </div>
+            <nav class="nav__menu" id="primary-navigation" aria-label="Primary">
+                <a class="nav__link" href="#home">Home</a>
+                <a class="nav__link" href="#about">About</a>
+                <a class="nav__link" href="#skills">Skills</a>
+                <a class="nav__link" href="#projects">Projects</a>
+                <a class="nav__link" href="#experience">Experience</a>
+                <a class="nav__link" href="#contact">Contact</a>
+            </nav>
+        </div>
     </header>
 
     <main>
-      <!-- Hero Section -->
-      <section class="section hero" id="home" aria-label="Hero">
-        <div class="container hero__grid">
-          <div class="hero__copy reveal">
-            <p class="hero__eyebrow" id="hero-eyebrow"></p>
-            <h1 class="hero__title" id="hero-title"></h1>
-            <p class="hero__role" id="hero-role"></p>
-            <p class="hero__subtitle" id="hero-subtitle"></p>
-            <div class="hero__highlights" id="hero-highlights"></div>
+        <!-- Hero Section -->
+        <section class="section hero" id="home" aria-label="Hero">
+            <div class="container hero__grid">
+                <div class="hero__copy reveal">
+                    <p class="hero__eyebrow" id="hero-eyebrow"></p>
+                    <h1 class="hero__title" id="hero-title"></h1>
+                    <p class="hero__role" id="hero-role"></p>
+                    <p class="hero__subtitle" id="hero-subtitle"></p>
+                    <div class="hero__highlights" id="hero-highlights"></div>
 
-            <div class="hero__cta">
-              <a class="btn btn--primary" id="resume-link" href="assets/Kartik-Patkar-Resume.pdf" download>
-                Download Resume
-              </a>
-              <a class="btn btn--ghost" id="secondary-cta" href="#projects">View Projects</a>
-            </div>
+                    <div class="hero__cta">
+                        <a class="btn btn--primary" id="resume-link" href="assets/Kartik-Patkar-Resume.pdf" download>
+                            Download Resume
+                        </a>
+                        <a class="btn btn--ghost" id="secondary-cta" href="#projects">View Projects</a>
+                    </div>
 
-            <div class="social" id="hero-social" aria-label="Social links"></div>
-          </div>
-
-          <div class="hero__media reveal" aria-label="Profile photo">
-            <div class="hero__floatingCards" id="hero-floating-cards"></div>
-            <img
-              class="hero__avatar"
-              id="hero-avatar"
-              src="assets/images/profile-placeholder.svg"
-              alt="Profile placeholder for Kartik Patkar"
-              loading="eager"
-              width="420"
-              height="420"
-            />
-            <div class="hero__badge" id="hero-availability-badge" aria-hidden="true">
-              <span class="hero__badgeDot"></span>
-              <span id="hero-badge-text"></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="scroll-indicator" aria-hidden="true">
-          <span class="scroll-indicator__dot"></span>
-        </div>
-      </section>
-
-      <!-- About Section -->
-      <section class="section" id="about" aria-label="About">
-        <div class="container">
-          <div class="section__head reveal">
-            <h2 class="section__title">About</h2>
-            <p class="section__subtitle" id="about-subtitle"></p>
-          </div>
-
-          <div class="about__grid" id="about-grid"></div>
-        </div>
-      </section>
-
-      <!-- Skills + Certifications Section -->
-      <section class="section section--compact" aria-label="Skills and Certifications">
-        <div class="container split-section">
-          <div class="split-section__panel" id="skills">
-            <div class="section__head reveal section__head--stacked">
-              <h2 class="section__title">Skills</h2>
-              <p class="section__subtitle" id="skills-subtitle"></p>
-            </div>
-
-            <div class="skills__grid" id="skills-grid"></div>
-          </div>
-
-          <div class="split-section__panel" id="certifications">
-            <div class="section__head reveal section__head--stacked">
-              <h2 class="section__title" id="certifications-title">Certifications</h2>
-              <p class="section__subtitle" id="certifications-subtitle"></p>
-            </div>
-
-            <div class="certifications__grid" id="certifications-grid"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Projects Section -->
-      <section class="section" id="projects" aria-label="Projects">
-        <div class="container">
-          <div class="section__head reveal">
-            <h2 class="section__title">Projects</h2>
-            <p class="section__subtitle" id="projects-subtitle"></p>
-          </div>
-
-          <div class="projects__grid" id="projects-grid"></div>
-        </div>
-      </section>
-
-      <!-- Experience Section -->
-      <section class="section" id="experience" aria-label="Experience">
-        <div class="container">
-          <div class="section__head reveal">
-            <h2 class="section__title">Experience</h2>
-            <p class="section__subtitle" id="experience-subtitle"></p>
-          </div>
-
-          <div class="timeline" id="experience-timeline"></div>
-          <div class="experience__extras" id="experience-extras"></div>
-        </div>
-      </section>
-
-      <!-- Contact Section -->
-      <section class="section" id="contact" aria-label="Contact">
-        <div class="container">
-          <div class="section__head reveal">
-            <h2 class="section__title">Contact</h2>
-            <p class="section__subtitle" id="contact-subtitle"></p>
-          </div>
-
-          <div class="contact__grid">
-            <div class="card reveal">
-              <h3 class="card__title">Send a message</h3>
-              <p class="card__text" id="contact-intro"></p>
-
-              <form class="form" id="contact-form" novalidate>
-                <div class="form__row">
-                  <label class="form__label" for="name">Name</label>
-                  <input class="form__input" id="name" name="name" type="text" autocomplete="name" required />
-                  <p class="form__error" id="error-name" aria-live="polite"></p>
+                    <div class="social" id="hero-social" aria-label="Social links"></div>
                 </div>
 
-                <div class="form__row">
-                  <label class="form__label" for="email">Email</label>
-                  <input class="form__input" id="email" name="email" type="email" autocomplete="email" required />
-                  <p class="form__error" id="error-email" aria-live="polite"></p>
+                <div class="hero__media reveal" aria-label="Profile photo">
+                    <div class="hero__floatingCards" id="hero-floating-cards"></div>
+                    <div class="hero__portraitFrame">
+                        <img class="hero__avatar" id="hero-avatar" src="assets/images/profile-placeholder.svg"
+                            alt="Profile placeholder for Kartik Patkar" loading="eager" width="420" height="420" />
+                        <div class="hero__badge" id="hero-availability-badge" aria-hidden="true">
+                            <span class="hero__badgeDot"></span>
+                            <span id="hero-badge-text"></span>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="form__row">
-                  <label class="form__label" for="message">Message</label>
-                  <textarea class="form__input form__textarea" id="message" name="message" rows="6" required></textarea>
-                  <p class="form__error" id="error-message" aria-live="polite"></p>
-                </div>
-
-                <button class="btn btn--primary" type="submit">Send</button>
-              </form>
             </div>
 
-            <aside class="card reveal" aria-label="Direct contact">
-              <h3 class="card__title">Direct links</h3>
-              <ul class="list" id="direct-links"></ul>
+            <div class="scroll-indicator" aria-hidden="true">
+                <span class="scroll-indicator__dot"></span>
+            </div>
+        </section>
 
-              <div class="divider" role="presentation"></div>
-              <a class="btn btn--ghost" href="#top">Back to top</a>
-            </aside>
-          </div>
-        </div>
-      </section>
+        <!-- About Section -->
+        <section class="section" id="about" aria-label="About">
+            <div class="container">
+                <div class="section__head reveal">
+                    <h2 class="section__title">About</h2>
+                    <p class="section__subtitle" id="about-subtitle"></p>
+                </div>
+
+                <div class="about__grid" id="about-grid"></div>
+            </div>
+        </section>
+
+        <!-- Skills + Certifications Section -->
+        <section class="section section--compact" aria-label="Skills and Certifications">
+            <div class="container split-section">
+                <div class="split-section__panel" id="skills">
+                    <div class="section__head reveal section__head--stacked">
+                        <h2 class="section__title">Skills</h2>
+                        <p class="section__subtitle" id="skills-subtitle"></p>
+                    </div>
+
+                    <div class="skills__grid" id="skills-grid"></div>
+                </div>
+
+                <div class="split-section__panel" id="certifications">
+                    <div class="section__head reveal section__head--stacked">
+                        <h2 class="section__title" id="certifications-title">Certifications</h2>
+                        <p class="section__subtitle" id="certifications-subtitle"></p>
+                    </div>
+
+                    <div class="certifications__grid" id="certifications-grid"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section" id="projects" aria-label="Projects">
+            <div class="container">
+                <div class="section__head reveal">
+                    <h2 class="section__title">Projects</h2>
+                    <p class="section__subtitle" id="projects-subtitle"></p>
+                </div>
+
+                <div class="projects__grid" id="projects-grid"></div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="section" id="experience" aria-label="Experience">
+            <div class="container">
+                <div class="section__head reveal">
+                    <h2 class="section__title">Experience</h2>
+                    <p class="section__subtitle" id="experience-subtitle"></p>
+                </div>
+
+                <div class="timeline" id="experience-timeline"></div>
+                <div class="experience__extras" id="experience-extras"></div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section" id="contact" aria-label="Contact">
+            <div class="container">
+                <div class="section__head reveal">
+                    <h2 class="section__title">Contact</h2>
+                    <p class="section__subtitle" id="contact-subtitle"></p>
+                </div>
+
+                <div class="contact__grid">
+                    <div class="card reveal">
+                        <h3 class="card__title">Send a message</h3>
+                        <p class="card__text" id="contact-intro"></p>
+
+                        <form class="form" id="contact-form" novalidate>
+                            <div class="form__row">
+                                <label class="form__label" for="name">Name</label>
+                                <input class="form__input" id="name" name="name" type="text" autocomplete="name"
+                                    required />
+                                <p class="form__error" id="error-name" aria-live="polite"></p>
+                            </div>
+
+                            <div class="form__row">
+                                <label class="form__label" for="email">Email</label>
+                                <input class="form__input" id="email" name="email" type="email" autocomplete="email"
+                                    required />
+                                <p class="form__error" id="error-email" aria-live="polite"></p>
+                            </div>
+
+                            <div class="form__row">
+                                <label class="form__label" for="message">Message</label>
+                                <textarea class="form__input form__textarea" id="message" name="message" rows="6"
+                                    required></textarea>
+                                <p class="form__error" id="error-message" aria-live="polite"></p>
+                            </div>
+
+                            <button class="btn btn--primary" type="submit">Send</button>
+                        </form>
+                    </div>
+
+                    <aside class="card reveal" aria-label="Direct contact">
+                        <h3 class="card__title">Direct links</h3>
+                        <ul class="list" id="direct-links"></ul>
+
+                        <div class="divider" role="presentation"></div>
+                        <a class="btn btn--ghost" href="#top">Back to top</a>
+                    </aside>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer" aria-label="Footer">
-      <div class="container footer__inner">
-        <p class="footer__text">
-          <span id="footer-name">Kartik Patkar</span>
-          <span class="footer__sep" aria-hidden="true">•</span>
-          <span>© <span id="year"></span></span>
-        </p>
-        <div class="footer__links" id="footer-links"></div>
-      </div>
+        <div class="container footer__inner">
+            <p class="footer__text">
+                <span id="footer-name">Kartik Patkar</span>
+                <span class="footer__sep" aria-hidden="true">•</span>
+                <span>© <span id="year"></span></span>
+            </p>
+            <div class="footer__links" id="footer-links"></div>
+        </div>
     </footer>
 
     <script src="data/portfolio-config.js"></script>
     <script src="data/portfolio-content.js"></script>
     <script src="script.js" defer></script>
-  </body>
+</body>
+
 </html>
