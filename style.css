@@ -1122,44 +1122,41 @@ section {
   flex-wrap: wrap;
 }
 
-/* Scroll indicator */
-.scroll-indicator {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 18px;
-  width: 26px;
-  height: 44px;
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 45;
+  width: 52px;
+  height: 52px;
+  border: 0;
   border-radius: 999px;
-  border: 1px solid rgba(26, 115, 232, 0.16);
-  background: rgba(255, 255, 255, 0.84);
-  box-shadow: var(--shadow-soft);
   display: grid;
-  place-items: start center;
-  padding-top: 10px;
+  place-items: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  box-shadow: 0 16px 30px rgba(26, 115, 232, 0.24);
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
 }
 
-.scroll-indicator__dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  animation: scrollDot 1.5s ease-in-out infinite;
+.back-to-top:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 34px rgba(26, 115, 232, 0.28);
 }
 
-@keyframes scrollDot {
-  0% {
-    transform: translateY(0);
-    opacity: 0.35;
-  }
-  50% {
-    transform: translateY(14px);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 0.35;
-  }
+.back-to-top[hidden] {
+  display: none;
+}
+
+.back-to-top__icon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* Reveal animations */
@@ -1185,14 +1182,11 @@ section {
     transition: none;
   }
 
-  .scroll-indicator__dot {
-    animation: none;
-  }
-
   .btn,
   .social__link,
   .project-card,
-  .skill-card {
+  .skill-card,
+  .back-to-top {
     transition: none;
   }
 }
@@ -1413,6 +1407,13 @@ section {
   .footer__inner {
     align-items: flex-start;
   }
+
+  .back-to-top {
+    right: 18px;
+    bottom: 18px;
+    width: 48px;
+    height: 48px;
+  }
 }
 
 @media (max-width: 560px) {
@@ -1460,6 +1461,13 @@ section {
 
   .certifications__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .back-to-top {
+    right: 14px;
+    bottom: 14px;
+    width: 44px;
+    height: 44px;
   }
 }
 

@@ -430,6 +430,8 @@
   const body = document.body;
   const navToggle = document.querySelector(".nav__toggle");
   const navMenu = document.querySelector("#primary-navigation");
+  const backToTopButton = document.getElementById("back-to-top");
+  const heroSection = document.getElementById("home");
   const navLinks = Array.from(document.querySelectorAll(".nav__link"));
   const sections = navLinks
     .map((a) => document.querySelector(a.getAttribute("href")))
@@ -514,6 +516,21 @@
   }
 
   setupSectionObserver();
+
+  const updateBackToTopVisibility = () => {
+    if (!backToTopButton || !heroSection) return;
+    const threshold = heroSection.offsetTop + heroSection.offsetHeight - getNavHeightPx();
+    backToTopButton.hidden = window.scrollY < threshold;
+  };
+
+  updateBackToTopVisibility();
+  window.addEventListener("scroll", updateBackToTopVisibility, { passive: true });
+
+  if (backToTopButton) {
+    backToTopButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 
   // Reveal animations
   const revealEls = Array.from(document.querySelectorAll(".reveal"));
