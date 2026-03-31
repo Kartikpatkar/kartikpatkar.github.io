@@ -83,10 +83,6 @@ window.PORTFOLIO_CONTENT = {
                 value: "Consultant at Appstrail Technology"
             },
             {
-                label: "Trailhead",
-                value: "trailblazer.me/id/kpatkar1"
-            },
-            {
                 label: "Top Skills",
                 value: "Application Architect, Platform App Builder, Salesforce Development"
             }
@@ -130,7 +126,7 @@ window.PORTFOLIO_CONTENT = {
                 issued: "Mar 2026",
                 credentialId: "7557136",
                 theme: "salesforce",
-                badgeImage: "assets/images/certifications/application-architect-badge.svg",
+                badgeImage: "assets/images/certifications/2021-03_Badge_SF-Certified_Application-Architect_High-Res.png",
                 badgeImageAlt: "Official Salesforce Certified Application Architect badge"
             },
             {
@@ -140,7 +136,7 @@ window.PORTFOLIO_CONTENT = {
                 issued: "Jan 2023",
                 credentialId: "2955856",
                 theme: "salesforce",
-                badgeImage: "",
+                badgeImage: "assets/images/certifications/2025-03_MASTER_Certification-Badges_JavaScript-Dev.png",
                 badgeImageAlt: "Official Salesforce Certified JavaScript Developer I badge"
             },
             {
@@ -150,7 +146,7 @@ window.PORTFOLIO_CONTENT = {
                 issued: "Mar 2026",
                 credentialId: "7557135",
                 theme: "salesforce",
-                badgeImage: "",
+                badgeImage: "assets/images/certifications/2021-03_Badge_SF-Certified_Platform-App-Builder_High-Res.png",
                 badgeImageAlt: "Official Salesforce Certified Platform App Builder badge"
             },
             {
@@ -160,18 +156,18 @@ window.PORTFOLIO_CONTENT = {
                 issued: "May 2025",
                 credentialId: "6218540",
                 theme: "salesforce",
-                badgeImage: "",
+                badgeImage: "assets/images/certifications/2025-03_Badge_SF-Certified_Plat-Sharing-and-Vis-Arch_High-Res.png",
                 badgeImageAlt: "Official Salesforce Certified Sharing and Visibility Architect badge"
             },
             {
-                shortLabel: "AI",
-                title: "Salesforce Certified AI Specialist",
+                shortLabel: "AF",
+                title: "Salesforce Certified Agentforce Specialist",
                 issuer: "Salesforce",
                 issued: "Dec 2024",
                 credentialId: "5512936",
                 theme: "salesforce",
-                badgeImage: "",
-                badgeImageAlt: "Official Salesforce Certified AI Specialist badge"
+                badgeImage: "assets/images/certifications/2025-02_Badge_SF-Certified_Agentforce-Specialist_High-Res.png",
+                badgeImageAlt: "Official Salesforce Certified Agentforce Specialist badge"
             },
             {
                 shortLabel: "DC",
@@ -180,28 +176,18 @@ window.PORTFOLIO_CONTENT = {
                 issued: "Jan 2025",
                 credentialId: "5708678",
                 theme: "salesforce",
-                badgeImage: "",
+                badgeImage: "assets/images/certifications/2026-01_Badge_SF-Certified_D360-Con_High-Res.png",
                 badgeImageAlt: "Official Salesforce Certified Data Cloud Consultant badge"
             },
             {
                 shortLabel: "DA",
-                title: "Salesforce Certified Data Architect",
+                title: "Salesforce Certified Platform Data Architect",
                 issuer: "Salesforce",
                 issued: "Dec 2023",
                 credentialId: "3982697",
                 theme: "salesforce",
-                badgeImage: "",
-                badgeImageAlt: "Official Salesforce Certified Data Architect badge"
-            },
-            {
-                shortLabel: "ASC",
-                title: "Salesforce Certified Associate",
-                issuer: "Salesforce",
-                issued: "May 2023",
-                credentialId: "3432014",
-                theme: "salesforce",
-                badgeImage: "",
-                badgeImageAlt: "Official Salesforce Certified Associate badge"
+                badgeImage: "assets/images/certifications/2025-03_Badge_SF-Certified_Plat-Data-Arch_High-Res.png",
+                badgeImageAlt: "Official Salesforce Certified Platform Data Architect badge"
             },
             {
                 shortLabel: "ADM",
@@ -210,7 +196,7 @@ window.PORTFOLIO_CONTENT = {
                 issued: "Jul 2021",
                 credentialId: "22375366",
                 theme: "salesforce",
-                badgeImage: "",
+                badgeImage: "assets/images/certifications/2025-03_Badge_SF-Certified_Platform-Admin_High-Res.png",
                 badgeImageAlt: "Official Salesforce Certified Administrator badge"
             },
             {
@@ -220,27 +206,16 @@ window.PORTFOLIO_CONTENT = {
                 issued: "Feb 2021",
                 credentialId: "21875868",
                 theme: "salesforce",
-                badgeImage: "",
+                badgeImage: "assets/images/certifications/2025-04_Badge_SF-Certified_Plat-Dev_High-Res.png",
                 badgeImageAlt: "Official Salesforce Certified Platform Developer I badge"
             },
             {
-                shortLabel: "CSE",
-                title: "Cyber Security Essentials 101",
-                issuer: "HACKERSERA",
-                issued: "Aug 2019",
-                credentialId: "DBCOEGOA",
-                theme: "neutral",
-                badgeImage: "",
-                badgeImageAlt: "Official Cyber Security Essentials 101 badge"
-            },
-            {
-                shortLabel: "ML",
-                title: "Machine Learning using Tensorflow (Basic)",
-                issuer: "Earnestek",
-                issued: "Apr 2018",
-                theme: "google",
-                badgeImage: "",
-                badgeImageAlt: "Official Tensorflow Machine Learning credential badge"
+                shortLabel: "PF",
+                title: "Salesforce Certified Platform Foundations",
+                issuer: "Salesforce",
+                theme: "salesforce",
+                badgeImage: "assets/images/certifications/2025-03_Badge_SF-Certified_Platform-Foundations_High-Res.png",
+                badgeImageAlt: "Official Salesforce Certified Platform Foundations badge"
             }
         ]
     },
