@@ -8,11 +8,39 @@
 
 (() => {
   const NAV_HEIGHT_CSS_VAR = "--nav-height";
+  const defaultUiConfig = {
+    hero: {
+      showAvailabilityBadge: true,
+      showSocialLinks: true,
+      showHighlights: true,
+      showFloatingCards: true,
+    },
+    projects: {
+      showIcons: true,
+      showCategoryBadge: true,
+      showChromeStoreButton: true,
+      showGithubButton: true,
+      chromeStoreLabel: "Chrome Store",
+      githubLabel: "GitHub",
+    },
+  };
   const portfolioConfig = window.PORTFOLIO_CONFIG || {};
   const portfolioContent = window.PORTFOLIO_CONTENT || {};
+  const mergeUiConfig = (defaults, overrides) => ({
+    ...defaults,
+    ...(overrides || {}),
+    hero: {
+      ...defaults.hero,
+      ...(overrides?.hero || {}),
+    },
+    projects: {
+      ...defaults.projects,
+      ...(overrides?.projects || {}),
+    },
+  });
   const portfolioData = {
     ...portfolioContent,
-    ui: portfolioConfig.ui || {},
+    ui: mergeUiConfig(defaultUiConfig, portfolioConfig.ui),
   };
 
   const createEl = (tagName, className, text) => {
@@ -72,6 +100,7 @@
     const element = document.querySelector(selector);
     if (!element) return;
     element.hidden = !isVisible;
+    element.setAttribute("aria-hidden", String(!isVisible));
   };
 
   const renderSocialLinks = (selector, socials) => {
@@ -476,10 +505,10 @@
 
     setLink("#resume-link", site.resumePath, hero.primaryCtaLabel);
     setLink("#secondary-cta", hero.secondaryCtaHref, hero.secondaryCtaLabel);
-    setVisibility("#hero-social", heroUi.showSocialLinks !== false);
+    setVisibility("#hero-social", Boolean(heroUi.showSocialLinks));
     setVisibility(
       "#hero-availability-badge",
-      heroUi.showAvailabilityBadge !== false && Boolean(availabilityBadgeText),
+      Boolean(heroUi.showAvailabilityBadge) && Boolean(availabilityBadgeText),
     );
 
     const avatar = document.getElementById("hero-avatar");

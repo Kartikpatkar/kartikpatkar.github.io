@@ -540,6 +540,13 @@ section {
   box-shadow: 0 0 0 3px rgba(52, 168, 83, 0.16);
 }
 
+.hero__badge[hidden],
+.hero__highlights[hidden],
+.hero__floatingCards[hidden],
+.social[hidden] {
+  display: none !important;
+}
+
 /* Social */
 .social {
   margin-top: var(--space-5);
