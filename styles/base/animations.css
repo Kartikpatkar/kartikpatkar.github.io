@@ -1,0 +1,37 @@
+.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal.is-pending {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 520ms ease, transform 520ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal.is-pending,
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .btn,
+  .social__link,
+  .project-card,
+  .skill-card,
+  .back-to-top {
+    transition: none;
+  }
+}

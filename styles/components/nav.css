@@ -1,0 +1,88 @@
+.nav {
+  position: sticky;
+  top: 0;
+  height: var(--nav-height);
+  z-index: 40;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.86);
+  border-bottom: 1px solid rgba(26, 115, 232, 0.10);
+  box-shadow: 0 6px 24px rgba(26, 60, 120, 0.04);
+}
+
+.nav__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav__brandMark {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  box-shadow: 0 10px 22px rgba(26, 115, 232, 0.24);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+.nav__brandText {
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav__link {
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: var(--muted);
+  border: 1px solid transparent;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.nav__link:hover {
+  color: var(--accent);
+  background: rgba(26, 115, 232, 0.08);
+}
+
+.nav__link--active {
+  color: var(--accent);
+  background: rgba(26, 115, 232, 0.10);
+  border-color: rgba(26, 115, 232, 0.16);
+}
+
+.nav__toggle {
+  display: none;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text);
+  padding: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.nav__toggleBar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  margin: 4px 0;
+  border-radius: 2px;
+}

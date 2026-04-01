@@ -1,0 +1,59 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(26, 115, 232, 0.14);
+  background: rgba(255, 255, 255, 0.84);
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(26, 115, 232, 0.22);
+}
+
+.btn--primary {
+  border-color: rgba(26, 115, 232, 0.24);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+}
+
+.btn--ghost {
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.btn--repo {
+  background: white;
+  color: var(--accent);
+  border-color: rgba(26, 115, 232, 0.18);
+}
+
+.btn--store {
+  position: relative;
+  background: linear-gradient(135deg, rgba(26, 115, 232, 0.10), rgba(52, 168, 83, 0.12));
+  color: var(--accent);
+  border-color: rgba(26, 115, 232, 0.22);
+}
+
+.btn--store::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-3));
+  box-shadow: 10px 0 0 rgba(251, 188, 4, 0.9), 5px 8px 0 rgba(234, 67, 53, 0.85);
+  margin-right: 6px;
+}
+
+.btn--sm {
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+}

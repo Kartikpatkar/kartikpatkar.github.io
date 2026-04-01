@@ -1,0 +1,105 @@
+.certifications__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.cert-card {
+  display: block;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 250, 255, 0.98));
+  box-shadow: var(--shadow-soft);
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-2px);
+  background: white;
+}
+
+.cert-card--salesforce {
+  border-color: rgba(0, 161, 224, 0.18);
+}
+
+.cert-card--google {
+  border-color: rgba(52, 168, 83, 0.18);
+}
+
+.cert-card--neutral {
+  border-color: rgba(22, 50, 79, 0.14);
+}
+
+.cert-card__badge {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-card--google .cert-card__badge {
+  background: linear-gradient(135deg, rgba(52, 168, 83, 0.12), rgba(251, 188, 4, 0.12));
+  border-color: rgba(52, 168, 83, 0.16);
+}
+
+.cert-card--neutral .cert-card__badge {
+  background: linear-gradient(135deg, rgba(22, 50, 79, 0.08), rgba(90, 111, 134, 0.08));
+  border-color: rgba(22, 50, 79, 0.12);
+}
+
+.cert-card__badge::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border-radius: 14px;
+}
+
+.cert-card--google .cert-card__badge::after {
+  border-color: rgba(52, 168, 83, 0.22);
+}
+
+.cert-card--neutral .cert-card__badge::after {
+  border-color: rgba(22, 50, 79, 0.18);
+}
+
+.cert-card__badgeImage {
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  position: relative;
+  z-index: 1;
+  object-fit: contain;
+}
+
+.cert-card__badgePlaceholder {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  text-align: center;
+  color: var(--accent);
+}
+
+.cert-card__badgeLabel {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.cert-card__badgeHint {
+  color: var(--muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.cert-card--google .cert-card__badgePlaceholder {
+  color: #207245;
+}
+
+.cert-card--neutral .cert-card__badgePlaceholder {
+  color: var(--text);
+}

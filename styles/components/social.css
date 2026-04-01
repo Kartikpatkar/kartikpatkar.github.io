@@ -1,0 +1,70 @@
+.social {
+  margin-top: var(--space-5);
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.social__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 14px;
+  border: 1px solid rgba(26, 115, 232, 0.10);
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--muted);
+  box-shadow: var(--shadow-soft);
+  transition: transform 160ms ease, background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.social__link:hover {
+  transform: translateY(-1px);
+  background: white;
+  color: var(--accent);
+}
+
+.social__link--linkedin {
+  background: rgba(10, 102, 194, 0.08);
+  border-color: rgba(10, 102, 194, 0.14);
+  color: #0a66c2;
+}
+
+.social__link--github {
+  background: rgba(22, 27, 34, 0.06);
+  border-color: rgba(22, 27, 34, 0.10);
+  color: #24292f;
+}
+
+.social__link--trailhead {
+  background: rgba(26, 115, 232, 0.08);
+  border-color: rgba(26, 115, 232, 0.14);
+  color: var(--accent);
+}
+
+.social__link--email {
+  background: rgba(234, 67, 53, 0.08);
+  border-color: rgba(234, 67, 53, 0.14);
+  color: var(--accent-5);
+}
+
+.social__icon {
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  color: currentColor;
+}
+
+.social__icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
