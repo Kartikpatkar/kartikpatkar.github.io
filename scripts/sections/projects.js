@@ -3,6 +3,34 @@ window.PortfolioApp = window.PortfolioApp || { core: {}, sections: {}, ui: {} };
 
 const { createEl } = window.PortfolioApp.core;
 
+const createProjectIcon = (project) => {
+  const fallbackLabel = project.icon || project.title.slice(0, 2).toUpperCase();
+  const icon = createEl("span", "project-card__icon");
+
+  if (!project.iconImage) {
+    icon.textContent = fallbackLabel;
+    icon.setAttribute("aria-hidden", "true");
+    return icon;
+  }
+
+  icon.classList.add("project-card__icon--image");
+
+  const image = createEl("img", "project-card__icon-image");
+  image.src = project.iconImage;
+  image.alt = "";
+  image.loading = "lazy";
+  image.decoding = "async";
+  image.addEventListener("error", () => {
+    icon.classList.remove("project-card__icon--image");
+    icon.textContent = fallbackLabel;
+    icon.setAttribute("aria-hidden", "true");
+  }, { once: true });
+
+  icon.append(image);
+  icon.setAttribute("aria-hidden", "true");
+  return icon;
+};
+
 const renderProjects = (projects, uiProjects) => {
   const grid = document.getElementById("projects-grid");
   if (!grid || !projects) return;
@@ -14,9 +42,7 @@ const renderProjects = (projects, uiProjects) => {
 
     const top = createEl("div", "project-card__top");
     if (uiProjects?.showIcons) {
-      const icon = createEl("span", "project-card__icon", project.icon || project.title.slice(0, 2).toUpperCase());
-      icon.setAttribute("aria-hidden", "true");
-      top.append(icon);
+      top.append(createProjectIcon(project));
     }
     if (uiProjects?.showCategoryBadge && project.badge) {
       top.append(createEl("span", "project-card__badge", project.badge));

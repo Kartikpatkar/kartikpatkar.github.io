@@ -98,16 +98,14 @@ window.PORTFOLIO_CONTENT = {
         ]
     },
     skills: {
-        subtitle: "A practical toolkit for building on Salesforce and beyond.",
+        // subtitle: "A practical toolkit for building on Salesforce and beyond.",
         groups: [
             {
-                icon: "SF",
                 title: "Salesforce Platform",
                 tone: "salesforce",
                 items: ["Apex", "Lightning Web Components", "Aura", "Flow", "SOQL", "REST APIs", "SFDX"]
             },
             {
-                icon: "WEB",
                 title: "Web & Tools",
                 tone: "tools",
                 items: ["JavaScript", "HTML", "CSS", "Git", "Chrome Extensions", "VS Code"]
@@ -116,7 +114,7 @@ window.PORTFOLIO_CONTENT = {
     },
     certifications: {
         title: "Certifications",
-        subtitle: "Badge-first credential wall across Salesforce and adjacent learning tracks.",
+        // subtitle: "Badge-first credential wall across Salesforce and adjacent learning tracks.",
         badgePlaceholder: "Add official badge URL or file",
         items: [
             {
@@ -220,11 +218,12 @@ window.PORTFOLIO_CONTENT = {
         ]
     },
     projects: {
-        subtitle: "Chrome extensions and Salesforce developer tools spanning productivity, metadata, security, and offline workflows.",
+        // subtitle: "Chrome extensions and Salesforce developer tools spanning productivity, metadata, security, and offline workflows.",
         items: [
             {
                 title: "Apex Genie",
                 icon: "AG",
+                iconImage: "https://lh3.googleusercontent.com/dmem2CVB2YpgCAECISn-Zh04BRTbW7ertD6RvK4e8A5BHEwbsisYMDXWExCrrl6ZETZdLcDUfj61e_e_1Q3KBDnD=s120",
                 badge: "Featured Project",
                 description: "Offline-first extension for converting JSON into typed Apex classes, generating test classes, and packaging outputs directly in the browser.",
                 technologies: ["JavaScript", "Chrome Extension", "Apex", "Salesforce", "Offline-first"],
@@ -244,6 +243,7 @@ window.PORTFOLIO_CONTENT = {
             {
                 title: "SLDS Icons Kit",
                 icon: "SI",
+                iconImage: "https://lh3.googleusercontent.com/9S1exCMRosF-5e45r17n8ZLh9f-eRNpmlHxAjTv0ptHbbsqmnic9wn2oaCw-pG-pz6kDMADLi3iXiOxTI2fjpjcdKzo=s120",
                 badge: "Salesforce UI",
                 description:
                     "Full-tab extension for browsing the SLDS icon library, previewing styles live, and copying LWC, Aura, and SLDS snippets instantly.",
@@ -264,6 +264,7 @@ window.PORTFOLIO_CONTENT = {
             {
                 title: "Base64 Buddy",
                 icon: "B64",
+                iconImage: "https://lh3.googleusercontent.com/CCUkREhXEStw4Ljg_rlYF6DoJg8mfoMrilCFJXz9Dykk_1CIgcSR1rPMO4POQAfd61OCwIiny21kKbxGsH8_uFWhY_s=s120",
                 badge: "Featured Project",
                 description:
                     "Lightweight extension for encoding and decoding files in Base64 with previews, copy helpers, and privacy-first local processing.",
@@ -284,6 +285,7 @@ window.PORTFOLIO_CONTENT = {
             {
                 title: "DiffBoard",
                 icon: "DB",
+                iconImage: "https://lh3.googleusercontent.com/g5dBITnnSulWYuO3Yj9mhr8Hsaozs3ZB8vE_LYpUeNFXDporqdrMscaME3HHUZecqy25OCo0JKViKMl-yCAhTlYy8w=s120",
                 badge: "Featured Project",
                 description:
                     "Developer-focused extension for side-by-side code, text, and JSON comparison with clear diff highlighting and one-click copy utilities.",
@@ -304,6 +306,7 @@ window.PORTFOLIO_CONTENT = {
             {
                 title: "Salesforce Package XML Generator",
                 icon: "PX",
+                iconImage: "https://lh3.googleusercontent.com/l8OkykpEcraEG487XnKPkUyxhrPZHHbtNnNPPfd7kL5YrZ9hvNCZAv2XwXVlZ6rsHOYsgFGilgx0jfMeWAHvDMjRgB0=s120",
                 badge: "Metadata API",
                 description:
                     "Extension for exploring live org metadata and generating accurate package.xml files visually for deployments and release workflows.",
@@ -324,6 +327,7 @@ window.PORTFOLIO_CONTENT = {
             {
                 title: "Salesforce Metadata Exporter",
                 icon: "ME",
+                iconImage: "https://lh3.googleusercontent.com/3lyLEtr65LhLh2LxHMKhh5e9aVqqUL8SEQbn5PFh_BMhKI6fFpmbhZzg5ggqHxZ0cOBIWJpXG2O64XX-_KrxKnP3Ow=s120",
                 badge: "Metadata API",
                 description:
                     "Lightweight extension for exporting Salesforce metadata from a logged-in org into a downloadable ZIP with quick presets and generated package.xml.",
@@ -344,6 +348,7 @@ window.PORTFOLIO_CONTENT = {
             {
                 title: "Offline PDF Tools",
                 icon: "PDF",
+                iconImage: "https://lh3.googleusercontent.com/nY5MLfj7ByHZ7wyB1JV3ngMsnuZ4yOFkVRG13VCuhrZOgd298jK5H3ju7y0Nxu9HJv4VM5TZalbTQIvB5pZ83E-5EQ=s120",
                 badge: "Privacy-first",
                 description:
                     "Privacy-first extension for merging, splitting, extracting, reordering, deleting, and rotating PDF files completely offline.",
@@ -364,6 +369,7 @@ window.PORTFOLIO_CONTENT = {
             {
                 title: "FieldForge",
                 icon: "FF",
+                iconImage: "https://lh3.googleusercontent.com/dcdhOxNZvr0GXq4jNahe1O9d5rVhzLklBID-TNjlwqp2X-FfOeGMcIpP-RcKKuc0m7aIq9H8wDiAYs0wCGFSmUqWlg=s120",
                 badge: "Featured Project",
                 description: "Developer-focused extension for bulk-creating Salesforce custom fields from CSV or XLSX with validation, metadata previews, and safe Metadata API deployment.",
                 technologies: ["JavaScript", "Chrome Extension", "Metadata API", "Salesforce", "CSV/XLSX"],
@@ -383,6 +389,7 @@ window.PORTFOLIO_CONTENT = {
             {
                 title: "ProfileShift",
                 icon: "PS",
+                iconImage: "https://lh3.googleusercontent.com/07ojyvQ3Vc8QZbuWgeSxh6g_gDTRoIjmFVNHvbw5DyV_L4mYcmo4Az9-AHyQN5hjBbHyCZAs1wfXS-jzAEJZiZlx=s120",
                 badge: "Security Refactor",
                 description:
                     "Developer-focused extension for converting legacy Salesforce Profiles into minimal Permission Sets with review, export, and Metadata API deployment support.",
