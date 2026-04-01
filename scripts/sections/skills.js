@@ -9,22 +9,22 @@ const renderSkills = (skills) => {
 
   grid.innerHTML = "";
   if (Array.isArray(skills.groups) && skills.groups.length) {
+    const card = createEl("article", "skills-card reveal");
+
     skills.groups.forEach((group) => {
-      const card = createEl("article", `skill-group skill-group--${group.tone || "salesforce"} reveal`);
-      const head = createEl("div", "skill-group__head");
-      head.append(
-        createEl("span", "skill-group__icon", group.icon || "SK"),
-        createEl("h3", "skill-group__title", group.title),
-      );
+      const block = createEl("section", `skill-group skill-group--${group.tone || "salesforce"}`);
+      block.append(createEl("h3", "skill-group__title", group.title));
 
       const items = createEl("div", "skill-group__items");
       (group.items || []).forEach((item) => {
         items.append(createEl("span", "skill-pill", item));
       });
 
-      card.append(head, items);
-      grid.append(card);
+      block.append(items);
+      card.append(block);
     });
+
+    grid.append(card);
     return;
   }
 

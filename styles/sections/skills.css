@@ -1,38 +1,36 @@
 .skills__grid {
   display: grid;
   gap: 16px;
+  border-radius: 24px;
+  border: 1px solid rgba(22, 50, 79, 0.08);
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow-soft);
+  padding: 24px;
+}
+
+.skills-card {
+  padding: 0;
+  display: grid;
+  gap: 18px;
 }
 
 .skill-group {
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 249, 255, 0.96));
-  box-shadow: var(--shadow-soft);
-  padding: 22px;
-}
-
-.skill-group__head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.skill-group__icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
   display: grid;
-  place-items: center;
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
+  gap: 12px;
+}
+
+.skill-group + .skill-group {
+  padding-top: 18px;
+  border-top: 1px solid rgba(22, 50, 79, 0.08);
 }
 
 .skill-group__title {
   margin: 0;
-  font-size: 1rem;
-  letter-spacing: -0.01em;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .skill-group__items {
@@ -53,20 +51,10 @@
   font-weight: 700;
 }
 
-.skill-group--salesforce .skill-group__icon {
-  background: rgba(26, 115, 232, 0.10);
-  color: var(--accent);
-}
-
 .skill-group--salesforce .skill-pill {
   background: rgba(232, 244, 253, 0.9);
   border-color: rgba(26, 115, 232, 0.12);
   color: #12456f;
-}
-
-.skill-group--tools .skill-group__icon {
-  background: rgba(123, 97, 255, 0.10);
-  color: #6b4eff;
 }
 
 .skill-group--tools .skill-pill {
