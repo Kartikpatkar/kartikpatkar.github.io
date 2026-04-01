@@ -366,10 +366,13 @@
       const content = createEl("div", "timeline__content card");
       const top = createEl("div", "timeline__top");
       const titleWrap = createEl("div", "timeline__titleWrap");
-      titleWrap.append(
-        createEl("h3", "card__title", item.role),
-        createEl("p", "timeline__org", item.company),
-      );
+      const titleRow = createEl("div", "timeline__titleRow");
+      titleRow.append(createEl("h3", "card__title", item.role));
+      if (/present/i.test(item.duration || "")) {
+        titleRow.append(createEl("span", "timeline__status", "Current"));
+      }
+
+      titleWrap.append(titleRow, createEl("p", "timeline__org", item.company));
 
       const metaWrap = createEl("div", "timeline__metaWrap");
       if (item.duration) metaWrap.append(createEl("p", "timeline__meta", item.duration));
@@ -396,8 +399,13 @@
     if (!(hasEducation || hasAwards)) return;
 
     if (hasEducation) {
-      const educationCard = createEl("article", "card reveal experience__extraCard");
-      educationCard.append(createEl("h3", "card__title", experience.educationTitle || "Education"));
+      const educationCard = createEl("article", "card reveal experience__extraCard experience__extraCard--education");
+      const educationHeader = createEl("div", "experience__extraHeader");
+      educationHeader.append(
+        createEl("span", "experience__extraIcon experience__extraIcon--education", "EDU"),
+        createEl("h3", "card__title", experience.educationTitle || "Education"),
+      );
+      educationCard.append(educationHeader);
       const educationList = createEl("div", "experience__educationList");
       experience.educationItems.forEach((item) => {
         const row = createEl("div", "experience__educationItem");
@@ -413,11 +421,16 @@
     }
 
     if (hasAwards) {
-      const awardsCard = createEl("article", "card reveal experience__extraCard");
-      awardsCard.append(createEl("h3", "card__title", experience.awardsTitle || "Awards & Recognition"));
-      const awardsList = createEl("ul", "list");
-      experience.awardsItems.forEach((item) => {
-        awardsList.append(createEl("li", "", item));
+      const awardsCard = createEl("article", "card reveal experience__extraCard experience__extraCard--awards");
+      const awardsHeader = createEl("div", "experience__extraHeader");
+      awardsHeader.append(
+        createEl("span", "experience__extraIcon experience__extraIcon--awards", "AWD"),
+        createEl("h3", "card__title", experience.awardsTitle || "Awards & Recognition"),
+      );
+      awardsCard.append(awardsHeader);
+      const awardsList = createEl("div", "experience__awardsList");
+      experience.awardsItems.forEach((item, index) => {
+        awardsList.append(createEl("div", `experience__awardItem experience__awardItem--${index % 3}`, item));
       });
       awardsCard.append(awardsList);
       extras.append(awardsCard);
