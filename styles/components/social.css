@@ -52,19 +52,40 @@
 }
 
 .social__icon {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   display: grid;
   place-items: center;
   color: currentColor;
 }
 
 .social__icon svg {
-  width: 20px;
-  height: 20px;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 1.9;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+.social__icon svg[data-icon="linkedin"] {
+  width: 24px;
+  height: 24px;
+}
+
+.social__icon svg[data-icon="github"] {
+  width: 25px;
+  height: 25px;
+}
+
+.social__icon svg[data-icon="email"] {
+  width: 23px;
+  height: 23px;
+}
+
+.social__icon svg[data-icon="trailhead"] {
+  width: 24px;
+  height: 24px;
+}
+
+.social__icon svg[data-icon="chrome"] {
+  width: 24px;
+  height: 24px;
 }

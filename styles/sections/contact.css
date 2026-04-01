@@ -53,13 +53,29 @@
 }
 
 .contact-link__icon {
-  width: 20px;
-  height: 20px;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 1.9;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+.contact-link__icon[data-icon="linkedin"] {
+  width: 24px;
+  height: 24px;
+}
+
+.contact-link__icon[data-icon="github"] {
+  width: 25px;
+  height: 25px;
+}
+
+.contact-link__icon[data-icon="email"] {
+  width: 23px;
+  height: 23px;
+}
+
+.contact-link__icon[data-icon="trailhead"] {
+  width: 24px;
+  height: 24px;
 }
 
 .contact-link__copy {

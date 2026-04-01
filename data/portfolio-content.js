@@ -218,10 +218,16 @@ window.PORTFOLIO_CONTENT = {
         ]
     },
     projects: {
-        // subtitle: "Chrome extensions and Salesforce developer tools spanning productivity, metadata, security, and offline workflows.",
+        filters: [
+            { key: "all", label: "All" },
+            { key: "salesforce", label: "Salesforce Tools" },
+            { key: "devtools", label: "Dev Tools" },
+            { key: "utilities", label: "Utilities" }
+        ],
         items: [
             {
                 title: "Apex Genie",
+                category: "salesforce",
                 icon: "AG",
                 iconImage: "https://lh3.googleusercontent.com/dmem2CVB2YpgCAECISn-Zh04BRTbW7ertD6RvK4e8A5BHEwbsisYMDXWExCrrl6ZETZdLcDUfj61e_e_1Q3KBDnD=s120",
                 badge: "Featured Project",
@@ -242,6 +248,7 @@ window.PORTFOLIO_CONTENT = {
             },
             {
                 title: "SLDS Icons Kit",
+                category: "salesforce",
                 icon: "SI",
                 iconImage: "https://lh3.googleusercontent.com/9S1exCMRosF-5e45r17n8ZLh9f-eRNpmlHxAjTv0ptHbbsqmnic9wn2oaCw-pG-pz6kDMADLi3iXiOxTI2fjpjcdKzo=s120",
                 badge: "Salesforce UI",
@@ -263,6 +270,7 @@ window.PORTFOLIO_CONTENT = {
             },
             {
                 title: "Base64 Buddy",
+                category: "utilities",
                 icon: "B64",
                 iconImage: "https://lh3.googleusercontent.com/CCUkREhXEStw4Ljg_rlYF6DoJg8mfoMrilCFJXz9Dykk_1CIgcSR1rPMO4POQAfd61OCwIiny21kKbxGsH8_uFWhY_s=s120",
                 badge: "Featured Project",
@@ -284,6 +292,7 @@ window.PORTFOLIO_CONTENT = {
             },
             {
                 title: "DiffBoard",
+                category: "devtools",
                 icon: "DB",
                 iconImage: "https://lh3.googleusercontent.com/g5dBITnnSulWYuO3Yj9mhr8Hsaozs3ZB8vE_LYpUeNFXDporqdrMscaME3HHUZecqy25OCo0JKViKMl-yCAhTlYy8w=s120",
                 badge: "Featured Project",
@@ -305,6 +314,7 @@ window.PORTFOLIO_CONTENT = {
             },
             {
                 title: "Salesforce Package XML Generator",
+                category: "salesforce",
                 icon: "PX",
                 iconImage: "https://lh3.googleusercontent.com/l8OkykpEcraEG487XnKPkUyxhrPZHHbtNnNPPfd7kL5YrZ9hvNCZAv2XwXVlZ6rsHOYsgFGilgx0jfMeWAHvDMjRgB0=s120",
                 badge: "Metadata API",
@@ -326,6 +336,7 @@ window.PORTFOLIO_CONTENT = {
             },
             {
                 title: "Salesforce Metadata Exporter",
+                category: "salesforce",
                 icon: "ME",
                 iconImage: "https://lh3.googleusercontent.com/3lyLEtr65LhLh2LxHMKhh5e9aVqqUL8SEQbn5PFh_BMhKI6fFpmbhZzg5ggqHxZ0cOBIWJpXG2O64XX-_KrxKnP3Ow=s120",
                 badge: "Metadata API",
@@ -347,6 +358,7 @@ window.PORTFOLIO_CONTENT = {
             },
             {
                 title: "Offline PDF Tools",
+                category: "utilities",
                 icon: "PDF",
                 iconImage: "https://lh3.googleusercontent.com/nY5MLfj7ByHZ7wyB1JV3ngMsnuZ4yOFkVRG13VCuhrZOgd298jK5H3ju7y0Nxu9HJv4VM5TZalbTQIvB5pZ83E-5EQ=s120",
                 badge: "Privacy-first",
@@ -368,6 +380,7 @@ window.PORTFOLIO_CONTENT = {
             },
             {
                 title: "FieldForge",
+                category: "salesforce",
                 icon: "FF",
                 iconImage: "https://lh3.googleusercontent.com/dcdhOxNZvr0GXq4jNahe1O9d5rVhzLklBID-TNjlwqp2X-FfOeGMcIpP-RcKKuc0m7aIq9H8wDiAYs0wCGFSmUqWlg=s120",
                 badge: "Featured Project",
@@ -388,6 +401,7 @@ window.PORTFOLIO_CONTENT = {
             },
             {
                 title: "ProfileShift",
+                category: "salesforce",
                 icon: "PS",
                 iconImage: "https://lh3.googleusercontent.com/07ojyvQ3Vc8QZbuWgeSxh6g_gDTRoIjmFVNHvbw5DyV_L4mYcmo4Az9-AHyQN5hjBbHyCZAs1wfXS-jzAEJZiZlx=s120",
                 badge: "Security Refactor",
