@@ -102,6 +102,34 @@ window.PORTFOLIO_CONTENT = {
     },
     skills: {
         // subtitle: "A practical toolkit for building on Salesforce and beyond.",
+        trailhead: {
+            eyebrow: "Trailhead",
+            title: "Trailhead Snapshot",
+            caption: "A compact view of current learning momentum and platform depth.",
+            linkLabel: "View Trailhead Profile",
+            logoImage: "assets/icons/trailhead-svgrepo-com.svg",
+            logoImageAlt: "Trailhead logo",
+            rankImage: "assets/icons/badge-reward-svgrepo-com.svg",
+            rankImageAlt: "Trailhead rank badge",
+            stats: [
+                {
+                    value: "198",
+                    label: "Badges"
+                },
+                {
+                    value: "132,100",
+                    label: "Points"
+                },
+                {
+                    value: "19",
+                    label: "Trails"
+                },
+                {
+                    value: "Ranger",
+                    label: "Rank"
+                }
+            ]
+        },
         groups: [
             {
                 title: "Salesforce Platform",
