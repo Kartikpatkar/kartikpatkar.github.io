@@ -50,17 +50,19 @@ const renderPortfolioData = () => {
   const { ui = {}, site, hero, about, skills, certifications, projects, experience, contact } = portfolioData;
   const heroUi = ui.hero || {};
   const projectUi = ui.projects || {};
+  const siteRole = site.role || hero.subtitle || "";
+  const siteDescription = site.description || "Salesforce Consultant and Senior Developer specializing in Apex, LWC, integrations, automation, and developer tool development. Explore projects, certifications, and professional experience.";
 
-  document.title = `${site.name} | ${site.role}`;
+  document.title = siteRole ? `${site.name} | ${siteRole}` : site.name;
 
   const descriptionMeta = document.querySelector('meta[name="description"]');
-  if (descriptionMeta) descriptionMeta.setAttribute("content", site.description);
+  if (descriptionMeta) descriptionMeta.setAttribute("content", siteDescription);
 
   setText("#brand-mark", site.shortName);
   setText("#brand-text", site.name);
   setText("#hero-eyebrow", hero.eyebrow);
   setText("#hero-title", site.name);
-  setText("#hero-role", site.role);
+  setText("#hero-role", siteRole);
   setText("#hero-subtitle", hero.subtitle);
   setText("#hero-value", hero.valueStatement || "");
   const availabilityBadgeText = hero.availabilityBadgeText || site.availability || "";
