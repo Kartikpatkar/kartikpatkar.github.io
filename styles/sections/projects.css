@@ -247,7 +247,7 @@
 
 .project-card__toggle {
   position: absolute;
-  top: 14px;
+  bottom: 14px;
   right: 14px;
   z-index: 2;
   width: 34px;
@@ -261,7 +261,7 @@
   color: var(--accent);
   box-shadow: var(--shadow-soft);
   opacity: 0;
-  transform: translateY(-4px);
+  transform: translateY(4px);
   transition: opacity 160ms ease, transform 160ms ease, background 160ms ease, border-color 160ms ease;
 }
 
