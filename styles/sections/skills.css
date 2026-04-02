@@ -12,6 +12,10 @@
   display: none;
 }
 
+#skills-trailhead {
+  margin-top: 30px;
+}
+
 .skills-card {
   padding: 0;
   display: grid;

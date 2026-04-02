@@ -2,7 +2,7 @@ window.PORTFOLIO_CONTENT = {
     site: {
         name: "Kartik Patkar",
         shortName: "KP",
-        role: "Salesforce Consultant & Senior Developer",
+        // role: "Salesforce Consultant & Senior Developer",
         description: "Salesforce Consultant and Senior Developer focused on Apex, LWC, integrations, automation, and developer tools.",
         email: "kartikkp.assets@gmail.com",
         linkedin: "https://www.linkedin.com/in/kartik-patkar/",
@@ -26,7 +26,7 @@ window.PORTFOLIO_CONTENT = {
         primaryCtaLabel: "Download Resume",
         secondaryCtaLabel: "View Projects",
         secondaryCtaHref: "#projects",
-        highlights: ["Salesforce automation","Apex & LWC", "Automation & Integrations", "Chrome Extension Development"],
+        highlights: ["Salesforce automation", "Apex & LWC", "Automation & Integrations", "Chrome Extension Development"],
         floatingCards: [
             {
                 title: "10x Certified",
@@ -74,7 +74,7 @@ window.PORTFOLIO_CONTENT = {
         subtitle: "Salesforce-first. Outcome-driven. Detail-oriented.",
         summaryTitle: "Professional Summary",
         summary:
-            "Consultant at Appstrail Technology and a 10x Salesforce Certified professional with experience across Salesforce CRM, JavaScript development, data architecture, sharing and visibility, and platform application delivery.",
+            "Salesforce Consultant and 10x Certified professional delivering scalable CRM solutions, integrations, and automation platforms across consulting engagements. Focused on building reliable, maintainable Salesforce implementations that support real-world business operations.",
         snapshotTitle: "Snapshot",
         snapshot: [
             {
@@ -135,6 +135,17 @@ window.PORTFOLIO_CONTENT = {
                 title: "Salesforce Platform",
                 tone: "salesforce",
                 items: ["Apex", "Lightning Web Components", "Aura", "Flow", "SOQL", "REST APIs", "SFDX"]
+            },
+            {
+                title: "Architecture",
+                tone: "architecture",
+                items: [
+                    "Solution Design",
+                    "Integration Architecture",
+                    "Data Modeling",
+                    "API Design",
+                    "System Design"
+                ]
             },
             {
                 title: "Web & Tools",
@@ -255,7 +266,7 @@ window.PORTFOLIO_CONTENT = {
                 badge: "Featured Project",
                 description: "Offline-first extension for converting JSON into typed Apex classes, generating test classes, and packaging outputs directly in the browser.",
                 problemSolved: "Reduces the manual effort of converting JSON payloads into usable Apex models and test scaffolding.",
-                impact: "Speeds up Salesforce API and integration work by turning raw payloads into ready-to-use code in seconds.",
+                impact: "Used in daily development workflows to generate Apex models in seconds instead of manual conversion.",
                 technologies: ["JavaScript", "Chrome Extension", "Apex", "Salesforce", "Offline-first"],
                 links: [
                     {
@@ -279,7 +290,7 @@ window.PORTFOLIO_CONTENT = {
                 description:
                     "Full-tab extension for browsing the SLDS icon library, previewing styles live, and copying LWC, Aura, and SLDS snippets instantly.",
                 problemSolved: "Makes SLDS icon discovery and code snippet lookup faster than switching between docs, builders, and editor tabs.",
-                impact: "Improves Salesforce UI development speed for teams working across LWC, Aura, and SLDS-based interfaces.",
+                impact: "Streamlines Salesforce UI development by enabling instant icon discovery and snippet generation, reducing context switching between documentation and code editors.",
                 technologies: ["JavaScript", "Chrome Extension", "SLDS", "Monaco Editor", "Offline-first"],
                 links: [
                     {
@@ -303,7 +314,7 @@ window.PORTFOLIO_CONTENT = {
                 description:
                     "Lightweight extension for encoding and decoding files in Base64 with previews, copy helpers, and privacy-first local processing.",
                 problemSolved: "Eliminates the need for ad hoc online encoders when working with files, data URIs, and debugging payloads.",
-                impact: "Enables privacy-safe local encoding and decoding workflows for developers and support operations.",
+                impact: "Supports secure local file encoding and debugging workflows without relying on external web tools, reducing data exposure risk during development and support tasks.",
                 technologies: ["JavaScript", "Chrome Extension", "Base64", "Data URI", "Offline-first"],
                 links: [
                     {
@@ -327,7 +338,7 @@ window.PORTFOLIO_CONTENT = {
                 description:
                     "Developer-focused extension for side-by-side code, text, and JSON comparison with clear diff highlighting and one-click copy utilities.",
                 problemSolved: "Provides a fast in-browser way to compare code, config, and JSON without jumping into heavier desktop tooling.",
-                impact: "Supports debugging and review workflows with quicker change inspection and cleaner diff output.",
+                impact: "Accelerates debugging and code review workflows by providing fast in-browser diff comparison, enabling quicker identification of configuration and data changes.",
                 technologies: ["JavaScript", "Chrome Extension", "Diff", "JSON", "Offline-first"],
                 links: [
                     {
@@ -351,7 +362,7 @@ window.PORTFOLIO_CONTENT = {
                 description:
                     "Extension for exploring live org metadata and generating accurate package.xml files visually for deployments and release workflows.",
                 problemSolved: "Removes the friction of manually authoring package.xml files across complex Salesforce metadata selections.",
-                impact: "Helps release workflows move faster with fewer deployment packaging errors.",
+                impact: "Improves deployment reliability by generating accurate package.xml files visually, reducing manual errors in complex Salesforce release workflows.",
                 technologies: ["JavaScript", "Chrome Extension", "Metadata API", "Tooling API", "Salesforce"],
                 links: [
                     {
@@ -375,7 +386,7 @@ window.PORTFOLIO_CONTENT = {
                 description:
                     "Lightweight extension for exporting Salesforce metadata from a logged-in org into a downloadable ZIP with quick presets and generated package.xml.",
                 problemSolved: "Gives developers a simpler path to export metadata without relying on full CLI setup during quick audits and troubleshooting.",
-                impact: "Improves metadata review, backup, and investigation workflows directly from the browser.",
+                impact: "Simplifies metadata inspection and backup workflows by enabling direct exports from a live org, reducing dependency on full CLI setup during audits and troubleshooting.",
                 technologies: ["JavaScript", "Chrome Extension", "Metadata API", "Salesforce", "ZIP Export"],
                 links: [
                     {
@@ -399,7 +410,7 @@ window.PORTFOLIO_CONTENT = {
                 description:
                     "Privacy-first extension for merging, splitting, extracting, reordering, deleting, and rotating PDF files completely offline.",
                 problemSolved: "Avoids sending sensitive documents to third-party web tools for routine PDF editing tasks.",
-                impact: "Supports privacy-conscious document workflows with full offline processing in the browser.",
+                impact: "Enables secure document editing workflows entirely offline, eliminating the need to upload sensitive files to third-party services.",
                 technologies: ["JavaScript", "Chrome Extension", "PDF.js", "pdf-lib", "Offline-first"],
                 links: [
                     {
@@ -422,7 +433,7 @@ window.PORTFOLIO_CONTENT = {
                 badge: "Featured Project",
                 description: "Developer-focused extension for bulk-creating Salesforce custom fields from CSV or XLSX with validation, metadata previews, and safe Metadata API deployment.",
                 problemSolved: "Cuts down repetitive manual setup when large numbers of Salesforce fields need to be created safely.",
-                impact: "Accelerates data model implementation while keeping validation and deployment visibility in place.",
+                impact: "Speeds up large-scale field creation workflows by automating bulk metadata generation from structured files while maintaining validation and deployment control.",
                 technologies: ["JavaScript", "Chrome Extension", "Metadata API", "Salesforce", "CSV/XLSX"],
                 links: [
                     {
@@ -446,14 +457,14 @@ window.PORTFOLIO_CONTENT = {
                 description:
                     "Developer-focused extension for converting legacy Salesforce Profiles into minimal Permission Sets with review, export, and Metadata API deployment support.",
                 problemSolved: "Simplifies the transition away from complex profile-based security models in Salesforce orgs.",
-                impact: "Helps teams modernize permission architecture with cleaner, more deployable security metadata.",
+                impact: "Simplifies migration from legacy Profiles to Permission Sets, improving security maintainability and enabling more manageable access control deployments.",
                 technologies: ["JavaScript", "Chrome Extension", "Permission Sets", "Metadata API", "Salesforce Security"],
                 links: [
                     {
                         kind: "github",
                         label: "GitHub",
                         url: "https://github.com/Kartikpatkar/profile-shift"
-                    },{
+                    }, {
                         kind: "chromeStore",
                         label: "Chrome Store",
                         url: "https://chromewebstore.google.com/detail/emmbjaeefbnhegnkkcgpndccpopiocio?utm_source=item-share-cb"
