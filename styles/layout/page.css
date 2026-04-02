@@ -81,6 +81,10 @@
   align-items: start;
 }
 
+.split-section__feature {
+  grid-column: 1 / -1;
+}
+
 .split-section__panel {
   min-width: 0;
 }
