@@ -2,8 +2,8 @@ window.PORTFOLIO_CONTENT = {
     site: {
         name: "Kartik Patkar",
         shortName: "KP",
-        // role: "Salesforce Consultant & Senior Developer",
-        description: "Kartik Patkar — Salesforce Consultant & Senior Developer. Portfolio showcasing Salesforce work, projects, and experience.",
+        role: "Salesforce Consultant & Senior Developer",
+        description: "Salesforce Consultant and Senior Developer specializing in Apex, LWC, integrations, automation, and developer tool development. Explore projects, certifications, and professional experience.",
         email: "kartikkp.assets@gmail.com",
         linkedin: "https://www.linkedin.com/in/kartik-patkar/",
         github: "https://github.com/Kartikpatkar",
