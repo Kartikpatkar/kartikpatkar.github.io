@@ -30,6 +30,7 @@
   .btn,
   .social__link,
   .project-card,
+  .project-card__flip,
   .skill-card,
   .back-to-top {
     transition: none;

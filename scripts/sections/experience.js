@@ -1,7 +1,7 @@
 (() => {
 window.PortfolioApp = window.PortfolioApp || { core: {}, sections: {}, ui: {} };
 
-const { createEl } = window.PortfolioApp.core;
+const { createEl, createIcon } = window.PortfolioApp.core;
 
 const renderExperience = (experience) => {
   const timeline = document.getElementById("experience-timeline");
@@ -52,8 +52,11 @@ const renderExperience = (experience) => {
   if (hasEducation) {
     const educationCard = createEl("article", "card reveal experience__extraCard experience__extraCard--education");
     const educationHeader = createEl("div", "experience__extraHeader");
+    const educationIcon = createEl("span", "experience__extraIcon experience__extraIcon--education");
+    educationIcon.setAttribute("aria-hidden", "true");
+    educationIcon.append(createIcon("education", "experience__extraIconSvg"));
     educationHeader.append(
-      createEl("span", "experience__extraIcon experience__extraIcon--education", "EDU"),
+      educationIcon,
       createEl("h3", "card__title", experience.educationTitle || "Education"),
     );
     educationCard.append(educationHeader);
@@ -74,8 +77,11 @@ const renderExperience = (experience) => {
   if (hasAwards) {
     const awardsCard = createEl("article", "card reveal experience__extraCard experience__extraCard--awards");
     const awardsHeader = createEl("div", "experience__extraHeader");
+    const awardsIcon = createEl("span", "experience__extraIcon experience__extraIcon--awards");
+    awardsIcon.setAttribute("aria-hidden", "true");
+    awardsIcon.append(createIcon("awards", "experience__extraIconSvg"));
     awardsHeader.append(
-      createEl("span", "experience__extraIcon experience__extraIcon--awards", "AWD"),
+      awardsIcon,
       createEl("h3", "card__title", experience.awardsTitle || "Awards & Recognition"),
     );
     awardsCard.append(awardsHeader);

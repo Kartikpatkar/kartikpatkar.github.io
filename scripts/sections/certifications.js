@@ -15,7 +15,6 @@ const renderCertifications = (certifications) => {
     const card = createEl("article", `cert-card cert-card--${item.theme || "salesforce"} reveal`);
     const metaParts = [item.title, item.issuer];
     if (item.issued) metaParts.push(`Issued ${item.issued}`);
-    if (item.credentialId) metaParts.push(`Credential ID ${item.credentialId}`);
     const metaLabel = metaParts.join(" • ");
     card.setAttribute("aria-label", metaLabel);
     card.title = metaLabel;

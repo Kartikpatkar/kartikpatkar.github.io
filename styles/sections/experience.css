@@ -134,13 +134,20 @@
 .experience__extraIcon {
   min-width: 42px;
   height: 42px;
-  padding: 0 10px;
   border-radius: 14px;
   display: inline-grid;
   place-items: center;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
+}
+
+.experience__extraIconSvg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.experience__extraIconSvg[data-icon="awards"] {
+  width: 26px;
+  height: 26px;
 }
 
 .experience__extraIcon--education {

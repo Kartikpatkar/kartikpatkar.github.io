@@ -36,6 +36,22 @@
 }
 
 .project-card {
+  position: relative;
+  perspective: 1400px;
+}
+
+.project-card__flip {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 420ms ease;
+}
+
+.project-card.is-flipped .project-card__flip {
+  transform: rotateY(180deg);
+}
+
+.project-card__face {
+  grid-area: 1 / 1;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 249, 255, 0.98));
@@ -45,7 +61,14 @@
   gap: 12px;
   min-height: 0;
   box-shadow: var(--shadow);
-  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.project-card__face--back {
+  transform: rotateY(180deg);
+  background: linear-gradient(180deg, rgba(247, 250, 255, 0.98), rgba(235, 244, 255, 0.98));
 }
 
 .project-card__head {
@@ -74,8 +97,8 @@
   justify-content: space-between;
 }
 
-.project-card:hover {
-  transform: translateY(-2px);
+.project-card:hover .project-card__face,
+.project-card:focus-within .project-card__face {
   border-color: rgba(26, 115, 232, 0.20);
   background: white;
 }
@@ -134,6 +157,64 @@
   line-height: 1.45;
 }
 
+.project-card__backHeader {
+  display: grid;
+  gap: 6px;
+  padding-right: 44px;
+}
+
+.project-card__backEyebrow {
+  color: #29527a;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-card__backTitle {
+  margin: 0;
+  font-size: 1.02rem;
+  letter-spacing: -0.02em;
+}
+
+.project-card__backDetails {
+  display: grid;
+  gap: 10px;
+}
+
+.project-card__detail {
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(26, 115, 232, 0.04);
+  border: 1px solid rgba(26, 115, 232, 0.08);
+}
+
+.project-card__detail--problem {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(241, 247, 255, 0.92));
+}
+
+.project-card__detail--impact {
+  background: linear-gradient(180deg, rgba(245, 252, 247, 0.96), rgba(235, 247, 239, 0.96));
+  border-color: rgba(52, 168, 83, 0.12);
+}
+
+.project-card__detailLabel {
+  color: #29527a;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.project-card__detailText {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 .project-card__meta {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -162,6 +243,51 @@
   gap: 8px;
   flex-wrap: nowrap;
   justify-content: flex-end;
+}
+
+.project-card__toggle {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: 1px solid rgba(26, 115, 232, 0.12);
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--accent);
+  box-shadow: var(--shadow-soft);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 160ms ease, transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.project-card:hover .project-card__toggle,
+.project-card:focus-within .project-card__toggle,
+.project-card.is-flipped .project-card__toggle {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card__toggle:hover {
+  background: white;
+  border-color: rgba(26, 115, 232, 0.2);
+}
+
+.project-card__toggle:focus-visible {
+  opacity: 1;
+  transform: translateY(0);
+  outline: 2px solid rgba(26, 115, 232, 0.32);
+  outline-offset: 2px;
+}
+
+.project-card__toggleIcon {
+  width: 18px;
+  height: 18px;
+  display: block;
 }
 
 .project-card__action {
@@ -274,4 +400,11 @@
 .project-card__actionSvg[data-icon="chrome"] {
   width: 23px;
   height: 23px;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .project-card__toggle {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -17,6 +17,7 @@ const {
   renderExperience,
   renderHeroFloatingCards,
   renderHeroHighlights,
+  renderHeroSpecialties,
   renderProjects,
   renderSkills,
   renderSocialLinks,
@@ -48,6 +49,7 @@ const renderPortfolioData = () => {
   setText("#hero-title", site.name);
   setText("#hero-role", site.role);
   setText("#hero-subtitle", hero.subtitle);
+  setText("#hero-value", hero.valueStatement || "");
   const availabilityBadgeText = hero.availabilityBadgeText || site.availability || "";
   setText("#hero-badge-text", availabilityBadgeText);
   setText("#about-subtitle", about.subtitle);
@@ -75,6 +77,7 @@ const renderPortfolioData = () => {
   }
 
   renderSocialLinks("#hero-social", hero.socials);
+  renderHeroSpecialties(hero);
   renderHeroHighlights(hero, heroUi);
   renderHeroFloatingCards(hero, heroUi);
   renderAbout(about);

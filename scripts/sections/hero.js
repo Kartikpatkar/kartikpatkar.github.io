@@ -46,6 +46,26 @@ const renderHeroHighlights = (hero, uiHero) => {
   });
 };
 
+const renderHeroSpecialties = (hero) => {
+  const container = document.getElementById("hero-specialties");
+  if (!container) return;
+
+  const items = Array.isArray(hero?.specializations) ? hero.specializations : [];
+  container.hidden = items.length === 0;
+  if (!items.length) {
+    container.innerHTML = "";
+    return;
+  }
+
+  container.innerHTML = "";
+  container.append(createEl("p", "hero__specialtiesLabel", "Specializing in:"));
+  const list = createEl("ul", "hero__specialtiesList");
+  items.forEach((item) => {
+    list.append(createEl("li", "hero__specialtiesItem", item));
+  });
+  container.append(list);
+};
+
 const renderHeroFloatingCards = (hero, uiHero) => {
   const container = document.getElementById("hero-floating-cards");
   if (!container) return;
@@ -77,5 +97,6 @@ const renderHeroFloatingCards = (hero, uiHero) => {
 
 window.PortfolioApp.sections.renderSocialLinks = renderSocialLinks;
 window.PortfolioApp.sections.renderHeroHighlights = renderHeroHighlights;
+window.PortfolioApp.sections.renderHeroSpecialties = renderHeroSpecialties;
 window.PortfolioApp.sections.renderHeroFloatingCards = renderHeroFloatingCards;
 })();

@@ -4,6 +4,26 @@ window.PortfolioApp = window.PortfolioApp || { core: {}, sections: {}, ui: {} };
 const { createEl } = window.PortfolioApp.core;
 const { createIcon } = window.PortfolioApp.core;
 let activeFilterKey = "all";
+const flippableCards = new Set();
+let hasScrollFlipReset = false;
+
+const prefersHoverPointer = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+const resetFlippedCards = () => {
+  flippableCards.forEach((card) => {
+    card.classList.remove("is-flipped");
+  });
+};
+
+const createFlipButton = (label, onClick) => {
+  const button = createEl("button", "project-card__toggle");
+  button.type = "button";
+  button.setAttribute("aria-label", label);
+  button.setAttribute("title", label);
+  button.append(createIcon("flip", "project-card__toggleIcon"));
+  button.addEventListener("click", onClick);
+  return button;
+};
 
 const createProjectIcon = (project) => {
   const fallbackLabel = project.icon || project.title.slice(0, 2).toUpperCase();
@@ -35,10 +55,27 @@ const createProjectIcon = (project) => {
 
 const createProjectCard = (project, uiProjects) => {
   const card = createEl("article", "project-card reveal");
+  const flipShell = createEl("div", "project-card__flip");
+  const front = createEl("div", "project-card__face project-card__face--front");
+  const back = createEl("div", "project-card__face project-card__face--back");
   const head = createEl("header", "project-card__head");
   const identity = createEl("div", "project-card__identity");
   const summary = createEl("div", "project-card__summary");
   const heading = createEl("div", "project-card__heading");
+  const hasDetails = Boolean(project.problemSolved || project.impact);
+
+  const toggleFlip = () => {
+    card.classList.toggle("is-flipped");
+  };
+
+  if (hasDetails) {
+    flippableCards.add(card);
+    card.addEventListener("mouseleave", () => {
+      if (!prefersHoverPointer()) return;
+      card.classList.remove("is-flipped");
+    });
+    front.append(createFlipButton(`Show details for ${project.title}`, toggleFlip));
+  }
 
   if (uiProjects?.showIcons) {
     identity.append(createProjectIcon(project));
@@ -58,6 +95,24 @@ const createProjectCard = (project, uiProjects) => {
   summary.append(heading);
   identity.append(summary);
   head.append(identity, createEl("p", "project-card__desc", project.description));
+
+  const details = createEl("div", "project-card__details");
+  if (project.problemSolved) {
+    const row = createEl("div", "project-card__detail");
+    row.append(
+      createEl("span", "project-card__detailLabel", "Problem"),
+      createEl("p", "project-card__detailText", project.problemSolved),
+    );
+    details.append(row);
+  }
+  if (project.impact) {
+    const row = createEl("div", "project-card__detail");
+    row.append(
+      createEl("span", "project-card__detailLabel", "Impact"),
+      createEl("p", "project-card__detailText", project.impact),
+    );
+    details.append(row);
+  }
 
   const footer = createEl("footer", "project-card__footer");
   (project.links || []).forEach((linkItem) => {
@@ -94,7 +149,38 @@ const createProjectCard = (project, uiProjects) => {
   const meta = createEl("div", "project-card__meta");
   meta.append(tags, footer);
 
-  card.append(head, meta);
+  front.append(head, meta);
+
+  if (hasDetails) {
+    back.append(createFlipButton(`Show summary for ${project.title}`, toggleFlip));
+    const backHeader = createEl("div", "project-card__backHeader");
+    backHeader.append(
+      createEl("span", "project-card__backEyebrow", "Behind the build"),
+      createEl("h4", "project-card__backTitle", project.title),
+    );
+    const backDetails = createEl("div", "project-card__backDetails");
+    if (project.problemSolved) {
+      const row = createEl("div", "project-card__detail project-card__detail--problem");
+      row.append(
+        createEl("span", "project-card__detailLabel", "Problem"),
+        createEl("p", "project-card__detailText", project.problemSolved),
+      );
+      backDetails.append(row);
+    }
+    if (project.impact) {
+      const row = createEl("div", "project-card__detail project-card__detail--impact");
+      row.append(
+        createEl("span", "project-card__detailLabel", "Impact"),
+        createEl("p", "project-card__detailText", project.impact),
+      );
+      backDetails.append(row);
+    }
+    back.append(backHeader, backDetails);
+  }
+
+  flipShell.append(front);
+  if (hasDetails) flipShell.append(back);
+  card.append(flipShell);
   return card;
 };
 
@@ -140,6 +226,12 @@ const renderProjectFilters = (projects, uiProjects, grid) => {
 const renderProjects = (projects, uiProjects) => {
   const grid = document.getElementById("projects-grid");
   if (!grid || !projects) return;
+
+  flippableCards.clear();
+  if (!hasScrollFlipReset) {
+    window.addEventListener("scroll", resetFlippedCards, { passive: true });
+    hasScrollFlipReset = true;
+  }
 
   renderProjectFilters(projects, uiProjects, grid);
   grid.innerHTML = "";

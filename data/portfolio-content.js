@@ -2,7 +2,7 @@ window.PORTFOLIO_CONTENT = {
     site: {
         name: "Kartik Patkar",
         shortName: "KP",
-        role: "Salesforce Consultant & Senior Developer",
+        // role: "Salesforce Consultant & Senior Developer",
         description: "Kartik Patkar — Salesforce Consultant & Senior Developer. Portfolio showcasing Salesforce work, projects, and experience.",
         email: "kartikkp.assets@gmail.com",
         linkedin: "https://www.linkedin.com/in/kartik-patkar/",
@@ -18,12 +18,15 @@ window.PORTFOLIO_CONTENT = {
     },
     hero: {
         eyebrow: "Hello, I'm",
-        subtitle: "Building scalable Salesforce solutions, integrations, and developer tools.",
+        subtitle: "Salesforce Consultant & Senior Developer",
+        valueStatement:
+            "I design scalable Salesforce solutions, build integrations, and develop productivity tools used in real-world operations.",
+        // specializations: ["Apex & LWC", "Automation & Integrations", "Chrome Extension Development"],
         availabilityBadgeText: "Open to opportunities",
         primaryCtaLabel: "Download Resume",
         secondaryCtaLabel: "View Projects",
         secondaryCtaHref: "#projects",
-        highlights: ["Offline-first tools", "Chrome Web Store apps", "Salesforce automation", "10x Salesforce Certified"],
+        highlights: ["Salesforce automation","Apex & LWC", "Automation & Integrations", "Chrome Extension Development"],
         floatingCards: [
             {
                 title: "10x Certified",
@@ -122,7 +125,6 @@ window.PORTFOLIO_CONTENT = {
                 title: "Salesforce Certified Application Architect",
                 issuer: "Salesforce",
                 issued: "Mar 2026",
-                credentialId: "7557136",
                 theme: "salesforce",
                 badgeImage: "assets/images/certifications/2021-03_Badge_SF-Certified_Application-Architect_High-Res.png",
                 badgeImageAlt: "Official Salesforce Certified Application Architect badge"
@@ -132,7 +134,6 @@ window.PORTFOLIO_CONTENT = {
                 title: "Salesforce Certified JavaScript Developer I",
                 issuer: "Salesforce",
                 issued: "Jan 2023",
-                credentialId: "2955856",
                 theme: "salesforce",
                 badgeImage: "assets/images/certifications/2025-03_MASTER_Certification-Badges_JavaScript-Dev.png",
                 badgeImageAlt: "Official Salesforce Certified JavaScript Developer I badge"
@@ -142,7 +143,6 @@ window.PORTFOLIO_CONTENT = {
                 title: "Salesforce Certified Platform App Builder",
                 issuer: "Salesforce",
                 issued: "Mar 2026",
-                credentialId: "7557135",
                 theme: "salesforce",
                 badgeImage: "assets/images/certifications/2021-03_Badge_SF-Certified_Platform-App-Builder_High-Res.png",
                 badgeImageAlt: "Official Salesforce Certified Platform App Builder badge"
@@ -152,7 +152,6 @@ window.PORTFOLIO_CONTENT = {
                 title: "Salesforce Certified Sharing and Visibility Architect",
                 issuer: "Salesforce",
                 issued: "May 2025",
-                credentialId: "6218540",
                 theme: "salesforce",
                 badgeImage: "assets/images/certifications/2025-03_Badge_SF-Certified_Plat-Sharing-and-Vis-Arch_High-Res.png",
                 badgeImageAlt: "Official Salesforce Certified Sharing and Visibility Architect badge"
@@ -162,7 +161,6 @@ window.PORTFOLIO_CONTENT = {
                 title: "Salesforce Certified Agentforce Specialist",
                 issuer: "Salesforce",
                 issued: "Dec 2024",
-                credentialId: "5512936",
                 theme: "salesforce",
                 badgeImage: "assets/images/certifications/2025-02_Badge_SF-Certified_Agentforce-Specialist_High-Res.png",
                 badgeImageAlt: "Official Salesforce Certified Agentforce Specialist badge"
@@ -172,7 +170,6 @@ window.PORTFOLIO_CONTENT = {
                 title: "Salesforce Certified Data Cloud Consultant",
                 issuer: "Salesforce",
                 issued: "Jan 2025",
-                credentialId: "5708678",
                 theme: "salesforce",
                 badgeImage: "assets/images/certifications/2026-01_Badge_SF-Certified_D360-Con_High-Res.png",
                 badgeImageAlt: "Official Salesforce Certified Data Cloud Consultant badge"
@@ -182,7 +179,6 @@ window.PORTFOLIO_CONTENT = {
                 title: "Salesforce Certified Platform Data Architect",
                 issuer: "Salesforce",
                 issued: "Dec 2023",
-                credentialId: "3982697",
                 theme: "salesforce",
                 badgeImage: "assets/images/certifications/2025-03_Badge_SF-Certified_Plat-Data-Arch_High-Res.png",
                 badgeImageAlt: "Official Salesforce Certified Platform Data Architect badge"
@@ -192,7 +188,6 @@ window.PORTFOLIO_CONTENT = {
                 title: "Salesforce Certified Administrator (SCA)",
                 issuer: "Salesforce",
                 issued: "Jul 2021",
-                credentialId: "22375366",
                 theme: "salesforce",
                 badgeImage: "assets/images/certifications/2025-03_Badge_SF-Certified_Platform-Admin_High-Res.png",
                 badgeImageAlt: "Official Salesforce Certified Administrator badge"
@@ -202,7 +197,6 @@ window.PORTFOLIO_CONTENT = {
                 title: "Salesforce Certified Platform Developer I",
                 issuer: "Salesforce",
                 issued: "Feb 2021",
-                credentialId: "21875868",
                 theme: "salesforce",
                 badgeImage: "assets/images/certifications/2025-04_Badge_SF-Certified_Plat-Dev_High-Res.png",
                 badgeImageAlt: "Official Salesforce Certified Platform Developer I badge"
@@ -232,6 +226,8 @@ window.PORTFOLIO_CONTENT = {
                 iconImage: "https://lh3.googleusercontent.com/dmem2CVB2YpgCAECISn-Zh04BRTbW7ertD6RvK4e8A5BHEwbsisYMDXWExCrrl6ZETZdLcDUfj61e_e_1Q3KBDnD=s120",
                 badge: "Featured Project",
                 description: "Offline-first extension for converting JSON into typed Apex classes, generating test classes, and packaging outputs directly in the browser.",
+                problemSolved: "Reduces the manual effort of converting JSON payloads into usable Apex models and test scaffolding.",
+                impact: "Speeds up Salesforce API and integration work by turning raw payloads into ready-to-use code in seconds.",
                 technologies: ["JavaScript", "Chrome Extension", "Apex", "Salesforce", "Offline-first"],
                 links: [
                     {
@@ -254,6 +250,8 @@ window.PORTFOLIO_CONTENT = {
                 badge: "Salesforce UI",
                 description:
                     "Full-tab extension for browsing the SLDS icon library, previewing styles live, and copying LWC, Aura, and SLDS snippets instantly.",
+                problemSolved: "Makes SLDS icon discovery and code snippet lookup faster than switching between docs, builders, and editor tabs.",
+                impact: "Improves Salesforce UI development speed for teams working across LWC, Aura, and SLDS-based interfaces.",
                 technologies: ["JavaScript", "Chrome Extension", "SLDS", "Monaco Editor", "Offline-first"],
                 links: [
                     {
@@ -276,6 +274,8 @@ window.PORTFOLIO_CONTENT = {
                 badge: "Featured Project",
                 description:
                     "Lightweight extension for encoding and decoding files in Base64 with previews, copy helpers, and privacy-first local processing.",
+                problemSolved: "Eliminates the need for ad hoc online encoders when working with files, data URIs, and debugging payloads.",
+                impact: "Enables privacy-safe local encoding and decoding workflows for developers and support operations.",
                 technologies: ["JavaScript", "Chrome Extension", "Base64", "Data URI", "Offline-first"],
                 links: [
                     {
@@ -298,6 +298,8 @@ window.PORTFOLIO_CONTENT = {
                 badge: "Featured Project",
                 description:
                     "Developer-focused extension for side-by-side code, text, and JSON comparison with clear diff highlighting and one-click copy utilities.",
+                problemSolved: "Provides a fast in-browser way to compare code, config, and JSON without jumping into heavier desktop tooling.",
+                impact: "Supports debugging and review workflows with quicker change inspection and cleaner diff output.",
                 technologies: ["JavaScript", "Chrome Extension", "Diff", "JSON", "Offline-first"],
                 links: [
                     {
@@ -320,6 +322,8 @@ window.PORTFOLIO_CONTENT = {
                 badge: "Metadata API",
                 description:
                     "Extension for exploring live org metadata and generating accurate package.xml files visually for deployments and release workflows.",
+                problemSolved: "Removes the friction of manually authoring package.xml files across complex Salesforce metadata selections.",
+                impact: "Helps release workflows move faster with fewer deployment packaging errors.",
                 technologies: ["JavaScript", "Chrome Extension", "Metadata API", "Tooling API", "Salesforce"],
                 links: [
                     {
@@ -342,6 +346,8 @@ window.PORTFOLIO_CONTENT = {
                 badge: "Metadata API",
                 description:
                     "Lightweight extension for exporting Salesforce metadata from a logged-in org into a downloadable ZIP with quick presets and generated package.xml.",
+                problemSolved: "Gives developers a simpler path to export metadata without relying on full CLI setup during quick audits and troubleshooting.",
+                impact: "Improves metadata review, backup, and investigation workflows directly from the browser.",
                 technologies: ["JavaScript", "Chrome Extension", "Metadata API", "Salesforce", "ZIP Export"],
                 links: [
                     {
@@ -364,6 +370,8 @@ window.PORTFOLIO_CONTENT = {
                 badge: "Privacy-first",
                 description:
                     "Privacy-first extension for merging, splitting, extracting, reordering, deleting, and rotating PDF files completely offline.",
+                problemSolved: "Avoids sending sensitive documents to third-party web tools for routine PDF editing tasks.",
+                impact: "Supports privacy-conscious document workflows with full offline processing in the browser.",
                 technologies: ["JavaScript", "Chrome Extension", "PDF.js", "pdf-lib", "Offline-first"],
                 links: [
                     {
@@ -385,6 +393,8 @@ window.PORTFOLIO_CONTENT = {
                 iconImage: "https://lh3.googleusercontent.com/dcdhOxNZvr0GXq4jNahe1O9d5rVhzLklBID-TNjlwqp2X-FfOeGMcIpP-RcKKuc0m7aIq9H8wDiAYs0wCGFSmUqWlg=s120",
                 badge: "Featured Project",
                 description: "Developer-focused extension for bulk-creating Salesforce custom fields from CSV or XLSX with validation, metadata previews, and safe Metadata API deployment.",
+                problemSolved: "Cuts down repetitive manual setup when large numbers of Salesforce fields need to be created safely.",
+                impact: "Accelerates data model implementation while keeping validation and deployment visibility in place.",
                 technologies: ["JavaScript", "Chrome Extension", "Metadata API", "Salesforce", "CSV/XLSX"],
                 links: [
                     {
@@ -407,6 +417,8 @@ window.PORTFOLIO_CONTENT = {
                 badge: "Security Refactor",
                 description:
                     "Developer-focused extension for converting legacy Salesforce Profiles into minimal Permission Sets with review, export, and Metadata API deployment support.",
+                problemSolved: "Simplifies the transition away from complex profile-based security models in Salesforce orgs.",
+                impact: "Helps teams modernize permission architecture with cleaner, more deployable security metadata.",
                 technologies: ["JavaScript", "Chrome Extension", "Permission Sets", "Metadata API", "Salesforce Security"],
                 links: [
                     {
@@ -423,7 +435,7 @@ window.PORTFOLIO_CONTENT = {
         ]
     },
     experience: {
-        subtitle: "Professional experience, education, and recognition from my profile.",
+        // subtitle: "Professional experience, education, and recognition from my profile.",
         items: [
             {
                 role: "Consultant",
@@ -475,8 +487,8 @@ window.PORTFOLIO_CONTENT = {
         ]
     },
     contact: {
-        subtitle: "Have a role, project, or collaboration in mind? Let's talk.",
-        intro: "This form opens your email client with a pre-filled message, so the portfolio stays static and GitHub Pages-friendly.",
+        // subtitle: "Have a role, project, or collaboration in mind? Let's talk.",
+        intro: "Use the form below to open your email app with a pre-filled message.",
         directLinksIntro: "Prefer email or profile links? Reach out directly here."
     }
 };
