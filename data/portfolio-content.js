@@ -3,7 +3,7 @@ window.PORTFOLIO_CONTENT = {
         name: "Kartik Patkar",
         shortName: "KP",
         role: "Salesforce Consultant & Senior Developer",
-        description: "Salesforce Consultant and Senior Developer specializing in Apex, LWC, integrations, automation, and developer tool development. Explore projects, certifications, and professional experience.",
+        description: "Salesforce Consultant and Senior Developer focused on Apex, LWC, integrations, automation, and developer tools.",
         email: "kartikkp.assets@gmail.com",
         linkedin: "https://www.linkedin.com/in/kartik-patkar/",
         github: "https://github.com/Kartikpatkar",

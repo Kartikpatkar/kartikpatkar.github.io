@@ -51,7 +51,7 @@ const renderPortfolioData = () => {
   const heroUi = ui.hero || {};
   const projectUi = ui.projects || {};
   const siteRole = site.role || hero.subtitle || "";
-  const siteDescription = site.description || "Salesforce Consultant and Senior Developer specializing in Apex, LWC, integrations, automation, and developer tool development. Explore projects, certifications, and professional experience.";
+  const siteDescription = site.description || "Salesforce Consultant and Senior Developer focused on Apex, LWC, integrations, automation, and developer tools.";
 
   document.title = siteRole ? `${site.name} | ${siteRole}` : site.name;
 
