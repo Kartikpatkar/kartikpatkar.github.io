@@ -94,7 +94,7 @@ const renderPortfolioData = () => {
   renderHeroHighlights(hero, heroUi);
   renderHeroFloatingCards(hero, heroUi);
   renderAbout(about);
-  renderSkills(skills);
+  renderSkills(skills, site);
   renderCertifications(certifications);
   renderProjects(projects, projectUi);
   renderExperience(experience);

@@ -62,6 +62,15 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+  .trailhead-card__header {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+  }
+
+  .trailhead-card__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .contact__grid {
     grid-template-columns: 1fr;
   }
@@ -178,6 +187,10 @@
     border-radius: 28px;
   }
 
+  .trailhead-card__brand {
+    align-items: flex-start;
+  }
+
   .hero__portraitFrame {
     width: min(100%, 300px);
   }
@@ -187,11 +200,11 @@
     align-items: flex-start;
   }
 
-  .timeline__metaWrap {
-    justify-items: start;
+  .trailhead-card__header {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .timeline {
     padding-left: 32px;
   }
 
@@ -398,6 +411,39 @@
 }
 
 @media (max-width: 400px) {
+  .trailhead-card {
+    padding: 16px;
+  }
+
+  .trailhead-card__artwork {
+    width: 74px;
+    min-width: 74px;
+    height: 58px;
+  }
+
+  .trailhead-card__logoImage,
+  .trailhead-card__icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .trailhead-card__rankImage {
+    width: 34px;
+    height: 34px;
+  }
+
+  .trailhead-card__stats {
+    gap: 8px;
+  }
+
+  .trailhead-card__stat {
+    padding: 10px;
+  }
+
+  .trailhead-card__statValue {
+    font-size: 1.06rem;
+  }
+
   .hero__badge {
     font-size: 0.84rem;
     padding: 10px 12px;
