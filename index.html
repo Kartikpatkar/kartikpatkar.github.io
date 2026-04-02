@@ -12,14 +12,66 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
-    <link rel="preload" href="styles/main.css?v=20260401b" as="style" />
-    <link rel="stylesheet" href="styles/main.css?v=20260401b" />
+    <link rel="preload" href="styles/main.css?v=20260402c" as="style" />
+    <link rel="stylesheet" href="styles/main.css?v=20260402c" />
     <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
 </head>
 
-<body>
+<body class="app-loading">
     <a class="skip-link" href="#home">Skip to content</a>
     <div class="app-error" id="app-error" role="alert" hidden></div>
+    <div class="app-skeleton" id="app-skeleton" aria-hidden="true">
+        <div class="app-skeleton__nav">
+            <div class="container app-skeleton__navInner">
+                <span class="app-skeleton__brand shimmer-block"></span>
+                <div class="app-skeleton__navLinks">
+                    <span class="app-skeleton__navLink shimmer-block"></span>
+                    <span class="app-skeleton__navLink shimmer-block"></span>
+                    <span class="app-skeleton__navLink shimmer-block"></span>
+                    <span class="app-skeleton__navLink shimmer-block"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container app-skeleton__content">
+            <section class="app-skeleton__hero">
+                <div class="app-skeleton__heroCopy">
+                    <span class="app-skeleton__eyebrow shimmer-block"></span>
+                    <span class="app-skeleton__title shimmer-block"></span>
+                    <span class="app-skeleton__title app-skeleton__title--short shimmer-block"></span>
+                    <span class="app-skeleton__text shimmer-block"></span>
+                    <span class="app-skeleton__text app-skeleton__text--short shimmer-block"></span>
+                    <div class="app-skeleton__chips">
+                        <span class="app-skeleton__chip shimmer-block"></span>
+                        <span class="app-skeleton__chip shimmer-block"></span>
+                        <span class="app-skeleton__chip shimmer-block"></span>
+                    </div>
+                    <div class="app-skeleton__actions">
+                        <span class="app-skeleton__button shimmer-block"></span>
+                        <span class="app-skeleton__button app-skeleton__button--ghost shimmer-block"></span>
+                    </div>
+                </div>
+                <div class="app-skeleton__heroVisual shimmer-block"></div>
+            </section>
+
+            <section class="app-skeleton__section">
+                <span class="app-skeleton__sectionEyebrow shimmer-block"></span>
+                <span class="app-skeleton__sectionTitle shimmer-block"></span>
+                <div class="app-skeleton__cards app-skeleton__cards--three">
+                    <div class="app-skeleton__card shimmer-block"></div>
+                    <div class="app-skeleton__card shimmer-block"></div>
+                    <div class="app-skeleton__card shimmer-block"></div>
+                </div>
+            </section>
+
+            <section class="app-skeleton__section">
+                <div class="app-skeleton__cards app-skeleton__cards--twoLarge">
+                    <div class="app-skeleton__panel shimmer-block"></div>
+                    <div class="app-skeleton__panel shimmer-block"></div>
+                </div>
+            </section>
+        </div>
+    </div>
 
     <!-- Navbar -->
     <header class="nav" id="top">
@@ -250,7 +302,7 @@
     <script src="scripts/ui/reveal.js?v=20260401b"></script>
     <script src="scripts/ui/back-to-top.js?v=20260401b"></script>
     <script src="scripts/ui/contact-form.js?v=20260401b"></script>
-    <script src="scripts/main.js?v=20260401b"></script>
+    <script src="scripts/main.js?v=20260402c"></script>
 </body>
 
 </html>

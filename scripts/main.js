@@ -2,10 +2,23 @@
 window.PortfolioApp = window.PortfolioApp || { core: {}, sections: {}, ui: {} };
 
 const showBootstrapError = (message) => {
+  hideAppSkeleton();
   const errorEl = document.getElementById("app-error");
   if (!errorEl) return;
   errorEl.hidden = false;
   errorEl.textContent = message;
+};
+
+const hideAppSkeleton = () => {
+  document.body.classList.remove("app-loading");
+
+  const skeletonEl = document.getElementById("app-skeleton");
+  if (!skeletonEl) return;
+
+  skeletonEl.classList.add("app-skeleton--hidden");
+  window.setTimeout(() => {
+    skeletonEl.hidden = true;
+  }, 220);
 };
 
 const { getPortfolioData } = window.PortfolioApp.core;
@@ -109,6 +122,9 @@ try {
     emailSelector: "#email",
     messageSelector: "#message",
     recipient: portfolioData.site?.email || "kartikkp.assets@gmail.com",
+  });
+  window.requestAnimationFrame(() => {
+    hideAppSkeleton();
   });
 } catch (error) {
   showBootstrapError(`Portfolio bootstrap failed: ${error.message}`);
