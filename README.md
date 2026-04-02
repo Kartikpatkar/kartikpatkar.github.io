@@ -1,134 +1,54 @@
-# Kartik Patkar — Personal Developer Portfolio
+# Kartik Patkar Portfolio
 
-Single-page, modern, responsive portfolio website built with **HTML5 + CSS3 + Vanilla JS** and designed to deploy cleanly on **GitHub Pages**.
+Simple personal portfolio site built with HTML, CSS, and vanilla JavaScript. It is designed to run as a static site and deploy directly to GitHub Pages.
 
-## Architecture
+## Project structure
 
-The portfolio now uses a **single HTML shell** with modular JavaScript and CSS.
-
-- `index.html`: page shell only
-- `data/`: editable portfolio content and UI flags
-- `scripts/main.js`: application entrypoint
-- `scripts/core/`: shared DOM, config, and icon helpers
-- `scripts/sections/`: section renderers
-- `scripts/ui/`: page behaviors like navigation, reveal, form, and back-to-top
-- `styles/main.css`: stylesheet entrypoint
-- `styles/base/`: tokens, reset, animations
-- `styles/layout/`: page structure and responsive rules
-- `styles/components/`: reusable UI pieces
-- `styles/sections/`: section-specific styling
-- `docs/modularization-plan.md`: exact phase-1 module map
-
-## Sections
-
-- Navbar (sticky + active section highlight + mobile hamburger)
-- Hero
-- About
-- Skills
-- Projects
-- Experience
-- Contact (mailto-based, no backend)
-- Footer
+- `index.html` - page shell
+- `data/portfolio-content.js` - main portfolio content
+- `data/portfolio-config.js` - UI settings and labels
+- `scripts/` - app logic and section rendering
+- `styles/` - layout, components, and section styles
+- `assets/` - icons, images, and resume
 
 ## Run locally
 
-Option 1 (VS Code): install **Live Server** and open `index.html`.
-
-Option 2 (Python):
+Use any static server. For example:
 
 ```bash
 python3 -m http.server 5173
 ```
 
-Then open http://localhost:5173
+Then open `http://localhost:5173`.
 
-## Deploy (GitHub Pages)
+## Edit content
 
-This repo is compatible with **GitHub Pages** using:
+Most updates can be done in `data/portfolio-content.js`.
 
-- Branch: `main`
-- Folder: `/ (root)`
+Use this file to change:
 
-After pushing to GitHub:
+- name, role, and contact details
+- hero text
+- skills
+- projects
+- experience
+- certifications
+- resume path
 
-1. Go to **Settings → Pages**
-2. Set **Source** to `Deploy from a branch`
-3. Choose `main` + `/ (root)`
+Use `data/portfolio-config.js` for simple UI toggles and labels.
 
-## Customize
+## Deploy
 
-### Update portfolio content
-Edit:
+This repo works with GitHub Pages from the repository root.
 
-- `data/portfolio-content.js`
-
-This file contains the editable portfolio content for:
-
-- Name, role, email, LinkedIn, GitHub, resume path
-- Hero text and social links
-- About summary, snapshot, expertise chips
-- Skills
-- Projects
-- Experience
-- Contact text
-
-### Update UI/configuration
-Edit:
-
-- `data/portfolio-config.js`
-
-This file contains UI switches and labels for things like:
-
-- Showing or hiding hero UI elements
-- Showing or hiding project badges/icons/buttons
-- Button label text
-
-You should not need to edit `index.html` for normal content updates.
-
-### Update styles
-
-Edit the relevant files under `styles/`:
-
-- `styles/components/` for shared UI patterns like buttons, cards, nav, footer, and forms
-- `styles/sections/` for section-local styling like hero, projects, experience, and contact
-- `styles/layout/` for page structure and breakpoints
-
-Load order is controlled from:
-
-- `styles/main.css`
-
-### Update behavior
-
-Edit the relevant files under `scripts/`:
-
-- `scripts/main.js` for app bootstrap and top-level orchestration
-- `scripts/core/` for shared helpers only
-- `scripts/sections/` for rendering section markup from portfolio data
-- `scripts/ui/` for interaction logic not tied to a single section render
-
-For section-specific rendering, prefer updating the corresponding file in `scripts/sections/` instead of adding more logic to `scripts/main.js`.
-
-### Replace the profile photo
-Replace:
-
-- `assets/images/profile-placeholder.svg`
-
-with your image (keep the same filename).
-
-You can also change the image path in `data/portfolio-content.js`.
-
-### Replace the resume
-Replace:
-
-- `assets/Kartik-Patkar-Resume.pdf`
-
-with your real PDF resume (keeping the same filename keeps the download button working).
-
-You can also change the resume path in `data/portfolio-content.js`.
+1. Push the repo to GitHub.
+2. Open repository Settings.
+3. Go to Pages.
+4. Set the source to `main` and `/ (root)`.
 
 ## Notes
 
-- The contact form uses `mailto:` to stay backend-free and GitHub Pages friendly.
-- Scroll reveal animations are implemented with `IntersectionObserver` and automatically disabled when the user has **Reduce Motion** enabled.
-- The portfolio is intentionally **build-step free**. JavaScript is split into ordered browser scripts under `scripts/`, and CSS is split through `@import` in `styles/main.css`.
-- If you need to reorganize modules further, update `docs/modularization-plan.md` so the module boundaries stay explicit.
+- No build step is required.
+- The contact form uses `mailto:`.
+- The main preview image is `assets/images/portfolio-preview.png`.
+- The resume file is `assets/Kartik-Patkar-Resume.pdf`.
