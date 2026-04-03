@@ -461,13 +461,13 @@ window.PORTFOLIO_CONTENT = {
                 technologies: ["JavaScript", "Chrome Extension", "Permission Sets", "Metadata API", "Salesforce Security"],
                 links: [
                     {
-                        kind: "github",
-                        label: "GitHub",
-                        url: "https://github.com/Kartikpatkar/profile-shift"
-                    }, {
                         kind: "chromeStore",
                         label: "Chrome Store",
                         url: "https://chromewebstore.google.com/detail/emmbjaeefbnhegnkkcgpndccpopiocio?utm_source=item-share-cb"
+                    },{
+                        kind: "github",
+                        label: "GitHub",
+                        url: "https://github.com/Kartikpatkar/profile-shift"
                     }
                 ]
             }
