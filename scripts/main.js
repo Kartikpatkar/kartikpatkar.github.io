@@ -28,6 +28,7 @@ const {
   renderCertifications,
   renderDirectLinks,
   renderExperience,
+  renderImpact,
   renderHeroFloatingCards,
   renderHeroHighlights,
   renderHeroSpecialties,
@@ -47,7 +48,7 @@ const portfolioData = getPortfolioData(window.PORTFOLIO_CONTENT || {}, window.PO
 const renderPortfolioData = () => {
   if (!portfolioData) return;
 
-  const { ui = {}, site, hero, about, skills, certifications, projects, experience, contact } = portfolioData;
+  const { ui = {}, site, hero, about, impact, skills, certifications, projects, experience, contact } = portfolioData;
   const heroUi = ui.hero || {};
   const projectUi = ui.projects || {};
   const siteRole = site.role || hero.subtitle || "";
@@ -96,6 +97,7 @@ const renderPortfolioData = () => {
   renderHeroHighlights(hero, heroUi);
   renderHeroFloatingCards(hero, heroUi);
   renderAbout(about);
+  renderImpact(impact);
   renderSkills(skills, site);
   renderCertifications(certifications);
   renderProjects(projects, projectUi);
