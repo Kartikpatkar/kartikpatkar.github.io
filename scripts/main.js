@@ -36,7 +36,7 @@ const {
   renderSkills,
   renderSocialLinks,
 } = window.PortfolioApp.sections;
-const { initBackToTop, initContactForm, initNavigation, initReveal } = window.PortfolioApp.ui;
+const { initBackToTop, initContactForm, initNavigation, initResumeMenu, initReveal } = window.PortfolioApp.ui;
 
 if (!getPortfolioData) {
   showBootstrapError("Portfolio bootstrap failed: core config script did not load.");
@@ -78,7 +78,6 @@ const renderPortfolioData = () => {
   setText("#contact-direct-intro", contact.directLinksIntro || "Prefer a direct route? Reach out on the platforms below.");
   setText("#footer-name", site.name);
 
-  setLink("#resume-link", site.resumePath, hero.primaryCtaLabel);
   setLink("#secondary-cta", hero.secondaryCtaHref, hero.secondaryCtaLabel);
   setVisibility("#hero-social", Boolean(heroUi.showSocialLinks));
   setVisibility(
@@ -103,6 +102,16 @@ const renderPortfolioData = () => {
   renderProjects(projects, projectUi);
   renderExperience(experience);
   renderDirectLinks(site);
+
+  initResumeMenu({
+    menuSelector: "#resume-menu",
+    triggerSelector: "#resume-trigger",
+    triggerLabelSelector: "#resume-trigger-label",
+    panelSelector: "#resume-options",
+    buttonLabel: hero.primaryCtaLabel || "Download Resume",
+    versions: site.resumeVersions,
+    fallbackPath: site.resumePath,
+  });
 };
 
 const initFooterYear = () => {

@@ -105,6 +105,33 @@
   letter-spacing: 0.04em;
 }
 
+.timeline__achievements {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(22, 50, 79, 0.08);
+}
+
+.timeline__achievementsTitle {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.timeline__achievementsList {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.timeline__achievementsItem {
+  color: var(--text);
+  line-height: 1.5;
+}
+
 .experience__extras {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
