@@ -316,6 +316,53 @@ window.PORTFOLIO_CONTENT = {
                 ]
             },
             {
+                title: "FieldForge",
+                category: "salesforce",
+                icon: "FF",
+                iconImage: "https://lh3.googleusercontent.com/dcdhOxNZvr0GXq4jNahe1O9d5rVhzLklBID-TNjlwqp2X-FfOeGMcIpP-RcKKuc0m7aIq9H8wDiAYs0wCGFSmUqWlg=s120",
+                badge: "Featured Project",
+                description: "Developer-focused extension for bulk-creating Salesforce custom fields from CSV or XLSX with validation, metadata previews, and safe Metadata API deployment.",
+                problemSolved: "Cuts down repetitive manual setup when large numbers of Salesforce fields need to be created safely.",
+                impact: "Speeds up large-scale field creation workflows by automating bulk metadata generation from structured files while maintaining validation and deployment control.",
+                technologies: ["JavaScript", "Chrome Extension", "Metadata API", "Salesforce", "CSV/XLSX"],
+                links: [
+                    {
+                        kind: "chromeStore",
+                        label: "Chrome Store",
+                        url: "https://chromewebstore.google.com/detail/nfjjccdcnpdmfglblfnkmmfecmblbhfo?utm_source=item-share-cb"
+                    },
+                    {
+                        kind: "github",
+                        label: "GitHub",
+                        url: "https://github.com/Kartikpatkar/fieldforge"
+                    }
+                ]
+            },
+            {
+                title: "Offline PDF Tools",
+                category: "utilities",
+                icon: "PDF",
+                iconImage: "https://lh3.googleusercontent.com/nY5MLfj7ByHZ7wyB1JV3ngMsnuZ4yOFkVRG13VCuhrZOgd298jK5H3ju7y0Nxu9HJv4VM5TZalbTQIvB5pZ83E-5EQ=s120",
+                badge: "Featured Project",
+                description:
+                    "Privacy-first extension for merging, splitting, extracting, reordering, deleting, and rotating PDF files completely offline.",
+                problemSolved: "Avoids sending sensitive documents to third-party web tools for routine PDF editing tasks.",
+                impact: "Enables secure document editing workflows entirely offline, eliminating the need to upload sensitive files to third-party services.",
+                technologies: ["JavaScript", "Chrome Extension", "PDF.js", "pdf-lib", "Offline-First"],
+                links: [
+                    {
+                        kind: "chromeStore",
+                        label: "Chrome Store",
+                        url: "https://chromewebstore.google.com/detail/lkokanmnglecjkgabbhincgaiceedolc?utm_source=item-share-cb"
+                    },
+                    {
+                        kind: "github",
+                        label: "GitHub",
+                        url: "https://github.com/Kartikpatkar/offline-pdf-tools"
+                    }
+                ]
+            },
+            {
                 title: "SLDS Icons Kit",
                 category: "salesforce",
                 icon: "SI",
@@ -344,7 +391,7 @@ window.PORTFOLIO_CONTENT = {
                 category: "utilities",
                 icon: "B64",
                 iconImage: "https://lh3.googleusercontent.com/CCUkREhXEStw4Ljg_rlYF6DoJg8mfoMrilCFJXz9Dykk_1CIgcSR1rPMO4POQAfd61OCwIiny21kKbxGsH8_uFWhY_s=s120",
-                badge: "Featured Project",
+                badge: "Privacy-First",
                 description:
                     "Lightweight extension for encoding and decoding files in Base64 with previews, copy helpers, and privacy-first local processing.",
                 problemSolved: "Eliminates the need for ad hoc online encoders when working with files, data URIs, and debugging payloads.",
@@ -436,53 +483,6 @@ window.PORTFOLIO_CONTENT = {
                 ]
             },
             {
-                title: "Offline PDF Tools",
-                category: "utilities",
-                icon: "PDF",
-                iconImage: "https://lh3.googleusercontent.com/nY5MLfj7ByHZ7wyB1JV3ngMsnuZ4yOFkVRG13VCuhrZOgd298jK5H3ju7y0Nxu9HJv4VM5TZalbTQIvB5pZ83E-5EQ=s120",
-                badge: "Privacy-first",
-                description:
-                    "Privacy-first extension for merging, splitting, extracting, reordering, deleting, and rotating PDF files completely offline.",
-                problemSolved: "Avoids sending sensitive documents to third-party web tools for routine PDF editing tasks.",
-                impact: "Enables secure document editing workflows entirely offline, eliminating the need to upload sensitive files to third-party services.",
-                technologies: ["JavaScript", "Chrome Extension", "PDF.js", "pdf-lib", "Offline-First"],
-                links: [
-                    {
-                        kind: "chromeStore",
-                        label: "Chrome Store",
-                        url: "https://chromewebstore.google.com/detail/lkokanmnglecjkgabbhincgaiceedolc?utm_source=item-share-cb"
-                    },
-                    {
-                        kind: "github",
-                        label: "GitHub",
-                        url: "https://github.com/Kartikpatkar/offline-pdf-tools"
-                    }
-                ]
-            },
-            {
-                title: "FieldForge",
-                category: "salesforce",
-                icon: "FF",
-                iconImage: "https://lh3.googleusercontent.com/dcdhOxNZvr0GXq4jNahe1O9d5rVhzLklBID-TNjlwqp2X-FfOeGMcIpP-RcKKuc0m7aIq9H8wDiAYs0wCGFSmUqWlg=s120",
-                badge: "Featured Project",
-                description: "Developer-focused extension for bulk-creating Salesforce custom fields from CSV or XLSX with validation, metadata previews, and safe Metadata API deployment.",
-                problemSolved: "Cuts down repetitive manual setup when large numbers of Salesforce fields need to be created safely.",
-                impact: "Speeds up large-scale field creation workflows by automating bulk metadata generation from structured files while maintaining validation and deployment control.",
-                technologies: ["JavaScript", "Chrome Extension", "Metadata API", "Salesforce", "CSV/XLSX"],
-                links: [
-                    {
-                        kind: "chromeStore",
-                        label: "Chrome Store",
-                        url: "https://chromewebstore.google.com/detail/nfjjccdcnpdmfglblfnkmmfecmblbhfo?utm_source=item-share-cb"
-                    },
-                    {
-                        kind: "github",
-                        label: "GitHub",
-                        url: "https://github.com/Kartikpatkar/fieldforge"
-                    }
-                ]
-            },
-            {
                 title: "ProfileShift",
                 category: "salesforce",
                 icon: "PS",
@@ -519,6 +519,12 @@ window.PORTFOLIO_CONTENT = {
                     "Lead Salesforce consulting engagements from solution design through implementation for client-facing delivery.",
                     "Build scalable CRM solutions using Apex, Lightning, JavaScript, and metadata-driven architecture patterns.",
                     "Translate business requirements into maintainable platform implementations with a strong focus on reliability and delivery quality."
+                ],
+                achievements: [
+                    "Delivered multiple Salesforce implementations across diverse industries, supporting scalable CRM and field service operations.",
+                    "Led solution design and delivery for client-facing Salesforce projects, ensuring reliable and maintainable platform implementations.",
+                    "Designed integration and automation workflows using Apex and REST APIs to streamline business processes.",
+                    "Handled module-level leadership responsibilities across consulting engagements, coordinating delivery and technical execution."
                 ]
             },
             {
@@ -530,6 +536,11 @@ window.PORTFOLIO_CONTENT = {
                     "Delivered Salesforce enhancements, automations, and project implementations across consulting engagements.",
                     "Strengthened hands-on experience in Apex, Lightning, integrations, and release-oriented Salesforce workflows.",
                     "Supported end-to-end project execution from requirements to deployment in a fast-paced consulting environment."
+                ],
+                achievements: [
+                    "Delivered Salesforce enhancements and automation solutions across consulting projects in fast-paced delivery environments.",
+                    "Built Apex, Lightning, and integration-based features supporting core CRM workflows and operational automation.",
+                    "Supported end-to-end implementation lifecycle from requirement analysis to deployment and production support."
                 ]
             }
         ],
