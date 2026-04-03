@@ -100,6 +100,40 @@ window.PORTFOLIO_CONTENT = {
             "Chrome Extension Development"
         ]
     },
+    impact: {
+        eyebrow: "Current Role Impact",
+        title: "Client Delivery Metrics",
+        subtitle: "A snapshot of delivery scale, platform breadth, and leadership responsibility across current consulting engagements.",
+        metrics: [
+            {
+                value: "13",
+                label: "Salesforce implementations delivered"
+            },
+            {
+                value: "7",
+                label: "Industries served"
+            },
+            {
+                value: "6",
+                label: "Salesforce clouds implemented"
+            },
+            {
+                value: "10",
+                label: "Lead-to-Order systems built"
+            },
+            {
+                value: "2",
+                label: "Leadership roles handled"
+            }
+        ],
+        sectorsTitle: "Industry Coverage",
+        sectors: ["Manufacturing", "FinTech", "FMCG", "Utilities", "EV","Public Sector"],
+        deliveryTitle: "Delivery Scope",
+        deliveryPoints: [
+            "Delivered 13 Salesforce implementations across 7 industries using 6 Salesforce clouds, including Sales Cloud, Service Cloud, Field Service, Consumer Goods Cloud, and Experience Cloud",
+            "End-to-end delivery experience from development to module leadership."
+        ]
+    },
     skills: {
         // subtitle: "A practical toolkit for building on Salesforce and beyond.",
         trailhead: {
