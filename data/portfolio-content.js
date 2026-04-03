@@ -12,6 +12,18 @@ window.PORTFOLIO_CONTENT = {
         linkedinLabel: "linkedin.com/in/kartik-patkar",
         trailheadLabel: "salesforce.com/trailblazer/kpatkar1",
         resumePath: "assets/Kartik-Patkar-Resume.pdf",
+        resumeVersions: [
+            {
+                label: "ATS Resume",
+                path: "assets/Kartik-Patkar-Resume.pdf",
+                downloadName: "Kartik-Patkar-ATS-Resume.pdf"
+            },
+            {
+                label: "Modern Resume",
+                path: "assets/Kartik-Patkar-Resume.pdf",
+                downloadName: "Kartik-Patkar-Modern-Resume.pdf"
+            }
+        ],
         profileImage: "assets/images/profile-placeholder.svg",
         profileImageAlt: "Profile placeholder for Kartik Patkar",
         availability: "Open to opportunities"

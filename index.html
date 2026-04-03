@@ -138,9 +138,14 @@
                     <div class="hero__highlights" id="hero-highlights"></div>
 
                     <div class="hero__cta">
-                        <a class="btn btn--primary" id="resume-link" href="assets/Kartik-Patkar-Resume.pdf" download>
-                            Download Resume
-                        </a>
+                        <div class="resume-menu" id="resume-menu">
+                            <button class="btn btn--primary resume-menu__trigger" id="resume-trigger" type="button"
+                                aria-haspopup="true" aria-expanded="false" aria-controls="resume-options">
+                                <span id="resume-trigger-label">Download Resume</span>
+                                <span class="resume-menu__caret" aria-hidden="true"></span>
+                            </button>
+                            <div class="resume-menu__panel" id="resume-options" hidden></div>
+                        </div>
                         <a class="btn btn--ghost" id="secondary-cta" href="#projects">View Projects</a>
                     </div>
 
@@ -345,6 +350,7 @@
     <script src="scripts/ui/reveal.js?v=20260401b"></script>
     <script src="scripts/ui/back-to-top.js?v=20260401b"></script>
     <script src="scripts/ui/contact-form.js?v=20260401b"></script>
+    <script src="scripts/ui/resume-menu.js?v=20260403a"></script>
     <script src="scripts/main.js?v=20260402c"></script>
 </body>
 
