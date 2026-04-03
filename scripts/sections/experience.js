@@ -37,6 +37,20 @@ const renderExperience = (experience) => {
     });
 
     content.append(top, list);
+
+    if (Array.isArray(item.achievements) && item.achievements.length) {
+      const achievementsBlock = createEl("div", "timeline__achievements");
+      achievementsBlock.append(createEl("p", "timeline__achievementsTitle", "Key Outcomes"));
+
+      const achievementsList = createEl("ul", "timeline__achievementsList");
+      item.achievements.forEach((achievement) => {
+        achievementsList.append(createEl("li", "timeline__achievementsItem", achievement));
+      });
+
+      achievementsBlock.append(achievementsList);
+      content.append(achievementsBlock);
+    }
+
     article.append(content);
     timeline.append(article);
   });

@@ -519,6 +519,12 @@ window.PORTFOLIO_CONTENT = {
                     "Lead Salesforce consulting engagements from solution design through implementation for client-facing delivery.",
                     "Build scalable CRM solutions using Apex, Lightning, JavaScript, and metadata-driven architecture patterns.",
                     "Translate business requirements into maintainable platform implementations with a strong focus on reliability and delivery quality."
+                ],
+                achievements: [
+                    "Delivered multiple Salesforce implementations across diverse industries, supporting scalable CRM and field service operations.",
+                    "Led solution design and delivery for client-facing Salesforce projects, ensuring reliable and maintainable platform implementations.",
+                    "Designed integration and automation workflows using Apex and REST APIs to streamline business processes.",
+                    "Handled module-level leadership responsibilities across consulting engagements, coordinating delivery and technical execution."
                 ]
             },
             {
@@ -530,6 +536,11 @@ window.PORTFOLIO_CONTENT = {
                     "Delivered Salesforce enhancements, automations, and project implementations across consulting engagements.",
                     "Strengthened hands-on experience in Apex, Lightning, integrations, and release-oriented Salesforce workflows.",
                     "Supported end-to-end project execution from requirements to deployment in a fast-paced consulting environment."
+                ],
+                achievements: [
+                    "Delivered Salesforce enhancements and automation solutions across consulting projects in fast-paced delivery environments.",
+                    "Built Apex, Lightning, and integration-based features supporting core CRM workflows and operational automation.",
+                    "Supported end-to-end implementation lifecycle from requirement analysis to deployment and production support."
                 ]
             }
         ],
