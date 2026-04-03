@@ -37,7 +37,8 @@ const initResumeMenu = ({
       if (!fallbackPath) return;
       const link = document.createElement("a");
       link.href = fallbackPath;
-      link.download = "";
+      link.target = "_blank";
+      link.rel = "noreferrer";
       document.body.append(link);
       link.click();
       link.remove();
@@ -48,7 +49,8 @@ const initResumeMenu = ({
   items.forEach((item) => {
     const link = createEl("a", "resume-menu__option", item.label);
     link.href = item.path;
-    link.setAttribute("download", item.downloadName || "");
+    link.target = "_blank";
+    link.rel = "noreferrer";
     link.setAttribute("role", "menuitem");
     link.addEventListener("click", () => {
       setOpen(false);
