@@ -127,7 +127,7 @@ window.PORTFOLIO_CONTENT = {
             }
         ],
         sectorsTitle: "Industry Coverage",
-        sectors: ["Manufacturing", "FinTech", "FMCG", "Utilities", "EV","Public Sector"],
+        sectors: ["Manufacturing", "FinTech", "FMCG", "Utilities", "EV","Public Sector","Service"],
         deliveryTitle: "Delivery Scope",
         deliveryPoints: [
             "Delivered 13 Salesforce implementations across 7 industries using 6 Salesforce clouds, including Sales Cloud, Service Cloud, Field Service, Consumer Goods Cloud, and Experience Cloud",
@@ -298,10 +298,10 @@ window.PORTFOLIO_CONTENT = {
                 icon: "AG",
                 iconImage: "https://lh3.googleusercontent.com/dmem2CVB2YpgCAECISn-Zh04BRTbW7ertD6RvK4e8A5BHEwbsisYMDXWExCrrl6ZETZdLcDUfj61e_e_1Q3KBDnD=s120",
                 badge: "Featured Project",
-                description: "Offline-first extension for converting JSON into typed Apex classes, generating test classes, and packaging outputs directly in the browser.",
+                description: "Offline-First extension for converting JSON into typed Apex classes, generating test classes, and packaging outputs directly in the browser.",
                 problemSolved: "Reduces the manual effort of converting JSON payloads into usable Apex models and test scaffolding.",
                 impact: "Used in daily development workflows to generate Apex models in seconds instead of manual conversion.",
-                technologies: ["JavaScript", "Chrome Extension", "Apex", "Salesforce", "Offline-first"],
+                technologies: ["JavaScript", "Chrome Extension", "Apex", "Salesforce", "Offline-First"],
                 links: [
                     {
                         kind: "chromeStore",
@@ -325,7 +325,7 @@ window.PORTFOLIO_CONTENT = {
                     "Full-tab extension for browsing the SLDS icon library, previewing styles live, and copying LWC, Aura, and SLDS snippets instantly.",
                 problemSolved: "Makes SLDS icon discovery and code snippet lookup faster than switching between docs, builders, and editor tabs.",
                 impact: "Streamlines Salesforce UI development by enabling instant icon discovery and snippet generation, reducing context switching between documentation and code editors.",
-                technologies: ["JavaScript", "Chrome Extension", "SLDS", "Monaco Editor", "Offline-first"],
+                technologies: ["JavaScript", "Chrome Extension", "SLDS", "Monaco Editor", "Offline-First"],
                 links: [
                     {
                         kind: "chromeStore",
@@ -349,7 +349,7 @@ window.PORTFOLIO_CONTENT = {
                     "Lightweight extension for encoding and decoding files in Base64 with previews, copy helpers, and privacy-first local processing.",
                 problemSolved: "Eliminates the need for ad hoc online encoders when working with files, data URIs, and debugging payloads.",
                 impact: "Supports secure local file encoding and debugging workflows without relying on external web tools, reducing data exposure risk during development and support tasks.",
-                technologies: ["JavaScript", "Chrome Extension", "Base64", "Data URI", "Offline-first"],
+                technologies: ["JavaScript", "Chrome Extension", "Base64", "Data URI", "Offline-First"],
                 links: [
                     {
                         kind: "chromeStore",
@@ -368,12 +368,12 @@ window.PORTFOLIO_CONTENT = {
                 category: "devtools",
                 icon: "DB",
                 iconImage: "https://lh3.googleusercontent.com/g5dBITnnSulWYuO3Yj9mhr8Hsaozs3ZB8vE_LYpUeNFXDporqdrMscaME3HHUZecqy25OCo0JKViKMl-yCAhTlYy8w=s120",
-                badge: "Featured Project",
+                badge: "Developer Tool",
                 description:
                     "Developer-focused extension for side-by-side code, text, and JSON comparison with clear diff highlighting and one-click copy utilities.",
                 problemSolved: "Provides a fast in-browser way to compare code, config, and JSON without jumping into heavier desktop tooling.",
                 impact: "Accelerates debugging and code review workflows by providing fast in-browser diff comparison, enabling quicker identification of configuration and data changes.",
-                technologies: ["JavaScript", "Chrome Extension", "Diff", "JSON", "Offline-first"],
+                technologies: ["JavaScript", "Chrome Extension", "Diff", "JSON", "Offline-First"],
                 links: [
                     {
                         kind: "chromeStore",
@@ -445,7 +445,7 @@ window.PORTFOLIO_CONTENT = {
                     "Privacy-first extension for merging, splitting, extracting, reordering, deleting, and rotating PDF files completely offline.",
                 problemSolved: "Avoids sending sensitive documents to third-party web tools for routine PDF editing tasks.",
                 impact: "Enables secure document editing workflows entirely offline, eliminating the need to upload sensitive files to third-party services.",
-                technologies: ["JavaScript", "Chrome Extension", "PDF.js", "pdf-lib", "Offline-first"],
+                technologies: ["JavaScript", "Chrome Extension", "PDF.js", "pdf-lib", "Offline-First"],
                 links: [
                     {
                         kind: "chromeStore",
