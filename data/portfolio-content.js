@@ -24,8 +24,8 @@ window.PORTFOLIO_CONTENT = {
                 downloadName: "Kartik-Patkar-Modern-Resume.pdf"
             }
         ],
-        profileImage: "assets/images/profile-placeholder.svg",
-        profileImageAlt: "Profile placeholder for Kartik Patkar",
+        profileImage: "assets/images/kartik-patkar.jpg",
+        profileImageAlt: "Kartik Patkar, Salesforce Consultant and Senior Developer",
         availability: "Open to opportunities"
     },
     hero: {

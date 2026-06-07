@@ -286,6 +286,13 @@
   opacity: 0.94;
 }
 
+.hero__avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .hero__badge {
   position: absolute;
   bottom: 18px;

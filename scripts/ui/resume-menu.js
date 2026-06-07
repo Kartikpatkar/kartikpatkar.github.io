@@ -51,6 +51,9 @@ const initResumeMenu = ({
     link.href = item.path;
     link.target = "_blank";
     link.rel = "noreferrer";
+    if (item.downloadName) {
+      link.setAttribute("download", item.downloadName);
+    }
     link.setAttribute("role", "menuitem");
     link.addEventListener("click", () => {
       setOpen(false);

@@ -103,3 +103,31 @@
 .cert-card--neutral .cert-card__badgePlaceholder {
   color: var(--text);
 }
+
+.cert-card__content {
+  padding: 12px 10px 14px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.cert-card__titleText {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.7em;
+}
+
+.cert-card__metaText {
+  margin: 4px 0 0;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}

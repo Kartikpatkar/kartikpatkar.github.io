@@ -42,7 +42,12 @@ const renderCertifications = (certifications) => {
     }
 
     const srText = createEl("span", "sr-only", metaLabel);
-    card.append(badge, srText);
+    const content = createEl("div", "cert-card__content");
+    content.append(
+      createEl("h4", "cert-card__titleText", item.title),
+      createEl("p", "cert-card__metaText", `${item.issuer} • ${item.issued || ""}`),
+    );
+    card.append(badge, content, srText);
     grid.append(card);
   });
 };
