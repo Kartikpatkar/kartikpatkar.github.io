@@ -59,6 +59,15 @@ const renderPortfolioData = () => {
   const descriptionMeta = document.querySelector('meta[name="description"]');
   if (descriptionMeta) descriptionMeta.setAttribute("content", siteDescription);
 
+  const setMetaProperty = (property, content) => {
+    const el = document.querySelector(`meta[property="${property}"], meta[name="${property}"]`);
+    if (el && content) el.setAttribute("content", content);
+  };
+  setMetaProperty("og:title", document.title);
+  setMetaProperty("twitter:title", document.title);
+  setMetaProperty("og:description", siteDescription);
+  setMetaProperty("twitter:description", siteDescription);
+
   setText("#brand-mark", site.shortName);
   setText("#brand-text", site.name);
   setText("#hero-eyebrow", hero.eyebrow);
@@ -86,9 +95,13 @@ const renderPortfolioData = () => {
   );
 
   const avatar = document.getElementById("hero-avatar");
-  if (avatar instanceof HTMLImageElement) {
-    avatar.src = site.profileImage;
-    avatar.alt = site.profileImageAlt;
+  if (avatar && site.profileImage) {
+    avatar.innerHTML = "";
+    const img = document.createElement("img");
+    img.src = site.profileImage;
+    img.alt = site.profileImageAlt || site.name || "";
+    img.className = "hero__avatarImage";
+    avatar.appendChild(img);
   }
 
   renderSocialLinks("#hero-social", hero.socials);
@@ -119,6 +132,22 @@ const initFooterYear = () => {
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 };
 
+const initThemeToggle = () => {
+  const toggleBtn = document.getElementById("theme-toggle");
+  if (!toggleBtn) return;
+  toggleBtn.addEventListener("click", () => {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    const newTheme = isDark ? "light" : "dark";
+    if (newTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem("theme", "light");
+    }
+  });
+};
+
 try {
   if (!portfolioData.site || !portfolioData.hero) {
     throw new Error("Portfolio data is missing or did not load.");
@@ -127,6 +156,7 @@ try {
   renderPortfolioData();
   initFooterYear();
   initNavigation();
+  initThemeToggle();
   initBackToTop({ buttonSelector: "#back-to-top", thresholdSelector: "#home" });
   initReveal();
   initContactForm({
