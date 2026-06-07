@@ -22,10 +22,6 @@ window.PORTFOLIO_CONTENT = {
                 label: "Modern Resume",
                 path: "assets/Kartik-Patkar-Resume.pdf",
                 downloadName: "Kartik-Patkar-Modern-Resume.pdf"
-            },
-            {
-                label: "Print/Save from Browser",
-                path: "docs/resume-preview.html"
             }
         ],
         profileImage: "assets/images/kartik-patkar.jpg",
