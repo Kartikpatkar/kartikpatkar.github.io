@@ -59,6 +59,15 @@ const renderPortfolioData = () => {
   const descriptionMeta = document.querySelector('meta[name="description"]');
   if (descriptionMeta) descriptionMeta.setAttribute("content", siteDescription);
 
+  const setMetaProperty = (property, content) => {
+    const el = document.querySelector(`meta[property="${property}"], meta[name="${property}"]`);
+    if (el && content) el.setAttribute("content", content);
+  };
+  setMetaProperty("og:title", document.title);
+  setMetaProperty("twitter:title", document.title);
+  setMetaProperty("og:description", siteDescription);
+  setMetaProperty("twitter:description", siteDescription);
+
   setText("#brand-mark", site.shortName);
   setText("#brand-text", site.name);
   setText("#hero-eyebrow", hero.eyebrow);
