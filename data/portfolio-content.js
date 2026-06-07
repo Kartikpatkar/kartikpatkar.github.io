@@ -15,7 +15,7 @@ window.PORTFOLIO_CONTENT = {
         resumeVersions: [
             {
                 label: "ATS Resume",
-                path: "assets/Kartik-Patkar-Resume.pdf",
+                path: "assets/Kartik-Patkar-ATS-Resume.pdf",
                 downloadName: "Kartik-Patkar-ATS-Resume.pdf"
             },
             {
