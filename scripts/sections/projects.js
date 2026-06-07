@@ -7,11 +7,30 @@ let activeFilterKey = "all";
 const flippableCards = new Set();
 let hasScrollFlipReset = false;
 
+const updateCardTabIndices = (card, isFlipped) => {
+  const front = card.querySelector(".project-card__face--front");
+  const back = card.querySelector(".project-card__face--back");
+  if (!front) return;
+
+  front.querySelectorAll("a, button").forEach((el) => {
+    el.setAttribute("tabindex", isFlipped ? "-1" : "0");
+  });
+
+  if (back) {
+    back.querySelectorAll("a, button").forEach((el) => {
+      el.setAttribute("tabindex", isFlipped ? "0" : "-1");
+    });
+  }
+};
+
 const prefersHoverPointer = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
 const resetFlippedCards = () => {
   flippableCards.forEach((card) => {
-    card.classList.remove("is-flipped");
+    if (card.classList.contains("is-flipped")) {
+      card.classList.remove("is-flipped");
+      updateCardTabIndices(card, false);
+    }
   });
 };
 
@@ -65,14 +84,18 @@ const createProjectCard = (project, uiProjects) => {
   const hasDetails = Boolean(project.problemSolved || project.impact);
 
   const toggleFlip = () => {
-    card.classList.toggle("is-flipped");
+    const isFlipped = card.classList.toggle("is-flipped");
+    updateCardTabIndices(card, isFlipped);
   };
 
   if (hasDetails) {
     flippableCards.add(card);
     card.addEventListener("mouseleave", () => {
       if (!prefersHoverPointer()) return;
-      card.classList.remove("is-flipped");
+      if (card.classList.contains("is-flipped")) {
+        card.classList.remove("is-flipped");
+        updateCardTabIndices(card, false);
+      }
     });
     front.append(createFlipButton(`Show details for ${project.title}`, toggleFlip));
   }
@@ -181,6 +204,10 @@ const createProjectCard = (project, uiProjects) => {
   flipShell.append(front);
   if (hasDetails) flipShell.append(back);
   card.append(flipShell);
+
+  if (hasDetails) {
+    updateCardTabIndices(card, false);
+  }
   return card;
 };
 

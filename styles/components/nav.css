@@ -86,3 +86,56 @@
   margin: 4px 0;
   border-radius: 2px;
 }
+
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(26, 115, 232, 0.08);
+  border-color: var(--border-strong);
+  color: var(--accent);
+}
+
+.theme-toggle__icon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+
+/* In light mode, show moon and hide sun */
+.theme-toggle__icon--sun {
+  display: none;
+}
+.theme-toggle__icon--moon {
+  display: block;
+}
+
+/* In dark mode, show sun and hide moon */
+[data-theme="dark"] .theme-toggle__icon--sun {
+  display: block;
+}
+[data-theme="dark"] .theme-toggle__icon--moon {
+  display: none;
+}
+
+[data-theme="dark"] .nav__menu {
+  background: rgba(11, 21, 40, 0.98);
+}
