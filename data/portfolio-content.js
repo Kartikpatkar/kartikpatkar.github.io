@@ -22,6 +22,10 @@ window.PORTFOLIO_CONTENT = {
                 label: "Modern Resume",
                 path: "assets/Kartik-Patkar-Resume.pdf",
                 downloadName: "Kartik-Patkar-Modern-Resume.pdf"
+            },
+            {
+                label: "Print/Save from Browser",
+                path: "docs/resume-preview.html"
             }
         ],
         profileImage: "assets/images/kartik-patkar.jpg",
@@ -139,7 +143,7 @@ window.PORTFOLIO_CONTENT = {
             }
         ],
         sectorsTitle: "Industry Coverage",
-        sectors: ["Manufacturing", "FinTech", "FMCG", "Utilities", "EV","Public Sector","Service"],
+        sectors: ["Manufacturing", "FinTech", "FMCG", "Utilities", "EV", "Public Sector", "Service"],
         deliveryTitle: "Delivery Scope",
         deliveryPoints: [
             "Delivered 13 Salesforce implementations across 7 industries using 6 Salesforce clouds, including Sales Cloud, Service Cloud, Field Service, Consumer Goods Cloud, and Experience Cloud",
@@ -510,7 +514,7 @@ window.PORTFOLIO_CONTENT = {
                         kind: "chromeStore",
                         label: "Chrome Store",
                         url: "https://chromewebstore.google.com/detail/emmbjaeefbnhegnkkcgpndccpopiocio?utm_source=item-share-cb"
-                    },{
+                    }, {
                         kind: "github",
                         label: "GitHub",
                         url: "https://github.com/Kartikpatkar/profile-shift"
@@ -576,6 +580,7 @@ window.PORTFOLIO_CONTENT = {
         ],
         awardsTitle: "Awards & Recognition",
         awardsItems: [
+            "Appstrails' Excellence Award 2025",
             "Employee of the Quarter",
             "Foundation's Day Team Award 2022",
             "Salesforce India Partner Ideathon",
