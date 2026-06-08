@@ -516,6 +516,36 @@ window.PORTFOLIO_CONTENT = {
                         url: "https://github.com/Kartikpatkar/profile-shift"
                     }
                 ]
+            }, {
+                title: "SF Security Auditor",
+                category: "salesforce",
+                icon: "SA",
+                badge: "Featured Project",
+                description: "Privacy-first Chrome Extension for auditing Salesforce profiles, permission sets, object access, and security risks with audit-ready Excel report generation.",
+                problemSolved: "Eliminates manual Salesforce security reviews by centralizing profile analysis, permission auditing, object access reviews, and compliance reporting in a single workspace.",
+                impact: "Helps Salesforce admins, consultants, and security teams generate professional audit reports in minutes instead of spending hours reviewing permissions and compiling spreadsheets.",
+                technologies: [
+                    "JavaScript",
+                    "Chrome Extension",
+                    "Manifest V3",
+                    "Salesforce",
+                    "Metadata API",
+                    "Tooling API",
+                    "ExcelJS",
+                    "Privacy-First"
+                ],
+                links: [
+                    {
+                        kind: "github",
+                        label: "GitHub",
+                        url: "https://github.com/Kartikpatkar/sf-security-auditor"
+                    },
+                    {
+                        kind: "chrome_web_store",
+                        label: "Chrome Web Store",
+                        url: "https://chromewebstore.google.com/detail/mbanedjmimggapgpcnlhbndmdmehpolj?utm_source=item-share-cb"
+                    }
+                ]
             }
         ]
     },
