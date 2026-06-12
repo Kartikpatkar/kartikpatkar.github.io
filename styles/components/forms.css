@@ -69,3 +69,10 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+.form__hint {
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-align: center;
+}

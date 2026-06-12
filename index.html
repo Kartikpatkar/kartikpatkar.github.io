@@ -49,6 +49,7 @@
     <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
     <link rel="icon" href="assets/icons/favicon.ico" sizes="any" />
     <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="assets/images/kartik-patkar.jpg" as="image" fetchpriority="high" />
 </head>
 
 <body class="app-loading">
@@ -169,7 +170,7 @@
                     <div class="hero__cta">
                         <div class="resume-menu" id="resume-menu">
                             <button class="btn btn--primary resume-menu__trigger" id="resume-trigger" type="button"
-                                aria-haspopup="true" aria-expanded="false" aria-controls="resume-options">
+                                aria-expanded="false" aria-controls="resume-options">
                                 <span id="resume-trigger-label">Download Resume</span>
                                 <span class="resume-menu__caret" aria-hidden="true"></span>
                             </button>
@@ -328,6 +329,7 @@
                                 </svg>
                                 <span>Send Message</span>
                             </button>
+                            <p class="form__hint">Note: This will open your default email application.</p>
                         </form>
                     </div>
 

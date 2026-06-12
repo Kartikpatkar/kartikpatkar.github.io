@@ -118,3 +118,57 @@
   background: rgba(26, 115, 232, 0.10);
   color: var(--accent);
 }
+
+.contact-link--compound {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+}
+
+.contact-link__main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.contact-link__actionBtn {
+  background: var(--border);
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease;
+  flex: 0 0 auto;
+  margin-left: 10px;
+}
+
+.contact-link__actionBtn:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.contact-link__actionBtn--success {
+  background: var(--accent-3) !important;
+  color: white !important;
+  border-color: var(--accent-3) !important;
+}
+
+[data-theme="dark"] .contact-link__actionBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: var(--text);
+}
+
+[data-theme="dark"] .contact-link__actionBtn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}

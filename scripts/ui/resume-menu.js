@@ -54,7 +54,6 @@ const initResumeMenu = ({
     if (item.downloadName) {
       link.setAttribute("download", item.downloadName);
     }
-    link.setAttribute("role", "menuitem");
     link.addEventListener("click", () => {
       setOpen(false);
     });
