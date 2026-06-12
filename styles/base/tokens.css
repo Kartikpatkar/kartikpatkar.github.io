@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light;
   --bg: #f6faff;
   --bg-soft: #edf4ff;
   --surface: rgba(255, 255, 255, 0.92);
@@ -40,6 +41,7 @@
 }
 
 [data-theme="dark"] {
+  color-scheme: dark;
   --bg: #0b1528;
   --bg-soft: #0e1e38;
   --surface: rgba(14, 28, 54, 0.92);
@@ -383,4 +385,9 @@
 
 [data-theme="dark"] .hero__avatarImage[src*="placeholder"] {
   filter: invert(0.9) hue-rotate(180deg) brightness(0.95) contrast(1.05);
+}
+
+/* Smooth transitions for theme toggle */
+body, .card, .nav, .timeline__content, .btn, .theme-toggle, .contact__panel, .social__link, .form__input, .skills__grid, .skill-pill, .timeline::before {
+  transition: background 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
