@@ -520,6 +520,7 @@ window.PORTFOLIO_CONTENT = {
                 title: "SF Security Auditor",
                 category: "salesforce",
                 icon: "SA",
+                iconImage: "https://lh3.googleusercontent.com/e8LstcQhZg2T-NDnP21umU0_CHIcGZYoh9OgOVHGH79-6MLI4oMhH6YQjQ05tG9RcqI2AwZv-J07yX0ieB9I2NBa=s120",
                 badge: "Featured Project",
                 description: "Privacy-first Chrome Extension for auditing Salesforce profiles, permission sets, object access, and security risks with audit-ready Excel report generation.",
                 problemSolved: "Eliminates manual Salesforce security reviews by centralizing profile analysis, permission auditing, object access reviews, and compliance reporting in a single workspace.",
@@ -544,6 +545,35 @@ window.PORTFOLIO_CONTENT = {
                         kind: "chrome_web_store",
                         label: "Chrome Web Store",
                         url: "https://chromewebstore.google.com/detail/mbanedjmimggapgpcnlhbndmdmehpolj?utm_source=item-share-cb"
+                    }
+                ]
+            }, {
+                title: "SF Vault+",
+                category: "salesforce",
+                icon: "SV",
+                iconImage: "https://lh3.googleusercontent.com/7C7vRTKDTT-pekK7BgnpEFiOEKzQbWSjCBv_wgxO92P1FyAfd8qREY3eqCt_BnXDbnP6mbY4CBcd4TD8EqrUm0lKEfM=s120",
+                badge: "Featured Project",
+                description: "Offline-first Chrome Extension for organizing, managing, and launching Salesforce credentials across Production, Sandbox, Developer, Scratch, and custom domain environments.",
+                problemSolved: "Eliminates scattered spreadsheets, notes, bookmarks, and generic password managers by providing a Salesforce-focused workspace for managing multiple org credentials and environments.",
+                impact: "Helps Salesforce developers, admins, consultants, architects, QA engineers, and support teams quickly access, organize, search, and launch Salesforce orgs while improving productivity and reducing login management overhead.",
+                technologies: [
+                    "JavaScript",
+                    "Chrome Extension",
+                    "Manifest V3",
+                    "Salesforce",
+                    "Chrome Storage API",
+                    "Offline-First"
+                ],
+                links: [
+                    {
+                        kind: "github",
+                        label: "GitHub",
+                        url: "https://github.com/Kartikpatkar/sf-vault-plus"
+                    },
+                    {
+                        kind: "chrome_web_store",
+                        label: "Chrome Web Store",
+                        url: "https://chromewebstore.google.com/detail/jpdnbaplnomajdlomcmbpfklcolgbljo?utm_source=item-share-cb"
                     }
                 ]
             }
