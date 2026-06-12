@@ -1,281 +1,499 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kartik Patkar - Salesforce Consultant & Senior Developer</title>
-
+    <!-- Modern Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --primary: #16324f;
+            --accent: #1a73e8; /* Salesforce Blue */
+            --accent-light: #edf4ff;
+            --text: #2d3748;
+            --text-light: #5a6f86;
+            --border: #e2e8f0;
+            --font: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
         @page {
             size: A4;
             margin: 0;
         }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: #1a202c;
-            line-height: 1.28;
-            font-size: 9pt;
-            margin: 0.35in;
+        * {
+            box-sizing: border-box;
+            margin: 0;
             padding: 0;
         }
 
-        h1 {
-            font-size: 17pt;
-            margin: 0;
+        body {
+            font-family: var(--font);
+            color: var(--text);
+            line-height: 1.35;
+            font-size: 8.5pt;
+            background-color: #f3f4f6;
+            padding: 2.5rem 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .resume {
+            width: 210mm;
+            min-height: 297mm;
+            background: #ffffff;
+            padding: 0.5in;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        /* Header */
+        .header {
             text-align: center;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+        }
+
+        .header h1 {
+            font-size: 20pt;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
             text-transform: uppercase;
-            letter-spacing: .5px;
         }
 
-        .subtitle {
-            font-size: 11pt;
-            text-align: center;
-            margin: 2px 0 4px;
-            color: #2b6cb0;
-            font-weight: bold;
+        .header .subtitle {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: var(--accent);
+            margin-top: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .contact {
-            text-align: center;
-            font-size: 8.4pt;
-            line-height: 1.4;
-            color: #4a5568;
-            margin-bottom: 6px;
+        .contact-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+            font-size: 8pt;
+            color: var(--text-light);
+            font-weight: 500;
         }
 
-        .contact a {
-            color: #2b6cb0;
+        .contact-bar a {
+            color: var(--text);
             text-decoration: none;
+            transition: color 120ms ease;
         }
 
-        hr {
-            border: 0;
-            border-top: 1px solid #cbd5e0;
-            margin: 5px 0;
+        .contact-bar a:hover {
+            color: var(--accent);
+        }
+
+        /* Two Column Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: 2.3fr 4.7fr;
+            gap: 0.35in;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            border-right: 1px solid var(--border);
+            padding-right: 16px;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Common section styling */
+        section {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
         h2 {
             font-size: 9.5pt;
+            font-weight: 800;
+            color: var(--primary);
             text-transform: uppercase;
-            margin: 6px 0 3px;
-            border-bottom: 1px dashed #e2e8f0;
-            padding-bottom: 2px;
-            letter-spacing: .4px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 3px;
+            margin-bottom: 2px;
         }
 
-        .summary {
-            text-align: justify;
-            font-size: 8.8pt;
-            margin: 0;
-        }
-
+        /* Highlights */
         .highlights {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2px 14px;
-            font-size: 8.8pt;
+            grid-template-columns: 1fr;
+            gap: 4px;
+            font-size: 8pt;
         }
 
+        .highlight-item {
+            background-color: var(--accent-light);
+            border-left: 3px solid var(--accent);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Skills groups */
+        .skill-group {
+            margin-bottom: 4px;
+        }
+
+        .skill-group strong {
+            display: block;
+            font-size: 8.5pt;
+            color: var(--primary);
+            margin-bottom: 1px;
+            font-weight: 700;
+        }
+
+        .skill-group p {
+            font-size: 8pt;
+            color: var(--text-light);
+            line-height: 1.3;
+        }
+
+        /* Certifications formatting */
+        .cert-list {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            font-size: 8pt;
+            font-weight: 500;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 4px;
+        }
+
+        .cert-item::before {
+            content: "☁️";
+            font-size: 8pt;
+        }
+
+        /* Jobs */
         .job {
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         .job-header {
             display: flex;
             justify-content: space-between;
-            font-weight: bold;
-            margin-bottom: 1px;
+            font-weight: 700;
+            font-size: 9pt;
+            color: var(--primary);
         }
 
         .job-sub {
             display: flex;
             justify-content: space-between;
             font-style: italic;
-            color: #4a5568;
-            font-size: 8.5pt;
-            margin-bottom: 2px;
+            color: var(--accent);
+            font-size: 8pt;
+            margin-bottom: 3px;
+            font-weight: 600;
         }
 
+        /* Lists formatting */
         ul {
-            margin: 0;
-            padding-left: 18px;
+            padding-left: 12px;
+            list-style-type: none;
         }
 
         li {
-            margin-bottom: 2px;
+            position: relative;
+            margin-bottom: 3px;
+            text-align: justify;
+            font-size: 8.2pt;
         }
 
-        .skills p {
-            margin: 2px 0;
-            font-size: 8.8pt;
+        li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: -12px;
         }
 
-        .education {
-            font-size: 8.8pt;
+        /* Summary */
+        .summary {
+            text-align: justify;
+            font-size: 8.5pt;
+            line-height: 1.4;
+        }
+
+        /* Achievements */
+        .achievements-list li {
+            font-size: 8.2pt;
+        }
+
+        .achievements-list strong {
+            color: var(--primary);
+        }
+
+        /* Education */
+        .education-item {
+            font-size: 8.2pt;
+        }
+
+        .education-item strong {
+            color: var(--primary);
+        }
+
+        /* Floating Action Bar */
+        .action-bar {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(22, 50, 79, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 8px 16px;
+            border-radius: 100px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .action-btn {
+            background: var(--accent);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-family: var(--font);
+            font-size: 9pt;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 150ms ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .action-btn:hover {
+            background: #1565c0;
+        }
+
+        .action-btn--secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #edf4ff;
+        }
+
+        .action-btn--secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Print layouts */
+        @media print {
+            body {
+                background: #ffffff;
+                padding: 0;
+            }
+
+            .resume {
+                box-shadow: none;
+                padding: 0.3in 0.4in;
+                border-radius: 0;
+                width: 100%;
+                min-height: auto;
+            }
+
+            .sidebar {
+                padding-right: 12px;
+            }
+
+            .action-bar {
+                display: none;
+            }
         }
     </style>
 </head>
-
 <body>
 
-    <h1>KARTIK PATKAR</h1>
-    <div class="subtitle">Salesforce Consultant | Senior Salesforce Developer</div>
+    <div class="resume">
+        <!-- Header -->
+        <header class="header">
+            <h1>KARTIK PATKAR</h1>
+            <div class="subtitle">Salesforce Consultant & Senior Developer</div>
+            <div class="contact-bar">
+                <span>Bengaluru, Karnataka, India</span>
+                <span>&bull;</span>
+                <a href="mailto:kartikkp.assets@gmail.com">kartikkp.assets@gmail.com</a>
+                <span>&bull;</span>
+                <a href="https://www.linkedin.com/in/kartik-patkar/" target="_blank">linkedin.com/in/kartik-patkar</a>
+                <span>&bull;</span>
+                <a href="https://github.com/Kartikpatkar" target="_blank">github.com/Kartikpatkar</a>
+                <span>&bull;</span>
+                <a href="https://www.salesforce.com/trailblazer/kpatkar1" target="_blank">Trailblazer</a>
+            </div>
+        </header>
 
-    <div class="contact">
-        Bengaluru, Karnataka, India<br>
-        <a href="mailto:kartikkp.assets@gmail.com">kartikkp.assets@gmail.com</a>
-        &bull;
-        <a href="https://www.linkedin.com/in/kartik-patkar/">linkedin.com/in/kartik-patkar</a>
-        &bull;
-        <a href="https://github.com/Kartikpatkar">github.com/Kartikpatkar</a>
-        &bull;
-        <a href="https://www.salesforce.com/trailblazer/kpatkar1">Trailblazer Profile</a>
-    </div>
+        <div class="grid">
+            <!-- Sidebar Column -->
+            <aside class="sidebar">
+                <!-- Certifications -->
+                <section>
+                    <h2>Certifications</h2>
+                    <div class="cert-list">
+                        <div class="cert-item">Application Architect</div>
+                        <div class="cert-item">Sharing & Visibility Architect</div>
+                        <div class="cert-item">Data Architect</div>
+                        <div class="cert-item">Platform Developer I</div>
+                        <div class="cert-item">Data Cloud Consultant</div>
+                        <div class="cert-item">Platform App Builder</div>
+                        <div class="cert-item">JavaScript Developer I</div>
+                        <div class="cert-item">Administrator</div>
+                        <div class="cert-item">Agentforce Specialist</div>
+                        <div class="cert-item">Platform Foundations</div>
+                    </div>
+                </section>
 
-    <hr>
+                <!-- Technical Skills -->
+                <section>
+                    <h2>Technical Skills</h2>
+                    <div class="skill-group">
+                        <strong>Salesforce Platform</strong>
+                        <p>Apex, LWC, Aura, Flow, SOQL, SOSL, SFDX, Tooling API, Metadata API</p>
+                    </div>
+                    <div class="skill-group">
+                        <strong>Architecture</strong>
+                        <p>Solution Design, Integration Patterns, Data Modeling, Security & Sharing</p>
+                    </div>
+                    <div class="skill-group">
+                        <strong>Clouds</strong>
+                        <p>Sales, Service, Experience, Field Service (FSL), Consumer Goods, Data Cloud</p>
+                    </div>
+                    <div class="skill-group">
+                        <strong>Web & Tools</strong>
+                        <p>JavaScript, HTML, CSS, Git, VS Code, Postman, Chrome Extensions</p>
+                    </div>
+                </section>
 
-    <h2>Professional Summary</h2>
+                <!-- Education -->
+                <section>
+                    <h2>Education</h2>
+                    <div class="education-item">
+                        <strong>B.E. Computer Engineering</strong>
+                        <p style="font-size: 8pt; color: var(--text-light); margin-top: 1px;">Don Bosco College of Engineering</p>
+                        <p style="font-size: 7.5pt; color: var(--text-light);">Goa | 2016 – 2020</p>
+                    </div>
+                </section>
+            </aside>
 
-    <p class="summary">
-        <strong>10x Salesforce Certified Consultant and Senior Developer</strong> with
-        <strong>5.5+ years of experience</strong> delivering enterprise CRM, Field Service,
-        and digital transformation solutions. Delivered
-        <strong>13 Salesforce implementations across 7 industries and 6 Salesforce Clouds</strong>,
-        specializing in solution architecture, Apex development, Lightning Web Components,
-        integrations, automation, and Field Service implementations. Recognized for technical
-        leadership, scalable solution design, and building
-        <strong>9+ Salesforce-focused developer productivity products</strong>.
-    </p>
+            <!-- Main Content Column -->
+            <main class="main-content">
+                <!-- Summary -->
+                <section>
+                    <h2>Professional Summary</h2>
+                    <p class="summary">
+                        <strong>10x Salesforce Certified Consultant and Senior Developer</strong> with <strong>5.5+ years of experience</strong> delivering enterprise CRM, Field Service, and digital transformation solutions. Delivered <strong>13 Salesforce implementations across 7 industries and 6 Salesforce Clouds</strong>, specializing in solution architecture, Apex development, Lightning Web Components, integrations, automation, and Field Service implementations. Recognized for technical leadership, scalable solution design, and building <strong>9+ Salesforce-focused developer productivity products</strong>.
+                    </p>
+                </section>
 
-    <hr>
+                <!-- Key Highlights -->
+                <section>
+                    <h2>Key Highlights</h2>
+                    <div class="highlights">
+                        <div class="highlight-item">• 13 Salesforce Implementations</div>
+                        <div class="highlight-item">• 7 Industries Served</div>
+                        <div class="highlight-item">• 6 Salesforce Clouds Implemented</div>
+                        <div class="highlight-item">• 10 Lead-to-Order Systems Built</div>
+                        <div class="highlight-item">• 9+ Developer Productivity Products</div>
+                        <div class="highlight-item">• 198 Trailhead Badges (Ranger Rank)</div>
+                    </div>
+                </section>
 
-    <h2>Key Highlights</h2>
+                <!-- Experience -->
+                <section>
+                    <h2>Professional Experience</h2>
+                    
+                    <div class="job">
+                        <div class="job-header">
+                            <span>Appstrail Technology</span>
+                            <span>Bengaluru, India</span>
+                        </div>
+                        <div class="job-sub">
+                            <span>Consultant</span>
+                            <span>Jan 2023 – Present</span>
+                        </div>
+                        <ul>
+                            <li>Delivered Salesforce consulting engagements across utilities, financial services, FMCG, manufacturing, EV, public sector, and service industries.</li>
+                            <li>Led technical delivery for Salesforce implementations involving Service Cloud, Field Service, Experience Cloud, Consumer Goods Cloud, and Data Cloud solutions.</li>
+                            <li>Designed scalable architecture, integrations, and automation frameworks using Apex, LWC, REST APIs, and metadata-driven development patterns.</li>
+                            <li>Managed module-level ownership, code reviews, sprint execution, stakeholder communication, and production releases across consulting engagements.</li>
+                        </ul>
+                    </div>
 
-    <div class="highlights">
-        <div>• 13 Salesforce Implementations</div>
-        <div>• 7 Industries Served</div>
-        <div>• 6 Salesforce Clouds</div>
-        <div>• 10 Lead-to-Order Systems</div>
-        <div>• 10 Salesforce Certifications</div>
-        <div>• Application Architect Certified</div>
-        <div>• 9+ Open Source Products</div>
-        <div>• 198 Trailhead Badges</div>
-    </div>
+                    <div class="job">
+                        <div class="job-header">
+                            <span>Appstrail Technology</span>
+                            <span>Bengaluru, India</span>
+                        </div>
+                        <div class="job-sub">
+                            <span>Associate Consultant</span>
+                            <span>Oct 2020 – Dec 2022</span>
+                        </div>
+                        <ul>
+                            <li>Developed Lightning Web Components, Apex services, Flow automations, and integrations supporting enterprise CRM implementations.</li>
+                            <li>Implemented API-driven integrations connecting Salesforce with external systems using REST APIs and platform events.</li>
+                            <li>Supported end-to-end implementation lifecycle including requirements analysis, development, testing, deployment, and production support.</li>
+                            <li>Contributed to multiple Lead-to-Order implementations and automation initiatives improving business process efficiency.</li>
+                        </ul>
+                    </div>
+                </section>
 
-    <hr>
-
-    <h2>Technical Skills</h2>
-
-    <div class="skills">
-        <p><strong>Salesforce:</strong> Apex, Lightning Web Components (LWC), Aura, Flow, SOQL, SOSL, SFDX, Tooling API,
-            Metadata API</p>
-
-        <p><strong>Architecture:</strong> Solution Design, Application Architecture, Integration Patterns, Data
-            Modeling, Security & Sharing</p>
-
-        <p><strong>Clouds:</strong> Sales Cloud, Service Cloud, Experience Cloud, Field Service (FSL), Consumer Goods
-            Cloud, Data Cloud</p>
-
-        <p><strong>Tools:</strong> JavaScript, HTML, CSS, Git, VS Code, Postman, Jira, Chrome Extension Development</p>
-    </div>
-
-    <hr>
-
-    <h2>Professional Experience</h2>
-
-    <div class="job">
-        <div class="job-header">
-            <span>Appstrail Technology</span>
-            <span>Bengaluru, India</span>
+                <!-- Achievements -->
+                <section>
+                    <h2>Achievements</h2>
+                    <ul class="achievements-list">
+                        <li><strong>Appstrail Excellence Award 2025</strong> – Outstanding contribution and delivery excellence.</li>
+                        <li><strong>Salesforce India Partner Ideathon Winner (2022)</strong> – Recognized for platform innovation.</li>
+                        <li><strong>Employee of the Quarter</strong> – Awarded for exceptional delivery performance.</li>
+                        <li><strong>Foundation Day Team Award (2022 & 2024)</strong> – Received for delivery excellence and innovation.</li>
+                        <li><strong>Product Builder</strong> – Designed and published 9+ Salesforce productivity tools including Apex Genie, FieldForge, Package XML Generator, Metadata Exporter, and other developer utilities.</li>
+                    </ul>
+                </section>
+            </main>
         </div>
-
-        <div class="job-sub">
-            <span>Consultant</span>
-            <span>Jan 2023 – Present</span>
-        </div>
-
-        <ul>
-            <li>Delivered Salesforce consulting engagements across utilities, financial services, FMCG, manufacturing,
-                EV, public sector, and service industries.</li>
-
-            <li>Led technical delivery for Salesforce implementations involving Service Cloud, Field Service, Experience
-                Cloud, Consumer Goods Cloud, and Data Cloud solutions.</li>
-
-            <li>Designed scalable architecture, integrations, and automation frameworks using Apex, LWC, REST APIs, and
-                metadata-driven development patterns.</li>
-
-            <li>Managed module-level ownership, code reviews, sprint execution, stakeholder communication, and
-                production releases across consulting engagements.</li>
-        </ul>
     </div>
 
-    <div class="job">
-        <div class="job-header">
-            <span>Appstrail Technology</span>
-            <span>Bengaluru, India</span>
-        </div>
-
-        <div class="job-sub">
-            <span>Associate Consultant</span>
-            <span>Oct 2020 – Dec 2022</span>
-        </div>
-
-        <ul>
-            <li>Developed Lightning Web Components, Apex services, Flow automations, and integrations supporting
-                enterprise CRM implementations.</li>
-
-            <li>Implemented API-driven integrations connecting Salesforce with external systems using REST APIs and
-                platform events.</li>
-
-            <li>Supported end-to-end implementation lifecycle including requirements analysis, development, testing,
-                deployment, and production support.</li>
-
-            <li>Contributed to multiple Lead-to-Order implementations and automation initiatives improving business
-                process efficiency.</li>
-        </ul>
-    </div>
-
-    <hr>
-
-    <h2>Achievements</h2>
-
-    <ul>
-        <li><strong>Appstrail Excellence Award 2025</strong> – Outstanding contribution and delivery excellence.</li>
-
-        <li><strong>Salesforce India Partner Ideathon Winner (2022)</strong> – Recognized for platform innovation.</li>
-
-        <li><strong>Employee of the Quarter</strong> – Awarded for exceptional delivery performance.</li>
-
-        <li><strong>Foundation Day Team Award</strong> – Received in 2022 and 2024 for delivery excellence and
-            innovation.</li>
-
-        <li><strong>Product Builder</strong> – Designed and published 9+ Salesforce and developer productivity tools
-            including Apex Genie, FieldForge, Package XML Generator, Metadata Exporter, and other Chrome-based developer
-            utilities.</li>
-    </ul>
-
-    <hr>
-
-    <h2>Certifications</h2>
-
-    <p style="font-size:8.7pt; margin:0;">
-        Salesforce Certified Application Architect • Sharing & Visibility Architect • Data Architect • Platform
-        Developer I • Data
-        Cloud Consultant • Platform App Builder • JavaScript Developer I • Administrator • Agentforce Specialist •
-        Platform Foundations
-    </p>
-
-    <hr>
-
-    <h2>Education</h2>
-
-    <div class="education">
-        <strong>Bachelor of Engineering (Computer Engineering)</strong><br>
-        Don Bosco College of Engineering, Goa | 2016 – 2020
+    <!-- Floating Action Bar -->
+    <div class="action-bar">
+        <button class="action-btn" onclick="window.print()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            Print Resume / Save PDF
+        </button>
+        <a class="action-btn action-btn--secondary" href="../index.html">
+            Back to Portfolio
+        </a>
     </div>
 
 </body>
-
 </html>
