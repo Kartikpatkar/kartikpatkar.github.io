@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased] - 2026-06-12
 
 ### Added
+- **Structured Data (JSON-LD)**: Added Schema.org Person metadata structure to `index.html` to improve search engine display and rich result rendering.
+- **Robots Sitemap Pointer**: Referenced `sitemap.xml` directly in `robots.txt` for efficient crawling access by search engine spiders.
 - **Experience Year Auto-Calculation**: Dynamically calculates years and months of experience at runtime based on the start date of the oldest job in the portfolio data (October 2020), resolving stale values in the Hero badge and About snapshot.
 - **Copy Email Fallback**: Added a compound row layout for the Email contact card containing a clipboard copy button, supporting users who do not have a configured local mail client.
 - **Visual Contact Hint**: Added descriptive text below the Contact Form button clarifying that submission launches the default email application.
