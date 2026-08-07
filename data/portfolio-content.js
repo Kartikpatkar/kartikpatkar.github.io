@@ -22,7 +22,7 @@ window.PORTFOLIO_CONTENT = {
                 path: "assets/Kartik-Patkar-Resume.pdf"
             }
         ],
-        profileImage: "assets/images/kartik-patkar.jpg",
+        profileImage: "assets/images/kartik-patkar.png",
         profileImageAlt: "Kartik Patkar, Salesforce Consultant and Senior Developer",
         availability: "Open to opportunities"
     },
