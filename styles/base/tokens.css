@@ -9,8 +9,8 @@
   --border-strong: rgba(26, 115, 232, 0.22);
 
   --text: #16324f;
-  --muted: #5a6f86;
-  --faint: #7c90a8;
+  --muted: #405266;
+  --faint: #52667d;
 
   --accent: #1a73e8;
   --accent-2: #00a1e0;
@@ -51,10 +51,10 @@
   --border-strong: rgba(26, 115, 232, 0.35);
 
   --text: #e1ecfa;
-  --muted: #8ca3be;
-  --faint: #6c84a0;
+  --muted: #a3b8d0;
+  --faint: #849ebd;
 
-  --accent: #3b82f6;
+  --accent: #60a5fa;
   --accent-2: #00b4ff;
 
   --shadow: 0 20px 50px rgba(0, 0, 0, 0.40);

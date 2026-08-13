@@ -88,6 +88,12 @@ const renderDirectLinks = (site) => {
     }
     footerLinks.append(link);
   });
+
+  const privacyLink = createEl("a", "link", "Privacy Policy");
+  privacyLink.href = "privacy.html";
+  const termsLink = createEl("a", "link", "Terms of Service");
+  termsLink.href = "terms.html";
+  footerLinks.append(privacyLink, termsLink);
 };
 
 window.PortfolioApp.sections.renderDirectLinks = renderDirectLinks;
