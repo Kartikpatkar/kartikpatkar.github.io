@@ -1,0 +1,5 @@
+# Responsible security disclosure guidelines for Kartik Patkar's portfolio site.
+Contact: mailto:kartikkp.assets@gmail.com
+Expires: 2027-08-13T15:25:00.000Z
+Preferred-Languages: en
+Canonical: https://kartikpatkar.github.io/.well-known/security.txt

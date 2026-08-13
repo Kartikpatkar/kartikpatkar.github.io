@@ -16,12 +16,24 @@ const initBackToTop = ({ buttonSelector, thresholdSelector }) => {
   const thresholdElement = document.querySelector(thresholdSelector);
   if (!backToTopButton || !thresholdElement) return;
 
+  let threshold = 0;
+
+  const recalculateThreshold = () => {
+    threshold = thresholdElement.offsetTop + thresholdElement.offsetHeight - getNavHeightPx();
+  };
+
   const updateBackToTopVisibility = () => {
-    const threshold = thresholdElement.offsetTop + thresholdElement.offsetHeight - getNavHeightPx();
     backToTopButton.hidden = window.scrollY < threshold;
   };
 
+  recalculateThreshold();
   updateBackToTopVisibility();
+
+  window.addEventListener("resize", () => {
+    recalculateThreshold();
+    updateBackToTopVisibility();
+  }, { passive: true });
+
   window.addEventListener("scroll", updateBackToTopVisibility, { passive: true });
 
   backToTopButton.addEventListener("click", () => {

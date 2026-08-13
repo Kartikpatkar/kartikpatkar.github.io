@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <script>
+        (() => {
+            const savedTheme = localStorage.getItem("theme");
+            const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            const theme = savedTheme || (systemPrefersDark ? "dark" : "light");
+            if (theme === "dark") {
+                document.documentElement.setAttribute("data-theme", "dark");
+            }
+        })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self';" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="author" content="Kartik Patkar" />
+    <meta name="description" content="Privacy Policy for Kartik Patkar's portfolio site." />
+    <meta name="robots" content="noindex, follow" />
+    <title>Privacy Policy | Kartik Patkar</title>
+    <link rel="canonical" href="https://kartikpatkar.github.io/privacy.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/main.css?v=20260402c" />
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="any" />
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+    <style>
+        .policy-content {
+            margin-top: 100px;
+            margin-bottom: 60px;
+            max-width: 800px;
+            padding: 40px;
+            border-radius: var(--radius);
+            background: var(--surface-2);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border);
+        }
+        .policy-content h1 {
+            font-size: 2.2rem;
+            margin-bottom: var(--space-4);
+            color: var(--text);
+            font-weight: 800;
+        }
+        .policy-content h2 {
+            font-size: 1.5rem;
+            margin-top: var(--space-6);
+            margin-bottom: var(--space-3);
+            color: var(--text);
+            font-weight: 700;
+        }
+        .policy-content p {
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: var(--space-4);
+            font-size: 1rem;
+        }
+        .policy-content ul {
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: var(--space-4);
+            padding-left: var(--space-5);
+            list-style-type: disc;
+        }
+        .policy-content li {
+            margin-bottom: var(--space-2);
+        }
+        .policy-content a {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        .policy-content .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: var(--space-5);
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        [data-theme="dark"] .policy-content {
+            background: linear-gradient(180deg, rgba(15, 36, 68, 0.96), rgba(11, 21, 40, 0.96));
+            border-color: rgba(26, 115, 232, 0.20);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="nav">
+        <div class="container nav__inner">
+            <a class="nav__brand" href="index.html">
+                <span class="nav__brandMark">KP</span>
+                <span class="nav__brandText">Kartik Patkar</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="policy-content">
+            <a href="index.html" class="back-btn">← Back to Portfolio</a>
+            <h1>Privacy Policy</h1>
+            <p>Last updated: August 13, 2026</p>
+            <p>This privacy policy outlines how personal information is collected, used, and safeguarded when visiting the portfolio website of Kartik Patkar (https://kartikpatkar.github.io).</p>
+            
+            <h2>1. Information Collection</h2>
+            <p>This portfolio is a static website hosted via GitHub Pages. It does not actively track, capture, or store personal identifiable information, nor does it require user registration.</p>
+            <p>However, when utilizing the "Contact Form", standard email submission fields (Name, Email, and Message) are supplied. This form is processed through a standard email client workflow and is only transmitted when you explicitly send the email via your default mail client application. No data is stored in intermediate database servers by this site.</p>
+            
+            <h2>2. Cookies and Tracking</h2>
+            <p>This site does not set tracking cookies or implement third-party analytics (like Google Analytics) to record individual user actions.</p>
+            
+            <h2>3. Third-Party Hosting</h2>
+            <p>Hosting is provided by GitHub Inc. GitHub may collect server logs which include visitor IP addresses and basic browser metadata to secure and optimize web deliveries. For more details, consult the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noreferrer">GitHub Privacy Statement</a>.</p>
+
+            <h2>4. Security</h2>
+            <p>Standard HTTPS encryption is used for all asset transmissions. While reasonable security precautions are implemented, no transmission method over the internet is completely infallible.</p>
+
+            <h2>5. Contact</h2>
+            <p>For questions or requests concerning this privacy policy, reach out via email: <a href="mailto:kartikkp.assets@gmail.com">kartikkp.assets@gmail.com</a>.</p>
+        </article>
+    </main>
+</body>
+
+</html>
