@@ -67,8 +67,25 @@
           nextStep: 2
         },
         {
-          text: "Let's inspect the real business metrics and operational outcomes!",
-          button: "Fly to Impact 📈",
+          text: "Check out his 10x Salesforce certifications and credentials!",
+          button: "View Certifications 🎓",
+          animation: "proud",
+          targetSection: "certifications"
+        }
+      ]
+    },
+    certifications: {
+      dock: "bottom-left",
+      steps: [
+        {
+          text: "10x Certified! Application Architect, Dev I, Sharing & Visibility Architect. 🎓",
+          button: "Passed on 1st try? ☁️",
+          animation: "proud",
+          nextStep: 1
+        },
+        {
+          text: "Every single exam cleared on the first attempt with deep architectural mastery.",
+          button: "Inspect Impact 📈",
           animation: "celebrate",
           targetSection: "impact"
         }
@@ -272,6 +289,12 @@
       }, 130);
     };
 
+    const badgeText = document.getElementById("avatar-badge-text");
+
+    // Local hour check for night owl mode (10 PM to 5 AM)
+    const currentHour = new Date().getHours();
+    const isNightOwl = currentHour >= 22 || currentHour < 5;
+
     const renderStep = (sectionId, stepIdx) => {
       const sectionData = SECTION_STORIES[sectionId];
       if (!sectionData) return;
@@ -279,6 +302,17 @@
       activeSectionId = sectionId;
       stepIndex = stepIdx;
       const currentStep = sectionData.steps[stepIndex] || sectionData.steps[0];
+
+      // Update badge text if present
+      if (badgeText) {
+        if (isNightOwl) {
+          badgeText.textContent = "Night Shift 🦉";
+        } else if (sectionId === "certifications") {
+          badgeText.textContent = "10x Certified ☁️";
+        } else {
+          badgeText.textContent = "Kartik's Companion";
+        }
+      }
 
       // Update position dock
       updateDockPosition(sectionData.dock);
@@ -302,6 +336,70 @@
 
       playAnim(currentStep.animation, 3000);
     };
+
+    // ------------------------------------------------------------------------
+    // Feature 1: Cursor Eye & 3D Gaze Tracking with 5s Idle Drift
+    // ------------------------------------------------------------------------
+    let pointerRaf = null;
+    let idleTimer = null;
+
+    const resetIdleTimer = () => {
+      if (idleTimer) clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => {
+        // Idle for 5 seconds without cursor motion
+        const bsAvatar = stage.querySelector(".bs-avatar");
+        if (bsAvatar && !prefersReducedMotion) {
+          bsAvatar.style.transition = "transform 0.75s cubic-bezier(0.16, 1, 0.3, 1)";
+          bsAvatar.style.transform = "perspective(380px) rotateY(0deg) rotateX(0deg) translate3d(0, 0, 0)";
+          setTimeout(() => {
+            if (bsAvatar) bsAvatar.style.transition = "";
+          }, 750);
+        }
+
+        // Trigger gentle idle drift mood
+        if (!isBubbleClosed) {
+          if (isNightOwl) {
+            playAnim("drowsy", 3200);
+          } else {
+            const idleMoods = ["curious", "thinking", "listening"];
+            const pick = idleMoods[Math.floor(Math.random() * idleMoods.length)];
+            playAnim(pick, 3000);
+          }
+        }
+      }, 5000);
+    };
+
+    const onPointerMove = (e) => {
+      if (prefersReducedMotion) return;
+      resetIdleTimer();
+
+      if (pointerRaf) return;
+      pointerRaf = requestAnimationFrame(() => {
+        pointerRaf = null;
+        const charRect = characterBtn?.getBoundingClientRect();
+        if (!charRect) return;
+
+        const charCenterX = charRect.left + charRect.width / 2;
+        const charCenterY = charRect.top + charRect.height / 2;
+
+        const deltaX = (e.clientX - charCenterX) / (window.innerWidth / 2);
+        const deltaY = (e.clientY - charCenterY) / (window.innerHeight / 2);
+
+        // Clamp rotation angles for cute, natural look
+        const rotY = Math.max(-22, Math.min(22, deltaX * 20));
+        const rotX = Math.max(-18, Math.min(18, -deltaY * 16));
+        const transX = Math.max(-6, Math.min(6, deltaX * 5));
+        const transY = Math.max(-5, Math.min(5, deltaY * 4));
+
+        const bsAvatar = stage.querySelector(".bs-avatar");
+        if (bsAvatar) {
+          bsAvatar.style.transform = `perspective(380px) rotateY(${rotY.toFixed(1)}deg) rotateX(${rotX.toFixed(1)}deg) translate3d(${transX.toFixed(1)}px, ${transY.toFixed(1)}px, 0)`;
+        }
+      });
+    };
+
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    resetIdleTimer();
 
     // Action button clicks progress dialogue or navigate
     if (actionBtn) {
@@ -362,7 +460,7 @@
     }
 
     // IntersectionObserver watches sections as visitor scrolls
-    const sections = document.querySelectorAll("main section[id], #skills");
+    const sections = document.querySelectorAll("main section[id], #skills, #certifications");
     if ("IntersectionObserver" in window && sections.length) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -378,10 +476,45 @@
       sections.forEach(s => observer.observe(s));
     }
 
-    // Start tour on load
+    // ------------------------------------------------------------------------
+    // Feature 2: Wake-Up Intro Sequence (sleeping -> waking -> excited)
+    // ------------------------------------------------------------------------
+    const startIntroSequence = () => {
+      if (prefersReducedMotion) {
+        renderStep("home", 0);
+        return;
+      }
+
+      // Beat 1: Sleeping
+      playAnim("sleeping", 0);
+      if (bubbleText) bubbleText.textContent = "Zzz... 💤";
+      if (actionLabel) actionLabel.textContent = "Wake up ✨";
+      if (badgeText) badgeText.textContent = isNightOwl ? "Night Shift 🦉" : "Resting 💤";
+      if (bubble) bubble.hidden = false;
+
+      // Beat 2: Yawn & wake up
+      setTimeout(() => {
+        if (isBubbleClosed) return;
+        playAnim("waking", 1400);
+        if (bubbleText) {
+          bubbleText.textContent = isNightOwl
+            ? "Yawn... Still coding late? Me too! 🌙"
+            : "Yawn... Oh, hey there! 👋";
+        }
+        if (badgeText) badgeText.textContent = isNightOwl ? "Night Shift 🦉" : "Waking Up ☕";
+
+        // Beat 3: Excited & ready for tour
+        setTimeout(() => {
+          if (isBubbleClosed) return;
+          playAnim("excited", 2400);
+          renderStep("home", 0);
+        }, 1200);
+      }, 950);
+    };
+
     setTimeout(() => {
-      renderStep("home", 0);
-    }, 700);
+      startIntroSequence();
+    }, 450);
 
     return avatar;
   };
