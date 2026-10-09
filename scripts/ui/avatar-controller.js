@@ -338,22 +338,41 @@
     };
 
     // ------------------------------------------------------------------------
-    // Feature 1: Cursor Eye & 3D Gaze Tracking with 5s Idle Drift
+    // Feature 1: Cursor Eye & Gaze Tracking with 5s Idle Drift
     // ------------------------------------------------------------------------
     let pointerRaf = null;
     let idleTimer = null;
+    let cachedEyeGroup = null;
+
+    const getEyeGroup = () => {
+      if (!cachedEyeGroup || !cachedEyeGroup.isConnected) {
+        cachedEyeGroup = stage.querySelector("svg g[clip-path]");
+      }
+      return cachedEyeGroup;
+    };
 
     const resetIdleTimer = () => {
       if (idleTimer) clearTimeout(idleTimer);
       idleTimer = setTimeout(() => {
-        // Idle for 5 seconds without cursor motion
+        // Return eyes to center smoothly
+        const eyeGroup = getEyeGroup();
+        if (eyeGroup && !prefersReducedMotion) {
+          eyeGroup.style.transition = "transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)";
+          eyeGroup.setAttribute("transform", "translate(0, 0)");
+          eyeGroup.style.transform = "translate(0px, 0px)";
+          setTimeout(() => {
+            if (eyeGroup) eyeGroup.style.transition = "";
+          }, 650);
+        }
+
+        // Return head tilt to center
         const bsAvatar = stage.querySelector(".bs-avatar");
         if (bsAvatar && !prefersReducedMotion) {
-          bsAvatar.style.transition = "transform 0.75s cubic-bezier(0.16, 1, 0.3, 1)";
-          bsAvatar.style.transform = "perspective(380px) rotateY(0deg) rotateX(0deg) translate3d(0, 0, 0)";
+          bsAvatar.style.transition = "transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)";
+          bsAvatar.style.transform = "perspective(380px) rotateY(0deg) rotateX(0deg)";
           setTimeout(() => {
             if (bsAvatar) bsAvatar.style.transition = "";
-          }, 750);
+          }, 650);
         }
 
         // Trigger gentle idle drift mood
@@ -382,18 +401,35 @@
         const charCenterX = charRect.left + charRect.width / 2;
         const charCenterY = charRect.top + charRect.height / 2;
 
+        const dx = e.clientX - charCenterX;
+        const dy = e.clientY - charCenterY;
+        const dist = Math.hypot(dx, dy) || 1;
+
+        // Eye gaze displacement inside SVG viewBox (-150 -150 300 300)
+        // Max horizontal shift: 22 units, max vertical: 16 units
+        const gazeStrength = Math.min(1, dist / 220);
+        const maxEyeX = 22;
+        const maxEyeY = 16;
+        const eyeX = (dx / dist) * maxEyeX * gazeStrength;
+        const eyeY = (dy / dist) * maxEyeY * gazeStrength;
+
+        // Apply translation directly to SVG eye group
+        const eyeGroup = getEyeGroup();
+        if (eyeGroup) {
+          eyeGroup.style.transition = "";
+          eyeGroup.setAttribute("transform", `translate(${eyeX.toFixed(2)}, ${eyeY.toFixed(2)})`);
+          eyeGroup.style.transform = `translate(${eyeX.toFixed(2)}px, ${eyeY.toFixed(2)}px)`;
+        }
+
+        // Complementary 3D head tilt
         const deltaX = (e.clientX - charCenterX) / (window.innerWidth / 2);
         const deltaY = (e.clientY - charCenterY) / (window.innerHeight / 2);
-
-        // Clamp rotation angles for cute, natural look
-        const rotY = Math.max(-22, Math.min(22, deltaX * 20));
-        const rotX = Math.max(-18, Math.min(18, -deltaY * 16));
-        const transX = Math.max(-6, Math.min(6, deltaX * 5));
-        const transY = Math.max(-5, Math.min(5, deltaY * 4));
+        const rotY = Math.max(-18, Math.min(18, deltaX * 16));
+        const rotX = Math.max(-14, Math.min(14, -deltaY * 12));
 
         const bsAvatar = stage.querySelector(".bs-avatar");
         if (bsAvatar) {
-          bsAvatar.style.transform = `perspective(380px) rotateY(${rotY.toFixed(1)}deg) rotateX(${rotX.toFixed(1)}deg) translate3d(${transX.toFixed(1)}px, ${transY.toFixed(1)}px, 0)`;
+          bsAvatar.style.transform = `perspective(380px) rotateY(${rotY.toFixed(1)}deg) rotateX(${rotX.toFixed(1)}deg)`;
         }
       });
     };
