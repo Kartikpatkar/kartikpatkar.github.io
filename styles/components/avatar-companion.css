@@ -1,0 +1,570 @@
+/* ==========================================================================
+   Interactive Flying Avatar Companion (Thought Cloud & Dynamic Tour)
+   ========================================================================== */
+
+.avatar-companion {
+  position: fixed;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  pointer-events: none;
+  font-family: var(--font, inherit);
+  transition: right 0.55s cubic-bezier(0.34, 1.4, 0.64, 1),
+              left 0.55s cubic-bezier(0.34, 1.4, 0.64, 1),
+              top 0.55s cubic-bezier(0.34, 1.4, 0.64, 1),
+              bottom 0.55s cubic-bezier(0.34, 1.4, 0.64, 1),
+              transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.avatar-companion * {
+  box-sizing: border-box;
+}
+
+/* Docking Positions Across Page */
+.avatar-companion--dock-bottom-right,
+.avatar-companion--dock-right {
+  right: 36px;
+  left: auto;
+  bottom: 28px;
+  top: auto;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.avatar-companion--dock-bottom-left,
+.avatar-companion--dock-left {
+  left: 36px;
+  right: auto;
+  bottom: 28px;
+  top: auto;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.avatar-companion--dock-top-right {
+  right: 36px;
+  left: auto;
+  top: 96px;
+  bottom: auto;
+  align-items: flex-end;
+  flex-direction: column-reverse;
+}
+
+.avatar-companion--dock-top-left {
+  left: 36px;
+  right: auto;
+  top: 96px;
+  bottom: auto;
+  align-items: flex-start;
+  flex-direction: column-reverse;
+}
+
+.avatar-companion--gliding {
+  transform: translateY(-16px) scale(1.04);
+}
+
+/* --------------------------------------------------------------------------
+   Thought Cloud Speech Bubble (Exact Match to Screenshot Reference)
+   -------------------------------------------------------------------------- */
+.avatar-companion__thoughtWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+  margin-bottom: 22px;
+}
+
+.avatar-companion--dock-right .avatar-companion__thoughtWrapper,
+.avatar-companion--dock-bottom-right .avatar-companion__thoughtWrapper,
+.avatar-companion--dock-top-right .avatar-companion__thoughtWrapper {
+  align-items: flex-end;
+}
+
+.avatar-companion--dock-left .avatar-companion__thoughtWrapper,
+.avatar-companion--dock-bottom-left .avatar-companion__thoughtWrapper,
+.avatar-companion--dock-top-left .avatar-companion__thoughtWrapper {
+  align-items: flex-start;
+}
+
+.avatar-companion--dock-top-right .avatar-companion__thoughtWrapper,
+.avatar-companion--dock-top-left .avatar-companion__thoughtWrapper {
+  margin-bottom: 0;
+  margin-top: 22px;
+}
+
+.avatar-companion__bubble {
+  position: relative;
+  max-width: 300px;
+  width: max-content;
+  background: rgba(247, 249, 242, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 24px;
+  padding: 16px 20px 15px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.14),
+              0 3px 10px rgba(0, 0, 0, 0.05);
+  transform-origin: bottom center;
+  transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s;
+  animation: companionBubblePop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Organic top cloud bumps */
+.avatar-companion__bubble::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  width: 44px;
+  height: 22px;
+  background: inherit;
+  border-radius: 999px;
+  box-shadow: -1px -2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.avatar-companion--dock-right .avatar-companion__bubble::before {
+  right: 48px;
+}
+
+.avatar-companion--dock-left .avatar-companion__bubble::before {
+  left: 48px;
+}
+
+[data-theme="dark"] .avatar-companion__bubble {
+  background: #111e33;
+  border-color: rgba(96, 165, 250, 0.25);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55),
+              0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.avatar-companion__bubble[hidden] {
+  opacity: 0;
+  transform: scale(0.85) translateY(12px);
+  pointer-events: none;
+  visibility: hidden;
+  display: block !important;
+}
+
+/* Header & Dismiss */
+.avatar-companion__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.avatar-companion__badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #1a73e8;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.avatar-companion__badgePulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.8);
+}
+
+.avatar-companion__close {
+  background: transparent;
+  border: 0;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0 4px;
+  font-size: 1.1rem;
+  line-height: 1;
+  border-radius: 6px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.avatar-companion__close:hover {
+  color: #0f172a;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .avatar-companion__close:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Speech Text */
+.avatar-companion__text {
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  line-height: 1.44;
+  color: #1e293b;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: opacity 0.15s ease;
+}
+
+[data-theme="dark"] .avatar-companion__text {
+  color: #f1f5f9;
+}
+
+/* Pill Action Button (Matches Screenshot) */
+.avatar-companion__action {
+  background: #111827; /* Dark black pill button as in screenshot */
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(17, 24, 39, 0.28);
+  transition: transform 0.16s ease, filter 0.16s ease, box-shadow 0.16s ease;
+}
+
+.avatar-companion__action:hover {
+  transform: translateY(-1px) scale(1.02);
+  filter: brightness(1.1);
+  box-shadow: 0 6px 18px rgba(17, 24, 39, 0.36);
+}
+
+.avatar-companion__action:active {
+  transform: translateY(0) scale(0.98);
+}
+
+[data-theme="dark"] .avatar-companion__action {
+  background: #38bdf8;
+  color: #0b1528;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+}
+
+[data-theme="dark"] .avatar-companion__action:hover {
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+}
+
+.avatar-companion__actionIcon {
+  font-size: 0.95rem;
+  transition: transform 0.18s ease;
+}
+
+.avatar-companion__action:hover .avatar-companion__actionIcon {
+  transform: translateX(3px);
+}
+
+/* --------------------------------------------------------------------------
+   Thought Dots (Three Circles Connecting Bubble to Character)
+   -------------------------------------------------------------------------- */
+.avatar-companion__thoughtDots {
+  position: absolute;
+  bottom: -20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  pointer-events: none;
+}
+
+.avatar-companion--dock-right .avatar-companion__thoughtDots,
+.avatar-companion--dock-bottom-right .avatar-companion__thoughtDots,
+.avatar-companion--dock-top-right .avatar-companion__thoughtDots {
+  right: 52px;
+}
+
+.avatar-companion--dock-left .avatar-companion__thoughtDots,
+.avatar-companion--dock-bottom-left .avatar-companion__thoughtDots,
+.avatar-companion--dock-top-left .avatar-companion__thoughtDots {
+  left: 52px;
+}
+
+.avatar-companion--dock-top-right .avatar-companion__thoughtDots,
+.avatar-companion--dock-top-left .avatar-companion__thoughtDots {
+  bottom: auto;
+  top: -20px;
+  flex-direction: column-reverse;
+}
+
+.avatar-companion__dot {
+  background: #f7f9f2;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .avatar-companion__dot {
+  background: #111e33;
+  border-color: rgba(96, 165, 250, 0.25);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.avatar-companion__dot--large {
+  width: 14px;
+  height: 14px;
+}
+
+.avatar-companion__dot--medium {
+  width: 9px;
+  height: 9px;
+}
+
+.avatar-companion__dot--small {
+  width: 5px;
+  height: 5px;
+}
+
+/* --------------------------------------------------------------------------
+   Character Stage (Free-Standing Cute Mascot, Not Boxed In)
+   -------------------------------------------------------------------------- */
+.avatar-companion__character {
+  pointer-events: auto;
+  position: relative;
+  width: 84px;
+  height: 84px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 14px 22px rgba(26, 115, 232, 0.38));
+  animation: companionHoverFloat 3.8s ease-in-out infinite;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+}
+
+.avatar-companion--dock-right .avatar-companion__character,
+.avatar-companion--dock-bottom-right .avatar-companion__character,
+.avatar-companion--dock-top-right .avatar-companion__character {
+  margin-right: 14px;
+}
+
+.avatar-companion--dock-left .avatar-companion__character,
+.avatar-companion--dock-bottom-left .avatar-companion__character,
+.avatar-companion--dock-top-left .avatar-companion__character {
+  margin-left: 14px;
+}
+
+.avatar-companion__character:hover {
+  transform: scale(1.1) translateY(-3px);
+  filter: drop-shadow(0 18px 28px rgba(26, 115, 232, 0.55));
+}
+
+.avatar-companion__character:active {
+  transform: scale(0.96) translateY(0);
+}
+
+.avatar-companion__stage {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.avatar-companion__stage .bs-avatar {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Soft Radial Glow Ground Beneath Avatar */
+.avatar-companion__groundGlow {
+  position: absolute;
+  bottom: 0;
+  width: 60px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(26, 115, 232, 0.45) 0%, transparent 70%);
+  filter: blur(3px);
+  pointer-events: none;
+  z-index: -1;
+  animation: companionShadowPulse 3.8s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes companionBubblePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes companionHoverFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes companionShadowPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(0.82);
+    opacity: 0.3;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .avatar-companion--dock-right,
+  .avatar-companion--dock-left,
+  .avatar-companion--dock-bottom-right,
+  .avatar-companion--dock-bottom-left,
+  .avatar-companion--dock-top-right,
+  .avatar-companion--dock-top-left {
+    right: 16px !important;
+    left: auto !important;
+    bottom: 18px !important;
+    top: auto !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+  }
+
+  .avatar-companion__thoughtWrapper {
+    margin-bottom: 12px !important;
+    margin-top: 0 !important;
+    align-items: flex-end !important;
+  }
+
+  .avatar-companion__bubble {
+    max-width: min(265px, calc(100vw - 32px));
+    padding: 12px 14px 12px;
+    border-radius: 18px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+  }
+
+  .avatar-companion__bubble::before {
+    width: 32px;
+    height: 16px;
+    top: -7px;
+    right: 28px !important;
+    left: auto !important;
+  }
+
+  .avatar-companion__header {
+    margin-bottom: 5px;
+  }
+
+  .avatar-companion__badge {
+    font-size: 0.62rem;
+  }
+
+  .avatar-companion__close {
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+  }
+
+  .avatar-companion__text {
+    font-size: 0.8rem;
+    line-height: 1.35;
+    margin-bottom: 10px;
+  }
+
+  .avatar-companion__action {
+    padding: 7px 14px;
+    font-size: 0.78rem;
+  }
+
+  .avatar-companion__thoughtDots {
+    bottom: -12px !important;
+    top: auto !important;
+    right: 26px !important;
+    left: auto !important;
+    flex-direction: column !important;
+    gap: 2px;
+  }
+
+  .avatar-companion__dot--large {
+    width: 8px;
+    height: 8px;
+  }
+
+  .avatar-companion__dot--medium {
+    width: 5px;
+    height: 5px;
+  }
+
+  .avatar-companion__dot--small {
+    width: 3px;
+    height: 3px;
+  }
+
+  .avatar-companion__character {
+    width: 54px;
+    height: 54px;
+    margin-right: 6px !important;
+    margin-left: 0 !important;
+    filter: drop-shadow(0 8px 14px rgba(26, 115, 232, 0.35));
+  }
+
+  .avatar-companion__groundGlow {
+    width: 38px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .avatar-companion--dock-right,
+  .avatar-companion--dock-left,
+  .avatar-companion--dock-bottom-right,
+  .avatar-companion--dock-bottom-left,
+  .avatar-companion--dock-top-right,
+  .avatar-companion--dock-top-left {
+    right: 12px !important;
+    bottom: 14px !important;
+  }
+
+  .avatar-companion__bubble {
+    max-width: min(240px, calc(100vw - 24px));
+    padding: 10px 12px 10px;
+    border-radius: 16px;
+  }
+
+  .avatar-companion__text {
+    font-size: 0.76rem;
+    line-height: 1.32;
+    margin-bottom: 8px;
+  }
+
+  .avatar-companion__action {
+    padding: 6px 12px;
+    font-size: 0.74rem;
+  }
+
+  .avatar-companion__character {
+    width: 48px;
+    height: 48px;
+    margin-right: 4px !important;
+  }
+
+  .avatar-companion__groundGlow {
+    width: 32px;
+    height: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avatar-companion {
+    transition: none !important;
+  }
+  .avatar-companion__character {
+    animation: none !important;
+  }
+  .avatar-companion__groundGlow {
+    animation: none !important;
+  }
+  .avatar-companion__bubble {
+    animation: none !important;
+  }
+}

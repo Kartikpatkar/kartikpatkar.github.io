@@ -104,6 +104,15 @@ const renderPortfolioData = () => {
     avatar.appendChild(img);
   }
 
+  const initAvatarCompanion = window.PortfolioApp?.ui?.initAvatarCompanion;
+  if (typeof initAvatarCompanion === "function") {
+    try {
+      initAvatarCompanion();
+    } catch {
+      // Ignored
+    }
+  }
+
   renderSocialLinks("#hero-social", hero.socials);
   renderHeroSpecialties(hero);
   renderHeroHighlights(hero, heroUi);

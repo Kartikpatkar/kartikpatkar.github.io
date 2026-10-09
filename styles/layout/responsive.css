@@ -283,10 +283,11 @@
   }
 
   .back-to-top {
-    right: 18px;
-    bottom: 18px;
-    width: 48px;
-    height: 48px;
+    left: 16px !important;
+    right: auto !important;
+    bottom: 18px !important;
+    width: 44px;
+    height: 44px;
   }
 }
 
@@ -404,10 +405,11 @@
   }
 
   .back-to-top {
-    right: 14px;
-    bottom: 14px;
-    width: 44px;
-    height: 44px;
+    left: 14px !important;
+    right: auto !important;
+    bottom: 14px !important;
+    width: 40px;
+    height: 40px;
   }
 }
 
