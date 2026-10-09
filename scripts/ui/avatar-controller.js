@@ -1,4 +1,6 @@
 (() => {
+  "use strict";
+
   window.PortfolioApp = window.PortfolioApp || { core: {}, sections: {}, ui: {} };
 
   // Multi-step dialogue trees per section
