@@ -2,7 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased] - 2026-08-13
+## [1.2.0] - 2026-10-10
+
+### Added
+- **Interactive Avatar Companion**: Procedural vector companion (`scripts/ui/avatar-controller.js`, `styles/components/avatar-companion.css`) that tours the portfolio alongside visitors.
+  - Multi-step conversational dialogue trees across all sections with smooth section navigation triggers.
+  - Smart section dock positioning (`top-right`, `bottom-right`, `top-left`, `bottom-left`) preventing content obstruction.
+  - Wake-up intro sequence on initial load (`sleeping` -> `waking` -> `excited`).
+  - Night owl mode (10 PM – 5 AM local time) with late-night dialogue and custom badge.
+  - Interactive site triggers: Theme toggle reactions, resume menu, cert card trivia, skills grid insights, projects showcase hover, contact form focus, email copy celebration, social links hover, back-to-top button, and 10-click poke streak easter egg.
+  - Fully accessible with `prefers-reduced-motion` fallbacks and dismissible speech bubble.
+- **Dynamic Stats & Auto-Calculated Experience**:
+  - Runtime calculation for experience years based on career start date (`October 2020`), auto-formatting `${years}.5+` / `${years}+`.
+  - Dynamic count interpolation for certifications and projects directly from live data/DOM across avatar dialogues, badges, and trivia.
+  - Auto-synchronized `hero.floatingCards` and About snapshot in `scripts/core/config.js`.
+
+### Fixed
+- **Cleaned Obsolete Meta Headers**: Removed `<meta http-equiv="X-Frame-Options">` tags from `privacy.html` and `terms.html` to eliminate browser console warnings.
+- **Cleaned Search Console Placeholder**: Commented placeholder `google-site-verification` in `index.html`.
+
+## [1.1.0] - 2026-08-13
 
 ### Added
 - **Legal Policy Pages**: Added standalone static pages [privacy.html](file:///Users/apple/Desktop/Desktop%20Backup/New%20folder/Project/Portfolio/kartikpatkar.github.io/privacy.html) and [terms.html](file:///Users/apple/Desktop/Desktop%20Backup/New%20folder/Project/Portfolio/kartikpatkar.github.io/terms.html) matching the main site's layout and dark mode theme.

@@ -69,6 +69,22 @@ const getPortfolioData = (portfolioContent = {}, portfolioConfig = {}) => {
     }
   }
 
+  // Auto-sync cert count in hero floating cards
+  if (content.certifications && Array.isArray(content.certifications.items) && content.hero && Array.isArray(content.hero.floatingCards)) {
+    const certCard = content.hero.floatingCards.find((item) => item.value === "Salesforce" || item.title?.includes("Certified"));
+    if (certCard) {
+      certCard.title = `${content.certifications.items.length}x Certified`;
+    }
+  }
+
+  // Auto-sync project count in hero floating cards
+  if (content.projects && Array.isArray(content.projects.items) && content.hero && Array.isArray(content.hero.floatingCards)) {
+    const projCard = content.hero.floatingCards.find((item) => item.value === "Open Source" || item.title?.includes("Projects"));
+    if (projCard) {
+      projCard.title = `${content.projects.items.length}+ Projects`;
+    }
+  }
+
   return {
     ...content,
     ui: mergeUiConfig(defaultUiConfig, portfolioConfig.ui),
