@@ -358,7 +358,6 @@
   height: 100%;
   display: grid;
   place-items: center;
-  perspective: 380px;
 }
 
 .avatar-companion__stage .bs-avatar {
@@ -367,8 +366,6 @@
   display: flex !important;
   align-items: center;
   justify-content: center;
-  transform-style: preserve-3d;
-  will-change: transform;
 }
 
 /* Soft Radial Glow Ground Beneath Avatar */
