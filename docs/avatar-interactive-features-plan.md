@@ -6,18 +6,19 @@ Comprehensive implementation roadmap for avatar micro-interactions, developer ea
 
 ## Architecture & Feasibility Matrix
 
-| # | Feature | Complexity | Feasibility | Implementation Hook |
+| # | Feature | Complexity | Status | Implementation Hook |
 |---|---|---|---|---|
-| **1** | **Cursor Eye/Head Tracking & 5s Idle Drift** | Low | 100% | Pointermove listener calculating normalized angle `(-15deg..+15deg)` applied to `.bs-avatar` transform; 5s timeout triggers gentle random animation (`curious`, `thinking`). |
-| **2** | **Wake-Up Intro Sequence** | Low | 100% | Page load sequence: start `sleeping` (Zzz bubble) -> `waking` -> `excited` -> tour greeting in Hero. |
-| **3** | **Scroll-Reactive Mood Mapping** | Low | 100% | Expand `SECTION_STORIES` and `IntersectionObserver` to trigger specific emotions on entry: Skills (`working`), Certs (`proud`), Projects (`excited`), Experience (`listening`), Contact (`happy`). |
-| **4** | **"Ask Kartik" Command Palette (Cmd+K / /)** | Med | 100% | Salesforce Setup Search / Spotlight style modal. Search across projects, certs, skills, resume. Companion switches to `searching` while typing, jumps smoothly to target. |
-| **5** | **Salesforce Astro Buddy & Cert Hover** | Low-Med | 100% | Add floating mini cloud badge with "10x". Hovering any certification card triggers `proud` or `celebrate` animation and badge highlight. |
-| **6** | **Apex Hero Terminal** | Med | 100% | Lightweight typewriter console in Hero: `System.debug('Hi, I am Kartik');` -> Avatar in `working` mode -> Execution output reveals tagline -> Avatar `celebrate`. |
-| **7** | **Bug-Squash 5-Click Combo & Konami Code** | Low | 100% | Track rapid clicks: 5x triggers `angry` + CSS shake + "Stop squashing me!" -> resolves to `laughing`. Konami code (`↑↑↓↓←→←→BA`) temporarily toggles avatar body to `#ba3636` bug-hunter red. |
-| **8** | **Project Cards as "Lightning Orgs"** | Med-High | 100% | Project modal with Salesforce Lightning Record layout (Compact layout header, tabs: Details, Architecture, Live Demo). Avatar peeks from record corner in `curious` mode. |
-| **9** | **Contact Form Reactions** | Low | 100% | Form inputs: `focus`/`typing` -> `listening`. Form empty validation error -> `confused`. Successful submission -> `celebrate` with celebratory dialogue. |
-| **10** | **Night Owl Mode (Visitor Local Time > 10 PM)** | Low | 100% | Detect `new Date().getHours() >= 22 || getHours() < 5`. Auto-suggest dark theme, avatar plays `drowsy`, thought bubble says: *"Still coding? Me too 🌙"*. |
+| **1** | **Cursor Eye/Head Tracking** | Low | Retired | Intentionally removed per user design preference for natural vector rendering. |
+| **2** | **Wake-Up Intro Sequence** | Low | Complete | Page load sequence: starts `sleeping` (Zzz bubble) -> `waking` -> `excited` -> tour greeting in Hero. |
+| **3** | **Scroll-Reactive Mood Mapping** | Low | Complete | `SECTION_STORIES` and `IntersectionObserver` trigger emotions: Skills (`working`), Certs (`proud`), Projects (`excited`), Experience (`listening`), Contact (`happy`). |
+| **4** | **"Ask Kartik" Command Palette** | Med | Backlog | Optional future expansion. |
+| **5** | **Salesforce Astro Buddy & Cert Hover** | Low-Med | Complete | Certifications badge with `${certCount}x`. Hovering cert card triggers `proud` animation with dynamic exam trivia. |
+| **6** | **Apex Hero Terminal** | Med | Backlog | Optional future expansion. |
+| **7** | **Bug-Squash Poke Combo & Easter Eggs** | Low | Complete | 10-click poke streak combo on companion character with dynamic developer jokes and zero-defect celebration. |
+| **8** | **Project Cards Interactions** | Low-Med | Complete | Hovering project cards triggers developer tools dialogue and demo discovery hint. |
+| **9** | **Site Interaction Reactive State** | Low | Complete | Theme toggle reaction, resume download reaction, contact form focus, copy email celebration, social links hover, back-to-top button. |
+| **10** | **Night Owl Mode (Visitor Local Time > 10 PM)** | Low | Complete | Detects `new Date().getHours() >= 22 || getHours() < 5`. Displays late-night dialogue and "Night Shift 🦉" badge. |
+| **11** | **Dynamic Portfolio Stats** | Low | Complete | Auto-calculates experience years from Oct 2020 (`${years}.5+` / `${years}+`) and live cert/project counts across all dialogues. |
 
 ---
 
