@@ -375,14 +375,16 @@
                         </form>
                     </div>
 
-                    <aside class="card contact__panel contact__panel--links reveal" aria-label="Direct contact">
-                        <h3 class="card__title">Direct links</h3>
-                        <p class="card__text contact__directText" id="contact-direct-intro"></p>
-                        <div class="contact__links" id="direct-links"></div>
+                    <div class="contact__rightCol">
+                        <aside class="card contact__panel contact__panel--links reveal" aria-label="Direct contact">
+                            <h3 class="card__title">Direct links</h3>
+                            <p class="card__text contact__directText" id="contact-direct-intro"></p>
+                            <div class="contact__links" id="direct-links"></div>
+                        </aside>
 
-                        <!-- <div class="divider" role="presentation"></div> -->
-                        <!-- <p class="card__text">Open to collaboration, consulting, and Salesforce-focused product work.</p> -->
-                    </aside>
+                        <!-- 3D Magic Tree QR Card for Social Media -->
+                        <div class="contact__panel contact__panel--tree reveal" id="contact-qr-tree-container" aria-label="3D Magic QR Tree"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -457,6 +459,9 @@
     <script src="scripts/ui/contact-form.js?v=20260401b"></script>
     <script src="scripts/ui/resume-menu.js?v=20260403a"></script>
     <script src="scripts/ui/avatar-controller.js?v=20261010j"></script>
+    <script src="scripts/vendor/three.min.js?v=r128"></script>
+    <script src="scripts/vendor/qrcode.min.js?v=1.4.4"></script>
+    <script src="scripts/ui/qr-tree.js?v=20261017b"></script>
     <script src="scripts/main.js?v=20261010j"></script>
 </body>
 

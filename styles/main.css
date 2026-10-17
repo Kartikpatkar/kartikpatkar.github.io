@@ -19,4 +19,5 @@
 @import url("./sections/projects.css");
 @import url("./sections/experience.css");
 @import url("./sections/contact.css");
+@import url("./components/qr-tree.css");
 @import url("./layout/responsive.css");

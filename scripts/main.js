@@ -125,6 +125,40 @@ const renderPortfolioData = () => {
   renderExperience(experience);
   renderDirectLinks(site);
 
+  const initQrTree = window.PortfolioApp?.ui?.initQrTree;
+  if (typeof initQrTree === "function") {
+    try {
+      initQrTree("contact-qr-tree-container", {
+        initialChannel: "linkedin",
+        initialSeason: "spring",
+        channels: {
+          linkedin: {
+            label: "LinkedIn",
+            url: site.linkedin || "https://www.linkedin.com/in/kartik-patkar/",
+            icon: "💼"
+          },
+          github: {
+            label: "GitHub",
+            url: site.github || "https://github.com/Kartikpatkar",
+            icon: "🐙"
+          },
+          trailhead: {
+            label: "Trailhead",
+            url: site.trailhead || "https://www.salesforce.com/trailblazer/kpatkar1",
+            icon: "☁️"
+          },
+          portfolio: {
+            label: "Portfolio",
+            url: "https://kartikpatkar.github.io/",
+            icon: "🌐"
+          }
+        }
+      });
+    } catch (e) {
+      console.warn("QR Tree init skipped:", e);
+    }
+  }
+
   initResumeMenu({
     menuSelector: "#resume-menu",
     triggerSelector: "#resume-trigger",
