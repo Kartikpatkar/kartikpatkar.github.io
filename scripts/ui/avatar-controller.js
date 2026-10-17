@@ -275,6 +275,7 @@
     let activeSectionId = "home";
     let stepIndex = 0;
     let isBubbleClosed = false;
+    let isChatActive = false;
     let animTimer = null;
 
     const playAnim = (animName, durationMs = 2800) => {
@@ -302,6 +303,8 @@
     ];
 
     const updateDockPosition = (dockName) => {
+      if (isChatActive) return; // Companion stays firmly anchored during AI chat
+
       const targetClass = `avatar-companion--dock-${dockName}`;
 
       const applyClasses = () => {
@@ -338,6 +341,8 @@
 
       activeSectionId = sectionId;
       stepIndex = stepIdx;
+
+      if (isChatActive) return; // Do not show predefined bubble or move avatar during AI chat
       const currentStep = sectionData.steps[stepIndex] || sectionData.steps[0];
 
       // Update badge text if present
@@ -380,6 +385,8 @@
     let dialogueResetTimer = null;
 
     const sayDialogue = (text, anim = "happy", durationMs = 5200) => {
+      if (isChatActive) return; // Never interrupt active AI chat session
+
       if (dialogueResetTimer) {
         clearTimeout(dialogueResetTimer);
         dialogueResetTimer = null;
@@ -630,7 +637,11 @@
           if (entry.isIntersecting) {
             const id = entry.target.id;
             if (id && id !== activeSectionId && SECTION_STORIES[id]) {
-              renderStep(id, 0);
+              if (!isChatActive) {
+                renderStep(id, 0);
+              } else {
+                activeSectionId = id;
+              }
             }
           }
         });
@@ -675,11 +686,52 @@
       }, 950);
     };
 
+    // ------------------------------------------------------------------------
+    // Feature 12: Interactive IFM AI Companion Chat Box
+    // ------------------------------------------------------------------------
+    let chatInstance = null;
+    if (window.PortfolioApp?.ui?.AvatarChat) {
+      chatInstance = new window.PortfolioApp.ui.AvatarChat({
+        playAnim,
+        sayDialogue,
+        renderStep,
+        onChatOpen: () => {
+          isChatActive = true;
+          companion.classList.add("avatar-companion--chat-active");
+          // Lock to bottom-right dock during chat session
+          ALL_DOCKS.forEach(cls => companion.classList.remove(cls));
+          companion.classList.add("avatar-companion--dock-bottom-right");
+          if (bubble) bubble.hidden = true;
+        },
+        onChatClose: () => {
+          isChatActive = false;
+          companion.classList.remove("avatar-companion--chat-active");
+          // Return to active section dock & step
+          renderStep(activeSectionId, stepIndex);
+        },
+        closeBubble: () => {
+          isBubbleClosed = true;
+          if (bubble) bubble.hidden = true;
+        },
+        openBubble: () => {
+          if (!isChatActive) {
+            isBubbleClosed = false;
+            if (bubble) bubble.hidden = false;
+          }
+        }
+      });
+    }
+
     setTimeout(() => {
       startIntroSequence();
     }, 450);
 
-    return avatar;
+    return {
+      avatar,
+      playAnim,
+      sayDialogue,
+      chat: chatInstance
+    };
   };
 
   window.PortfolioApp.ui.initAvatarCompanion = initAvatarCompanion;

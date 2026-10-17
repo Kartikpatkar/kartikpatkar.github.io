@@ -15,7 +15,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self';" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.ifm.ai https://platform.ifm.ai; form-action 'self';" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="author" content="Kartik Patkar" />
     <meta name="description"
@@ -400,10 +400,15 @@
                     <button class="avatar-companion__close" id="avatar-bubble-toggle" type="button" aria-label="Close message">×</button>
                 </div>
                 <p class="avatar-companion__text" id="avatar-bubble-text">Hey! Ready to explore Kartik's portfolio? 🚀</p>
-                <button class="avatar-companion__action" id="avatar-bubble-action" type="button">
-                    <span id="avatar-action-text">Explore About Me</span>
-                    <span class="avatar-companion__actionIcon" aria-hidden="true">→</span>
-                </button>
+                <div class="avatar-companion__bubbleActions">
+                    <button class="avatar-companion__action" id="avatar-bubble-action" type="button">
+                        <span id="avatar-action-text">Explore About Me</span>
+                        <span class="avatar-companion__actionIcon" aria-hidden="true">→</span>
+                    </button>
+                    <button class="avatar-companion__chatOpenBtn" id="avatar-open-chat-btn" type="button" aria-label="Ask Kartik's AI companion">
+                        <span aria-hidden="true">💬</span> Ask AI
+                    </button>
+                </div>
             </div>
             <div class="avatar-companion__thoughtDots" aria-hidden="true">
                 <span class="avatar-companion__dot avatar-companion__dot--large"></span>
@@ -456,6 +461,7 @@
     <script src="scripts/ui/back-to-top.js?v=20260401b"></script>
     <script src="scripts/ui/contact-form.js?v=20260401b"></script>
     <script src="scripts/ui/resume-menu.js?v=20260403a"></script>
+    <script src="scripts/ui/avatar-chat.js?v=20261017a"></script>
     <script src="scripts/ui/avatar-controller.js?v=20261010j"></script>
     <script src="scripts/main.js?v=20261010j"></script>
 </body>
