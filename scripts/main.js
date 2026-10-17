@@ -104,14 +104,7 @@ const renderPortfolioData = () => {
     avatar.appendChild(img);
   }
 
-  const initAvatarCompanion = window.PortfolioApp?.ui?.initAvatarCompanion;
-  if (typeof initAvatarCompanion === "function") {
-    try {
-      initAvatarCompanion();
-    } catch {
-      // Ignored
-    }
-  }
+
 
   renderSocialLinks("#hero-social", hero.socials);
   renderHeroSpecialties(hero);
@@ -177,6 +170,24 @@ try {
   });
   window.requestAnimationFrame(() => {
     hideAppSkeleton();
+
+    // Schedule heavy avatar companion in idle time so page information renders first
+    const scheduleAvatar = () => {
+      const initCompanion = window.PortfolioApp?.ui?.initAvatarCompanion;
+      if (typeof initCompanion === "function") {
+        try {
+          initCompanion();
+        } catch {
+          // Ignored
+        }
+      }
+    };
+
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(scheduleAvatar, { timeout: 2000 });
+    } else {
+      window.setTimeout(scheduleAvatar, 600);
+    }
   });
 } catch (error) {
   showBootstrapError(`Portfolio bootstrap failed: ${error.message}`);
