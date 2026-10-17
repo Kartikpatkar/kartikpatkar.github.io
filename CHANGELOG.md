@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2026-10-17
+
+### Added
+- **Cursor Eye & Head Gaze Tracking**:
+  - Avatar's eyes and 3D head perspective tilt follow cursor coordinates smoothly within a 700px radius (`scripts/ui/avatar-controller.js`, `styles/components/avatar-companion.css`).
+  - Smooth reset to idle baseline upon 3s pointer inactivity or window exit.
+  - Automatically disabled on touch screens (`pointer: coarse`) and when `prefers-reduced-motion` is enabled, preserving natural blinking and idle breathing.
+- **5-Beat Click Progression & Developer Mode Secret**:
+  - Interactive progressive click dialogue sequence on the mascot (Wave `happy` -> Smile `excited` -> Wink `playful` -> Curious `curious` -> Secret Unlock `celebrate`).
+  - 5th click activates Developer Mode with a pure DOM/CSS confetti particle burst, pulsing matrix green aura (`.avatar-character--dev-mode`), "Dev Mode ⚡" badge, and DevTools console greeting.
+- **Contextual Section Poses & Reactions**:
+  - Aligned section pose transitions across the portfolio: Hero/About (`happy`), Skills (`thinking`), Certifications (`proud`), Projects (`working`), Experience (`listening`), Contact (`happy`).
+  - Smart skill card categorization: Apex/Architecture triggers `working`, LWC/JS triggers `thinking`, Integrations/APIs triggers `curious`.
+  - Certifications card hover & viewport entry triggers 3.5s `proud` celebration pose.
+
+### Security & Performance
+- **Zero-Token Client-Side Architecture**: Completely eliminates external chatbot API dependencies, keys, tokens, CORS issues, and 403 network failures. 100% private, offline-capable, and self-contained.
+- **Zero forced reflows**: Gaze tracking uses GPU-accelerated CSS `transform` on SVG groups and `requestAnimationFrame` debouncing.
+
 ## [1.2.0] - 2026-10-10
 
 ### Added
