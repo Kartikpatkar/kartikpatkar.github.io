@@ -50,8 +50,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
-    <link rel="preload" href="styles/main.css?v=20261017d" as="style" />
-    <link rel="stylesheet" href="styles/main.css?v=20261017d" />
+    <link rel="preload" href="styles/main.css?v=20261017e" as="style" />
+    <link rel="stylesheet" href="styles/main.css?v=20261017e" />
     <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
     <link rel="icon" href="assets/icons/favicon.ico" sizes="any" />
     <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
@@ -223,6 +223,10 @@
                             <div class="resume-menu__panel" id="resume-options" hidden></div>
                         </div>
                         <a class="btn btn--ghost" id="secondary-cta" href="#projects">View Projects</a>
+                        <button class="btn btn--dev-card-launcher" id="dev-card-trigger" type="button" aria-haspopup="dialog" aria-controls="dev-card-modal">
+                            <span class="btn--dev-card-launcher__badge">ID</span>
+                            <span>Developer Pass</span>
+                        </button>
                     </div>
 
                     <div class="social" id="hero-social" aria-label="Social links"></div>
@@ -453,6 +457,172 @@
         </svg>
     </button>
 
+    <!-- Developer ID Card Modal (Phase 1: Hybrid Style) -->
+    <div class="dev-card-modal" id="dev-card-modal" role="dialog" aria-modal="true" aria-labelledby="dev-card-name" aria-hidden="true">
+        <div class="dev-card-modal__dialog">
+            <div class="dev-card-controls">
+                <div class="dev-card-theme-bar" role="group" aria-label="Card Theme Switcher">
+                    <button class="dev-card-theme-btn is-active" data-theme-val="obsidian" type="button" aria-pressed="true">Obsidian</button>
+                    <button class="dev-card-theme-btn" data-theme-val="aurora" type="button" aria-pressed="false">Aurora</button>
+                    <button class="dev-card-theme-btn" data-theme-val="minimal" type="button" aria-pressed="false">Minimal</button>
+                </div>
+                <button class="dev-card-close-btn" id="dev-card-close" type="button" aria-label="Close Developer Card">✕</button>
+            </div>
+
+            <div class="dev-card-wrapper" id="dev-card-wrapper" data-card-theme="obsidian">
+                <div class="dev-card-perspective">
+                    <div class="dev-card" id="dev-card" tabindex="0" role="region" aria-label="Developer ID Card, front side showing identity. Click to flip.">
+                        <!-- Holographic Glare Layer -->
+                        <div class="dev-card__glare" aria-hidden="true"></div>
+
+                        <!-- FRONT FACE -->
+                        <div class="dev-card__face dev-card__face--front">
+                            <div class="dev-card__bg-texture" aria-hidden="true"></div>
+                            <span class="dev-card__corner dev-card__corner--tl" aria-hidden="true"></span>
+                            <span class="dev-card__corner dev-card__corner--tr" aria-hidden="true"></span>
+                            <span class="dev-card__corner dev-card__corner--bl" aria-hidden="true"></span>
+                            <span class="dev-card__corner dev-card__corner--br" aria-hidden="true"></span>
+
+                            <div class="dev-card__content">
+                                <header class="dev-card__header">
+                                    <div class="dev-card__brand">
+                                        <span class="dev-card__status-dot" aria-hidden="true"></span>
+                                        <span class="dev-card__brand-text">KARTIK.DEV VERIFIED</span>
+                                    </div>
+                                    <span class="dev-card__id-tag">ID: KP-2026-001</span>
+                                </header>
+
+                                <div class="dev-card__avatar-zone">
+                                    <div class="dev-card__avatar-frame">
+                                        <img src="assets/developer-card/avatar.svg" alt="Kartik Patkar Developer Avatar" class="dev-card__avatar-img" width="120" height="120" />
+                                    </div>
+                                    <span class="dev-card__rank-badge">LVL 10 ARCHITECT</span>
+                                </div>
+
+                                <div class="dev-card__identity">
+                                    <h2 class="dev-card__name" id="dev-card-name">Kartik Patkar</h2>
+                                    <p class="dev-card__title" id="dev-card-title">Salesforce Consultant &amp; Architect</p>
+                                    <div class="dev-card__metrics-pill">
+                                        <span>5.5+ Yrs Exp</span>
+                                        <span>•</span>
+                                        <span>10x Certified</span>
+                                        <span>•</span>
+                                        <span>2x Ranger</span>
+                                    </div>
+                                </div>
+
+                                <div class="dev-card__specs" aria-label="Core Specializations">
+                                    <span class="dev-card__chip">Apex Architecture</span>
+                                    <span class="dev-card__chip">Lightning Web Components</span>
+                                    <span class="dev-card__chip">Enterprise Integrations</span>
+                                    <span class="dev-card__chip">Agentforce &amp; Security</span>
+                                </div>
+
+                                <div class="dev-card__socials" aria-label="Professional Links">
+                                    <a class="dev-card__social-link" id="dev-card-github" href="https://github.com/Kartikpatkar" target="_blank" rel="noopener noreferrer">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                                        <span>GitHub</span>
+                                    </a>
+                                    <a class="dev-card__social-link" id="dev-card-linkedin" href="https://www.linkedin.com/in/kartik-patkar/" target="_blank" rel="noopener noreferrer">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                                        <span>LinkedIn</span>
+                                    </a>
+                                    <a class="dev-card__social-link" id="dev-card-trailhead" href="https://www.salesforce.com/trailblazer/kpatkar1" target="_blank" rel="noopener noreferrer">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+                                        <span>Trailhead</span>
+                                    </a>
+                                </div>
+
+                                <footer class="dev-card__footer">
+                                    <div class="dev-card__barcode" aria-hidden="true">
+                                        <span class="dev-card__barcode-line dev-card__barcode-line--thick"></span>
+                                        <span class="dev-card__barcode-line dev-card__barcode-line--thin"></span>
+                                        <span class="dev-card__barcode-line"></span>
+                                        <span class="dev-card__barcode-line dev-card__barcode-line--thick"></span>
+                                        <span class="dev-card__barcode-line dev-card__barcode-line--thin"></span>
+                                        <span class="dev-card__barcode-line"></span>
+                                        <span class="dev-card__barcode-line dev-card__barcode-line--thick"></span>
+                                    </div>
+                                    <button class="dev-card__flip-hint" id="dev-card-flip-btn" type="button" aria-label="Flip card to view profile credentials">
+                                        <span>⟲ Flip Card</span>
+                                    </button>
+                                </footer>
+                            </div>
+                        </div>
+
+                        <!-- BACK FACE -->
+                        <div class="dev-card__face dev-card__face--back">
+                            <div class="dev-card__bg-texture" aria-hidden="true"></div>
+                            <span class="dev-card__corner dev-card__corner--tl" aria-hidden="true"></span>
+                            <span class="dev-card__corner dev-card__corner--tr" aria-hidden="true"></span>
+                            <span class="dev-card__corner dev-card__corner--bl" aria-hidden="true"></span>
+                            <span class="dev-card__corner dev-card__corner--br" aria-hidden="true"></span>
+
+                            <div class="dev-card__content">
+                                <header class="dev-card__back-header">
+                                    <span class="dev-card__back-title">DEVELOPER PROFILE</span>
+                                    <span class="dev-card__id-tag">CLEARANCE: ARCHITECT</span>
+                                </header>
+
+                                <div class="dev-card__stats-matrix" aria-label="Career Highlights">
+                                    <div class="dev-card__stat-box">
+                                        <div class="dev-card__stat-num">10x</div>
+                                        <div class="dev-card__stat-desc">Certified</div>
+                                    </div>
+                                    <div class="dev-card__stat-box">
+                                        <div class="dev-card__stat-num">13+</div>
+                                        <div class="dev-card__stat-desc">Deliveries</div>
+                                    </div>
+                                    <div class="dev-card__stat-box">
+                                        <div class="dev-card__stat-num">450+</div>
+                                        <div class="dev-card__stat-desc">Badges</div>
+                                    </div>
+                                </div>
+
+                                <div class="dev-card__section-label">SPECIALITIES</div>
+                                <div class="dev-card__specs" style="justify-content: flex-start; margin-bottom: 8px;">
+                                    <span class="dev-card__chip">Apex &amp; Async Architecture</span>
+                                    <span class="dev-card__chip">Reactive LWC</span>
+                                    <span class="dev-card__chip">REST / Bulk API Integration</span>
+                                    <span class="dev-card__chip">Data &amp; Sharing Security</span>
+                                </div>
+
+                                <div class="dev-card__section-label">KEY CREDENTIALS</div>
+                                <div class="dev-card__cert-grid" id="dev-card-cert-list">
+                                    <div class="dev-card__cert-item">
+                                        <span class="dev-card__cert-name">Application Architect</span>
+                                        <span class="dev-card__cert-tag">AA</span>
+                                    </div>
+                                    <div class="dev-card__cert-item">
+                                        <span class="dev-card__cert-name">Sharing and Visibility Architect</span>
+                                        <span class="dev-card__cert-tag">SVA</span>
+                                    </div>
+                                    <div class="dev-card__cert-item">
+                                        <span class="dev-card__cert-name">Platform Data Architect</span>
+                                        <span class="dev-card__cert-tag">DA</span>
+                                    </div>
+                                    <div class="dev-card__cert-item">
+                                        <span class="dev-card__cert-name">JavaScript Developer I</span>
+                                        <span class="dev-card__cert-tag">JS-I</span>
+                                    </div>
+                                </div>
+
+                                <footer class="dev-card__back-footer">
+                                    <button class="dev-card__btn-flip-back" id="dev-card-flip-back-btn" type="button" aria-label="Flip back to front side">
+                                        <span>← Front Side</span>
+                                    </button>
+                                    <a class="dev-card__btn-view-site" href="#about">
+                                        <span>View Full Portfolio →</span>
+                                    </a>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer" aria-label="Footer">
         <div class="container footer__inner">
@@ -483,6 +653,7 @@
     <script src="scripts/ui/back-to-top.js?v=20260401b" defer></script>
     <script src="scripts/ui/contact-form.js?v=20260401b" defer></script>
     <script src="scripts/ui/resume-menu.js?v=20260403a" defer></script>
+    <script src="scripts/ui/developer-card.js?v=20261017e" defer></script>
     <script src="scripts/main.js?v=20261017c" defer></script>
 
     <!-- Heavy Companion Assets Deferred in Background -->

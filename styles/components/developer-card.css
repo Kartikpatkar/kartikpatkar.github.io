@@ -1,0 +1,848 @@
+/* ==========================================================================
+   DEVELOPER ID CARD COMPONENT (Hybrid Style: Executive Cyber-Tactile)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Theme Variables & Base Scoping
+   -------------------------------------------------------------------------- */
+.dev-card-wrapper {
+  --card-width: 380px;
+  --card-height: 580px;
+  --card-radius: 22px;
+  --card-font-mono: "SF Mono", "Consolas", "Courier New", monospace;
+  font-family: var(--font, "Manrope", sans-serif);
+  width: var(--card-width);
+  max-width: 100%;
+  height: var(--card-height);
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Theme: Obsidian (Default Dark Cyber Platinum) */
+.dev-card-wrapper[data-card-theme="obsidian"] {
+  --card-bg: radial-gradient(130% 120% at 50% 0%, #151b28 0%, #0c0f17 65%, #07090f 100%);
+  --card-bg-solid: #0c0f17;
+  --card-border: rgba(56, 189, 248, 0.28);
+  --card-border-glow: rgba(56, 189, 248, 0.2);
+  --card-accent: #38bdf8;
+  --card-accent-2: #818cf8;
+  --card-accent-glow: rgba(56, 189, 248, 0.35);
+  --card-text-primary: #f8fafc;
+  --card-text-secondary: #94a3b8;
+  --card-text-muted: #64748b;
+  --card-chip-bg: rgba(30, 41, 59, 0.65);
+  --card-chip-border: rgba(148, 163, 184, 0.18);
+  --card-badge-bg: rgba(56, 189, 248, 0.12);
+  --card-foil-strip: linear-gradient(90deg, #1e293b, #38bdf8, #818cf8, #38bdf8, #1e293b);
+  --card-barcode-color: #38bdf8;
+  --card-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 35px -5px rgba(56, 189, 248, 0.18);
+}
+
+/* Theme: Aurora (Galactic Neon Cyan & Electric Purple) */
+.dev-card-wrapper[data-card-theme="aurora"] {
+  --card-bg: radial-gradient(130% 120% at 50% 0%, #171b40 0%, #0a0e27 65%, #050716 100%);
+  --card-bg-solid: #0a0e27;
+  --card-border: rgba(0, 242, 254, 0.38);
+  --card-border-glow: rgba(168, 85, 247, 0.3);
+  --card-accent: #00f2fe;
+  --card-accent-2: #c084fc;
+  --card-accent-glow: rgba(0, 242, 254, 0.45);
+  --card-text-primary: #ffffff;
+  --card-text-secondary: #cbd5e1;
+  --card-text-muted: #818cf8;
+  --card-chip-bg: rgba(30, 27, 75, 0.7);
+  --card-chip-border: rgba(168, 85, 247, 0.35);
+  --card-badge-bg: rgba(0, 242, 254, 0.14);
+  --card-foil-strip: linear-gradient(90deg, #1e1b4b, #00f2fe, #c084fc, #00f2fe, #1e1b4b);
+  --card-barcode-color: #00f2fe;
+  --card-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.75), 0 0 40px -5px rgba(0, 242, 254, 0.24);
+}
+
+/* Theme: Minimal (Clean High-Contrast Titanium Frost) */
+.dev-card-wrapper[data-card-theme="minimal"] {
+  --card-bg: radial-gradient(130% 120% at 50% 0%, #ffffff 0%, #f8fafc 65%, #f1f5f9 100%);
+  --card-bg-solid: #f8fafc;
+  --card-border: rgba(15, 23, 42, 0.14);
+  --card-border-glow: rgba(1, 118, 211, 0.12);
+  --card-accent: #0176d3;
+  --card-accent-2: #0f172a;
+  --card-accent-glow: rgba(1, 118, 211, 0.2);
+  --card-text-primary: #0f172a;
+  --card-text-secondary: #475569;
+  --card-text-muted: #64748b;
+  --card-chip-bg: rgba(241, 245, 249, 0.85);
+  --card-chip-border: rgba(15, 23, 42, 0.1);
+  --card-badge-bg: rgba(1, 118, 211, 0.08);
+  --card-foil-strip: linear-gradient(90deg, #cbd5e1, #0176d3, #64748b, #0176d3, #cbd5e1);
+  --card-barcode-color: #0f172a;
+  --card-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.18), 0 0 25px -5px rgba(1, 118, 211, 0.12);
+}
+
+/* --------------------------------------------------------------------------
+   2. Modal Overlay & Accessibility Shell
+   -------------------------------------------------------------------------- */
+.dev-card-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgba(5, 8, 15, 0.8);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+}
+
+.dev-card-modal.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.dev-card-modal__dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 480px;
+  width: 100%;
+  transform: scale(0.92) translateY(12px);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dev-card-modal.is-active .dev-card-modal__dialog {
+  transform: scale(1) translateY(0);
+}
+
+/* Close & Top Controls Bar */
+.dev-card-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--card-width);
+  max-width: 100%;
+  flex-shrink: 0;
+}
+
+.dev-card-theme-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 999px;
+  padding: 4px;
+  backdrop-filter: blur(10px);
+}
+
+.dev-card-theme-btn {
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dev-card-theme-btn:hover {
+  color: #ffffff;
+}
+
+.dev-card-theme-btn.is-active {
+  background: var(--card-accent, #38bdf8);
+  color: #0c0f17;
+  box-shadow: 0 0 12px var(--card-accent-glow, rgba(56, 189, 248, 0.4));
+}
+
+.dev-card-close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 50%;
+  color: #e2e8f0;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.dev-card-close-btn:hover,
+.dev-card-close-btn:focus-visible {
+  background: rgba(239, 68, 68, 0.8);
+  border-color: rgba(239, 68, 68, 1);
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+/* --------------------------------------------------------------------------
+   3. 3D Card Architecture (Flip Animation & Tilting)
+   -------------------------------------------------------------------------- */
+.dev-card-perspective {
+  perspective: 1200px;
+  width: 100%;
+  max-width: var(--card-width);
+  height: var(--card-height);
+}
+
+.dev-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--card-radius);
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  outline: none;
+}
+
+.dev-card:focus-visible {
+  box-shadow: 0 0 0 3px var(--card-accent), 0 0 25px var(--card-accent-glow);
+}
+
+.dev-card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+/* Card Faces */
+.dev-card__face {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--card-radius);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  padding: 22px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+  box-sizing: border-box;
+  color: var(--card-text-primary);
+  user-select: none;
+}
+
+.dev-card__face--back {
+  transform: rotateY(180deg);
+}
+
+/* Card Background Pattern Texture Layer */
+.dev-card__bg-texture {
+  position: absolute;
+  inset: 0;
+  background-image: url("../../assets/developer-card/card-background.svg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Holographic Glare / Shimmer Effect */
+.dev-card__glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.08) 45%,
+    rgba(56, 189, 248, 0.15) 50%,
+    rgba(129, 140, 248, 0.12) 55%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  pointer-events: none;
+  z-index: 20;
+  opacity: 0.6;
+  mix-blend-mode: overlay;
+  transition: opacity 0.3s ease;
+}
+
+.dev-card:hover .dev-card__glare {
+  opacity: 0.9;
+}
+
+/* Tactical Corner Chamfer Clips */
+.dev-card__corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--card-accent);
+  border-style: solid;
+  border-width: 0;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0.8;
+}
+
+.dev-card__corner--tl {
+  top: 10px;
+  left: 10px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+
+.dev-card__corner--tr {
+  top: 10px;
+  right: 10px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+
+.dev-card__corner--bl {
+  bottom: 10px;
+  left: 10px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+
+.dev-card__corner--br {
+  bottom: 10px;
+  right: 10px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   4. Front Side — Identity Layout
+   -------------------------------------------------------------------------- */
+.dev-card__content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Header Strip */
+.dev-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--card-chip-border);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+
+.dev-card__brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.dev-card__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: devCardPulse 2s infinite ease-in-out;
+}
+
+@keyframes devCardPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.dev-card__brand-text {
+  font-family: var(--card-font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--card-accent);
+}
+
+.dev-card__id-tag {
+  font-family: var(--card-font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--card-text-muted);
+  background: var(--card-chip-bg);
+  border: 1px solid var(--card-chip-border);
+  padding: 3px 7px;
+  border-radius: 6px;
+}
+
+/* Avatar Showcase Area */
+.dev-card__avatar-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.dev-card__avatar-frame {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, var(--card-accent), var(--card-accent-2));
+  box-shadow: 0 0 20px var(--card-accent-glow);
+}
+
+.dev-card__avatar-frame::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1px dashed var(--card-accent);
+  opacity: 0.5;
+  animation: devCardRotate 20s linear infinite;
+}
+
+@keyframes devCardRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.dev-card__avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--card-bg-solid);
+  display: block;
+}
+
+.dev-card__rank-badge {
+  margin-top: -12px;
+  position: relative;
+  z-index: 2;
+  background: var(--card-bg-solid);
+  border: 1px solid var(--card-accent);
+  border-radius: 999px;
+  padding: 3px 12px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--card-accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Name & Title Identity */
+.dev-card__identity {
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.dev-card__name {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  margin: 0 0 3px 0;
+  color: var(--card-text-primary);
+}
+
+.dev-card__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--card-accent);
+  margin: 0 0 4px 0;
+}
+
+.dev-card__metrics-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--card-text-secondary);
+}
+
+.dev-card__metrics-pill span {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Specialities Grid / Badges */
+.dev-card__specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.dev-card__chip {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--card-chip-bg);
+  border: 1px solid var(--card-chip-border);
+  color: var(--card-text-secondary);
+  transition: all 0.2s ease;
+}
+
+.dev-card__chip:hover {
+  border-color: var(--card-accent);
+  color: var(--card-text-primary);
+  transform: translateY(-1px);
+}
+
+/* Social & Link Actions */
+.dev-card__socials {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: auto;
+}
+
+.dev-card__social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--card-text-primary);
+  background: var(--card-chip-bg);
+  border: 1px solid var(--card-chip-border);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.dev-card__social-link:hover,
+.dev-card__social-link:focus-visible {
+  border-color: var(--card-accent);
+  background: var(--card-badge-bg);
+  color: var(--card-accent);
+  transform: translateY(-2px);
+}
+
+.dev-card__social-link svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* Card Bottom Holographic Strip & Barcode */
+.dev-card__footer {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--card-chip-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dev-card__barcode {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 22px;
+}
+
+.dev-card__barcode-line {
+  width: 2px;
+  height: 100%;
+  background: var(--card-barcode-color);
+  opacity: 0.75;
+}
+
+.dev-card__barcode-line--thick { width: 4px; }
+.dev-card__barcode-line--thin { width: 1px; }
+
+.dev-card__flip-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--card-badge-bg);
+  border: 1px solid var(--card-accent);
+  color: var(--card-accent);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dev-card__flip-hint:hover {
+  background: var(--card-accent);
+  color: var(--card-bg-solid);
+  box-shadow: 0 0 14px var(--card-accent-glow);
+}
+
+/* --------------------------------------------------------------------------
+   5. Back Side — Detailed Developer Profile & Credentials
+   -------------------------------------------------------------------------- */
+.dev-card__back-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--card-chip-border);
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+.dev-card__back-title {
+  font-family: var(--card-font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--card-accent);
+}
+
+.dev-card__section-label {
+  font-family: var(--card-font-mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--card-text-muted);
+  margin: 10px 0 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dev-card__section-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--card-chip-border);
+}
+
+/* Certifications Pill Grid */
+.dev-card__cert-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.dev-card__cert-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: var(--card-chip-bg);
+  border: 1px solid var(--card-chip-border);
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  transition: border-color 0.2s ease;
+}
+
+.dev-card__cert-item:hover {
+  border-color: var(--card-accent);
+}
+
+.dev-card__cert-name {
+  color: var(--card-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+}
+
+.dev-card__cert-tag {
+  font-family: var(--card-font-mono);
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--card-badge-bg);
+  color: var(--card-accent);
+}
+
+/* Back Side Stats Matrix */
+.dev-card__stats-matrix {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.dev-card__stat-box {
+  background: var(--card-chip-bg);
+  border: 1px solid var(--card-chip-border);
+  border-radius: 8px;
+  padding: 8px 6px;
+  text-align: center;
+}
+
+.dev-card__stat-num {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--card-accent);
+  line-height: 1.1;
+}
+
+.dev-card__stat-desc {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--card-text-muted);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Back Action Footer */
+.dev-card__back-footer {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--card-chip-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.dev-card__btn-flip-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--card-chip-bg);
+  border: 1px solid var(--card-chip-border);
+  color: var(--card-text-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dev-card__btn-flip-back:hover {
+  border-color: var(--card-accent);
+  color: var(--card-text-primary);
+}
+
+.dev-card__btn-view-site {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--card-accent);
+  color: #0c0f17;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dev-card__btn-view-site:hover {
+  box-shadow: 0 0 14px var(--card-accent-glow);
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   6. Launcher Button (In Hero / Nav Area)
+   -------------------------------------------------------------------------- */
+.btn--dev-card-launcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #f8fafc;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25), 0 0 15px rgba(56, 189, 248, 0.15);
+}
+
+[data-theme="light"] .btn--dev-card-launcher {
+  background: linear-gradient(135deg, #ffffff, #f1f5f9);
+  border: 1px solid rgba(1, 118, 211, 0.35);
+  color: #0f172a;
+  box-shadow: 0 4px 16px rgba(1, 118, 211, 0.12);
+}
+
+.btn--dev-card-launcher:hover {
+  transform: translateY(-2px);
+  border-color: #38bdf8;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 25px rgba(56, 189, 248, 0.35);
+}
+
+.btn--dev-card-launcher__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--card-font-mono);
+  font-size: 10px;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: #38bdf8;
+  color: #0c0f17;
+  letter-spacing: 0.5px;
+}
+
+[data-theme="light"] .btn--dev-card-launcher__badge {
+  background: #0176d3;
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   7. Accessibility & Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .dev-card-modal,
+  .dev-card-modal__dialog,
+  .dev-card,
+  .dev-card__avatar-frame::before,
+  .dev-card__status-dot {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .dev-card-wrapper {
+    --card-width: 330px;
+    --card-height: 540px;
+  }
+
+  .dev-card__face {
+    padding: 16px 14px 14px;
+  }
+
+  .dev-card__avatar-frame {
+    width: 100px;
+    height: 100px;
+  }
+
+  .dev-card__name {
+    font-size: 18px;
+  }
+
+  .dev-card__title {
+    font-size: 12px;
+  }
+
+  .dev-card__cert-item {
+    padding: 5px 8px;
+  }
+}

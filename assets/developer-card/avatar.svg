@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="100%" height="100%" role="img" aria-label="Kartik Patkar Developer Avatar">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="#0369a1" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="skin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fcd34d" />
+      <stop offset="40%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="jacket" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+    <linearGradient id="cyberAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+    <linearGradient id="glassesFrame" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <linearGradient id="collarInner" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0176d3" />
+      <stop offset="100%" stop-color="#005fb2" />
+    </linearGradient>
+    <filter id="subtleGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Aura -->
+  <circle cx="160" cy="160" r="148" fill="url(#bgGlow)" />
+  <circle cx="160" cy="160" r="138" fill="none" stroke="url(#cyberAccent)" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.4" />
+
+  <!-- Shoulders & Tech Jacket -->
+  <g id="jacket-body">
+    <!-- Back Collar -->
+    <path d="M 120 180 Q 160 200 200 180 L 208 215 Q 160 225 112 215 Z" fill="#0b1120" />
+    <!-- Inner Hoodie / Shirt (Salesforce Blue) -->
+    <path d="M 125 195 Q 160 215 195 195 L 180 280 L 140 280 Z" fill="url(#collarInner)" />
+    <!-- Tech Zipper Line -->
+    <line x1="160" y1="215" x2="160" y2="280" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 2" />
+    <!-- Outer Tech Jacket with Shoulders -->
+    <path d="M 64 280 Q 85 220 120 188 L 138 220 L 160 250 L 182 220 L 200 188 Q 235 220 256 280 Z" fill="url(#jacket)" />
+    <!-- Jacket Lapel Details & Cyber Piping -->
+    <path d="M 120 188 L 142 245 L 160 252" fill="none" stroke="#334155" stroke-width="2.5" />
+    <path d="M 200 188 L 178 245 L 160 252" fill="none" stroke="#334155" stroke-width="2.5" />
+    <!-- Shoulder Cyber Trim Accents -->
+    <path d="M 88 245 Q 105 210 124 195" fill="none" stroke="url(#cyberAccent)" stroke-width="1.5" opacity="0.8" />
+    <path d="M 232 245 Q 215 210 196 195" fill="none" stroke="url(#cyberAccent)" stroke-width="1.5" opacity="0.8" />
+  </g>
+
+  <!-- Neck -->
+  <g id="neck">
+    <path d="M 142 165 L 142 198 Q 160 208 178 198 L 178 165 Z" fill="#e69624" />
+    <!-- Neck shadow under chin -->
+    <path d="M 142 165 Q 160 178 178 165 Q 160 184 142 165 Z" fill="#b45309" opacity="0.45" />
+  </g>
+
+  <!-- Head Base -->
+  <g id="head">
+    <!-- Ears -->
+    <path d="M 104 135 C 96 135 94 152 105 158 Z" fill="#f59e0b" />
+    <path d="M 216 135 C 224 135 226 152 215 158 Z" fill="#f59e0b" />
+    <!-- Ear details -->
+    <path d="M 103 140 C 99 143 100 152 104 153" fill="none" stroke="#d97706" stroke-width="1.5" />
+    <path d="M 217 140 C 221 143 220 152 216 153" fill="none" stroke="#d97706" stroke-width="1.5" />
+
+    <!-- Face Shape -->
+    <path d="M 112 115 C 112 75 208 75 208 115 C 208 148 185 180 160 180 C 135 180 112 148 112 115 Z" fill="url(#skin)" />
+  </g>
+
+  <!-- Eyes & Eyebrows -->
+  <g id="facial-features">
+    <!-- Eyebrows -->
+    <path d="M 125 118 Q 138 112 148 116" fill="none" stroke="#0f172a" stroke-width="3" stroke-linecap="round" />
+    <path d="M 195 118 Q 182 112 172 116" fill="none" stroke="#0f172a" stroke-width="3" stroke-linecap="round" />
+
+    <!-- Eyes (focused and expressive) -->
+    <ellipse cx="138" cy="128" rx="4.5" ry="5.5" fill="#0f172a" />
+    <circle cx="136.5" cy="126" r="1.5" fill="#ffffff" />
+    <ellipse cx="182" cy="128" rx="4.5" ry="5.5" fill="#0f172a" />
+    <circle cx="180.5" cy="126" r="1.5" fill="#ffffff" />
+
+    <!-- Modern Nose -->
+    <path d="M 158 132 L 156 147 L 164 147" fill="none" stroke="#b45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Friendly Confident Smile -->
+    <path d="M 148 158 Q 160 167 172 158" fill="none" stroke="#92400e" stroke-width="2.5" stroke-linecap="round" />
+  </g>
+
+  <!-- Signature Stylish Tech Glasses -->
+  <g id="glasses" filter="url(#subtleGlow)">
+    <!-- Bridge -->
+    <path d="M 150 125 Q 160 122 170 125" fill="none" stroke="url(#glassesFrame)" stroke-width="2.5" stroke-linecap="round" />
+    <!-- Left Frame -->
+    <rect x="122" y="117" width="30" height="23" rx="6" fill="rgba(14, 165, 233, 0.15)" stroke="url(#glassesFrame)" stroke-width="2.5" />
+    <!-- Right Frame -->
+    <rect x="168" y="117" width="30" height="23" rx="6" fill="rgba(14, 165, 233, 0.15)" stroke="url(#glassesFrame)" stroke-width="2.5" />
+    <!-- Glasses Glare -->
+    <path d="M 125 120 L 133 120 L 127 136 L 124 136 Z" fill="#ffffff" opacity="0.4" />
+    <path d="M 171 120 L 179 120 L 173 136 L 170 136 Z" fill="#ffffff" opacity="0.4" />
+    <!-- Temple stems -->
+    <path d="M 122 125 L 105 130" fill="none" stroke="url(#glassesFrame)" stroke-width="2" stroke-linecap="round" />
+    <path d="M 198 125 L 215 130" fill="none" stroke="url(#glassesFrame)" stroke-width="2" stroke-linecap="round" />
+  </g>
+
+  <!-- Hair (Clean, modern pompadour/side-quiff developer cut) -->
+  <g id="hair">
+    <path d="M 108 122 C 104 100 115 72 145 68 C 172 64 212 70 216 100 C 218 116 214 125 212 126 C 208 112 205 102 195 98 C 180 92 145 92 124 108 C 115 115 111 120 108 122 Z" fill="url(#hairGrad)" />
+    <!-- Hair Volume & Strands Texture -->
+    <path d="M 130 76 Q 160 62 195 76" fill="none" stroke="#334155" stroke-width="2" opacity="0.6" />
+    <path d="M 140 85 Q 170 72 202 87" fill="none" stroke="#334155" stroke-width="1.8" opacity="0.6" />
+    <path d="M 118 96 Q 135 84 155 88" fill="none" stroke="#334155" stroke-width="1.5" opacity="0.5" />
+    <!-- Sideburns -->
+    <path d="M 112 120 L 112 136 L 116 132 L 116 120 Z" fill="#0f172a" />
+    <path d="M 208 120 L 208 136 L 204 132 L 204 120 Z" fill="#0f172a" />
+  </g>
+
+  <!-- Futuristic HUD / Holographic Accent Marks -->
+  <g id="hud-accents" opacity="0.85">
+    <!-- Tech brackets around the avatar -->
+    <path d="M 72 88 L 60 88 L 60 100" fill="none" stroke="#00f2fe" stroke-width="1.8" />
+    <path d="M 248 88 L 260 88 L 260 100" fill="none" stroke="#00f2fe" stroke-width="1.8" />
+    <path d="M 72 232 L 60 232 L 60 220" fill="none" stroke="#00f2fe" stroke-width="1.8" />
+    <path d="M 248 232 L 260 232 L 260 220" fill="none" stroke="#00f2fe" stroke-width="1.8" />
+    <!-- Small HUD status tag -->
+    <circle cx="254" cy="74" r="3" fill="#22c55e" />
+  </g>
+</svg>

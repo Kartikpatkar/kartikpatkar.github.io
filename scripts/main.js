@@ -168,6 +168,9 @@ try {
     messageSelector: "#message",
     recipient: portfolioData.site?.email || "kartikkp.assets@gmail.com",
   });
+  if (window.PortfolioApp.ui.developerCard?.init) {
+    window.PortfolioApp.ui.developerCard.init();
+  }
   window.requestAnimationFrame(() => {
     hideAppSkeleton();
 
