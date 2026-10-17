@@ -21,6 +21,7 @@ ORDER = [
     "components/footer.css",
     "components/back-to-top.css",
     "components/avatar-companion.css",
+    "components/developer-card.css",
     "components/loading.css",
     "sections/hero.css",
     "sections/about.css",

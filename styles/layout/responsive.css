@@ -255,9 +255,10 @@
     --float-base-y: 0px;
   }
 
-  .hero__floatingCard:last-child {
-    top: 50%;
-    right: -2px;
+  .hero__floatingCard:last-child,
+  .hero__floatingCard--insight {
+    top: 68%;
+    right: -4px;
     left: auto;
     bottom: auto;
     --float-base-x: 0px;
@@ -325,7 +326,9 @@
     bottom: 16px;
   }
 
-  .hero__floatingCard:last-child {
+  .hero__floatingCard:last-child,
+  .hero__floatingCard--insight {
+    top: 68%;
     right: -8px;
   }
 

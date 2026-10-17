@@ -1821,6 +1821,774 @@ section {
   }
 }
 
+/* === components/developer-card.css === */
+/* ==========================================================================
+   PHYSICAL LANYARD DEVELOPER ID BADGE (Curved Salesforce Theme)
+   ========================================================================== */
+
+:root {
+  --badge-width: 340px;
+  --badge-height: 520px;
+  --badge-radius: 20px;
+  --badge-sfdc-blue: #0176d3;
+  --badge-sfdc-cyan: #00a1e0;
+  --badge-sfdc-deep: #032d60;
+  --badge-sfdc-dark: #0b1528;
+  --badge-clip-chrome: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 45%, #94a3b8 55%, #64748b 100%);
+}
+
+/* --------------------------------------------------------------------------
+   1. Modal Overlay & Blurred Grey-Black Backdrop
+   -------------------------------------------------------------------------- */
+.dev-card-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 0;
+  background-color: rgba(10, 16, 28, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  overflow: hidden;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dev-card-modal.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* When exiting */
+.dev-card-modal.is-exiting {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dev-card-modal.is-exiting .lanyard-assembly {
+  animation: lanyardRetract 0.55s cubic-bezier(0.32, 0, 0.67, 0) forwards;
+}
+
+@keyframes lanyardRetract {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-130%) rotate(-4deg); opacity: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   2. Fluid Falling Lanyard & Hanging Assembly
+   -------------------------------------------------------------------------- */
+.lanyard-assembly {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: var(--badge-width);
+  margin-top: 0;
+  transform-origin: top center;
+  animation: lanyardDrop 1.1s cubic-bezier(0.175, 0.885, 0.32, 1.25) forwards;
+  will-change: transform;
+}
+
+@keyframes lanyardDrop {
+  0% {
+    transform: translateY(-135%) rotate(4deg);
+  }
+  60% {
+    transform: translateY(16px) rotate(-2deg);
+  }
+  78% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+  90% {
+    transform: translateY(3px) rotate(-0.4deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* Subtle continuous ambient sway */
+.lanyard-assembly.is-settled {
+  animation: lanyardIdleSway 6s ease-in-out infinite;
+}
+
+@keyframes lanyardIdleSway {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(0.6deg); }
+  75% { transform: rotate(-0.6deg); }
+}
+
+/* Fabric Ribbon Strap (Long & Seamless Hanging) */
+.lanyard-strap {
+  width: 36px;
+  height: 160px;
+  background: linear-gradient(90deg, #025091 0%, #0176d3 30%, #00a1e0 70%, #025091 100%);
+  position: relative;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5), inset 0 0 6px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+/* Endless top extension so strap NEVER cuts off */
+.lanyard-strap::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  height: 1200px;
+  background: linear-gradient(90deg, #025091 0%, #0176d3 30%, #00a1e0 70%, #025091 100%);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+/* Strap Fabric Weave & Pattern Print */
+.lanyard-strap::before {
+  content: "KP • SALESFORCE • ARCHITECT • DEVELOPER • KP • SALESFORCE";
+  position: absolute;
+  top: 10px;
+  writing-mode: vertical-rl;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+/* Metallic Lobster Clasp & Swivel Ring */
+.lanyard-hardware {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  margin-top: -2px;
+}
+
+.lanyard-ring {
+  width: 22px;
+  height: 10px;
+  border: 3px solid #cbd5e1;
+  border-radius: 6px;
+  background: var(--badge-clip-chrome);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.lanyard-clasp {
+  width: 14px;
+  height: 26px;
+  background: var(--badge-clip-chrome);
+  border-radius: 4px 4px 8px 8px;
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 3px 6px rgba(0, 0, 0, 0.35);
+}
+
+.lanyard-clasp::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 12px;
+  border: 3px solid #cbd5e1;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  background: transparent;
+}
+
+/* --------------------------------------------------------------------------
+   3. 3D Card Architecture (Flip Animation Around Lanyard)
+   -------------------------------------------------------------------------- */
+.dev-card-perspective {
+  perspective: 1200px;
+  width: var(--badge-width);
+  height: var(--badge-height);
+  margin-top: -3px;
+  position: relative;
+  z-index: 5;
+}
+
+.dev-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--badge-radius);
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.34, 1.4, 0.64, 1);
+  cursor: pointer;
+  outline: none;
+}
+
+.dev-card:focus-visible {
+  box-shadow: 0 0 0 3px var(--badge-sfdc-cyan), 0 0 30px rgba(0, 161, 224, 0.5);
+}
+
+.dev-card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+/* Card Faces */
+.dev-card__face {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--badge-radius);
+  background: #ffffff;
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.6), 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+  box-sizing: border-box;
+  color: #1e293b;
+  user-select: none;
+}
+
+.dev-card__face--front {
+  transform: rotateY(0deg);
+}
+
+.dev-card__face--back {
+  transform: rotateY(180deg);
+}
+
+/* Punch Hole at the top of the card */
+.dev-badge-punch-hole {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 12px;
+  background: #0f172a;
+  border-radius: 999px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.7), 0 1px 1px rgba(255, 255, 255, 0.3);
+  z-index: 30;
+}
+
+/* --------------------------------------------------------------------------
+   4. Front Face Layout (Inspired by Reference Graphic Badge)
+   -------------------------------------------------------------------------- */
+/* Top Curved Gradient Waves */
+.dev-badge__waves {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 230px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dev-badge__front-body {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 32px 22px 18px;
+}
+
+/* Circular Portrait Avatar */
+.dev-badge__avatar-wrap {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+.dev-badge__avatar-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00a1e0, #0176d3, #22c55e);
+  box-shadow: 0 4px 15px rgba(1, 118, 211, 0.35);
+}
+
+.dev-badge__avatar-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  object-fit: cover;
+  background: #e2e8f0;
+  display: block;
+}
+
+/* Identity Name & Role */
+.dev-badge__identity {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.dev-badge__name {
+  font-family: var(--font, "Manrope", sans-serif);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 0 3px 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.dev-badge__role {
+  font-family: var(--font, "Manrope", sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  color: #38bdf8;
+  letter-spacing: 0.4px;
+  margin: 0;
+}
+
+/* Info Table (Aligned ID Fields like in Screenshot) */
+.dev-badge__table {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  margin-top: 4px;
+  margin-bottom: auto;
+  font-family: var(--font, "Manrope", sans-serif);
+}
+
+.dev-badge__row {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  padding: 3.5px 0;
+  border-bottom: 1px dashed #f1f5f9;
+}
+
+.dev-badge__row:last-child {
+  border-bottom: none;
+}
+
+.dev-badge__label {
+  width: 65px;
+  font-weight: 800;
+  color: #0176d3;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.dev-badge__colon {
+  width: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.dev-badge__val {
+  flex: 1;
+  font-weight: 600;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Badge Footer with Clean Centered QR Code */
+.dev-badge__footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.dev-badge__qr-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  padding: 6px 14px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.dev-badge__qr-svg {
+  width: 42px;
+  height: 42px;
+  background: #ffffff;
+  padding: 2px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: 1px solid #cbd5e1;
+}
+
+.dev-badge__qr-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.dev-badge__qr-title {
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  color: #0176d3;
+  text-transform: uppercase;
+}
+
+.dev-badge__qr-sub {
+  font-size: 10px;
+  font-weight: 700;
+  color: #334155;
+  letter-spacing: -0.2px;
+}
+
+/* --------------------------------------------------------------------------
+   5. Back Face Layout (Terms, Credentials, Signature)
+   -------------------------------------------------------------------------- */
+.dev-badge__back-body {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 30px 18px 16px;
+  color: #ffffff;
+}
+
+.dev-badge__back-title {
+  font-family: var(--font, "Manrope", sans-serif);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 0 0 8px 0;
+  color: #ffffff;
+}
+
+/* Core Competencies Bullets */
+.dev-badge__bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px 0;
+}
+
+.dev-badge__bullet {
+  position: relative;
+  padding-left: 12px;
+  font-size: 9.5px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 4px;
+}
+
+.dev-badge__bullet::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #00a1e0;
+  box-shadow: 0 0 5px #00a1e0;
+}
+
+/* Architect Certifications Compact 2-Col Grid */
+.dev-badge__certs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.dev-badge__cert-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  padding: 3px 6px;
+  font-size: 9px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.dev-badge__cert-pill span:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dev-badge__cert-pill span:last-child {
+  font-size: 8px;
+  font-weight: 800;
+  color: #38bdf8;
+  background: rgba(1, 118, 211, 0.45);
+  padding: 1px 3px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* Social Media Grid */
+.dev-badge__socials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.dev-badge__social-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 7px;
+  padding: 4px 8px;
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #f1f5f9;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.dev-badge__social-item:hover {
+  background: rgba(1, 118, 211, 0.4);
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.dev-badge__social-icon {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  color: #38bdf8;
+}
+
+/* Signature Block */
+.dev-badge__signature-area {
+  margin-top: auto;
+  margin-bottom: 10px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 8px 12px;
+  color: #1e293b;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.dev-badge__sign-heading {
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #64748b;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.dev-badge__sign-script {
+  font-family: "Brush Script MT", "Caveat", "Segoe Script", cursive;
+  font-size: 20px;
+  color: #0176d3;
+  line-height: 1;
+  padding-left: 8px;
+}
+
+.dev-badge__sign-sub {
+  font-size: 8px;
+  color: #94a3b8;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 2px;
+  margin-top: 2px;
+  text-align: right;
+}
+
+/* Back Action Bar */
+.dev-badge__back-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.dev-badge__back-flip-btn {
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dev-badge__back-flip-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   6. Modal Bottom Controls & "Continue to Portfolio" Button
+   -------------------------------------------------------------------------- */
+.dev-badge-modal-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+  z-index: 20;
+}
+
+.btn--continue-portfolio {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #0176d3 0%, #00a1e0 100%);
+  color: #ffffff;
+  border: none;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 12px 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(1, 118, 211, 0.5), 0 0 15px rgba(0, 161, 224, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn--continue-portfolio:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(1, 118, 211, 0.65), 0 0 25px rgba(0, 161, 224, 0.5);
+}
+
+.btn--continue-portfolio:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn--flip-standalone {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f8fafc;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 11px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+.btn--flip-standalone:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   7. Re-open Launcher in Hero
+   -------------------------------------------------------------------------- */
+.btn--dev-card-launcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(1, 118, 211, 0.15), rgba(0, 161, 224, 0.1));
+  border: 1px solid rgba(1, 118, 211, 0.45);
+  color: #0176d3;
+  box-shadow: 0 4px 16px rgba(1, 118, 211, 0.12);
+}
+
+[data-theme="dark"] .btn--dev-card-launcher {
+  background: linear-gradient(135deg, rgba(1, 118, 211, 0.25), rgba(15, 23, 42, 0.8));
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+.btn--dev-card-launcher:hover {
+  transform: translateY(-2px);
+  border-color: #0176d3;
+  box-shadow: 0 8px 24px rgba(1, 118, 211, 0.3);
+}
+
+.btn--dev-card-launcher__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: #0176d3;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .btn--dev-card-launcher__badge {
+  background: #38bdf8;
+  color: #0b1528;
+}
+
+/* --------------------------------------------------------------------------
+   8. Reduced Motion & Mobile Responsiveness
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .lanyard-assembly {
+    animation: none !important;
+  }
+  .dev-card {
+    transition: none !important;
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --badge-width: 300px;
+    --badge-height: 480px;
+  }
+  .lanyard-strap {
+    height: 90px;
+  }
+  .dev-badge__name {
+    font-size: 18px;
+  }
+  .dev-badge__avatar-wrap {
+    width: 95px;
+    height: 95px;
+  }
+  .dev-badge-modal-controls {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 14px;
+  }
+}
+
 /* === components/loading.css === */
 .app-loading {
   overflow: hidden;
@@ -3970,9 +4738,10 @@ section {
     --float-base-y: 0px;
   }
 
-  .hero__floatingCard:last-child {
-    top: 50%;
-    right: -2px;
+  .hero__floatingCard:last-child,
+  .hero__floatingCard--insight {
+    top: 68%;
+    right: -4px;
     left: auto;
     bottom: auto;
     --float-base-x: 0px;
@@ -4040,7 +4809,9 @@ section {
     bottom: 16px;
   }
 
-  .hero__floatingCard:last-child {
+  .hero__floatingCard:last-child,
+  .hero__floatingCard--insight {
+    top: 68%;
     right: -8px;
   }
 

@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2026-10-18
+
+### Added
+- **Realistic Lanyard Developer ID Badge**:
+  - Fluid physics entrance drop (`lanyardDrop`) with realistic spring settle and continuous subtle idle sway (`styles/components/developer-card.css`, `scripts/ui/developer-card.js`).
+  - Hanging fabric strap with seamless infinite top extension preventing visible cut-offs during motion.
+  - Metallic lobster clasp hardware hooking through the badge punch hole.
+  - 3D interactive flip transforms (`rotateY(180deg)`) preserving front and back face visibility.
+  - **Front Face**: Custom Salesforce curved waves, circular portrait, structured credentials table (`KKP-2020-SFDX`, Consultant / Developer, 10x Certified, 2x Ranger), and clean centered vector QR code linking to the live site.
+  - **Back Face**: Competencies bullet breakdown, 2-column Architect certifications, quick-access social profile links (LinkedIn, GitHub, Trailhead, Email), and stylized authorized signature block.
+  - **Hero Launcher**: `[ID] Developer Pass` button in the hero section to re-trigger the lanyard badge entrance anytime.
+
+### Optimized & Fixed
+- **Mobile Hero Floating Card Placement**:
+  - Lowered the mobile projects badge (`11+ Projects / Open Source`) from `top: 50%` to `top: 68%` across `@media (max-width: 768px)` and `@media (max-width: 480px)`. Clears the portrait face and smile with ample breathing room.
+- **Dynamic Experience Calculation**:
+  - Added real-time calculation in `scripts/ui/developer-card.js` auto-formatting experience duration (`6+ Years (Consulting)`) matching site-wide dynamic stats.
+- **Accessibility & Scroll Management**:
+  - Locked background body scroll while the ID badge modal is open and restored on dismiss.
+  - Full keyboard accessibility with `Escape` to dismiss and `Enter`/`Space` to flip.
+- **Production CSS Sync**:
+  - Re-compiled all 23 modular CSS files via `scripts/bundle-css.py` into `styles/main.css` and bumped cachebuster queries to `?v=20261018c`.
+
 ## [1.3.0] - 2026-10-17
 
 ### Added

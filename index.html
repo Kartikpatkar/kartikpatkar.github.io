@@ -15,7 +15,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self';" />
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self';" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="author" content="Kartik Patkar" />
     <meta name="description"
@@ -50,8 +51,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
-    <link rel="preload" href="styles/main.css?v=20261017d" as="style" />
-    <link rel="stylesheet" href="styles/main.css?v=20261017d" />
+    <link rel="preload" href="styles/main.css?v=20261018c" as="style" />
+    <link rel="stylesheet" href="styles/main.css?v=20261018c" />
     <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
     <link rel="icon" href="assets/icons/favicon.ico" sizes="any" />
     <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
@@ -204,7 +205,8 @@
                     <h1 class="hero__title" id="hero-title">Kartik Patkar</h1>
                     <!-- <p class="hero__role" id="hero-role"></p> -->
                     <p class="hero__subtitle" id="hero-subtitle">Salesforce Consultant &amp; Senior Developer</p>
-                    <p class="hero__value" id="hero-value">I design scalable Salesforce solutions, build integrations, and develop productivity tools used in real-world operations.</p>
+                    <p class="hero__value" id="hero-value">I design scalable Salesforce solutions, build integrations,
+                        and develop productivity tools used in real-world operations.</p>
                     <div class="hero__specialties" id="hero-specialties" aria-label="Specializations"></div>
                     <div class="hero__highlights" id="hero-highlights">
                         <span class="hero__highlight">Salesforce automation</span>
@@ -223,6 +225,11 @@
                             <div class="resume-menu__panel" id="resume-options" hidden></div>
                         </div>
                         <a class="btn btn--ghost" id="secondary-cta" href="#projects">View Projects</a>
+                        <button class="btn btn--dev-card-launcher" id="dev-card-trigger" type="button"
+                            aria-haspopup="dialog" aria-controls="dev-card-modal">
+                            <span class="btn--dev-card-launcher__badge">ID</span>
+                            <span>Developer Pass</span>
+                        </button>
                     </div>
 
                     <div class="social" id="hero-social" aria-label="Social links"></div>
@@ -260,7 +267,9 @@
                     </div>
                     <div class="hero__portraitFrame">
                         <div class="hero__avatar" id="hero-avatar" aria-hidden="true">
-                            <img src="assets/images/kartik-patkar.webp" alt="Kartik Patkar, Salesforce Consultant and Senior Developer" class="hero__avatarImage" width="440" height="440" fetchpriority="high" />
+                            <img src="assets/images/kartik-patkar.webp"
+                                alt="Kartik Patkar, Salesforce Consultant and Senior Developer"
+                                class="hero__avatarImage" width="440" height="440" fetchpriority="high" />
                         </div>
                         <div class="hero__badge" id="hero-availability-badge" aria-hidden="true">
                             <span class="hero__badgeDot"></span>
@@ -418,7 +427,8 @@
     </main>
 
     <!-- Floating Interactive Avatar Companion (Thought Cloud & Dynamic Tour) -->
-    <aside class="avatar-companion avatar-companion--dock-right" id="avatar-companion" aria-label="Interactive portfolio guide">
+    <aside class="avatar-companion avatar-companion--dock-right" id="avatar-companion"
+        aria-label="Interactive portfolio guide">
         <div class="avatar-companion__thoughtWrapper" id="avatar-thought-wrapper">
             <div class="avatar-companion__bubble" id="avatar-bubble" role="status" aria-live="polite">
                 <div class="avatar-companion__header">
@@ -426,9 +436,11 @@
                         <span class="avatar-companion__badgePulse" aria-hidden="true"></span>
                         <span id="avatar-badge-text">Kartik's Companion</span>
                     </span>
-                    <button class="avatar-companion__close" id="avatar-bubble-toggle" type="button" aria-label="Close message">×</button>
+                    <button class="avatar-companion__close" id="avatar-bubble-toggle" type="button"
+                        aria-label="Close message">×</button>
                 </div>
-                <p class="avatar-companion__text" id="avatar-bubble-text">Hey! Ready to explore Kartik's portfolio? 🚀</p>
+                <p class="avatar-companion__text" id="avatar-bubble-text">Hey! Ready to explore Kartik's portfolio? 🚀
+                </p>
                 <button class="avatar-companion__action" id="avatar-bubble-action" type="button">
                     <span id="avatar-action-text">Explore About Me</span>
                     <span class="avatar-companion__actionIcon" aria-hidden="true">→</span>
@@ -441,7 +453,8 @@
             </div>
         </div>
 
-        <div class="avatar-companion__character" id="avatar-companion-character" role="button" tabindex="0" aria-label="Interact with avatar guide">
+        <div class="avatar-companion__character" id="avatar-companion-character" role="button" tabindex="0"
+            aria-label="Interact with avatar guide">
             <div class="avatar-companion__stage" id="avatar-companion-stage"></div>
             <div class="avatar-companion__groundGlow" aria-hidden="true"></div>
         </div>
@@ -452,6 +465,231 @@
             <path d="M7 14.5L12 9.5L17 14.5" />
         </svg>
     </button>
+
+    <!-- Developer ID Card Modal (Realistic Lanyard & Badge) -->
+    <div class="dev-card-modal is-active" id="dev-card-modal" role="dialog" aria-modal="true"
+        aria-labelledby="dev-card-name" aria-hidden="false">
+        <div class="lanyard-assembly" id="lanyard-assembly">
+            <!-- Fabric Lanyard Ribbon -->
+            <div class="lanyard-strap" aria-hidden="true"></div>
+
+            <!-- Metallic Swivel Clasp -->
+            <div class="lanyard-hardware" aria-hidden="true">
+                <div class="lanyard-ring"></div>
+                <div class="lanyard-clasp"></div>
+            </div>
+
+            <!-- Physical ID Badge in 3D Perspective -->
+            <div class="dev-card-perspective">
+                <div class="dev-card" id="dev-card" tabindex="0" role="region"
+                    aria-label="Developer ID Badge, front side. Click to flip.">
+
+                    <!-- FRONT FACE -->
+                    <div class="dev-card__face dev-card__face--front">
+                        <div class="dev-badge-punch-hole" aria-hidden="true"></div>
+
+                        <!-- Curved Decorative Waves (Salesforce Blue & Cyan) -->
+                        <svg class="dev-badge__waves" viewBox="0 0 340 230" preserveAspectRatio="none"
+                            aria-hidden="true">
+                            <path d="M0,0 L340,0 L340,150 C270,195 190,130 110,175 C55,205 15,190 0,200 Z"
+                                fill="#0176D3" />
+                            <path d="M0,0 L340,0 L340,120 C250,165 170,115 100,155 C45,182 15,170 0,178 Z"
+                                fill="#00A1E0" opacity="0.6" />
+                            <path
+                                d="M0,178 C80,140 180,198 260,145 C305,115 328,125 340,118 L340,175 C270,215 170,160 90,205 C45,228 15,215 0,225 Z"
+                                fill="#032D60" opacity="0.95" />
+                        </svg>
+
+                        <div class="dev-badge__front-body">
+                            <!-- Circular Portrait Photo -->
+                            <div class="dev-badge__avatar-wrap">
+                                <div class="dev-badge__avatar-ring"></div>
+                                <img src="assets/images/kartik-patkar.webp" alt="Kartik Patkar"
+                                    class="dev-badge__avatar-img" width="112" height="112" />
+                            </div>
+
+                            <div class="dev-badge__identity">
+                                <h2 class="dev-badge__name" id="dev-card-name">Kartik Patkar</h2>
+                                <p class="dev-badge__role" id="dev-card-title">Consultant / Developer</p>
+                            </div>
+
+                            <!-- Formatted ID Field Table -->
+                            <div class="dev-badge__table" aria-label="Credentials Snapshot">
+                                <div class="dev-badge__row">
+                                    <span class="dev-badge__label">ID NO</span>
+                                    <span class="dev-badge__colon">:</span>
+                                    <span class="dev-badge__val">KKP-2020-SFDX</span>
+                                </div>
+                                <div class="dev-badge__row">
+                                    <span class="dev-badge__label">ROLE</span>
+                                    <span class="dev-badge__colon">:</span>
+                                    <span class="dev-badge__val">Consultant / Developer</span>
+                                </div>
+                                <div class="dev-badge__row">
+                                    <span class="dev-badge__label">EXP</span>
+                                    <span class="dev-badge__colon">:</span>
+                                    <span class="dev-badge__val" id="dev-card-exp">6+ Years (Consulting)</span>
+                                </div>
+                                <div class="dev-badge__row">
+                                    <span class="dev-badge__label">CERTS</span>
+                                    <span class="dev-badge__colon">:</span>
+                                    <span class="dev-badge__val">10x Certified (Salesforce)</span>
+                                </div>
+                                <div class="dev-badge__row">
+                                    <span class="dev-badge__label">TRAIL</span>
+                                    <span class="dev-badge__colon">:</span>
+                                    <span class="dev-badge__val">2x Ranger • 450+ Badges</span>
+                                </div>
+                                <div class="dev-badge__row">
+                                    <span class="dev-badge__label">EMAIL</span>
+                                    <span class="dev-badge__colon">:</span>
+                                    <span class="dev-badge__val">kartikkp.assets@gmail.com</span>
+                                </div>
+                            </div>
+
+                            <!-- Footer with Clean Centered QR Code -->
+                            <div class="dev-badge__footer">
+                                <div class="dev-badge__qr-box">
+                                    <!-- Scalable Pure SVG QR Code pointing to kartikpatkar.github.io -->
+                                    <svg class="dev-badge__qr-svg" viewBox="0 0 25 25" shape-rendering="crispEdges"
+                                        aria-label="QR Code to portfolio">
+                                        <rect width="25" height="25" fill="#ffffff" />
+                                        <path fill="#0176D3"
+                                            d="M1 1h7v7H1zM2 2v5h5V2zM3 3h3v3H3zM17 1h7v7h-7zM18 2v5h5V2zM19 3h3v3h-3zM1 17h7v7H1zM2 18v5h5v-5zM3 19h3v3H3zM10 1h2v2h-2zM13 1h1v3h-1zM10 4h1v2h-1zM12 4h2v1h-2zM15 4h1v1h-1zM10 7h3v1h-3zM15 7h1v2h-1zM1 10h1v1H1zM3 10h1v2H3zM5 10h2v1H5zM8 10h2v1H8zM11 10h2v1h-2zM14 10h1v1h-1zM16 10h2v1h-2zM19 10h2v1h-2zM22 10h2v2h-2zM1 12h1v2H1zM4 12h1v1H4zM6 12h1v2H6zM8 12h1v1H8zM10 12h1v2h-1zM12 12h2v1h-2zM15 12h2v1h-2zM18 12h1v2h-1zM20 12h1v1h-1zM2 14h2v1H2zM8 14h1v2H8zM11 14h2v1h-2zM14 14h1v2h-1zM16 14h2v1h-2zM19 14h1v1h-1zM21 14h2v2h-2zM1 15h1v1H1zM4 15h2v1H4zM10 16h1v1h-1zM13 16h2v1h-2zM17 16h1v2h-1zM10 18h1v2h-1zM12 18h2v1h-2zM15 18h2v2h-2zM18 18h2v1h-2zM21 18h2v1h-2zM9 19h1v2H9zM11 20h1v2h-1zM13 20h2v2h-2zM17 20h1v1h-1zM19 20h3v1h-3zM10 22h1v2h-1zM16 22h2v1h-2zM20 22h1v1h-1zM22 22h1v2h-1zM9 23h1v1H9zM12 23h2v1h-2zM15 23h1v1h-1zM18 23h2v1h-2z" />
+                                    </svg>
+                                    <div class="dev-badge__qr-info">
+                                        <span class="dev-badge__qr-title">SCAN TO VISIT</span>
+                                        <span class="dev-badge__qr-sub">kartikpatkar.github.io</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BACK FACE -->
+                    <div class="dev-card__face dev-card__face--back" style="background: #0b1528;">
+                        <div class="dev-badge-punch-hole" aria-hidden="true"></div>
+
+                        <!-- Inverted Curved Waves on Back -->
+                        <svg class="dev-badge__waves"
+                            style="transform: scaleY(-1); top: auto; bottom: 0; height: 190px;" viewBox="0 0 340 230"
+                            preserveAspectRatio="none" aria-hidden="true">
+                            <path d="M0,0 L340,0 L340,150 C270,195 190,130 110,175 C55,205 15,190 0,200 Z"
+                                fill="#0176D3" />
+                            <path d="M0,0 L340,0 L340,120 C250,165 170,115 100,155 C45,182 15,170 0,178 Z"
+                                fill="#00A1E0" opacity="0.6" />
+                            <path
+                                d="M0,178 C80,140 180,198 260,145 C305,115 328,125 340,118 L340,175 C270,215 170,160 90,205 C45,228 15,215 0,225 Z"
+                                fill="#032D60" opacity="0.95" />
+                        </svg>
+
+                        <div class="dev-badge__back-body">
+                            <h3 class="dev-badge__back-title">Specialities &amp; Credentials</h3>
+
+                            <ul class="dev-badge__bullets" aria-label="Core Competencies">
+                                <li class="dev-badge__bullet">Apex Architecture, Event-Driven &amp; Bulkified Frameworks
+                                </li>
+                                <li class="dev-badge__bullet">Modern Reactive Lightning Web Components (LWC)</li>
+                                <li class="dev-badge__bullet">Enterprise Integrations (REST, Bulk API, Middleware)</li>
+                                <li class="dev-badge__bullet">Security, Data Architecture &amp; Sharing Visibility</li>
+                            </ul>
+
+                            <div class="dev-badge__certs-grid" id="dev-card-cert-list">
+                                <div class="dev-badge__cert-pill">
+                                    <span>Application Architect</span>
+                                    <span>AA</span>
+                                </div>
+                                <div class="dev-badge__cert-pill">
+                                    <span>Sharing &amp; Visibility Architect</span>
+                                    <span>SVA</span>
+                                </div>
+                                <div class="dev-badge__cert-pill">
+                                    <span>Platform Data Architect</span>
+                                    <span>DA</span>
+                                </div>
+                                <div class="dev-badge__cert-pill">
+                                    <span>JavaScript Developer I</span>
+                                    <span>JS-I</span>
+                                </div>
+                            </div>
+
+                            <!-- Social Media Links Block -->
+                            <div class="dev-badge__socials" aria-label="Social Media &amp; Profiles">
+                                <a href="https://www.linkedin.com/in/kartik-patkar/" target="_blank"
+                                    rel="noopener noreferrer" class="dev-badge__social-item" title="LinkedIn Profile">
+                                    <svg class="dev-badge__social-icon" viewBox="0 0 16 16" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path
+                                            d="M12.225 12.225h-1.778V9.44c0-.664-.012-1.519-.925-1.519-.926 0-1.068.724-1.068 1.47v2.834H6.676V6.498h1.707v.783h.024c.348-.594.996-.95 1.684-.925 1.802 0 2.135 1.185 2.135 2.728l-.001 3.14zM4.67 5.715a1.037 1.037 0 01-1.032-1.031c0-.566.466-1.032 1.032-1.032.566 0 1.031.466 1.032 1.032 0 .566-.466 1.032-1.032 1.032zm.889 6.51h-1.78V6.498h1.78v5.727zM13.11 2H2.885A.88.88 0 002 2.866v10.268a.88.88 0 00.885.866h10.226a.882.882 0 00.889-.866V2.865a.88.88 0 00-.889-.864z" />
+                                    </svg>
+                                    <span>LinkedIn</span>
+                                </a>
+                                <a href="https://github.com/Kartikpatkar" target="_blank" rel="noopener noreferrer"
+                                    class="dev-badge__social-item" title="GitHub Profile">
+                                    <svg class="dev-badge__social-icon" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path
+                                            d="M10,0 C15.523,0 20,4.59 20,10.253 C20,14.782 17.138,18.624 13.167,19.981 C12.66,20.082 12.48,19.762 12.48,19.489 C12.48,19.151 12.492,18.047 12.492,16.675 C12.492,15.719 12.172,15.095 11.813,14.777 C14.04,14.523 16.38,13.656 16.38,9.718 C16.38,8.598 15.992,7.684 15.35,6.966 C15.454,6.707 15.797,5.664 15.252,4.252 C15.252,4.252 14.414,3.977 12.505,5.303 C11.706,5.076 10.85,4.962 10,4.958 C9.15,4.962 8.295,5.076 7.497,5.303 C5.586,3.977 4.746,4.252 4.746,4.252 C4.203,5.664 4.546,6.707 4.649,6.966 C4.01,7.684 3.619,8.598 3.619,9.718 C3.619,13.646 5.954,14.526 8.175,14.785 C7.889,15.041 7.63,15.493 7.54,16.156 C6.97,16.418 5.522,16.871 4.63,15.304 C4.63,15.304 4.101,14.319 3.097,14.247 C3.097,14.247 2.122,14.234 3.029,14.87 C3.029,14.87 3.684,15.185 4.139,16.37 C4.139,16.37 4.726,18.2 7.508,17.58 C7.513,18.437 7.522,19.245 7.522,19.489 C7.522,19.76 7.338,20.077 6.839,19.982 C2.865,18.627 0,14.783 0,10.253 C0,4.59 4.478,0 10,0" />
+                                    </svg>
+                                    <span>GitHub</span>
+                                </a>
+                                <a href="https://www.salesforce.com/trailblazer/kpatkar1" target="_blank"
+                                    rel="noopener noreferrer" class="dev-badge__social-item"
+                                    title="Salesforce Trailhead Profile">
+                                    <svg class="dev-badge__social-icon" viewBox="0 0 52 52" fill="currentColor"
+                                        aria-hidden="true">
+                                        <polygon points="12.3,37 9.7,40 14.8,40" />
+                                        <polygon points="14.7,43.1 19.8,43.1 17.2,40.2" />
+                                        <polygon points="35.2,41 37.7,38.1 40.3,41" />
+                                        <path
+                                            d="M26.8,2.2c-0.4-0.2-0.9-0.2-1.4,0C11.1,8.2,1.9,22.4,2.2,38v3.4c0,0.5,0.2,1,0.7,1.4c6.9,4.6,15,7.1,23.3,7.2H27h0.1c7.9-0.3,15.7-2.7,22.3-7.2c0.4-0.3,0.7-0.8,0.7-1.4V38C50.4,22.4,41.2,8.2,26.8,2.2z M13.9,14.8c5.8-6.9,12.3-9.2,12.3-9.2c1.4,0.6,16.9,6.7,20.2,26.4h-4.1l-7.8-11.3c-0.5-0.7-1.6-0.9-2.4-0.4c-0.2,0.1-0.3,0.3-0.4,0.4l-2,2.8l-5.5-7.9c-0.5-0.7-1.6-0.9-2.4-0.4c-0.2,0.1-0.3,0.3-0.4,0.4L10.2,31.9L6.1,32C7.3,24.5,10.4,19,13.9,14.8z M38.1,32h-4.7H28l2.6-3.8l2.4-3.6L38.1,32z M23.7,20.9L23.7,20.9L23.7,20.9l4,5.7l-3.8,5.3h-1h-8.6l4.1-6.1l4.3-6.4l0,0L23.7,20.9z M27.5,44L27.5,44l-1.5,2.6c-2.9,0-5.6-0.4-8.8-1.1l0,0c-4.1-1-8-2.7-11.6-4.9v-2.5c0-0.8,0-1.7,0.1-2.6h7.5h10.1c-1.4,2.1-0.7,4.9,1.5,6.2c0.2,0.1,0.4,0.2,0.5,0.3l1.6,0.7C27.5,42.9,27.7,43.5,27.5,44z M46.8,40.5c-2.6,1.6-5.3,2.9-8.1,3.9c0,0-0.5,0.2-0.7,0.2c-1.6,0.5-3.2,0.9-4.9,1.3c-0.9,0.2-1.9,0.3-2.8,0.4l0.3-0.5c1.3-2.2,0.5-4.9-1.7-6.2c-0.1-0.1-0.3-0.1-0.4-0.2l-1.6-0.7c-0.5-0.2-0.8-0.8-0.5-1.4c0-0.1,0.1-0.2,0.1-0.2l1.5-1.7H31h15.7c0,0.8,0.1,1.7,0.1,2.6L46.8,40.5z" />
+                                    </svg>
+                                    <span>Trailhead</span>
+                                </a>
+                                <a href="mailto:kartikkp.assets@gmail.com" class="dev-badge__social-item"
+                                    title="Send Email">
+                                    <svg class="dev-badge__social-icon" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                                    </svg>
+                                    <span>Email</span>
+                                </a>
+                            </div>
+
+                            <!-- Stylized Signature Area -->
+                            <div class="dev-badge__signature-area">
+                                <div class="dev-badge__sign-heading">Authorized Signature</div>
+                                <div class="dev-badge__sign-script">Kartik Patkar</div>
+                                <div class="dev-badge__sign-sub">Certified Trailblazer ID #KKP-2020-SFDX</div>
+                            </div>
+
+                            <div class="dev-badge__back-actions">
+                                <!-- <button class="dev-badge__back-flip-btn" id="dev-card-flip-back-btn" type="button" aria-label="Flip back to front side">
+                                    <span>← Front Side</span>
+                                </button> -->
+                                <span
+                                    style="font-size: 10px; font-weight: 700; color: #94a3b8; text-transform: uppercase;">Verified
+                                    Pass</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Bottom Modal Actions (Flip & Continue to Site) -->
+            <div class="dev-badge-modal-controls">
+                <button class="btn--flip-standalone" id="dev-badge-flip-alt" type="button"
+                    aria-label="Rotate developer badge">
+                    <span>Click Card</span>
+                </button>
+                <button class="btn--continue-portfolio" id="dev-badge-continue" type="button">
+                    <span>Continue</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer" aria-label="Footer">
@@ -483,6 +721,7 @@
     <script src="scripts/ui/back-to-top.js?v=20260401b" defer></script>
     <script src="scripts/ui/contact-form.js?v=20260401b" defer></script>
     <script src="scripts/ui/resume-menu.js?v=20260403a" defer></script>
+    <script src="scripts/ui/developer-card.js?v=20261018b" defer></script>
     <script src="scripts/main.js?v=20261017c" defer></script>
 
     <!-- Heavy Companion Assets Deferred in Background -->
