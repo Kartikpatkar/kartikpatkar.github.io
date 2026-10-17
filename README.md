@@ -51,9 +51,10 @@ This repo works with GitHub Pages from the repository root.
 ## Notes
 
 - No build step is required.
-- Pure vanilla HTML, CSS, and JS.
+- Pure vanilla HTML, CSS, and JS (zero bundler at root).
 - Experience years automatically calculate from October 2020.
-- Interactive AI avatar companion guides visitors with contextual dialogue per section.
+- Interactive vector avatar companion with real-time cursor gaze tracking, 5-beat interaction sequence, and developer mode easter egg.
+- 100% client-side with zero external API calls or token dependencies.
 - The contact form uses `mailto:`.
 - The main preview image is `assets/images/portfolio-preview.png`.
 - The resume files are `assets/Kartik-Patkar-ATS-Resume.pdf` and `assets/Kartik-Patkar-Resume.pdf`.
