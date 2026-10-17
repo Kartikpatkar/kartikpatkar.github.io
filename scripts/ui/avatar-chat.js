@@ -3,24 +3,17 @@
 
   window.PortfolioApp = window.PortfolioApp || { core: {}, sections: {}, ui: {} };
 
-  // Storage keys
-  const STORAGE_KEY_TOKEN = "ifm_api_key";
-  const STORAGE_KEY_MODEL = "ifm_model";
-  const DEFAULT_MODEL = "IFM/K2-Horizon-375B-A23B";
-  const IFM_ENDPOINT = "https://api.ifm.ai/v1/chat/completions";
+  const POLLINATIONS_ENDPOINT = "https://text.pollinations.ai/";
+  const MODEL_NAME = "openai"; // Pollinations free OpenAI/GPT compatible endpoint
 
   // System prompt generation using dynamic portfolio content
   const buildSystemPrompt = () => {
     const content = window.PORTFOLIO_CONTENT || {};
     const site = content.site || {};
-    const hero = content.hero || {};
-    const about = content.about || {};
     const experience = content.experience?.items || [];
     const certs = content.certifications?.items || [];
     const projects = content.projects?.items || [];
-    const skills = content.skills?.categories || [];
 
-    // Calculate dynamic stats
     const certCount = certs.length || 10;
     const projectCount = projects.length || 9;
     let expYears = "5.5+";
@@ -69,7 +62,7 @@ WEBSITE SECTIONS AVAILABLE TO NAVIGATE:
 - #contact (Message form, email, social links)
 
 CRITICAL INSTRUCTIONS FOR SHOWING THE PORTFOLIO AROUND:
-When answering or suggesting a topic, include ONE relevant action tag at the beginning or end of your answer so the page can automatically scroll and interact:
+When answering or suggesting a topic, include ONE relevant action tag at the end of your answer so the page can automatically scroll and interact:
 - Navigate to section: [action:navigate, target:#projects, anim:excited]
 - Other targets: target:#skills, target:#certifications, target:#experience, target:#about, target:#contact.
 - Avatar animations: 'proud', 'excited', 'working', 'curious', 'celebrate', 'happy', 'listening'.
@@ -81,14 +74,13 @@ STYLE:
 - Always be helpful, authentic, and invite follow-up questions.`;
   };
 
-  // Local fallback knowledge base when IFM token is missing or offline
+  // Local fallback knowledge base when offline
   const getOfflineReply = (userQuery) => {
     const q = (userQuery || "").toLowerCase();
-    const content = window.PORTFOLIO_CONTENT || {};
 
     if (q.includes("project") || q.includes("build") || q.includes("app") || q.includes("tool")) {
       return {
-        text: "Kartik has engineered 9+ open-source tools and Chrome extensions for Salesforce developers, including Apex syntax enhancers, SOQL tooling, and bulk migration utilities! Check them out in the Projects showcase below.",
+        text: "Kartik has engineered 9+ open-source tools and Chrome extensions for Salesforce developers, including Apex syntax enhancers, SOQL tooling, and bulk migration utilities! Check them out in the Projects showcase.",
         action: { target: "#projects", anim: "excited" }
       };
     }
@@ -135,9 +127,6 @@ STYLE:
       this.history = [];
       this.isOpen = false;
       this.isBusy = false;
-      this.token = localStorage.getItem(STORAGE_KEY_TOKEN) || "";
-      const storedModel = localStorage.getItem(STORAGE_KEY_MODEL);
-      this.model = (!storedModel || storedModel === "k2-horizon") ? DEFAULT_MODEL : storedModel;
 
       this.initDom();
       this.bindEvents();
@@ -148,11 +137,8 @@ STYLE:
       const bubble = document.getElementById("avatar-bubble");
       if (!thoughtWrapper || !bubble) return;
 
-      // 1. Add "Ask AI 💬" button to standard thought bubble
+      // 1. Ensure "Ask AI 💬" button exists in thought bubble
       if (!document.getElementById("avatar-open-chat-btn")) {
-        const bubbleActions = document.createElement("div");
-        bubbleActions.className = "avatar-companion__bubbleActions";
-        
         const chatBtn = document.createElement("button");
         chatBtn.id = "avatar-open-chat-btn";
         chatBtn.type = "button";
@@ -160,8 +146,12 @@ STYLE:
         chatBtn.innerHTML = `<span>💬</span><span>Ask AI</span>`;
         chatBtn.setAttribute("aria-label", "Open interactive AI chat");
 
-        // Insert before standard action or append
-        bubble.appendChild(chatBtn);
+        const bubbleActions = bubble.querySelector(".avatar-companion__bubbleActions");
+        if (bubbleActions) {
+          bubbleActions.appendChild(chatBtn);
+        } else {
+          bubble.appendChild(chatBtn);
+        }
       }
 
       // 2. Create the Expanded Chat Panel inside thoughtWrapper
@@ -180,37 +170,12 @@ STYLE:
               <span class="avatar-chat__statusDot" aria-hidden="true"></span>
               <div>
                 <h3 class="avatar-chat__title">Astro Companion AI</h3>
-                <span class="avatar-chat__subtitle" id="avatar-chat-model-label">${this.model}</span>
+                <span class="avatar-chat__subtitle">Instant Free AI Assistant</span>
               </div>
             </div>
             <div class="avatar-chat__headerActions">
-              <button type="button" class="avatar-chat__iconBtn" id="avatar-chat-settings-btn" title="Configure IFM Token & Model" aria-label="Settings">⚙️</button>
               <button type="button" class="avatar-chat__iconBtn" id="avatar-chat-close-btn" title="Minimize Chat" aria-label="Minimize">×</button>
             </div>
-          </div>
-
-          <!-- Token Settings Drawer (Collapsible) -->
-          <div class="avatar-chat__settingsDrawer" id="avatar-chat-settings-drawer" hidden>
-            <form class="avatar-chat__settingsContent" id="avatar-chat-settings-form" onsubmit="return false;">
-              <input type="text" name="username" value="kartik" autocomplete="username" style="display:none;" aria-hidden="true" tabindex="-1">
-              <label class="avatar-chat__label" for="avatar-chat-token-input">
-                <span>IFM API Key</span>
-                <a href="https://platform.ifm.ai" target="_blank" rel="noopener" class="avatar-chat__link">Get Free Key</a>
-              </label>
-              <input type="password" id="avatar-chat-token-input" class="avatar-chat__input avatar-chat__input--token" placeholder="Bearer ifm_..." autocomplete="current-password" value="${this.token}">
-              
-              <label class="avatar-chat__label" for="avatar-chat-model-input">Model</label>
-              <select id="avatar-chat-model-input" class="avatar-chat__input avatar-chat__select">
-                <option value="IFM/K2-Horizon-375B-A23B" ${this.model === "IFM/K2-Horizon-375B-A23B" ? "selected" : ""}>IFM/K2-Horizon-375B-A23B (Flagship)</option>
-                <option value="IFM/Jais-3-MoVA-36B-A4B" ${this.model === "IFM/Jais-3-MoVA-36B-A4B" ? "selected" : ""}>IFM/Jais-3-MoVA-36B-A4B (Fast 36B)</option>
-              </select>
-              
-              <div class="avatar-chat__settingsButtons">
-                <button type="submit" class="avatar-chat__btn avatar-chat__btn--primary" id="avatar-chat-save-token-btn">Save Key</button>
-                <button type="button" class="avatar-chat__btn avatar-chat__btn--secondary" id="avatar-chat-clear-token-btn">Clear</button>
-              </div>
-              <p class="avatar-chat__tokenNote">Stored securely in browser localStorage only. Used for client-side chat.</p>
-            </form>
           </div>
 
           <!-- Messages Scroll View -->
@@ -248,9 +213,6 @@ STYLE:
     bindEvents() {
       const openBtn = document.getElementById("avatar-open-chat-btn");
       const closeBtn = document.getElementById("avatar-chat-close-btn");
-      const settingsBtn = document.getElementById("avatar-chat-settings-btn");
-      const saveTokenBtn = document.getElementById("avatar-chat-save-token-btn");
-      const clearTokenBtn = document.getElementById("avatar-chat-clear-token-btn");
       const form = document.getElementById("avatar-chat-form");
       const chips = document.getElementById("avatar-chat-chips");
 
@@ -260,47 +222,6 @@ STYLE:
 
       if (closeBtn) {
         closeBtn.addEventListener("click", () => this.toggleChat(false));
-      }
-
-      if (settingsBtn) {
-        settingsBtn.addEventListener("click", () => {
-          const drawer = document.getElementById("avatar-chat-settings-drawer");
-          if (drawer) drawer.hidden = !drawer.hidden;
-        });
-      }
-
-      if (saveTokenBtn) {
-        saveTokenBtn.addEventListener("click", () => {
-          const tokenInput = document.getElementById("avatar-chat-token-input");
-          const modelInput = document.getElementById("avatar-chat-model-input");
-          const modelLabel = document.getElementById("avatar-chat-model-label");
-          
-          this.token = (tokenInput?.value || "").trim();
-          this.model = (modelInput?.value || "").trim() || DEFAULT_MODEL;
-
-          localStorage.setItem(STORAGE_KEY_TOKEN, this.token);
-          localStorage.setItem(STORAGE_KEY_MODEL, this.model);
-
-          if (modelLabel) modelLabel.textContent = this.model;
-          const drawer = document.getElementById("avatar-chat-settings-drawer");
-          if (drawer) drawer.hidden = true;
-
-          this.appendBotMessage(
-            this.token
-              ? `✅ Key saved! Connected to **${this.model}**. How can I help you today?`
-              : "⚠️ No key entered. Operating in local intelligent demo mode."
-          );
-        });
-      }
-
-      if (clearTokenBtn) {
-        clearTokenBtn.addEventListener("click", () => {
-          this.token = "";
-          localStorage.removeItem(STORAGE_KEY_TOKEN);
-          const tokenInput = document.getElementById("avatar-chat-token-input");
-          if (tokenInput) tokenInput.value = "";
-          this.appendBotMessage("API Key cleared. Reverted to local portfolio demo mode.");
-        });
       }
 
       if (form) {
@@ -342,14 +263,6 @@ STYLE:
         const input = document.getElementById("avatar-chat-user-input");
         setTimeout(() => input?.focus(), 150);
         this.scrollToBottom();
-
-        // If no token exists on first launch, hint settings
-        if (!this.token && !this._warnedToken) {
-          this._warnedToken = true;
-          this.appendBotMessage(
-            "💡 *Tip: To connect to live IFM AI, tap ⚙️ above and paste your IFM token. I also answer questions in local demo mode!*"
-          );
-        }
       } else {
         if (this.companion && typeof this.companion.onChatClose === "function") {
           this.companion.onChatClose();
@@ -384,7 +297,6 @@ STYLE:
       const container = document.getElementById("avatar-chat-messages");
       if (!container) return;
 
-      // Parse and execute actions
       const { cleanText, actions } = this.parseActions(rawText);
       actions.forEach(act => this.executeAction(act));
 
@@ -429,96 +341,62 @@ STYLE:
       this.showTyping();
 
       try {
-        if (!this.token) {
-          // Local fallback simulation
-          await new Promise(r => setTimeout(r, 650));
-          const fallback = getOfflineReply(userText);
-          const replyText = fallback.action 
-            ? `${fallback.text} [action:navigate, target:${fallback.action.target}, anim:${fallback.action.anim}]`
-            : fallback.text;
-          
-          this.removeTyping();
-          this.appendBotMessage(replyText);
-          this.history.push({ role: "assistant", content: replyText });
-          return;
-        }
-
-        // Live IFM API Call
         const systemPrompt = buildSystemPrompt();
-        const messages = [
-          { role: "system", content: systemPrompt },
-          ...this.history.slice(-8)
-        ];
+        let botReply = null;
 
-        const authHeader = this.token.startsWith("Bearer ") ? this.token : `Bearer ${this.token}`;
-        let targetModel = this.model || DEFAULT_MODEL;
-
-        const callApi = async (modelName, customMessages = messages) => {
-          return fetch(IFM_ENDPOINT, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": authHeader
-            },
-            body: JSON.stringify({
-              model: modelName,
-              messages: customMessages,
-              temperature: 0.7,
-              max_tokens: 450
-            })
-          });
-        };
-
-        let response = null;
-        let lastError = null;
-
-        // Attempt 1: Call requested model
+        // Strategy 1: Pollinations GET endpoint (bypasses Cloudflare POST 403 blocks)
         try {
-          response = await callApi(targetModel);
-          if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
+          const encodedPrompt = encodeURIComponent(userText);
+          const encodedSystem = encodeURIComponent(systemPrompt);
+          const url = `https://text.pollinations.ai/${encodedPrompt}?system=${encodedSystem}&model=openai`;
+          const resp = await fetch(url, { method: "GET" });
+          if (resp.ok) {
+            const txt = await resp.text();
+            if (txt && !txt.includes("<html>")) {
+              botReply = txt;
+            }
           }
         } catch (e1) {
-          lastError = e1;
-          // Attempt 2: If K2-Horizon fails/503s, try Jais-3 36B
-          if (targetModel.includes("K2-Horizon")) {
-            try {
-              console.warn("IFM K2-Horizon unavailable, retrying with Jais-3-MoVA-36B...", e1);
-              targetModel = "IFM/Jais-3-MoVA-36B-A4B";
-              response = await callApi(targetModel);
-              if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            } catch (e2) {
-              lastError = e2;
-            }
+          console.warn("Pollinations GET fallback:", e1);
+        }
+
+        // Strategy 2: Puter.js (Zero-token GPT-4o-mini client API)
+        if (!botReply && window.puter?.ai?.chat) {
+          try {
+            const prompt = `${systemPrompt}\n\nVisitor Question: ${userText}`;
+            const res = await window.puter.ai.chat(prompt, { model: "gpt-4o-mini" });
+            botReply = typeof res === "string" ? res : (res?.message?.content || res?.text || String(res));
+          } catch (e2) {
+            console.warn("Puter AI fallback:", e2);
           }
         }
 
-        // Attempt 3: If still failing, retry with combined user prompt format (some open models reject system role)
-        if (!response || !response.ok) {
+        // Strategy 3: Pollinations POST endpoint
+        if (!botReply) {
           try {
-            console.warn("Retrying with user-only prompt format...");
-            const userOnlyMessages = [
-              {
-                role: "user",
-                content: `${systemPrompt}\n\nVisitor Question: ${userText}`
-              }
+            const messages = [
+              { role: "system", content: systemPrompt },
+              ...this.history.slice(-6)
             ];
-            const fallbackResp = await callApi("IFM/Jais-3-MoVA-36B-A4B", userOnlyMessages);
-            if (fallbackResp.ok) {
-              response = fallbackResp;
+            const resp = await fetch(POLLINATIONS_ENDPOINT, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ messages, model: MODEL_NAME })
+            });
+            if (resp.ok) {
+              const txt = await resp.text();
+              if (txt && !txt.includes("<html>")) {
+                botReply = txt;
+              }
             }
           } catch (e3) {
-            lastError = e3;
+            console.warn("Pollinations POST fallback:", e3);
           }
         }
 
-        if (!response || !response.ok) {
-          const errData = response ? await response.json().catch(() => ({})) : {};
-          throw new Error(errData.error?.message || lastError?.message || "Service unavailable");
+        if (!botReply) {
+          throw new Error("Remote endpoints unreachable");
         }
-
-        const data = await response.json();
-        const botReply = data.choices?.[0]?.message?.content || "I couldn't process that response.";
 
         this.removeTyping();
         this.appendBotMessage(botReply);
@@ -526,14 +404,11 @@ STYLE:
 
       } catch (err) {
         this.removeTyping();
-        console.warn("Avatar IFM Chat Error:", err);
-        // Fallback to local answering on error
+        console.warn("Avatar Chat fallback to local engine:", err);
         const fallback = getOfflineReply(userText);
-        const errorReason = err.message.includes("503") || err.message.includes("Failed to fetch")
-          ? "IFM server temporarily unavailable"
-          : err.message;
-        const errorNote = `*(Note: ${errorReason} - answered via local portfolio knowledge)*\n\n${fallback.text} [action:navigate, target:${fallback.action.target}, anim:${fallback.action.anim}]`;
-        this.appendBotMessage(errorNote);
+        const reply = `${fallback.text} [action:navigate, target:${fallback.action.target}, anim:${fallback.action.anim}]`;
+        this.appendBotMessage(reply);
+        this.history.push({ role: "assistant", content: reply });
       } finally {
         this.isBusy = false;
       }
@@ -553,7 +428,7 @@ STYLE:
           });
         }
         actions.push({ type: actionType.toLowerCase(), params });
-        return ""; // remove from visible text
+        return "";
       }).trim();
 
       return { cleanText, actions };
@@ -571,7 +446,6 @@ STYLE:
           if (targetEl) {
             targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
             
-            // Visual highlight ring without forced reflow
             targetEl.classList.remove("avatar-highlight-pulse");
             requestAnimationFrame(() => {
               targetEl.classList.add("avatar-highlight-pulse");
@@ -608,14 +482,10 @@ STYLE:
 
     renderMarkdown(text) {
       let html = this.escapeHtml(text);
-      // bold **text**
       html = html.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-      // italic *text*
       html = html.replace(/\*(.*?)\*/g, "<em>$1</em>");
-      // bullet lists
       html = html.replace(/(?:^|\n)- (.*?)(?=\n|$)/g, "<li>$1</li>");
       html = html.replace(/(<li>.*?<\/li>)/gs, "<ul>$1</ul>");
-      // line breaks
       html = html.replace(/\n\n/g, "</p><p>");
       html = html.replace(/\n/g, "<br>");
       return `<p>${html}</p>`;
