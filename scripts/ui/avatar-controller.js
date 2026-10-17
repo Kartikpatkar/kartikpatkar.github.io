@@ -54,7 +54,7 @@
           {
             text: "Hey! I'm Kartik's AI companion. Ready for a quick tour? 🚀",
             button: "Take the tour ⬇️",
-            animation: "waking",
+            animation: "happy",
             nextStep: 1
           },
           {
@@ -77,7 +77,7 @@
           {
             text: `${certCount}x Certified Salesforce Consultant & Senior Dev crafting enterprise scale! ☁️`,
             button: "Tell me more 💡",
-            animation: "proud",
+            animation: "happy",
             nextStep: 1
           },
           {
@@ -100,7 +100,7 @@
           {
             text: "Apex, LWC, REST APIs, and Chrome Extensions built for speed! ⚡",
             button: "Does he build tools? 🛠️",
-            animation: "working",
+            animation: "thinking",
             nextStep: 1
           },
           {
@@ -163,7 +163,7 @@
           {
             text: `Here's the workshop! ${projectCount}+ live extensions, productivity kits & Apex libraries. 🧩`,
             button: "Which is the coolest? 🌟",
-            animation: "happy",
+            animation: "working",
             nextStep: 1
           },
           {
@@ -209,7 +209,7 @@
           {
             text: "Here's the direct line! Fill out this form or connect on LinkedIn/GitHub. ✉️",
             button: "Tell me a fun secret 😄",
-            animation: "playful",
+            animation: "happy",
             nextStep: 1
           },
           {
@@ -450,7 +450,7 @@
       ];
       let certTriviaIdx = 0;
       let lastCertPoke = 0;
-      certsContainer.addEventListener("mouseenter", (e) => {
+      const handleCertPoke = (e) => {
         if (e.target.closest(".cert-card")) {
           const now = Date.now();
           if (now - lastCertPoke > 3500) {
@@ -460,7 +460,9 @@
             sayDialogue(line, "proud", 4500);
           }
         }
-      }, true);
+      };
+      certsContainer.addEventListener("mouseenter", handleCertPoke, true);
+      certsContainer.addEventListener("click", handleCertPoke);
     }
 
     // 4. Trailhead Feature Box Reaction
@@ -471,28 +473,36 @@
       });
     }
 
-    // 5. Skills Grid Hover Reaction
+    // 5. Skills Grid Hover / Tap Reactions (Interaction 5)
     const skillsGrid = document.getElementById("skills-grid");
     if (skillsGrid) {
-      const skillTrivia = [
-        "Governor limits? Kartik builds bulkified, memory-efficient patterns ⚡",
-        "Custom LWCs engineered with lightning-fast reactive DOM! 🛠️",
-        "REST & Bulk APIs syncing millions of enterprise records 🚀",
-        "Automated CI/CD pipelines & developer productivity suites! 📦"
-      ];
-      let skillTriviaIdx = 0;
       let lastSkillPoke = 0;
-      skillsGrid.addEventListener("mouseenter", (e) => {
-        if (e.target.closest(".skill-card")) {
-          const now = Date.now();
-          if (now - lastSkillPoke > 3500) {
-            lastSkillPoke = now;
-            const line = skillTrivia[skillTriviaIdx % skillTrivia.length];
-            skillTriviaIdx++;
-            sayDialogue(line, "working", 4200);
-          }
+      const handleSkillInteraction = (e) => {
+        const card = e.target.closest(".skill-card");
+        if (!card) return;
+
+        const now = Date.now();
+        if (now - lastSkillPoke < 2400) return;
+        lastSkillPoke = now;
+
+        const titleText = (card.querySelector(".skill-card__title")?.textContent || card.textContent || "").toLowerCase();
+
+        let anim = "working"; // Apex / Architecture default
+        let line = "Governor limits? Kartik builds bulkified, memory-efficient patterns ⚡";
+
+        if (titleText.includes("lwc") || titleText.includes("javascript") || titleText.includes("frontend") || titleText.includes("ui") || titleText.includes("html") || titleText.includes("css")) {
+          anim = "thinking";
+          line = "Custom LWCs engineered with lightning-fast reactive DOM! 🛠️";
+        } else if (titleText.includes("integration") || titleText.includes("api") || titleText.includes("rest") || titleText.includes("tool") || titleText.includes("extension") || titleText.includes("devops") || titleText.includes("git")) {
+          anim = "curious";
+          line = "REST & Bulk APIs syncing millions of enterprise records 🚀";
         }
-      }, true);
+
+        sayDialogue(line, anim, 3500);
+      };
+
+      skillsGrid.addEventListener("mouseenter", handleSkillInteraction, true);
+      skillsGrid.addEventListener("click", handleSkillInteraction);
     }
 
     // 6. Projects Showcase Reaction
@@ -583,34 +593,111 @@
       });
     }
 
-    // 11. Multi-Click Poke Combo on Avatar Character
-    let pokeStreak = 0;
-    let lastPokeTime = 0;
+    // ------------------------------------------------------------------------
+    // Confetti Burst Effect (Pure DOM / Vanilla CSS)
+    // ------------------------------------------------------------------------
+    const triggerConfettiBurst = (anchorEl) => {
+      if (prefersReducedMotion) return;
+      const container = document.createElement("div");
+      container.className = "avatar-confetti-container";
+      container.style.cssText = "position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;overflow:hidden;";
+      document.body.appendChild(container);
 
-    const POKE_COMBOS = [
-      { text: "Hey! I'm Kartik's AI companion. Ready for the tour? 🤖", anim: "happy" },
-      { text: "Hehe, that tickles! 😄", anim: "laughing" },
-      { text: `Did you know? Kartik built ${stats.projectCount}+ developer productivity tools! 🛠️`, anim: "curious" },
-      { text: "Are you testing governor limits on my click handler?! ⚡", anim: "suspicious" },
-      { text: "BUG SQUASHED! 🐛 Zero runtime defects in production!", anim: "celebrate" },
-      { text: "System.debug('You are awesome!'); 🚀", anim: "celebrate" },
-      { text: `${stats.certCount} Salesforce certs, zero retakes needed! 🎓`, anim: "proud" },
-      { text: `${stats.expDisplay} years solving enterprise challenges with zero downtime! 💼`, anim: "proud" },
-      { text: "SOQL query returned 100% satisfaction! ✨", anim: "happy" },
-      { text: "Coffee + Apex = Scalable Enterprise Architecture ☕", anim: "playful" }
+      const rect = anchorEl ? anchorEl.getBoundingClientRect() : { left: window.innerWidth / 2, top: window.innerHeight / 2, width: 0, height: 0 };
+      const originX = rect.left + rect.width / 2;
+      const originY = rect.top + rect.height / 2;
+
+      const colors = ["#00e676", "#0176D3", "#FFB800", "#7B61FF", "#FF4081", "#00BCD4"];
+      const pieces = 36;
+
+      for (let i = 0; i < pieces; i++) {
+        const el = document.createElement("span");
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const size = Math.floor(Math.random() * 8) + 6;
+        const angle = (Math.PI * 2 * i) / pieces + (Math.random() - 0.5) * 0.4;
+        const velocity = Math.random() * 190 + 90;
+        const destX = Math.cos(angle) * velocity;
+        const destY = Math.sin(angle) * velocity - 60;
+        const rot = Math.random() * 720 - 360;
+
+        el.style.cssText = `
+          position: absolute;
+          left: ${originX}px;
+          top: ${originY}px;
+          width: ${size}px;
+          height: ${size * (Math.random() > 0.5 ? 1.6 : 1)}px;
+          background: ${color};
+          border-radius: ${Math.random() > 0.5 ? "2px" : "50%"};
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 1;
+          transition: transform 1.25s cubic-bezier(0.12, 0.8, 0.32, 1), opacity 0.6s ease-in 0.65s;
+        `;
+        container.appendChild(el);
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            el.style.transform = `translate(calc(-50% + ${destX}px), calc(-50% + ${destY}px)) rotate(${rot}deg) scale(1)`;
+            el.style.opacity = "0";
+          });
+        });
+      }
+
+      setTimeout(() => {
+        container.remove();
+      }, 1600);
+    };
+
+    // ------------------------------------------------------------------------
+    // 11. 5-Beat Click Progression on Avatar Character (Interaction 2)
+    // ------------------------------------------------------------------------
+    let clickSequenceIndex = 0;
+    let lastClickTime = 0;
+
+    const CLICK_BEATS = [
+      {
+        text: "Hey there! Welcome to my portfolio! 👋",
+        anim: "happy"
+      },
+      {
+        text: "Glad you're exploring! 😊",
+        anim: "excited"
+      },
+      {
+        text: "Fun fact: 10x certified, zero retakes needed! 😉",
+        anim: "playful"
+      },
+      {
+        text: "Inspecting the devtools? You're getting closer... 🔍",
+        anim: "curious"
+      },
+      {
+        text: "You found my secret! 🚀 Welcome to my little corner of the internet. Developer mode activated.",
+        anim: "celebrate",
+        isSecret: true
+      }
     ];
 
     if (characterBtn) {
       const onCharacterClick = () => {
         const now = Date.now();
-        if (now - lastPokeTime > 3200) {
-          pokeStreak = 0;
+        if (now - lastClickTime > 12000) {
+          clickSequenceIndex = 0;
         }
-        lastPokeTime = now;
+        lastClickTime = now;
 
-        const combo = POKE_COMBOS[pokeStreak % POKE_COMBOS.length];
-        pokeStreak++;
-        sayDialogue(combo.text, combo.anim, 4500);
+        const currentBeat = CLICK_BEATS[clickSequenceIndex];
+
+        if (currentBeat.isSecret) {
+          triggerConfettiBurst(characterBtn);
+          characterBtn.classList.add("avatar-character--dev-mode");
+          if (badgeText) badgeText.textContent = "Dev Mode ⚡";
+          console.log("%c🚀 DEVELOPER MODE ACTIVATED! Welcome to Kartik's portfolio console.", "color: #00e676; font-size: 14px; font-weight: bold; background: #0b1528; padding: 6px 12px; border-radius: 6px;");
+          sayDialogue(currentBeat.text, currentBeat.anim, 6500);
+          clickSequenceIndex = 0; // Reset after 5th beat
+        } else {
+          sayDialogue(currentBeat.text, currentBeat.anim, 4500);
+          clickSequenceIndex++;
+        }
       };
 
       characterBtn.addEventListener("click", onCharacterClick);
@@ -620,6 +707,70 @@
           onCharacterClick();
         }
       });
+    }
+
+    // ------------------------------------------------------------------------
+    // Eye & Head Gaze Cursor Tracking (Interaction 1)
+    // ------------------------------------------------------------------------
+    const isTouch = window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window;
+
+    if (!prefersReducedMotion && !isTouch && characterBtn && stage) {
+      let isGazeActive = false;
+      let gazeTimer = null;
+      let rafPending = false;
+
+      const resetGaze = () => {
+        isGazeActive = false;
+        stage.style.transform = "";
+        const eyeGroup = stage.querySelector("svg g[clip-path]");
+        if (eyeGroup) eyeGroup.removeAttribute("transform");
+      };
+
+      const onPointerMove = (e) => {
+        if (rafPending) return;
+        rafPending = true;
+
+        requestAnimationFrame(() => {
+          rafPending = false;
+          const rect = characterBtn.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+
+          const dx = e.clientX - cx;
+          const dy = e.clientY - cy;
+          const dist = Math.hypot(dx, dy);
+
+          if (dist > 700) {
+            if (isGazeActive) resetGaze();
+            return;
+          }
+
+          isGazeActive = true;
+          const ratio = Math.min(1, dist / 400);
+          const angle = Math.atan2(dy, dx);
+
+          // Natural subtle eye offset (-10px to +10px X, -8px to +8px Y)
+          const eyeX = Math.cos(angle) * ratio * 10;
+          const eyeY = Math.sin(angle) * ratio * 8;
+
+          // Natural subtle 3D head tilt
+          const tiltY = Math.max(-14, Math.min(14, (dx / 400) * 14));
+          const tiltX = Math.max(-12, Math.min(12, (-dy / 400) * 12));
+
+          stage.style.transform = `perspective(360px) rotateY(${tiltY.toFixed(1)}deg) rotateX(${tiltX.toFixed(1)}deg)`;
+
+          const eyeGroup = stage.querySelector("svg g[clip-path]");
+          if (eyeGroup) {
+            eyeGroup.setAttribute("transform", `translate(${eyeX.toFixed(1)} ${eyeY.toFixed(1)})`);
+          }
+
+          if (gazeTimer) clearTimeout(gazeTimer);
+          gazeTimer = setTimeout(resetGaze, 3000);
+        });
+      };
+
+      window.addEventListener("pointermove", onPointerMove, { passive: true });
+      window.addEventListener("mouseleave", resetGaze);
     }
 
     // IntersectionObserver watches sections as visitor scrolls

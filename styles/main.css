@@ -1571,6 +1571,15 @@ section {
   height: 100%;
   display: grid;
   place-items: center;
+  perspective: 400px;
+  transform-style: preserve-3d;
+  transition: transform 0.14s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.avatar-companion__stage svg g[clip-path] {
+  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
 
 .avatar-companion__stage .bs-avatar {
@@ -1579,6 +1588,36 @@ section {
   display: flex !important;
   align-items: center;
   justify-content: center;
+}
+
+/* Developer Mode Glow */
+.avatar-companion__character.avatar-character--dev-mode {
+  filter: drop-shadow(0 0 16px rgba(0, 230, 118, 0.85)) drop-shadow(0 14px 22px rgba(26, 115, 232, 0.45));
+  animation: companionDevPulse 2.4s ease-in-out infinite, companionHoverFloat 3.8s ease-in-out infinite;
+}
+
+.avatar-companion__character.avatar-character--dev-mode::after {
+  content: "⚡";
+  position: absolute;
+  top: -8px;
+  right: -6px;
+  font-size: 1rem;
+  filter: drop-shadow(0 0 6px #00e676);
+  animation: companionSparkle 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes companionDevPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 12px rgba(0, 230, 118, 0.7)) drop-shadow(0 14px 22px rgba(26, 115, 232, 0.38));
+  }
+  50% {
+    filter: drop-shadow(0 0 24px rgba(0, 230, 118, 1)) drop-shadow(0 16px 26px rgba(0, 230, 118, 0.5));
+  }
+}
+
+@keyframes companionSparkle {
+  0% { transform: scale(0.9) rotate(-10deg); opacity: 0.8; }
+  100% { transform: scale(1.2) rotate(15deg); opacity: 1; }
 }
 
 /* Soft Radial Glow Ground Beneath Avatar */
