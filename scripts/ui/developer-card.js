@@ -133,6 +133,11 @@
       }
     });
 
+    // Prevent background scrolling while modal is active on initial load
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    }
+
     // ------------------------------------------------------------------------
     // Re-open from Hero Button
     // ------------------------------------------------------------------------
@@ -156,13 +161,6 @@
 
       card.focus();
     };
-
-    if (heroTrigger) {
-      heroTrigger.addEventListener("click", (e) => {
-        e.preventDefault();
-        openBadge();
-      });
-    }
 
     document.addEventListener("click", (e) => {
       if (e.target.closest("#dev-card-trigger, .btn--dev-card-launcher")) {

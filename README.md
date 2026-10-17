@@ -4,13 +4,17 @@ Simple personal portfolio site built with HTML, CSS, and vanilla JavaScript. It 
 
 ## Project structure
 
-- `index.html` - page shell
+- `index.html` - page shell and semantic layout
 - `data/portfolio-content.js` - main portfolio content (certifications, projects, experience, skills)
 - `data/portfolio-config.js` - UI settings and labels
 - `data/avatar-definition.js` - bundled avatar companion definition
-- `scripts/` - app logic, section rendering, and interactive avatar companion
+- `scripts/` - app logic, section rendering, and interactive components
+  - `scripts/bundle-css.py` - zero-dependency production CSS bundler (`styles/main.css`)
+  - `scripts/ui/developer-card.js` - realistic lanyard badge controller (spring physics entrance, 3D flip, dynamic experience, a11y)
   - `scripts/ui/avatar-controller.js` - companion dialogue engine, section docking, and site interactions
-- `styles/` - layout, components, section styles, and companion animations
+- `styles/` - modular CSS tokens, layout, components, and animations
+  - `styles/components/developer-card.css` - physical lanyard ID badge with woven strap, chrome hardware, Salesforce curves, and 3D transforms
+  - `styles/main.css` - production bundled stylesheet
 - `assets/` - icons, images, resumes, and procedural avatar assets (`assets/avatar/kartik-avatar.json`)
 
 ## Run locally
@@ -50,9 +54,11 @@ This repo works with GitHub Pages from the repository root.
 
 ## Notes
 
-- No build step is required.
-- Pure vanilla HTML, CSS, and JS (zero bundler at root).
-- Experience years automatically calculate from October 2020.
+- No build step is required for development.
+- Pure vanilla HTML, CSS, and JS (zero external runtime dependencies).
+- When editing modular CSS files under `styles/`, run `python3 scripts/bundle-css.py` to compile into `styles/main.css`.
+- Interactive Lanyard Developer Pass: Realistic hanging badge with spring physics, 3D flip card, live portfolio QR code, social links, and auto-calculated experience. Re-triggerable anytime via the hero launcher.
+- Experience years automatically calculate dynamically from October 2020.
 - Interactive vector avatar companion with real-time cursor gaze tracking, 5-beat interaction sequence, and developer mode easter egg.
 - 100% client-side with zero external API calls or token dependencies.
 - The contact form uses `mailto:`.
