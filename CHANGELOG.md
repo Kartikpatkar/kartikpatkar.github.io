@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.0] - 2026-10-25
+
+### Added
+- **3D Career Journey Scroll-World Experience**:
+  - Implemented an immersive 4-stage narrative scroll experience (`#journey-world`) positioned below the primary header.
+  - **Stage 1 (The Foundation)**: Computer Engineering & Algorithms (terminal, hardware schematics, textbooks).
+  - **Stage 2 (First Day in Code)**: Enterprise Development (Apex, LWC, multi-monitor IDE, git branches).
+  - **Stage 3 (Leadership & Architecture)**: Leading Teams & Multi-Cloud Architecture (holographic Salesforce integration board, sprint flows).
+  - **Stage 4 (The Creator)**: Custom Tools & Open Source (Chrome extension store puzzle badge, developer productivity widgets).
+  - Designed responsive thought bubble / comic speech cloud overlays that dock cleanly on the lower-left corner without blocking 3D scenes.
+  - Added vertical progress stepper and subtle stage depth micro-parallax (`scripts/ui/scroll-world.js`).
+
+### Optimized & Hardened
+- **Asset Performance & Core Web Vitals**:
+  - Converted raw 3D renders to high-efficiency WebP format (reduced total payload from 3.1 MB to 419 KB, an 87% reduction).
+  - Configured `fetchpriority="high"` on Stage 1 for sub-second LCP and `loading="lazy"` + `decoding="async"` on Stages 2–4.
+  - Explicit `width="1920"` and `height="1080"` dimensions on all viewports for 0 CLS.
+- **Theme & Layout Compatibility**:
+  - Full Light and Dark theme adaptation via CSS tokens (`--surface`, `--text`, `--border-strong`, `--bg`).
+  - Adjusted sticky track offset (`top: var(--nav-height)`) preventing the fixed navigation bar from overlapping content.
+  - Added mobile responsive layout (`<768px`) with clamped typography and centered focal alignments.
+  - Bundled `styles/components/scroll-world.css` into `styles/main.css` (24 modular stylesheets bundled).
+
 ## [1.5.0] - 2026-10-25
 
 ### Added
