@@ -2,7 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.4.0] - 2026-10-18
+## [1.5.0] - 2026-10-25
+
+### Added
+- **New Projects in Portfolio Showcase**:
+  - **ShowDeck**: Privacy-first, offline-first Progressive Web App for tracking TV shows and movies without accounts or cloud storage (IndexedDB, TMDB API, Live Demo + GitHub).
+  - **WealthDeck**: Modern, offline-first personal finance tracking PWA with local storage and full data privacy (PWA, Live Demo + GitHub).
+  - **Resource Hub**: Curated directory of essential developer tools, libraries, and design resources.
+- **Live Demo Action Buttons**:
+  - Added SVG globe `web` icon and `.project-card__action--web` button styles in `scripts/core/icons.js`, `scripts/sections/projects.js`, and `styles/sections/projects.css`.
+  - Updated open-source project counter to **12+ Projects** in `data/portfolio-content.js`.
+
+### Fixed & Hardened (GUI Audit)
+- **Active Filter Pill Contrast in Dark Mode (BUG-1)**: Fixed unreadable text color on active filter buttons by explicitly setting `color: #0b1528; font-weight: 800;` on `[data-theme="dark"] .projects__filter--active` in `styles/base/tokens.css`.
+- **Developer Card Modal Click Interception (BUG-2)**: Prevented closed modal from blocking footer clicks by setting `pointer-events: none !important;` on all children when inactive and `modal.style.display = "none"` upon exit animation completion.
+- **Short Viewport Sizing @ 720p (BUG-3)**: Added `@media (max-height: 820px)` and `@media (max-height: 740px)` media queries in `styles/components/developer-card.css` to clamp `.lanyard-strap` and scale perspective, keeping "Continue" and "Click Card" buttons above the fold.
+- **Escape Key Accessibility (BUG-4)**: Attached global `window` keyboard handler for `Escape` to cleanly dismiss the modal regardless of focus state.
+- **Navigation Active Link Synchronization**: Added throttled `scroll` listener and bottom boundary check (<= 50px) to cleanly activate `#contact` at the bottom of the page and restore the intersection observer's section when scrolling back up.
+
 
 ### Added
 - **Realistic Lanyard Developer ID Badge**:

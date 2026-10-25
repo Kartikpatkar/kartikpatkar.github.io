@@ -57,9 +57,11 @@ This repo works with GitHub Pages from the repository root.
 - No build step is required for development.
 - Pure vanilla HTML, CSS, and JS (zero external runtime dependencies).
 - When editing modular CSS files under `styles/`, run `python3 scripts/bundle-css.py` to compile into `styles/main.css`.
-- Interactive Lanyard Developer Pass: Realistic hanging badge with spring physics, 3D flip card, live portfolio QR code, social links, and auto-calculated experience. Re-triggerable anytime via the hero launcher.
+- Interactive Lanyard Developer Pass: Realistic hanging badge with spring physics, 3D flip card, live portfolio QR code, social links, short-viewport responsive scaling, and auto-calculated experience. Re-triggerable anytime via the hero launcher.
 - Experience years automatically calculate dynamically from October 2020.
 - Interactive vector avatar companion with real-time cursor gaze tracking, 5-beat interaction sequence, and developer mode easter egg.
+- Featured Projects: Salesforce Chrome Extensions (Apex Genie, FieldForge, SF Security Auditor, SF Vault+, ProfileShift, SLDS Icons Kit, Metadata Exporter) alongside offline-first PWAs (ShowDeck, WealthDeck) and developer utilities (Offline PDF Tools, DiffBoard, Base64 Buddy, Resource Hub).
+- Live Demo & GitHub direct links with responsive SVG icons.
 - 100% client-side with zero external API calls or token dependencies.
 - The contact form uses `mailto:`.
 - The main preview image is `assets/images/portfolio-preview.png`.

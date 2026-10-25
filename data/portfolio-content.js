@@ -51,7 +51,7 @@ window.PORTFOLIO_CONTENT = {
                 icon: "🚀"
             },
             {
-                title: "9+ Projects",
+                title: "12+ Projects",
                 value: "Open Source",
                 tone: "insight",
                 icon: "🧩"
@@ -572,6 +572,86 @@ window.PORTFOLIO_CONTENT = {
                         kind: "chrome_web_store",
                         label: "Chrome Web Store",
                         url: "https://chromewebstore.google.com/detail/jpdnbaplnomajdlomcmbpfklcolgbljo?utm_source=item-share-cb"
+                    }
+                ]
+            },
+            {
+                title: "ShowDeck",
+                category: "utilities",
+                icon: "SD",
+                badge: "PWA",
+                description: "Privacy-first, offline-first Progressive Web App for tracking TV shows and movies without accounts or cloud storage.",
+                problemSolved: "Eliminates account requirements, subscription tracking lock-in, and cloud data profiling for personal entertainment tracking.",
+                impact: "Delivers an instant-load entertainment tracker with local-first IndexedDB persistence, TMDB/TVMaze API integrations, and offline support.",
+                technologies: [
+                    "JavaScript",
+                    "PWA",
+                    "IndexedDB",
+                    "Offline-First",
+                    "TMDB API",
+                    "CSS3"
+                ],
+                links: [
+                    {
+                        kind: "github",
+                        label: "GitHub",
+                        url: "https://github.com/Kartikpatkar/ShowDeck"
+                    },
+                    {
+                        kind: "web",
+                        label: "Live Demo",
+                        url: "https://kartikpatkar.github.io/ShowDeck/"
+                    }
+                ]
+            },
+            {
+                title: "WealthDeck",
+                category: "utilities",
+                icon: "WD",
+                badge: "PWA",
+                description: "Modern, offline-first Progressive Web App built for full control and private tracking of your financial life.",
+                problemSolved: "Removes third-party banking aggregators and cloud security exposure for personal financial logging.",
+                impact: "Gives users full privacy and autonomy over financial management with completely local data storage and responsive PWA installability.",
+                technologies: [
+                    "JavaScript",
+                    "PWA",
+                    "Offline-First",
+                    "Local Storage",
+                    "CSS3",
+                    "Privacy-First"
+                ],
+                links: [
+                    {
+                        kind: "github",
+                        label: "GitHub",
+                        url: "https://github.com/Kartikpatkar/WealthDeck"
+                    },
+                    {
+                        kind: "web",
+                        label: "Live Demo",
+                        url: "https://kartikpatkar.github.io/WealthDeck/"
+                    }
+                ]
+            },
+            {
+                title: "Resource Hub",
+                category: "devtools",
+                icon: "RH",
+                badge: "Directory",
+                description: "Curated, categorized collection of essential developer tools, utilities, libraries, and design resources from across the web.",
+                problemSolved: "Reduces bookmark chaos and search friction for frequently accessed developer resources and tools.",
+                impact: "Provides a centralized, searchable reference hub for engineers, designers, and creators.",
+                technologies: [
+                    "JavaScript",
+                    "HTML5",
+                    "CSS3",
+                    "Curated Directory"
+                ],
+                links: [
+                    {
+                        kind: "github",
+                        label: "GitHub",
+                        url: "https://github.com/Kartikpatkar/resource-hub"
                     }
                 ]
             }
