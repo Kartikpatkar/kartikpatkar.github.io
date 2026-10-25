@@ -373,6 +373,12 @@
   color: var(--accent);
 }
 
+.project-card__action--web {
+  background: rgba(14, 165, 233, 0.08);
+  border-color: rgba(14, 165, 233, 0.18);
+  color: #0284c7;
+}
+
 .project-card__action--chrome .project-card__actionSvg,
 .project-card__action--chrome .project-card__actionSvg * {
   stroke: none;

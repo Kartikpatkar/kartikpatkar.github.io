@@ -140,8 +140,9 @@ const createProjectCard = (project, uiProjects) => {
   const footer = createEl("footer", "project-card__footer");
   (project.links || []).forEach((linkItem) => {
     const kind = linkItem.kind || "";
-    const isChromeStore = kind === "chromeStore" || /chrome/i.test(linkItem.label);
+    const isChromeStore = kind === "chromeStore" || kind === "chrome_web_store" || /chrome/i.test(linkItem.label);
     const isGitHub = kind === "github" || /github/i.test(linkItem.label);
+    const isWeb = kind === "web" || /live|demo|app/i.test(linkItem.label);
     if (isChromeStore && uiProjects?.showChromeStoreButton === false) return;
     if (isGitHub && uiProjects?.showGithubButton === false) return;
     const label = isChromeStore
@@ -153,8 +154,8 @@ const createProjectCard = (project, uiProjects) => {
       ? "project-card__action project-card__action--chrome"
       : isGitHub
         ? "project-card__action project-card__action--github"
-        : "project-card__action";
-    const iconName = isChromeStore ? "chrome" : isGitHub ? "github" : "trailhead";
+        : "project-card__action project-card__action--web";
+    const iconName = isChromeStore ? "chrome" : isGitHub ? "github" : isWeb ? "web" : "trailhead";
     const link = createEl("a", linkClass);
     link.href = linkItem.url;
     link.setAttribute("aria-label", label);
