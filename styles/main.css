@@ -203,6 +203,8 @@
 
 [data-theme="dark"] .projects__filter--active {
   background: var(--accent);
+  color: #0b1528;
+  font-weight: 800;
 }
 
 [data-theme="dark"] .timeline::before {
@@ -1860,16 +1862,20 @@ section {
   -webkit-backdrop-filter: blur(20px);
   opacity: 0;
   visibility: hidden;
-  pointer-events: none;
+  pointer-events: none !important;
   overflow: hidden;
   transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
               visibility 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.dev-card-modal:not(.is-active) * {
+  pointer-events: none !important;
+}
+
 .dev-card-modal.is-active {
   opacity: 1;
   visibility: visible;
-  pointer-events: auto;
+  pointer-events: auto !important;
 }
 
 /* When exiting */
@@ -2592,6 +2598,33 @@ section {
     flex-direction: column;
     gap: 8px;
     margin-top: 14px;
+  }
+}
+
+/* Fix BUG-3: Keep modal buttons above the fold on 1280x720 and shorter screens */
+@media (max-height: 820px) {
+  .lanyard-strap {
+    height: 60px !important;
+  }
+  .dev-card-perspective {
+    transform: scale(0.92);
+    transform-origin: top center;
+  }
+  .dev-badge-modal-controls {
+    margin-top: 10px !important;
+  }
+}
+
+@media (max-height: 740px) {
+  .lanyard-strap {
+    height: 40px !important;
+  }
+  .dev-card-perspective {
+    transform: scale(0.86);
+    transform-origin: top center;
+  }
+  .dev-badge-modal-controls {
+    margin-top: 8px !important;
   }
 }
 

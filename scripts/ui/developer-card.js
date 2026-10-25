@@ -104,12 +104,13 @@
       setTimeout(() => {
         modal.classList.remove("is-active", "is-exiting");
         modal.setAttribute("aria-hidden", "true");
+        modal.style.display = "none";
         document.body.style.overflow = "";
 
         // Reset flip state for next open
         setTimeout(() => {
           toggleFlip(false);
-        }, 200);
+        }, 100);
       }, 550);
     };
 
@@ -127,8 +128,9 @@
       }
     });
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && isModalOpen) {
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && (isModalOpen || modal.classList.contains("is-active"))) {
+        e.preventDefault();
         continueToSite();
       }
     });
@@ -143,6 +145,7 @@
     // ------------------------------------------------------------------------
     const openBadge = () => {
       isModalOpen = true;
+      modal.style.display = "";
       modal.classList.remove("is-exiting");
       modal.classList.add("is-active");
       modal.setAttribute("aria-hidden", "false");

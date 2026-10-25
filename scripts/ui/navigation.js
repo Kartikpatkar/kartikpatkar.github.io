@@ -37,6 +37,27 @@ const initNavigation = () => {
   };
 
   let sectionObserver;
+  let currentObserverSectionId = "";
+  let isBottomOverridden = false;
+
+  const updateActiveSection = () => {
+    const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+    const lastSection = sections[sections.length - 1];
+
+    if (isAtBottom && lastSection?.id) {
+      isBottomOverridden = true;
+      setActiveLink(lastSection.id);
+      return;
+    }
+
+    if (isBottomOverridden) {
+      isBottomOverridden = false;
+      if (currentObserverSectionId) {
+        setActiveLink(currentObserverSectionId);
+      }
+    }
+  };
+
   const setupSectionObserver = () => {
     if (!sections.length) return;
 
@@ -48,18 +69,38 @@ const initNavigation = () => {
           .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0));
 
         if (visible[0]?.target?.id) {
-          setActiveLink(visible[0].target.id);
+          currentObserverSectionId = visible[0].target.id;
+        }
+
+        updateActiveSection();
+        if (!isBottomOverridden && currentObserverSectionId) {
+          setActiveLink(currentObserverSectionId);
         }
       },
       {
         root: null,
-        threshold: [0.25, 0.35, 0.5, 0.65],
-        rootMargin: `-${getNavHeightPx()}px 0px -55% 0px`,
+        threshold: [0.15, 0.35, 0.5, 0.65],
+        rootMargin: `-${getNavHeightPx() + 10}px 0px -50% 0px`,
       },
     );
 
     sections.forEach((section) => sectionObserver.observe(section));
   };
+
+  let scrollTicking = false;
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!scrollTicking) {
+        window.requestAnimationFrame(() => {
+          updateActiveSection();
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    },
+    { passive: true },
+  );
 
   if (navToggle) {
     navToggle.addEventListener("click", () => {
