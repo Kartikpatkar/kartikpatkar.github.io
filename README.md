@@ -10,12 +10,14 @@ Simple personal portfolio site built with HTML, CSS, and vanilla JavaScript. It 
 - `data/avatar-definition.js` - bundled avatar companion definition
 - `scripts/` - app logic, section rendering, and interactive components
   - `scripts/bundle-css.py` - zero-dependency production CSS bundler (`styles/main.css`)
+  - `scripts/ui/scroll-world.js` - 3D career journey scroll-driven camera & scene controller
   - `scripts/ui/developer-card.js` - realistic lanyard badge controller (spring physics entrance, 3D flip, dynamic experience, a11y)
   - `scripts/ui/avatar-controller.js` - companion dialogue engine, section docking, and site interactions
 - `styles/` - modular CSS tokens, layout, components, and animations
+  - `styles/components/scroll-world.css` - 3D career journey sticky track, comic thought bubbles, and theme adaptation
   - `styles/components/developer-card.css` - physical lanyard ID badge with woven strap, chrome hardware, Salesforce curves, and 3D transforms
   - `styles/main.css` - production bundled stylesheet
-- `assets/` - icons, images, resumes, and procedural avatar assets (`assets/avatar/kartik-avatar.json`)
+- `assets/` - icons, images, resumes, 3D journey WebP scenes (`assets/images/journey/`), and procedural avatar assets (`assets/avatar/kartik-avatar.json`)
 
 ## Run locally
 
