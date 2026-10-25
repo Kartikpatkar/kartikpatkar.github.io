@@ -53,6 +53,7 @@
         rel="stylesheet" />
     <link rel="preload" href="styles/main.css?v=20261018c" as="style" />
     <link rel="stylesheet" href="styles/main.css?v=20261018c" />
+    <link rel="stylesheet" href="styles/components/scroll-world.css" />
     <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
     <link rel="icon" href="assets/icons/favicon.ico" sizes="any" />
     <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
@@ -197,6 +198,92 @@
     </header>
 
     <main>
+        <!-- 3D Career Journey Experience -->
+        <section class="journey-world" id="journey-world" aria-label="Interactive 3D Career Journey">
+            <div class="journey-world__sticky">
+                <!-- 3D Isometric Viewports -->
+                <div class="journey-world__scenes">
+                    <div class="journey-world__scene is-active" data-scene="0">
+                        <img class="journey-world__scene-img" src="assets/images/journey/stage-1.jpg" alt="Computer Engineering Foundations 3D render" loading="eager" />
+                    </div>
+                    <div class="journey-world__scene" data-scene="1">
+                        <img class="journey-world__scene-img" src="assets/images/journey/stage-2.jpg" alt="First Developer Role 3D render" loading="lazy" />
+                    </div>
+                    <div class="journey-world__scene" data-scene="2">
+                        <img class="journey-world__scene-img" src="assets/images/journey/stage-3.jpg" alt="Lead Architect & Team Leadership 3D render" loading="lazy" />
+                    </div>
+                    <div class="journey-world__scene" data-scene="3">
+                        <img class="journey-world__scene-img" src="assets/images/journey/stage-4.jpg" alt="Developer Tools & Open Source Creator 3D render" loading="lazy" />
+                    </div>
+                </div>
+
+                <div class="journey-world__vignette" aria-hidden="true"></div>
+
+                <!-- Story Overlays -->
+                <div class="journey-world__overlays">
+                    <!-- Stage 1 -->
+                    <div class="journey-world__card is-active" data-card="0">
+                        <span class="journey-world__pill">Chapter 01 · The Foundation</span>
+                        <h2 class="journey-world__title">Computer Engineering & Algorithms</h2>
+                        <p class="journey-world__desc">Deep dive into data structures, compilers, system architecture, and terminal foundations that built the mental models for everything ahead.</p>
+                        <div class="journey-world__tags">
+                            <span class="journey-world__tag">B.E. Computer Engineering</span>
+                            <span class="journey-world__tag">Data Structures</span>
+                            <span class="journey-world__tag">System Design</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 2 -->
+                    <div class="journey-world__card" data-card="1">
+                        <span class="journey-world__pill">Chapter 02 · First Day in Code</span>
+                        <h2 class="journey-world__title">First Enterprise Development Role</h2>
+                        <p class="journey-world__desc">First pull requests, breaking changes, production deployments, and mastering Apex, LWC, and CRM cloud patterns under real business SLAs.</p>
+                        <div class="journey-world__tags">
+                            <span class="journey-world__tag">Salesforce Dev</span>
+                            <span class="journey-world__tag">Apex & Triggers</span>
+                            <span class="journey-world__tag">Git Pipelines</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 3 -->
+                    <div class="journey-world__card" data-card="2">
+                        <span class="journey-world__pill">Chapter 03 · Leadership & Architecture</span>
+                        <h2 class="journey-world__title">Leading Teams & Multi-Cloud Architecture</h2>
+                        <p class="journey-world__desc">Bridging stakeholders with tech stacks: sprint planning, designing resilient multi-cloud integrations, and guiding engineering pods to deliver clean code.</p>
+                        <div class="journey-world__tags">
+                            <span class="journey-world__tag">Lead Consultant</span>
+                            <span class="journey-world__tag">Solution Architecture</span>
+                            <span class="journey-world__tag">Team Mentorship</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 4 -->
+                    <div class="journey-world__card" data-card="3">
+                        <span class="journey-world__pill">Chapter 04 · The Creator</span>
+                        <h2 class="journey-world__title">Building Custom Tools & Open Source</h2>
+                        <p class="journey-world__desc">Turning developer pain points into published Chrome extensions, automated CLI tooling, and open-source packages used by engineers worldwide.</p>
+                        <div class="journey-world__tags">
+                            <span class="journey-world__tag">Chrome Web Store</span>
+                            <span class="journey-world__tag">9+ Open Source Tools</span>
+                            <span class="journey-world__tag">Developer Experience</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Dots -->
+                <div class="journey-world__stepper" aria-hidden="true">
+                    <div class="journey-world__step is-active"></div>
+                    <div class="journey-world__step"></div>
+                    <div class="journey-world__step"></div>
+                    <div class="journey-world__step"></div>
+                </div>
+
+                <div class="journey-world__hint" aria-hidden="true">
+                    <span>Scroll to explore the journey</span>
+                </div>
+            </div>
+        </section>
+
         <!-- Hero Section -->
         <section class="section hero" id="home" aria-label="Hero">
             <div class="container hero__grid">
@@ -709,6 +796,7 @@
     <script src="scripts/core/dom.js?v=20260401b" defer></script>
     <script src="scripts/core/icons.js?v=20260401b" defer></script>
     <script src="scripts/sections/hero.js?v=20260401b" defer></script>
+    <script src="scripts/ui/scroll-world.js" defer></script>
     <script src="scripts/sections/about.js?v=20260401b" defer></script>
     <script src="scripts/sections/impact.js?v=20260403a" defer></script>
     <script src="scripts/sections/skills.js?v=20260401b" defer></script>
