@@ -1,0 +1,21 @@
+# Kartik Patkar
+
+> 10x Certified Salesforce Consultant & Senior Developer specializing in Apex, LWC, multi-cloud architecture, integrations, and developer tools.
+
+## Summary
+- **Role:** Salesforce Consultant & Senior Developer at Appstrail Technology
+- **Specializations:** Salesforce Architecture, Apex, Lightning Web Components (LWC), Enterprise Integrations, Chrome Extensions, Developer Tooling
+- **Certifications:** 10x Salesforce Certified (Administrator, Platform Developer I, App Builder, JavaScript Developer I, etc.)
+- **Website:** https://kartikpatkar.github.io/
+
+## Key Links
+- Portfolio: https://kartikpatkar.github.io/
+- LinkedIn: https://www.linkedin.com/in/kartik-patkar/
+- GitHub: https://github.com/Kartikpatkar
+- Trailblazer: https://www.salesforce.com/trailblazer/kpatkar1
+
+## Key Projects & Tools
+- **Salesforce Developer Tools:** Open-source productivity tools and Chrome extensions for Salesforce developers.
+- **Enterprise Integrations:** REST/SOAP API integrations, event-driven architectures, middleware connectors.
+- **Client Delivery:** Multi-cloud solutions across Sales Cloud, Service Cloud, Experience Cloud.
+
