@@ -15,4 +15,6 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://kartikpatkar.github.io/sitemap.xml
-# LLMs context: https://kartikpatkar.github.io/llms.txt
+# LLMs context:
+# https://kartikpatkar.github.io/llms.txt
+# https://kartikpatkar.github.io/llms-full.txt

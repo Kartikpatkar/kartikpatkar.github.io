@@ -1,0 +1,45 @@
+# Kartik Patkar - Full Profile & Technical Context
+
+> 10x Certified Salesforce Consultant & Senior Developer specializing in Apex, LWC, multi-cloud enterprise architecture, API integrations, and developer productivity tooling.
+
+- **Current Title:** Salesforce Consultant & Senior Developer
+- **Organization:** Appstrail Technology
+- **Experience:** 5.5+ years enterprise software delivery
+- **Primary Website:** https://kartikpatkar.github.io/
+- **Email:** kartikkp.assets@gmail.com
+- **LinkedIn:** https://www.linkedin.com/in/kartik-patkar/
+- **GitHub:** https://github.com/Kartikpatkar
+- **Salesforce Trailhead:** https://www.salesforce.com/trailblazer/kpatkar1
+
+---
+
+## Core Technical Competencies
+
+- **Salesforce Architecture & Development:** Apex (Enterprise Triggers, Batch, Queueable, Scheduled), Lightning Web Components (LWC), Visualforce, SOQL/SOSL optimization, Custom Metadata, Platform Events, Change Data Capture (CDC).
+- **Integration & APIs:** REST / SOAP web services, Composite APIs, MuleSoft / middleware integrations, OAuth 2.0 flows, webhook systems.
+- **Clouds & Solutions:** Sales Cloud, Service Cloud, Experience Cloud, Health Cloud, Financial Services Cloud patterns.
+- **Frontend & Tooling:** Modern JavaScript (ES6+), Google Chrome Extensions (Manifest V3), Node.js, CLI developer tooling, Git CI/CD deployment pipelines (GitHub Actions, Copado, Salesforce DX).
+
+---
+
+## Certifications (10x Salesforce Certified)
+
+1. Salesforce Certified Administrator
+2. Salesforce Certified Advanced Administrator
+3. Salesforce Certified Platform Developer I
+4. Salesforce Certified Platform Developer II
+5. Salesforce Certified Platform App Builder
+6. Salesforce Certified JavaScript Developer I
+7. Salesforce Certified Sales Cloud Consultant
+8. Salesforce Certified Service Cloud Consultant
+9. Salesforce Certified Sharing and Visibility Architect
+10. Salesforce Certified Development Lifecycle and Deployment Architect
+
+---
+
+## Verified Projects & Open Source Tools
+
+- **Chrome Extensions for Salesforce Engineers:** Published productivity utilities on Chrome Web Store to inspect metadata, speed up record navigation, and debug Apex/LWC logs.
+- **Enterprise Multi-Cloud CRM Modernization:** Re-architected core CRM workflows reducing manual business processing by 60%+ across distributed customer support and sales teams.
+- **Event-Driven Integration Pipeline:** Designed real-time event streaming using Salesforce Platform Events and external REST services for high-throughput order synchronization.
+
